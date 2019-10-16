@@ -20,7 +20,8 @@ export class UmServiceService {
         "CareerLevel": "A",
         "Location": "Barajas",
         "EntryDate": null,
-        "ExitDate": null
+        "ExitDate": null,
+        "Selected":false
       },
       {
         "DNI": "2A",
@@ -32,7 +33,8 @@ export class UmServiceService {
         "CareerLevel": "B",
         "Location": "Getafe",
         "EntryDate": null,
-        "ExitDate": null
+        "ExitDate": null,
+        "Selected": false
       },
     ];
     return data;

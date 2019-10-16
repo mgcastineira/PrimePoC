@@ -15,6 +15,7 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { TooltipModule } from 'primeng/tooltip';
 import { CalendarModule } from 'primeng/calendar';
+import { CheckboxModule } from 'primeng/checkbox';
 
 @NgModule({
   declarations: [],
@@ -33,7 +34,8 @@ import { CalendarModule } from 'primeng/calendar';
     DynamicDialogModule,
     ConfirmDialogModule,
     TooltipModule,
-    CalendarModule
+    CalendarModule,
+    CheckboxModule
   ],
   exports:[
     TableModule,
@@ -46,7 +48,8 @@ import { CalendarModule } from 'primeng/calendar';
     DynamicDialogModule,
     ConfirmDialogModule,
     TooltipModule,
-    CalendarModule
+    CalendarModule,
+    CheckboxModule
   ]
 })
 export class PrimengModule { }

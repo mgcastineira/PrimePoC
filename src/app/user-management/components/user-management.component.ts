@@ -15,6 +15,7 @@ export class UserManagementComponent implements OnInit {
   @ViewChild('projectsTable') table: Table;
   userList:any[]=[];
   filterValue: string = "";
+  selectAllRows:boolean = false;
 
   es:any = {
     firstDayOfWeek: 1,

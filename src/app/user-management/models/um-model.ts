@@ -23,5 +23,6 @@ export class UmModel {
   SPOC?: string;
   Status: string;
   Title: string;
-  rollOffStep?: number
+  rollOffStep?: number;
+  Selected:boolean;
 }
