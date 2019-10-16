@@ -16,6 +16,8 @@ export class UserManagementComponent implements OnInit {
   userList:any[]=[];
   filterValue: string = "";
   selectAllRows:boolean = false;
+  displayStatusManagement: boolean = false;
+
 
   es:any = {
     firstDayOfWeek: 1,
@@ -57,5 +59,9 @@ export class UserManagementComponent implements OnInit {
   }
 
   onRowEditCancel(row: any, index: number) {
+  }
+
+  showStatusManagement() {
+    this.displayStatusManagement = true;
   }
 }

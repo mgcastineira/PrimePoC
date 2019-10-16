@@ -9,9 +9,8 @@
           (input)="globalFilter($event.target.value)" [(ngModel)]="filterValue">
         <label for="projectSearch">Filter all fields</label>
       </div>
-      
-      <button pButton [disabled]="userList.length==0" type="button" (click)="createUser()"
-        label="CREATE USER"></button>
+
+      <button pButton [disabled]="userList.length==0" type="button" (click)="createUser()" label="CREATE USER"></button>
     </div>
   </ng-template>
   <ng-template pTemplate="header">
@@ -53,8 +52,7 @@
       <!-- <th></th> -->
     </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-rowData let-editing="editing" 
-  let-expanded="expanded" let-ri="rowIndex">
+  <ng-template pTemplate="body" let-rowData let-editing="editing" let-expanded="expanded" let-ri="rowIndex">
     <tr [pEditableRow]="rowData">
       <td>
         <p-checkbox [(ngModel)]="rowData.Selected" inputId="technology">
@@ -118,8 +116,8 @@
       <td class="ui-resizable-column textColumn ui-p-9">
         <p-cellEditor>
           <ng-template pTemplate="input">
-            <p-calendar [(ngModel)]="rowData.EntryDate" appendTo="body" 
-            [locale]="es" dateFormat="dd/mm/yy"></p-calendar>
+            <p-calendar [(ngModel)]="rowData.EntryDate" appendTo="body" [locale]="es" dateFormat="dd/mm/yy">
+            </p-calendar>
           </ng-template>
           <ng-template pTemplate="output">
             {{rowData.EntryDate}}
@@ -129,8 +127,7 @@
       <td class="ui-resizable-column textColumn ui-p-10">
         <p-cellEditor>
           <ng-template pTemplate="input">
-            <p-calendar [(ngModel)]="rowData.ExitDate" appendTo="body" 
-            [locale]="es" dateFormat="dd/mm/yy"></p-calendar>
+            <p-calendar [(ngModel)]="rowData.ExitDate" appendTo="body" [locale]="es" dateFormat="dd/mm/yy"></p-calendar>
           </ng-template>
           <ng-template pTemplate="output">
             {{rowData.ExitDate}}
@@ -138,7 +135,7 @@
         </p-cellEditor>
       </td>
       <td>
-        <a href="" (click)="showStatusManagement()">Status management</a>
+        <a (click)="showStatusManagement()">Status management</a>
         <!-- <i *ngIf="rowData.saving" class="pi pi-spin pi-spinner" style="font-size: 3em"></i>
         <i *ngIf="rowData.error" class="pi pi-exclamation-triangle"></i> -->
       </td>
@@ -171,3 +168,20 @@
     There are {{userList?.length}} items
   </ng-template>
 </p-table>
+<p-dialog header="Status Management" [(visible)]="displayStatusManagement" 
+[modal]="true" [responsive]="true" dismissableMask="true"
+[closeIcon]="false" [minimizeIcon]="false" [closeOnEscape]="true" [maximizeIcon]="false"
+  [style]="{width: '350px', minWidth: '200px'}" [minY]="70"
+  [baseZIndex]="10000">
+  <p>The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.
+    His beloved son Michael has just come home from the war, but does not intend to become part of his father's
+    business.
+    Through Michael's life the nature of the family business becomes clear. The business of the family is just like the
+    head of the family,
+    kind and benevolent to those who give respect,
+    but given to ruthless violence whenever anything stands against the good of the family.</p>
+  <p-footer>
+    <button type="button" pButton (click)="displayStatusManagement=false" label="Cancel" class="ui-button-secondary"></button>
+    <button type="button" pButton (click)="displayStatusManagement=false" label="APPLY CHANGES"></button>
+  </p-footer>
+</p-dialog>
