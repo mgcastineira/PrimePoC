@@ -64,4 +64,12 @@ export class UserManagementComponent implements OnInit {
 
   onRowEditCancel(row: any, index: number) {
   }
+
+  showStatusManagement() {
+    this.displayStatusManagement = true;
+    let items = this.table.value;
+    this.selectedUsers = items.filter(i=>i.Selected);
+  }
+
+  
 }
