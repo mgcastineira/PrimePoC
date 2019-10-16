@@ -19,22 +19,28 @@ export class UmServiceService {
         "EnterpriseID": "marcos.gonzalez",
         "CareerLevel": "A",
         "Location": "Barajas",
-        "EntryDate": null,
-        "ExitDate": null,
-        "Selected":false
+        "EntryDate": new Date("2019/09/20"),
+        "ExitDate": new Date(),
+        "Selected":false,
+        "Company":"Avanade SAU",
+        "AirbusSAPUser":"AA12",
+        "NEmployee":"123331"
       },
       {
         "DNI": "2A",
         "Title": "Romina",
-        "Status": "Active",
+        "Status": "Inactive",
         "ID": 2,
         "Id": 2,
         "EnterpriseID": "romina.congregado",
         "CareerLevel": "B",
         "Location": "Getafe",
-        "EntryDate": null,
-        "ExitDate": null,
-        "Selected": false
+        "EntryDate": new Date("2018/09/01"),
+        "ExitDate": new Date(),
+        "Selected": false,
+        "Company": "Accenture SL",
+        "AirbusSAPUser": "AA13",
+        "NEmployee": "123561"
       },
     ];
     return data;

@@ -19,10 +19,10 @@ export class UserManagementComponent implements OnInit {
   displayStatusManagement: boolean = false;
   selectedUsers:any[] = [];
   showSelectedUsers:boolean = false;
-  filterActive:boolean=false;
-  filterInactive:boolean=false;
+  filterActive:string="Active";
   startDate:Date=null;
   endDate: Date = null;
+  exitReason:string="";
 
   es:any = {
     firstDayOfWeek: 1,
@@ -64,13 +64,4 @@ export class UserManagementComponent implements OnInit {
 
   onRowEditCancel(row: any, index: number) {
   }
-
-  showStatusManagement() {
-    this.displayStatusManagement = true;
-    let items = this.table.value;
-    this.selectedUsers = items.filter(i=>i.Selected);
-  }
-
-  
-  
 }

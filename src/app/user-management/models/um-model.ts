@@ -24,5 +24,6 @@ export class UmModel {
   Status: string;
   Title: string;
   rollOffStep?: number;
+  AirbusSAPUser?:string;
   Selected:boolean;
 }

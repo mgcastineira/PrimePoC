@@ -1,17 +1,21 @@
 <p-table #projectsTable [value]="userList" [resizableColumns]="true" [paginator]="true" [rows]="10"
-  [paginatorPosition]="'top'" sortMode="single" dataKey="ID" editMode="row" [responsive]="true"
+  [paginatorPosition]="'bottom'" sortMode="single" dataKey="ID" editMode="row" [responsive]="true"
   [globalFilterFields]="['Title','Status','Company','Location','CareerLevel','EntryDate','ExitDate']">
-  <ng-template pTemplate="paginatorleft">
-    <div style="text-align: left;width:100%;float:right" class="">
+  <ng-template pTemplate="caption">
+    <div>
       <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
       <div>
-        <input type="search" id="projectSearch" pInputText size="50" placeholder="Search in projects"
+        <input type="search" id="projectSearch" pInputText size="50" 
+        placeholder="Search in projects"
           (input)="globalFilter($event.target.value)" [(ngModel)]="filterValue">
         <label for="projectSearch">Filter all fields</label>
       </div>
 
       <button pButton [disabled]="userList.length==0" type="button" (click)="createUser()" label="CREATE USER" class="b-main"></button>
     </div>
+  </ng-template>
+  <ng-template pTemplate="paginatorleft">
+    There are {{userList?.length}} items
   </ng-template>
   <ng-template pTemplate="header">
     <tr>
@@ -55,7 +59,9 @@
   <ng-template pTemplate="body" let-rowData let-editing="editing" let-expanded="expanded" let-ri="rowIndex">
     <tr [pEditableRow]="rowData">
       <td>
-        <p-checkbox [(ngModel)]="rowData.Selected" inputId="technology">
+        <p-checkbox  [binary]="true"
+        [(ngModel)]="rowData.Selected" 
+        inputId="'checkbox' + {{rowData.ID}}">
         </p-checkbox>
       </td>
       <td class="ui-resizable-column textColumn ui-p-4">
@@ -79,6 +85,7 @@
             <input pInputText type="text" [(ngModel)]="rowData.Status" required>
           </ng-template>
           <ng-template pTemplate="output">
+            <i class="pi pi-circle-on" [style.color]= "rowData.Status=='Active'?'green':'red'"></i>
             {{rowData.Status}}
           </ng-template>
         </p-cellEditor>
@@ -120,7 +127,7 @@
             </p-calendar>
           </ng-template>
           <ng-template pTemplate="output">
-            {{rowData.EntryDate}}
+            {{rowData.EntryDate| date:'dd/MM/yyyy'}}
           </ng-template>
         </p-cellEditor>
       </td>
@@ -130,26 +137,13 @@
             <p-calendar [(ngModel)]="rowData.ExitDate" appendTo="body" [locale]="es" dateFormat="dd/mm/yy"></p-calendar>
           </ng-template>
           <ng-template pTemplate="output">
-            {{rowData.ExitDate}}
+            {{rowData.ExitDate| date:'dd/MM/yyyy'}}
           </ng-template>
         </p-cellEditor>
       </td>
       <td>
         <a (click)="showStatusManagement()">Status management</a>
-        <!-- <i *ngIf="rowData.saving" class="pi pi-spin pi-spinner" style="font-size: 3em"></i>
-        <i *ngIf="rowData.error" class="pi pi-exclamation-triangle"></i> -->
       </td>
-      <!-- <td class="actions">
-        <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil" class="ui-button-info"
-          (click)="onRowEditInit(rowData)"></button>
-        <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success"
-          style="margin-right: .5em" (click)="onRowEditSave(rowData,rowIndex)"></button>
-        <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger"
-          (click)="onRowEditCancel(rowData, ri)"></button>
-        <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-trash" class="ui-button-info">
-        </button>
-      </td> -->
-
     </tr>
   </ng-template>
   <ng-template pTemplate="rowexpansion" let-rowData let-ri="rowIndex">
@@ -159,13 +153,12 @@
         <div>
           ENTERPRISE ID:{{rowData.EnterpriseID}}<br>
           ID NUMBER:{{rowData.DNI}}<br>
+          EMPLOYEE NUMBER:{{rowData.NEmployee}}<br>
+          AIRBUS USER NUMBER:{{rowData.AirbusSAPUser}}<br>
           <a [routerLink]="['/MD']">VIEW MORE</a>
         </div>
       </td>
     </tr>
-  </ng-template>
-  <ng-template pTemplate="summary">
-    There are {{userList?.length}} items
   </ng-template>
 </p-table>
 <p-dialog [(visible)]="displayStatusManagement" #statusManagementDialog
@@ -184,10 +177,8 @@
   </p-header>
   <p>Status</p>
   <p>
-    <p-toggleButton id="ActiveButton" [(ngModel)]="filterActive"
-    onLabel="Active" offLabel="Active"></p-toggleButton>
-    <p-toggleButton id="InactiveButton" [(ngModel)]="filterInactive"
-    onLabel="Inactive" offLabel="Inactive"></p-toggleButton>
+    <p-radioButton name="group1" value="Active" label="Active" [(ngModel)]="filterActive" inputId="Active"></p-radioButton>
+    <p-radioButton name="group1" value="Inactive" label="Inactive" [(ngModel)]="filterActive" inputId="Inactive"></p-radioButton>
   </p>
   <p>
     <p-calendar [(ngModel)]="startDate" [locale]="es" appendTo="body"
@@ -196,6 +187,15 @@
   <p>
     <p-calendar [(ngModel)]="endDate" [locale]="es" appendTo="body"
     dateFormat="dd/mm/yy" [showIcon]="true"></p-calendar>
+  </p>
+  <p>Exit reason</p>
+  <p>
+    <p-radioButton name="group2" value="Client exit" label="Client exit" 
+    [(ngModel)]="exitReason" inputId="ClientExit">
+    </p-radioButton>
+    <p-radioButton name="group2" value="Company exit" label="Company exit" 
+    [(ngModel)]="exitReason" inputId="CompanyExit">
+    </p-radioButton>
   </p>
   <p-footer>
     <button type="button" pButton (click)="displayStatusManagement=false" label="Cancel" class="ui-button-secondary"></button>
