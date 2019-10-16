@@ -184,10 +184,8 @@
   </p-header>
   <p>Status</p>
   <p>
-    <p-toggleButton id="ActiveButton" [(ngModel)]="filterActive"
-    onLabel="Active" offLabel="Active"></p-toggleButton>
-    <p-toggleButton id="InactiveButton" [(ngModel)]="filterInactive"
-    onLabel="Inactive" offLabel="Inactive"></p-toggleButton>
+    <p-radioButton name="group1" value="Active" label="Active" [(ngModel)]="filterActive" inputId="Active"></p-radioButton>
+    <p-radioButton name="group1" value="Inactive" label="Inactive" [(ngModel)]="filterActive" inputId="Inactive"></p-radioButton>
   </p>
   <p>
     <p-calendar [(ngModel)]="startDate" [locale]="es" appendTo="body"

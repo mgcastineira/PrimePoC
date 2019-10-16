@@ -19,8 +19,7 @@ export class UserManagementComponent implements OnInit {
   displayStatusManagement: boolean = false;
   selectedUsers:any[] = [];
   showSelectedUsers:boolean = false;
-  filterActive:boolean=false;
-  filterInactive:boolean=false;
+  filterActive:string="Active";
   startDate:Date=null;
   endDate: Date = null;
 

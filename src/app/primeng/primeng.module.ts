@@ -18,6 +18,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DialogModule } from 'primeng/dialog';
 import { ToggleButtonModule } from 'primeng/togglebutton';
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 @NgModule({
   declarations: [],
@@ -39,7 +40,8 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
     CalendarModule,
     CheckboxModule,
     DialogModule,
-    ToggleButtonModule
+    ToggleButtonModule,
+    RadioButtonModule
   ],
   exports:[
     TableModule,
@@ -55,7 +57,8 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
     CalendarModule,
     CheckboxModule,
     DialogModule,
-    ToggleButtonModule
+    ToggleButtonModule,
+    RadioButtonModule
   ]
 })
 export class PrimengModule { }
