@@ -1,0 +1,162 @@
+<p-table #projectsTable [value]="userList" [resizableColumns]="true" [paginator]="true" [rows]="10"
+  [paginatorPosition]="'top'" sortMode="single" dataKey="ID" editMode="row" [responsive]="true"
+  [globalFilterFields]="['Title','Status','Company','Location','CareerLevel','EntryDate','ExitDate']">
+  <ng-template pTemplate="paginatorleft">
+    <div style="text-align: left;width:100%;float:right" class="">
+      <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+      <div>
+        <input type="search" id="projectSearch" pInputText size="50" placeholder="Search in projects"
+          (input)="globalFilter($event.target.value)" [(ngModel)]="filterValue">
+        <label for="projectSearch">Filter all fields</label>
+      </div>
+      
+      <button pButton [disabled]="userList.length==0" type="button" (click)="createUser()"
+        label="CREATE USER"></button>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th></th>
+      <th pResizableColumn [pSortableColumn]="'Title'" [ngStyle]="{'width':'15%'}" class="ui-p-4">
+        NAME
+        <p-sortIcon [field]="'Title'"></p-sortIcon>
+      </th>
+      <th pResizableColumn [pSortableColumn]="'Status'" [ngStyle]="{'width':'10%'}" class="ui-p-5">
+        STATUS
+        <p-sortIcon [field]="'Status'"></p-sortIcon>
+      </th>
+      <th pResizableColumn [pSortableColumn]="'Company'" [ngStyle]="{'width':'15%'}" class="ui-p-6">
+        COMPANY
+        <p-sortIcon [field]="'Company'"></p-sortIcon>
+      </th>
+      <th pResizableColumn [pSortableColumn]="'Location'" [ngStyle]="{'width':'15%'}" class="ui-p-7">
+        PRINCIPAL LOCATION
+        <p-sortIcon [field]="'Location'"></p-sortIcon>
+      </th>
+      <th pResizableColumn [pSortableColumn]="'CareerLevel'" [ngStyle]="{'width':'15%'}" class="ui-p-8">
+        CAREER LEVEL
+        <p-sortIcon [field]="'CareerLevel'"></p-sortIcon>
+      </th>
+      <th pResizableColumn [pSortableColumn]="'EntryDate'" [ngStyle]="{'width':'10%'}" class="ui-p-8">
+        START DATE
+        <p-sortIcon [field]="'EntryDate'"></p-sortIcon>
+      </th>
+      <th pResizableColumn [pSortableColumn]="'ExitDate'" [ngStyle]="{'width':'10%'}" class="ui-p-8">
+        END DATE
+        <p-sortIcon [field]="'ExitDate'"></p-sortIcon>
+      </th>
+      <th></th>
+      <th></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-editing="editing" 
+  let-expanded="expanded" let-ri="rowIndex">
+    <tr [pEditableRow]="rowData">
+      <td>
+        <a href="#" [pRowToggler]="rowData">
+          <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></i>
+        </a>
+      </td>
+      <td class="ui-resizable-column textColumn ui-p-4">
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="rowData.Title" required>
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{rowData.Title}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+      <td class="ui-resizable-column textColumn ui-p-5">
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="rowData.Status" required>
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{rowData.Status}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+      <td class="ui-resizable-column textColumn ui-p-6">
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="rowData.Company" required>
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{rowData.Company}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+      <td class="ui-resizable-column textColumn ui-p-7">
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="rowData.Location" required>
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{rowData.Location}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+      <td class="ui-resizable-column textColumn ui-p-8">
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <input pInputText type="text" [(ngModel)]="rowData.CareerLevel" required>
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{rowData.CareerLevel}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+      <td class="ui-resizable-column textColumn ui-p-9">
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <p-calendar [(ngModel)]="rowData.EntryDate" appendTo="body" 
+            [locale]="es" dateFormat="dd/mm/yy"></p-calendar>
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{rowData.EntryDate}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+      <td class="ui-resizable-column textColumn ui-p-10">
+        <p-cellEditor>
+          <ng-template pTemplate="input">
+            <p-calendar [(ngModel)]="rowData.ExitDate" appendTo="body" 
+            [locale]="es" dateFormat="dd/mm/yy"></p-calendar>
+          </ng-template>
+          <ng-template pTemplate="output">
+            {{rowData.ExitDate}}
+          </ng-template>
+        </p-cellEditor>
+      </td>
+      <td>
+        <i *ngIf="rowData.saving" class="pi pi-spin pi-spinner" style="font-size: 3em"></i>
+        <i *ngIf="rowData.error" class="pi pi-exclamation-triangle"></i>
+      </td>
+      <td class="actions">
+        <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil" class="ui-button-info"
+          (click)="onRowEditInit(rowData)"></button>
+        <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" class="ui-button-success"
+          style="margin-right: .5em" (click)="onRowEditSave(rowData,rowIndex)"></button>
+        <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" class="ui-button-danger"
+          (click)="onRowEditCancel(rowData, ri)"></button>
+        <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-trash" class="ui-button-info">
+        </button>
+      </td>
+
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="rowexpansion" let-rowData let-ri="rowIndex">
+    <tr>
+      <td [attr.colspan]="9">
+        <div>
+          ENTERPRISE ID:{{rowData.EnterpriseID}}<br>
+          ID NUMBER:{{rowData.DNI}}<br>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="summary">
+    There are {{projects1?.length}} items
+  </ng-template>
+</p-table>
