@@ -17,6 +17,7 @@ import { TooltipModule } from 'primeng/tooltip';
 import { CalendarModule } from 'primeng/calendar';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DialogModule } from 'primeng/dialog';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 
 @NgModule({
   declarations: [],
@@ -37,7 +38,8 @@ import { DialogModule } from 'primeng/dialog';
     TooltipModule,
     CalendarModule,
     CheckboxModule,
-    DialogModule
+    DialogModule,
+    ToggleButtonModule
   ],
   exports:[
     TableModule,
@@ -52,7 +54,8 @@ import { DialogModule } from 'primeng/dialog';
     TooltipModule,
     CalendarModule,
     CheckboxModule,
-    DialogModule
+    DialogModule,
+    ToggleButtonModule
   ]
 })
 export class PrimengModule { }

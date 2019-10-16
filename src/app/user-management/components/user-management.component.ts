@@ -17,7 +17,12 @@ export class UserManagementComponent implements OnInit {
   filterValue: string = "";
   selectAllRows:boolean = false;
   displayStatusManagement: boolean = false;
-
+  selectedUsers:any[] = [];
+  showSelectedUsers:boolean = false;
+  filterActive:boolean=false;
+  filterInactive:boolean=false;
+  startDate:Date=null;
+  endDate: Date = null;
 
   es:any = {
     firstDayOfWeek: 1,
@@ -43,7 +48,6 @@ export class UserManagementComponent implements OnInit {
   // Filter
   globalFilter(value: any) {
     this.table.filterGlobal(value, 'contains');
-    this.table.reset();
   }
 
   resetGlobalFilter() {
@@ -63,5 +67,10 @@ export class UserManagementComponent implements OnInit {
 
   showStatusManagement() {
     this.displayStatusManagement = true;
+    let items = this.table.value;
+    this.selectedUsers = items.filter(i=>i.Selected);
   }
+
+  
+  
 }
