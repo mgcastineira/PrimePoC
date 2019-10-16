@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+@import 'style_parts/fonts';
+@import 'style_parts/variables';
+
+@import 'style_parts/buttons';
+
+
+body {   
+    width: 100%; 
+    width: 100%; 
+    height: 100%; 
+    height: 100%; 
+    margin: 0 auto;
+    margin: 0 auto;
+
+    .ui-widget {
+        font-family: 'Graphik',
+        sans-serif;
+    }
+}
