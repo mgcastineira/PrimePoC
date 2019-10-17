@@ -4,7 +4,7 @@
 @import 'style_parts/fonts';
 @import 'style_parts/variables';
 
-@import 'style_parts/buttons';
+
 
 
 body {   
@@ -21,6 +21,18 @@ body {
     }
 }
 
+.d-flex {
+    display: flex;
+
+    &.justify-space-between {
+        justify-content: space-between;
+    }
+    &.align-end {
+        align-items: flex-end;
+    }
+}
+
+/*  user manangement */
 
 .status-management-dialog {
 
@@ -36,3 +48,9 @@ body {
         width: 100%;
     }
 }  
+
+
+@import 'style_parts/buttons';
+@import 'style_parts/inputs';
+@import 'style_parts/table';
+@import 'style_parts/dialog';

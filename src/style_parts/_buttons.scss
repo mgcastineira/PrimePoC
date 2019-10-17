@@ -1,27 +1,33 @@
-.ui-button {
+body {
+
+.button {
   -webkit-appearance: none;
   border: 0;
   border-radius: 0;
-  padding: 12px 24px;
+  padding: 2px 24px;
   position: relative;
   overflow: hidden;
   cursor: pointer;
   font-size: 14px;
-  font-weight: 800;
+  font-weight: 600;
+  font-family: 'Graphik', sans-serif;
+  min-width: 64px;
+  height: 40px;
 
   &.ui-corner-all {
       border-radius: 0;
   }
 
-  
-  
-  span{
-      &.ui-button-text {
-        padding: 0;
+  &.ui-button-text-only {
+      span {
+        &.ui-button-text {
+          padding: 0;
+          line-height: 1;
+        }
       }
   }
 
-
+  
   &.b-main {
     background-color: $_blue;
     color: white;
@@ -38,8 +44,13 @@
 
     }
 
+     &:focus {
+         box-shadow: 0 3px 1px -3px rgba(0, 0, 0, .2),
+         0 2px 2px 0 rgba(0, 0, 0, .14),
+         0 1px 5px 0 rgba(0, 0, 0, .12);
+     }
 
-    &:active {
+    &:active  {
       box-shadow: 0 5px 5px -3px rgba(0, 0, 0, .2),
         0 8px 10px 1px rgba(0, 0, 0, .14),
         0 3px 14px 2px rgba(0, 0, 0, .12);
@@ -164,4 +175,18 @@
   &:focus {
     outline: 0;
   }
+}
+
+.b-simple {
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  color: $_blue;
+
+  &:hover {
+    text-decoration: underline;
+    color: $_blue;
+  }
+}
+
 }

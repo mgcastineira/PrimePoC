@@ -1,0 +1,35 @@
+body {
+  .ui-dialog {
+    .ui-dialog-titlebar {
+      border: 0;
+      background-color: white;
+
+      .ui-dialog-title {
+        h4 {
+          margin: 0;
+          font-size: 16px;
+          color: $_font_color;
+        }
+
+        p {
+          font-weight: 400;
+          color: $_grey_regular;
+          font-size: 12px;
+
+          .pi {
+            vertical-align: middle;
+          }
+        }
+      }
+    }
+
+    .ui-dialog-content {
+      border: 0;
+
+      .status-management-option-title {
+          font-size: 12px;
+          font-weight: 600;
+      }
+    }
+  }
+}
