@@ -165,7 +165,7 @@
 [modal]="true" [responsive]="true" dismissableMask="true"
 [closeIcon]="false" [minimizeIcon]="false" [closeOnEscape]="true" [maximizeIcon]="false"
   [style]="{width: '350px', minWidth: '200px'}" [minY]="70"
-  [baseZIndex]="10000">
+  [baseZIndex]="10000" class="status-management-dialog">
   <p-header>Status Management<br>
   {{selectedUsers.length}} users selected
   <i (click)="showSelectedUsers=!showSelectedUsers" class="pi pi-caret-down"></i>
@@ -181,11 +181,12 @@
     <p-radioButton name="group1" value="Inactive" label="Inactive" [(ngModel)]="filterActive" inputId="Inactive"></p-radioButton>
   </p>
   <p>
-    <p-calendar [(ngModel)]="startDate" [locale]="es" appendTo="body"
-    dateFormat="dd/mm/yy" [showIcon]="true"></p-calendar>
+    <p-calendar [(ngModel)]="startDate" [locale]="es" 
+    dateFormat="dd/mm/yy" [showIcon]="true">
+    </p-calendar>
   </p><br>
   <p>
-    <p-calendar [(ngModel)]="endDate" [locale]="es" appendTo="body"
+    <p-calendar [(ngModel)]="endDate" [locale]="es" 
     dateFormat="dd/mm/yy" [showIcon]="true"></p-calendar>
   </p>
   <p>Exit reason</p>
