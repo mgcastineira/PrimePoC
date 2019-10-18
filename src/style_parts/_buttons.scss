@@ -89,12 +89,17 @@ body {
   }
 
   &.b-third {
-    background-color: white;
+    background-color: transparent;
     color: $_blue;
     border: none;
 
     &:hover {
-      text-decoration: underline;
+      text-decoration: underline !important;
+      background-color: transparent;
+      color: $_blue;
+    }
+    &:focus {
+      box-shadow: none;
     }
 
 

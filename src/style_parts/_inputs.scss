@@ -194,6 +194,24 @@ body {
 
   /*calendar*/
 
+  .floating-calendar {
+      label {
+          color: $_font_color;
+          font-size: 12px;
+          top: 20px;
+          font-weight: 600;
+      }
+      .ui-inputwrapper-filled{
+        &~label {
+                font-size: 10px;
+                color: $_font_color;
+        }
+      } 
+      input {
+          font-size: 12px;
+      }
+  }
+
   .ui-calendar {
       width: 100%;
 

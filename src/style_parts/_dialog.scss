@@ -1,6 +1,7 @@
 body {
   .ui-dialog {
     .ui-dialog-titlebar {
+        padding: 24px;
       border: 0;
       background-color: white;
 
@@ -24,12 +25,19 @@ body {
     }
 
     .ui-dialog-content {
+        padding: 24px;
+      padding-top: 0;
+      padding-bottom: 0;
       border: 0;
 
       .status-management-option-title {
           font-size: 12px;
           font-weight: 600;
       }
+    }
+    .ui-dialog-footer {
+        border: 0;
+        padding: 24px;
     }
   }
 }

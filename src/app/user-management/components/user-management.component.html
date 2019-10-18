@@ -189,23 +189,21 @@
     <p-radioButton name="group1" value="Inactive" label="Inactive" [(ngModel)]="filterActive" inputId="Inactive"></p-radioButton>
   </p>
   <p>
-     <span class="ui-float-label">
+     <span class="ui-float-label floating-calendar">
         <p-calendar [(ngModel)]="startDate" [locale]="es" 
         dateFormat="dd/mm/yy" [showIcon]="true">
         </p-calendar>
         <label for="startDate">Start date</label>
       </span>
-
   </p><br>
   <p>
-     <span class="ui-float-label">
+     <span class="ui-float-label floating-calendar">
     <p-calendar [(ngModel)]="endDate" [locale]="es" 
     dateFormat="dd/mm/yy" [showIcon]="true"></p-calendar>
     <label for="endDate">Exit date</label>
     <div class="blue-line"></div>
     </span>
-  </p>
-  <br>
+  </p><br><br>
   <p class="status-management-option-title">Exit reason</p>
   <p>
     <p-radioButton name="group2" value="Client exit" label="Client exit" 
@@ -216,7 +214,8 @@
     </p-radioButton>
   </p>
   <p-footer>
-    <button type="button" pButton (click)="displayStatusManagement=false" label="Cancel" class="ui-button-secondary"></button>
-    <button type="button" pButton (click)="displayStatusManagement=false" label="APPLY CHANGES"></button>
+    <button type="button" pButton (click)="displayStatusManagement=false" label="Cancel" class="button b-third"></button>
+    <button type="button" pButton (click)="displayStatusManagement=false" label="APPLY CHANGES"
+      class="button b-main"></button>
   </p-footer>
 </p-dialog>
