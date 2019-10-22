@@ -12,6 +12,9 @@
       ],
       "@um/*": [
         "app/user-management/*"
+      ],
+      "@rollon/*": [
+        "app/rollon/*"
       ]
     },
     "outDir": "./dist/out-tsc",

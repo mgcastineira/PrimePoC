@@ -1,0 +1,159 @@
+<div class="rollon_overlay"></div>
+<div class="rollon_wrapper">
+  <div class="rollon_box">
+    <div class="rollon_left">
+      <div class="logo">
+        <img src="assets/img/airhublogo.svg" alt="">
+      </div>
+      <div class="rollon_main_text">
+        <h2>Roll On</h2>
+        <p>Welcome to Airhub!</p>
+        <p>Before you start, complete the roll on process.</p>
+      </div>
+      <div class="rollon_steps">
+        <ul>
+          <li [ngClass]="(currentStep==1)?'active':''"><a (click)="setStep(1)">
+              <div class="step_indicator"></div> Download and sign
+            </a> </li>
+          <li [ngClass]="(currentStep==2)?'active':''"><a (click)="setStep(2)">
+              <div class="step_indicator"></div> Upload
+            </a> </li>
+          <li [ngClass]="(currentStep==3)?'active':''"><a (click)="setStep(3)">
+              <div class="step_indicator"></div> Complete training
+            </a> </li>
+          <li [ngClass]="(currentStep==4)?'active':''"><a (click)="setStep(4)">
+              <div class="step_indicator"></div> Finish
+            </a> </li>
+        </ul>
+      </div>
+    </div>
+    <div class="rollon_right">
+
+      <div id="step1" class="step_content" [class.d-none]="currentStep!=1">
+        <div class="step_title downloaded">
+          <h4>First, download the following documents</h4>
+        </div>
+        <div class="step_docs downloaded">
+          <ul >
+            <li *ngFor="let file of filesRepository; let i = index">
+              <a [href]="file.ServerRelativeUrl" target="_blank">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                  y="0px" viewBox="0 0 12 17" style="enable-background:new 0 0 12 17;" xml:space="preserve">
+                  <path id="file-word-regular" class="word" d="M11.58,3.45L8.96,0.83C8.68,0.55,8.3,0.39,7.9,0.39H1.52c-0.83,0-1.5,0.67-1.5,1.5v13
+                                	c0,0.83,0.67,1.5,1.5,1.5h9c0.83,0,1.5-0.67,1.5-1.5V4.51C12.02,4.11,11.86,3.73,11.58,3.45z M10.4,4.39H8.02V2.01L10.4,4.39z
+                                	 M1.52,14.89v-13h5v3.25c0,0.41,0.33,0.75,0.75,0.75c0,0,0,0,0,0h3.25v9H1.52z M8.4,8.39c-0.18,0-0.33,0.13-0.37,0.3
+                                	c-0.64,3.05-0.64,2.98-0.66,3.23c-0.01-0.04-0.01-0.08-0.02-0.13c-0.03-0.16,0.01,0.01-0.74-3.11C6.58,8.51,6.43,8.39,6.25,8.39
+                                	H5.84c-0.17,0-0.32,0.12-0.37,0.28c-0.76,3.09-0.75,3.01-0.78,3.24c0-0.03-0.01-0.08-0.02-0.13c-0.02-0.16-0.44-2.29-0.6-3.09
+                                	c-0.04-0.18-0.19-0.3-0.37-0.3H3.19c-0.21,0-0.38,0.17-0.38,0.38c0,0.03,0,0.06,0.01,0.09c0.25,1.02,0.83,3.42,1.04,4.25
+                                	c0.04,0.17,0.19,0.29,0.37,0.28h0.79c0.17,0,0.32-0.12,0.36-0.28l0.56-2.23c0.04-0.18,0.08-0.36,0.09-0.54l0.09,0.54
+                                	c0,0.01,0.39,1.58,0.56,2.23c0.04,0.17,0.19,0.28,0.36,0.28h0.77c0.17,0,0.32-0.12,0.36-0.28c0.65-2.56,0.94-3.72,1.08-4.25
+                                	c0.05-0.2-0.07-0.4-0.28-0.45C8.95,8.39,8.92,8.39,8.89,8.39H8.4z" />
+                </svg>
+
+                {{file.Description}}
+              </a>
+            </li>
+            
+          </ul>
+
+
+
+          <a href="" class="button b-third download-all">DOWNLOAD ALL</a>
+
+        </div>
+
+        <div class="step_title more_info" *ngIf="downloadedFiles.length>0">
+          <h4>Now, it's time to print, read and sign them</h4>
+        </div>
+        <div class="step_footer">
+          <button class="button b-main rollon_btn inactive" [class.inactive]="currentStep!=1"
+          (click)="nextStep()">
+            CONTINUE</button>
+        </div>
+
+      </div>
+
+
+      <div id="step2" class="step_content" [class.d-none]="currentStep!=2">
+        <div class="step_title ">
+          <h4>Upload the signed documents: </h4>
+        </div>
+        <div class="upload_box">
+          <p>Drag and drop files in here<br>
+            or</p>
+          <button class="button b-second">BROWSE FILES</button>
+        </div>
+        <div class="uploaded_files">
+          <ul>
+            <li class="loaded"><a href="">
+                <p> Roll_on_package.zip</p>
+              </a>
+              <div class="remove_file">x</div>
+            </li>
+            <li class="loading"><a href="">
+                <p> Roll_on_package.zip</p>
+              </a>
+              <div class="remove_file">x</div>
+            </li>
+          </ul>
+        </div>
+        <div class="step_footer">
+          <button class="button b-main rollon_btn " [class.inactive]="currentStep!=2" 
+          (click)="nextStep()">
+            CONTINUE</button>
+          <div class="legal_note">
+            By clicking the continue button,
+            you confirm the information uploaded
+            is true, complete and accurate.
+          </div>
+        </div>
+
+      </div>
+
+
+      <div id="step3" class="step_content" [class.d-none]="currentStep!=3">
+        <div class="step_title ">
+          <h4>Review and complete the training below: </h4>
+        </div>
+        <div class="trainings">
+          <ul>
+            <li class="training_item"><a href="">
+                <p class="training_category">Online learning</p>
+                <p class="training_title">Client Data Protection Course</p>
+              </a></li>
+            <li class="training_item"><a href="">
+                <p class="training_category">Content document</p>
+                <p class="training_title">CDP Engagement Team Training</p>
+              </a></li>
+          </ul>
+        </div>
+        <div class="step_footer">
+          <button class="button b-main rollon_btn " [class.inactive]="currentStep!=3"
+          (click)="nextStep()">
+            CONTINUE</button>
+          <div class="legal_note">
+            By clicking the continue button,
+            you confirm you have conducted
+            the training provided.
+          </div>
+        </div>
+
+      </div>
+
+
+      <div id="step4" class="step_content" [class.d-none]="currentStep!=4">
+        <div class="step_title ">
+          <h2>Congratulations! </h2>
+
+          <p>You have finished the Roll On process.<br>
+            Feel welcome to use the Airhub tool.</p>
+        </div>
+        <div class="step_footer">
+          <button class="button b-main rollon_btn " [class.inactive]="currentStep!=4">
+            GET STARTED</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

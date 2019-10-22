@@ -19,6 +19,8 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { DialogModule } from 'primeng/dialog';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { DragDropModule } from 'primeng/dragdrop';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
   declarations: [],
@@ -41,7 +43,9 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     CheckboxModule,
     DialogModule,
     ToggleButtonModule,
-    RadioButtonModule
+    RadioButtonModule,
+    DragDropModule,
+    FileUploadModule
   ],
   exports:[
     TableModule,
@@ -58,7 +62,9 @@ import { RadioButtonModule } from 'primeng/radiobutton';
     CheckboxModule,
     DialogModule,
     ToggleButtonModule,
-    RadioButtonModule
+    RadioButtonModule,
+    DragDropModule,
+    FileUploadModule
   ]
 })
 export class PrimengModule { }
