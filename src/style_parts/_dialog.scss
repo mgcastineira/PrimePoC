@@ -41,3 +41,19 @@ body {
     }
   }
 }
+/*  user manangement */
+
+.status-management-dialog {
+
+  .ui-dialog-content {
+    overflow: visible;
+  }
+}
+
+.ui-paginator-bottom {
+  &.ui-paginator {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+}

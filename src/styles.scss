@@ -14,6 +14,8 @@ body {
     height: 100%; 
     margin: 0 auto;
     margin: 0 auto;
+            font-family: 'Graphik',
+            sans-serif;
 
     .ui-widget {
         font-family: 'Graphik',
@@ -32,25 +34,14 @@ body {
     }
 }
 
-/*  user manangement */
-
-.status-management-dialog {
-
-  .ui-dialog-content {
-    overflow: visible;
-  }
+.d-none {
+  display: none;
 }
-
-.ui-paginator-bottom {
-    &.ui-paginator {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-    }
-}  
 
 
 @import 'style_parts/buttons';
 @import 'style_parts/inputs';
 @import 'style_parts/table';
 @import 'style_parts/dialog';
+@import 'style_parts/rollon';
+
