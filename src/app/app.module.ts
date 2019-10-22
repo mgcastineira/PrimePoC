@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from "@angular/common/http"; 
 
 import { PrimengModule } from '@prime/primeng.module';
 
@@ -24,6 +25,7 @@ import { FileUploaderComponent } from '@rollon/controls/file-uploader/file-uploa
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule,
     PrimengModule
   ],
