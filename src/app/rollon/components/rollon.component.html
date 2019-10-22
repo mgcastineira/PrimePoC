@@ -34,7 +34,7 @@
           <h4>First, download the following documents</h4>
         </div>
         <div class="step_docs downloaded">
-          <ul >
+          <ul>
             <li *ngFor="let file of filesRepository; let i = index">
               <a [href]="file.ServerRelativeUrl" target="_blank">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
@@ -53,7 +53,7 @@
                 {{file.Description}}
               </a>
             </li>
-            
+
           </ul>
 
 
@@ -66,8 +66,7 @@
           <h4>Now, it's time to print, read and sign them</h4>
         </div>
         <div class="step_footer">
-          <button class="button b-main rollon_btn inactive" [class.inactive]="currentStep!=1"
-          (click)="nextStep()">
+          <button class="button b-main rollon_btn inactive" [class.inactive]="currentStep!=1" (click)="nextStep()">
             CONTINUE</button>
         </div>
 
@@ -75,29 +74,11 @@
 
 
       <div id="step2" class="step_content" [class.d-none]="currentStep!=2">
-        <!-- <app-file-uploader></app-file-uploader> -->
         <div class="step_title ">
           <h4>Upload the signed documents: </h4>
         </div>
-        <div class="upload_box">
-          <p>Drag and drop files in here<br>
-            or</p>
-          <button class="button b-second">BROWSE FILES</button>
-        </div>
-        <div class="uploaded_files">
-          <ul>
-            <li class="loaded"><a href="">
-                <p> Roll_on_package.zip</p>
-              </a>
-              <div class="remove_file">x</div>
-            </li>
-            <li class="loading"><a href="">
-                <p> Roll_on_package.zip</p>
-              </a>
-              <div class="remove_file">x</div>
-            </li>
-          </ul>
-        </div>
+                <app-file-uploader></app-file-uploader>
+
         <div class="step_footer">
           <button class="button b-main rollon_btn " [class.inactive]="currentStep!=2" 
           (click)="nextStep()">
@@ -112,49 +93,48 @@
       </div>
 
 
-      <div id="step3" class="step_content" [class.d-none]="currentStep!=3">
-        <div class="step_title ">
-          <h4>Review and complete the training below: </h4>
+        <div id="step3" class="step_content" [class.d-none]="currentStep!=3">
+          <div class="step_title ">
+            <h4>Review and complete the training below: </h4>
+          </div>
+          <div class="trainings">
+            <ul>
+              <li class="training_item"><a href="">
+                  <p class="training_category">Online learning</p>
+                  <p class="training_title">Client Data Protection Course</p>
+                </a></li>
+              <li class="training_item"><a href="">
+                  <p class="training_category">Content document</p>
+                  <p class="training_title">CDP Engagement Team Training</p>
+                </a></li>
+            </ul>
+          </div>
+          <div class="step_footer">
+            <button class="button b-main rollon_btn " [class.inactive]="currentStep!=3" (click)="nextStep()">
+              CONTINUE</button>
+            <div class="legal_note">
+              By clicking the continue button,
+              you confirm you have conducted
+              the training provided.
+            </div>
+          </div>
+
         </div>
-        <div class="trainings">
-          <ul>
-            <li class="training_item"><a href="">
-                <p class="training_category">Online learning</p>
-                <p class="training_title">Client Data Protection Course</p>
-              </a></li>
-            <li class="training_item"><a href="">
-                <p class="training_category">Content document</p>
-                <p class="training_title">CDP Engagement Team Training</p>
-              </a></li>
-          </ul>
-        </div>
-        <div class="step_footer">
-          <button class="button b-main rollon_btn " [class.inactive]="currentStep!=3"
-          (click)="nextStep()">
-            CONTINUE</button>
-          <div class="legal_note">
-            By clicking the continue button,
-            you confirm you have conducted
-            the training provided.
+
+
+        <div id="step4" class="step_content" [class.d-none]="currentStep!=4">
+          <div class="step_title ">
+            <h2>Congratulations! </h2>
+
+            <p>You have finished the Roll On process.<br>
+              Feel welcome to use the Airhub tool.</p>
+          </div>
+          <div class="step_footer">
+            <button class="button b-main rollon_btn " [class.inactive]="currentStep!=4">
+              GET STARTED</button>
           </div>
         </div>
 
       </div>
-
-
-      <div id="step4" class="step_content" [class.d-none]="currentStep!=4">
-        <div class="step_title ">
-          <h2>Congratulations! </h2>
-
-          <p>You have finished the Roll On process.<br>
-            Feel welcome to use the Airhub tool.</p>
-        </div>
-        <div class="step_footer">
-          <button class="button b-main rollon_btn " [class.inactive]="currentStep!=4">
-            GET STARTED</button>
-        </div>
-      </div>
-
     </div>
   </div>
-</div>

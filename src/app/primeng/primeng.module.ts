@@ -21,6 +21,7 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { DragDropModule } from 'primeng/dragdrop';
 import { FileUploadModule } from 'primeng/fileupload';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 @NgModule({
   declarations: [],
@@ -45,7 +46,8 @@ import { FileUploadModule } from 'primeng/fileupload';
     ToggleButtonModule,
     RadioButtonModule,
     DragDropModule,
-    FileUploadModule
+    FileUploadModule,
+    ProgressBarModule
   ],
   exports:[
     TableModule,
@@ -64,7 +66,8 @@ import { FileUploadModule } from 'primeng/fileupload';
     ToggleButtonModule,
     RadioButtonModule,
     DragDropModule,
-    FileUploadModule
+    FileUploadModule,
+    ProgressBarModule
   ]
 })
 export class PrimengModule { }

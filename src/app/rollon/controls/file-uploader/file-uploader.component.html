@@ -1,8 +1,19 @@
-<p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" multiple="multiple" accept="image/*"
+<p-fileUpload name="demo[]" url="./upload.php" chooseLabel="BROWSE FILES"
+multiple="multiple" auto="true" mode="advanced" 
+customUpload="true" (uploadHandler)="myUploader($event)"
   maxFileSize="1000000">
-  <ng-template pTemplate="content">
-    <ul *ngIf="uploadedFiles.length">
-      <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+  <ng-template pTemplate="toolbar">
+    <div></div>
+    <div><p-progressBar [value]="progress" unit="%" mode="determinate" showValue="true">
+    </p-progressBar></div>
+  </ng-template>
+  <ng-template pTemplate="files" let-file>
+    
+    <div>
+      
+      <ul >
+      <li>{{file.name}} - {{file.size}} bytes</li>
     </ul>
+    </div>
   </ng-template>
 </p-fileUpload>
