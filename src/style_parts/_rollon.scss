@@ -190,7 +190,7 @@
     height: 100%;
     background-repeat: no-repeat;
     background-position: bottom right;
-     @include animation('slide-up .5s forwards');
+     @include animation('slide-up 1s forwards');
 
     &#step1 {
       background-image: url(assets/img/step1.png);
