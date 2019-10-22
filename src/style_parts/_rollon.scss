@@ -1,0 +1,492 @@
+.rollon_overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 42, 84, 0.9);
+}
+
+.rollon_wrapper {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .rollon_box {
+    width: 1050px;
+    height: 450px;
+    background: #f8f8f8;
+    display: flex;
+    justify-content: flex-start;
+  }
+}
+
+
+
+.rollon_left {
+  width: 32%;
+  margin: 0;
+  background: white;
+  padding: 22px;
+
+  .logo {
+    height: 45px;
+
+    img {
+      max-height: 100%;
+    }
+  }
+
+  .rollon_main_text {
+    h2 {
+      margin-bottom: 8px;
+      line-height: 1;
+      font-size: 30px;
+    }
+
+    p {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 600;
+    }
+  }
+
+  .rollon_steps {
+    margin-top: 32px;
+    position: relative;
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+
+      &:after {
+        content: '';
+        display: block;
+        height: 186px;
+        width: 2px;
+        background-color: $_grey_regular;
+        position: absolute;
+        left: 11px;
+        z-index: 0;
+        top: 10px;
+      }
+
+      li {
+        margin-bottom: 40px;
+
+        a {
+          color: $_grey_regular;
+          text-decoration: none;
+          font-size: 14px;
+          transition: all .5s ease;
+          cursor: pointer;
+
+          .step_indicator {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            border: 2px solid transparent;
+            margin-top: -4px;
+            margin-right: 10px;
+
+            &:after {
+              content: '';
+              display: block;
+              width: 12px;
+              height: 12px;
+              border: 2px solid $_grey_regular;
+              margin-top: 2px;
+              margin-left: 2px;
+              z-index: 1001;
+              position: absolute;
+              background-color: white;
+              transition: all .5s ease;
+            }
+          }
+        }
+
+        &.active {
+          a {
+            color: #212529;
+            font-size: 22px;
+            font-weight: 600;
+
+            .step_indicator:after {
+              width: 20px;
+              height: 20px;
+              border-color: $_blue;
+              margin-left: -2px;
+              margin-top: -2px;
+            }
+          }
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          left: 11px;
+          height: 0;
+          width: 2px;
+          background-color: $_blue;
+          top: 8px;
+          z-index: 100;
+          transition: height .5s ease;
+        }
+
+        &.done {
+          position: relative;
+
+          a {
+            color: $_blue;
+            font-weight: 600;
+
+            .step_indicator:after {
+              content: '\f00c ';
+              font-family: FontAwesome;
+              border-color: $_blue;
+              background-color: $_blue;
+              color: white;
+              text-align: center;
+              line-height: 10px;
+            }
+
+
+          }
+
+          &:after {
+            height: 59px;
+
+          }
+
+
+
+        }
+      }
+
+    }
+  }
+}
+
+
+
+
+
+
+
+.rollon_right {
+  width: 67%;
+  margin: 0;
+  padding: 22px;
+  overflow: hidden;
+
+  .step_content {
+    position: relative;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+     @include animation('slide-up .5s forwards');
+
+    &#step1 {
+      background-image: url(assets/img/step1.png);
+    }
+
+    &#step2 {
+      background-image: url(assets/img/step2.png);
+    }
+
+    &#step3 {
+      background-image: url(assets/img/step3.png);
+    }
+
+    &#step4 {
+      background-image: url(assets/img/step4.png);
+
+      .step_title {
+          padding-top: 56px;
+      }
+    }
+
+  }
+}
+
+
+.step_title {
+  h4 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 5px;
+  }
+
+  h2 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-top: 5px;
+  }
+
+  p {
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 30px
+  }
+}
+
+
+.downloaded {
+  opacity: 0.4;
+}
+
+.step_docs {
+  ul {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      margin-bottom: 22px;
+
+      a {
+        padding: 8px 16px;
+        background: white;
+        color: $_font_color;
+        text-decoration: none;
+        font-size: 14px;
+
+        &:hover {
+          background: $_blue;
+          color: white;
+
+          svg {
+            .word {
+              fill: white;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  svg {
+    width: 12px;
+    vertical-align: middle;
+    margin-bottom: 3px;
+    margin-right: 8px;
+
+    .word {
+      fill: $_blue;
+    }
+  }
+}
+
+
+
+
+.button.download-all {
+  padding-left: 0;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.more_info {
+  margin-top: 22px;
+}
+
+.step_footer {
+  position: absolute !important;
+  bottom: 24px;
+}
+
+.rollon_btn {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.legal_note {
+    font-size: 10px;
+    display: inline-block;
+    width: 191px;
+    padding-left: 12px;
+    padding-top: 3px;
+}
+
+.button.inactive {
+  opacity: 0.4;
+}
+
+.trainings ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.training_item {
+  position: relative;
+  padding-left: 60px;
+  background-color: white;
+  height: 60px;
+  width: 350px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  transition: all .5s ease;
+}
+
+.training_item {
+  &:hover {
+    background-color: $_blue;
+
+    &:before {
+      color: white;
+    }
+
+    .training_category {
+      color: white;
+    }
+
+    .training_title {
+      color: white;
+    }
+  }
+
+  &:before {
+    content: '';
+    color: $_blue;
+    width: 50px;
+    height: 60px;
+    background-color: $_blue_transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 30px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 55px;
+    transition: all .5s ease;
+  }
+
+  &:nth-child(1) {
+    &:before {
+      content: '1';
+    }
+  }
+
+  &:nth-child(2) {
+    &:before {
+      content: '2';
+    }
+  }
+
+  &:nth-child(3) {
+    &:before {
+      content: '3';
+    }
+  }
+
+  &:nth-child(4) {
+    &:before {
+      content: '4';
+    }
+  }
+
+  a {
+    display: block;
+    text-decoration: none;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  .training_category {
+    font-size: 12px;
+    color: $_grey_dark;
+    transition: all .5s ease;
+  }
+
+  .training_title {
+    font-size: 16px;
+    color: $_blue;
+    font-weight: 600;
+    transition: all .5s ease;
+  }
+
+}
+
+
+
+
+.upload_box {
+  width: 400px;
+  border: 1px dashed $_grey_regular;
+  padding: 22px;
+  text-align: center;
+
+  p {
+    margin-top: 0;
+    color: $_grey_dark;
+    font-size: 14px;
+  }
+}
+
+.uploaded_files {
+  ul {
+    list-style: none;
+    padding-left: 0;
+    width: 400px;
+
+    li {
+      background-color: white;
+      padding: 8px 16px;
+      padding-right: 32px;
+      border-bottom: 4px solid white;
+      position: relative;
+      margin-bottom: 8px;
+
+      &.loading {
+        border-color: #9f9f9f80;
+
+        &:after {
+          content: '';
+          height: 4px;
+          width: 20%;
+          background-color: $_blue;
+          position: absolute;
+          bottom: -4px;
+          left: 0;
+        }
+      }
+
+      p {
+        margin: 0;
+        max-width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      a {
+        color: $_grey_regular;
+        text-decoration: none;
+        font-size: 12px;
+      }
+
+      &.loaded {
+        a {
+          color: $_blue;
+          font-weight: 600;
+        }
+      }
+
+      .remove_file {
+        position: absolute;
+        right: 16px;
+        top: 5px;
+        color: $_grey_regular;
+      }
+
+    }
+  }
+}

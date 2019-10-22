@@ -8,6 +8,55 @@ $_grey_dark: #707070;
 $_grey_regular: #949494;
 $_grey_light: #f8f8f8;
 $_font_color: #212529;
+$_blue_transparent: #cfe7f970;
 
 $_main_blue1: #199aff;
 $_main_blue2: #6eb9f7;
+
+
+/*animations*/
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+@mixin animation($str) {
+  -webkit-animation: #{$str};
+  -moz-animation: #{$str};
+  -ms-animation: #{$str};
+  -o-animation: #{$str};
+  animation: #{$str};
+}
+
+@include keyframes(slide-up) {
+  0% {
+      opacity: 0;
+     transform: translateY(100%);
+  }
+
+  90% {
+    opacity: 1;
+     
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
