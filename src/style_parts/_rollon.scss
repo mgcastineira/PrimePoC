@@ -190,22 +190,27 @@
     height: 100%;
     background-repeat: no-repeat;
     background-position: bottom right;
-     @include animation('slide-up 1s forwards');
+     
 
     &#step1 {
       background-image: url(assets/img/step1.png);
+      @include animation('slide-up-delay 2s forwards');
+     
     }
 
     &#step2 {
       background-image: url(assets/img/step2.png);
+      @include animation('slide-up 1s forwards');
     }
 
     &#step3 {
       background-image: url(assets/img/step3.png);
+      @include animation('slide-up 1s forwards');
     }
 
     &#step4 {
       background-image: url(assets/img/step4.png);
+      @include animation('slide-up 1s forwards');
 
       .step_title {
           padding-top: 56px;
