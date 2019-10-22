@@ -30,11 +30,11 @@
     <div class="rollon_right">
 
       <div id="step1" class="step_content" [class.d-none]="currentStep!=1">
-        <div class="step_title downloaded">
+        <div class="step_title ">
           <h4>First, download the following documents</h4>
         </div>
-        <div class="step_docs downloaded">
-          <ul>
+        <div class="step_docs ">
+          <ul >
             <li *ngFor="let file of filesRepository; let i = index">
               <a [href]="file.ServerRelativeUrl" target="_blank">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
