@@ -12,16 +12,16 @@
       </div>
       <div class="rollon_steps">
         <ul>
-          <li [ngClass.active]="currentStep==1" [ngClass.done]="currentStep>=1"><a (click)="setStep(1)">
+          <li [class.active]="currentStep==1" [class.done]="currentStep>1"><a (click)="setStep(1)">
               <div class="step_indicator"></div> Download and sign
             </a> </li>
-          <li [ngClass.active]="currentStep==2" [ngClass.done]="currentStep>=2"><a (click)="setStep(2)">
+          <li [class.active]="currentStep==2" [class.done]="currentStep>2"><a (click)="setStep(2)">
               <div class="step_indicator"></div> Upload
             </a> </li>
-          <li [ngClass.active]="currentStep==3" [ngClass.done]="currentStep>=2"><a (click)="setStep(3)">
+          <li [class.active]="currentStep==3" [class.done]="currentStep>3"><a (click)="setStep(3)">
               <div class="step_indicator"></div> Complete training
             </a> </li>
-          <li [ngClass.active]="currentStep==4" [ngClass.done]="currentStep>=2"><a (click)="setStep(4)">
+          <li [class.active]="currentStep==4" [class.done]="currentStep>4"><a (click)="setStep(4)">
               <div class="step_indicator"></div> Finish
             </a> </li>
         </ul>
