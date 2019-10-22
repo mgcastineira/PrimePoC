@@ -1,0 +1,233 @@
+body {
+
+  .ui-float-label {
+    padding: .4375em 0 0 0;
+    display: block;
+    position: relative;
+    flex: auto;
+    min-width: 0;
+    margin-top: 20px;
+    font-family: 'Graphik', sans-serif;
+
+
+    input {
+      &.ui-inputtext {
+        font: inherit;
+        background: 0 0;
+        background-color: transparent;
+        color: currentColor;
+        border: none;
+        outline: 0;
+        padding: 0;
+        padding-bottom: 8px;
+        padding-left: 3px;
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+        vertical-align: bottom;
+        text-align: left;
+        border-bottom: 1px solid black;
+        transition: border .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+        border-radius: 0;
+        font-weight: 400;
+
+        &:focus {
+          &~div {
+            &:after {
+              width: 100%;
+            }
+          }
+
+        }
+      }
+
+      &[type="search"] {
+        padding-left: 30px;
+        font-size: 1rem;
+
+        ~label {
+          font-size: 16px;
+          left: 30px;
+        }
+
+        &:focus {
+          ~label {}
+        }
+      }
+    }
+
+    label {
+      color: rgba(0, 0, 0, .54);
+      font-size: 14px;
+      top: 40%;
+
+
+    }
+
+    .blue-line {
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      text-align: center;
+      bottom: 0px;
+
+      &:after {
+        content: '';
+        display: block;
+        width: 0;
+        height: 2px;
+        background: $_blue;
+        transition: all .2s linear;
+        margin: 0 auto;
+      }
+    }
+
+
+  }
+
+  .ui-float-label>input:focus~label,
+  .ui-float-label>input.ui-state-filled~label,
+  .ui-float-label>.ui-inputwrapper-focus~label,
+  .ui-float-label>.ui-inputwrapper-filled~label {
+    color: $_blue;
+    font-family: 'Graphik', sans-serif;
+    font-size: 12px;
+    top: -.3em;
+  }
+
+
+  .ui-dropdown {
+    border: 0;
+    border-bottom: 1px solid black;
+    transition: border .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+    &:focus {
+      border-bottom: 2px solid $_blue;
+
+    }
+  }
+
+  .search-bar {
+    position: relative;
+
+    .fa-search {
+      position: absolute;
+      left: 0;
+      bottom: 16px;
+      z-index: 1;
+    }
+  }
+
+
+  .ui-chkbox {
+    width: 14px;
+    height: 14px;
+
+    .ui-chkbox-box {
+      width: 14px;
+      height: 14px;
+      border-color: $_grey_regular;
+      border-radius: 1px;
+
+      &.ui-state-active {
+        border-color: $_blue;
+        background-color: $_blue;
+
+        &:not(.ui-state-disabled):hover {
+          border-color: $_blue;
+          background-color: $_blue;
+        }
+
+        &.ui-state-focus {
+          box-shadow: none;
+          border-color: $_blue;
+          background-color: $_blue;
+
+        }
+
+      }
+
+      &.ui-state-focus {
+        box-shadow: none;
+        border-color: $_grey_dark;
+      }
+
+
+      .ui-chkbox-icon {
+        font-size: 12px;
+      }
+    }
+  }
+
+
+  /*radio*/
+  p-radiobutton {
+    .ui-radiobutton {
+      width: 0;
+      height: 24px;
+      margin-top: 8px;
+      margin-bottom: 10px;
+
+      .ui-radiobutton-box {
+        display: none;
+      }
+
+
+    }
+
+    .ui-radiobutton-label {
+      margin: 0;
+      padding: 4px 24px;
+      background: $_grey_light;
+      margin-right: 5px;
+      color: $_font_color;
+      cursor: pointer;
+      font-size: 12px;
+
+      &.ui-label-active {
+          background: $_grey_dark;
+          color: white;
+      }
+    }
+  }
+
+
+  /*calendar*/
+
+  .floating-calendar {
+      label {
+          color: $_font_color;
+          font-size: 12px;
+          top: 20px;
+          font-weight: 600;
+      }
+      .ui-inputwrapper-filled{
+        &~label {
+                font-size: 10px;
+                color: $_font_color;
+        }
+      } 
+      input {
+          font-size: 12px;
+      }
+  }
+
+  .ui-calendar {
+      width: 100%;
+
+      .ui-datepicker-trigger {
+          position: absolute;
+          right: 0;
+
+          &.ui-button {
+              background-color: transparent;
+              color: $_font_color;
+              border: 0;
+
+              &:focus {
+                  box-shadow: none;
+              }
+          }
+      }
+  }
+}

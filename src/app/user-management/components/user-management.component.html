@@ -2,56 +2,62 @@
   [paginatorPosition]="'bottom'" sortMode="single" dataKey="ID" editMode="row" [responsive]="true"
   [globalFilterFields]="['Title','Status','Company','Location','CareerLevel','EntryDate','ExitDate']">
   <ng-template pTemplate="caption">
-    <div>
-      <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
-      <div>
-        <input type="search" id="projectSearch" pInputText size="50" 
-        placeholder="Search in projects"
-          (input)="globalFilter($event.target.value)" [(ngModel)]="filterValue">
-        <label for="projectSearch">Filter all fields</label>
+    <div class="d-flex justify-space-between align-end">
+
+      <div class="search-bar">
+        <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+          <div class="ui-float-label">
+            <input type="search" id="projectSearch" pInputText size="50" 
+                  (input)="globalFilter($event.target.value)" [(ngModel)]="filterValue">
+            <label for="projectSearch">Search users...</label>
+
+            <div class="blue-line"></div>
+          </div>
       </div>
-      <button pButton [disabled]="userList.length==0" type="button" (click)="createUser()" label="CREATE USER"></button>
+
+
+      <button pButton [disabled]="userList.length==0" type="button" (click)="createUser()" label="CREATE USER" class="button b-main"></button>
     </div>
   </ng-template>
-  <ng-template pTemplate="paginatorleft">
-    There are {{userList?.length}} items
+  <ng-template pTemplate="paginatorright">
+    XXXX users of {{userList?.length}} 
   </ng-template>
   <ng-template pTemplate="header">
     <tr>
-      <th>
+      <th [ngStyle]="{'width':'28px'}">
         <p-checkbox [(ngModel)]="selectAllRows" inputId="technology">
         </p-checkbox>
       </th>
-      <th pResizableColumn [pSortableColumn]="'Title'" [ngStyle]="{'width':'15%'}" class="ui-p-4">
+      <th pResizableColumn [pSortableColumn]="'Title'" [ngStyle]="{'width':'16%'}" class="ui-p-4">
         NAME
         <p-sortIcon [field]="'Title'"></p-sortIcon>
       </th>
-      <th></th>
-      <th pResizableColumn [pSortableColumn]="'Status'" [ngStyle]="{'width':'10%'}" class="ui-p-5">
+      <th [ngStyle]="{'width':'4%'}"></th>
+      <th pResizableColumn [pSortableColumn]="'Status'" [ngStyle]="{'width':'8%'}" class="ui-p-5">
         STATUS
         <p-sortIcon [field]="'Status'"></p-sortIcon>
       </th>
-      <th pResizableColumn [pSortableColumn]="'Company'" [ngStyle]="{'width':'15%'}" class="ui-p-6">
+      <th pResizableColumn [pSortableColumn]="'Company'" [ngStyle]="{'width':'12%'}" class="ui-p-6">
         COMPANY
         <p-sortIcon [field]="'Company'"></p-sortIcon>
       </th>
-      <th pResizableColumn [pSortableColumn]="'Location'" [ngStyle]="{'width':'15%'}" class="ui-p-7">
+      <th pResizableColumn [pSortableColumn]="'Location'" [ngStyle]="{'width':'12%'}" class="ui-p-7">
         PRINCIPAL LOCATION
         <p-sortIcon [field]="'Location'"></p-sortIcon>
       </th>
-      <th pResizableColumn [pSortableColumn]="'CareerLevel'" [ngStyle]="{'width':'15%'}" class="ui-p-8">
+      <th pResizableColumn [pSortableColumn]="'CareerLevel'" [ngStyle]="{'width':'8%'}" class="ui-p-8">
         CAREER LEVEL
         <p-sortIcon [field]="'CareerLevel'"></p-sortIcon>
       </th>
-      <th pResizableColumn [pSortableColumn]="'EntryDate'" [ngStyle]="{'width':'10%'}" class="ui-p-8">
+      <th pResizableColumn [pSortableColumn]="'EntryDate'" [ngStyle]="{'width':'8%'}" class="ui-p-8">
         START DATE
         <p-sortIcon [field]="'EntryDate'"></p-sortIcon>
       </th>
-      <th pResizableColumn [pSortableColumn]="'ExitDate'" [ngStyle]="{'width':'10%'}" class="ui-p-8">
+      <th pResizableColumn [pSortableColumn]="'ExitDate'" [ngStyle]="{'width':'8%'}" class="ui-p-8">
         END DATE
         <p-sortIcon [field]="'ExitDate'"></p-sortIcon>
       </th>
-      <th></th>
+      <th [ngStyle]="{'width':'12%'}"></th>
       <!-- <th></th> -->
     </tr>
   </ng-template>
@@ -84,7 +90,7 @@
             <input pInputText type="text" [(ngModel)]="rowData.Status" required>
           </ng-template>
           <ng-template pTemplate="output">
-            <i class="pi pi-circle-on" [style.color]= "rowData.Status=='Active'?'green':'red'"></i>
+            <i class="pi pi-circle-on" [style.color]="rowData.Status=='Active'?'#1FD27C':'#FF0000 '"></i>
             {{rowData.Status}}
           </ng-template>
         </p-cellEditor>
@@ -141,21 +147,21 @@
         </p-cellEditor>
       </td>
       <td>
-        <a (click)="showStatusManagement()">Status management</a>
+        <a (click)="showStatusManagement()" class="b-simple show_hover">Status management</a>
       </td>
     </tr>
   </ng-template>
   <ng-template pTemplate="rowexpansion" let-rowData let-ri="rowIndex">
-    <tr>
+    <tr class="expanded-row">
       <td></td>
       <td [attr.colspan]="9">
-        <div>
-          ENTERPRISE ID:{{rowData.EnterpriseID}}<br>
-          ID NUMBER:{{rowData.DNI}}<br>
-          EMPLOYEE NUMBER:{{rowData.NEmployee}}<br>
-          AIRBUS USER NUMBER:{{rowData.AirbusSAPUser}}<br>
-          <a [routerLink]="['/MD']">VIEW MORE</a>
-        </div>
+        <p>
+          <span>ENTERPRISE ID:</span> {{rowData.EnterpriseID}}<br>
+          <span>ID NUMBER:</span> {{rowData.DNI}}<br>
+          <span>EMPLOYEE NUMBER:</span> {{rowData.NEmployee}}<br>
+          <span>AIRBUS USER NUMBER:</span> {{rowData.AirbusSAPUser}}<br>
+          <a [routerLink]="['/MD']" class="b-simple">VIEW MORE</a>
+        </p>
       </td>
     </tr>
   </ng-template>
@@ -164,30 +170,41 @@
 [modal]="true" [responsive]="true" dismissableMask="true"
 [closeIcon]="false" [minimizeIcon]="false" [closeOnEscape]="true" [maximizeIcon]="false"
   [style]="{width: '350px', minWidth: '200px'}" [minY]="70"
-  [baseZIndex]="10000">
-  <p-header>Status Management<br>
-  {{selectedUsers.length}} users selected
-  <i (click)="showSelectedUsers=!showSelectedUsers" class="pi pi-caret-down"></i>
+  [baseZIndex]="10000" class="status-management-dialog">
+  <p-header>
+    <h4>Status Management</h4>
+    <p>{{selectedUsers.length}} users selected <i (click)="showSelectedUsers=!showSelectedUsers"
+        class="pi pi-caret-down"></i></p>
+  
+  
   <div *ngIf="showSelectedUsers">
     <p *ngFor="let item of selectedUsers">
       {{item.Title}}
     </p>
   </div>
   </p-header>
-  <p>Status</p>
+  <p class="status-management-option-title">Status</p>
   <p>
     <p-radioButton name="group1" value="Active" label="Active" [(ngModel)]="filterActive" inputId="Active"></p-radioButton>
     <p-radioButton name="group1" value="Inactive" label="Inactive" [(ngModel)]="filterActive" inputId="Inactive"></p-radioButton>
   </p>
   <p>
-    <p-calendar [(ngModel)]="startDate" [locale]="es" appendTo="body"
-    dateFormat="dd/mm/yy" [showIcon]="true"></p-calendar>
+     <span class="ui-float-label floating-calendar">
+        <p-calendar [(ngModel)]="startDate" [locale]="es" 
+        dateFormat="dd/mm/yy" [showIcon]="true">
+        </p-calendar>
+        <label for="startDate">Start date</label>
+      </span>
   </p><br>
   <p>
-    <p-calendar [(ngModel)]="endDate" [locale]="es" appendTo="body"
+     <span class="ui-float-label floating-calendar">
+    <p-calendar [(ngModel)]="endDate" [locale]="es" 
     dateFormat="dd/mm/yy" [showIcon]="true"></p-calendar>
-  </p>
-  <p>Exit reason</p>
+    <label for="endDate">Exit date</label>
+    <div class="blue-line"></div>
+    </span>
+  </p><br><br>
+  <p class="status-management-option-title">Exit reason</p>
   <p>
     <p-radioButton name="group2" value="Client exit" label="Client exit" 
     [(ngModel)]="exitReason" inputId="ClientExit">
@@ -197,7 +214,8 @@
     </p-radioButton>
   </p>
   <p-footer>
-    <button type="button" pButton (click)="displayStatusManagement=false" label="Cancel" class="ui-button-secondary"></button>
-    <button type="button" pButton (click)="displayStatusManagement=false" label="APPLY CHANGES"></button>
+    <button type="button" pButton (click)="displayStatusManagement=false" label="Cancel" class="button b-third"></button>
+    <button type="button" pButton (click)="displayStatusManagement=false" label="APPLY CHANGES"
+      class="button b-main"></button>
   </p-footer>
 </p-dialog>

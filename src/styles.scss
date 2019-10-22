@@ -1,1 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+@import 'style_parts/fonts';
+@import 'style_parts/variables';
+
+
+
+
+body {   
+    width: 100%; 
+    width: 100%; 
+    height: 100%; 
+    height: 100%; 
+    margin: 0 auto;
+    margin: 0 auto;
+
+    .ui-widget {
+        font-family: 'Graphik',
+        sans-serif;
+    }
+}
+
+.d-flex {
+    display: flex;
+
+    &.justify-space-between {
+        justify-content: space-between;
+    }
+    &.align-end {
+        align-items: flex-end;
+    }
+}
+
+/*  user manangement */
+
+.status-management-dialog {
+
+  .ui-dialog-content {
+    overflow: visible;
+  }
+}
+
+.ui-paginator-bottom {
+    &.ui-paginator {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+}  
+
+
+@import 'style_parts/buttons';
+@import 'style_parts/inputs';
+@import 'style_parts/table';
+@import 'style_parts/dialog';
