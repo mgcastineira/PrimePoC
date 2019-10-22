@@ -6,14 +6,10 @@ import { HttpClientModule,HttpClient } from '@angular/common/http';
   templateUrl: './file-uploader.component.html',
   styleUrls: ['./file-uploader.component.scss'],
 })
-export class FileUploaderComponent implements OnInit {
+export class FileUploaderComponent {
   uploadedFiles: any[] = [];
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
+  constructor() { }
 
   onUpload(event) {
     for (let file of event.files) {

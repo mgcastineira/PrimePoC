@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RollonComponent implements OnInit {
   appliedRole:number = 2;
-  currentStep:number = 1;
+  currentStep:number = 2;
   downloadedFiles:any[]=[];
   filesRepository:any[]=[
     { 
