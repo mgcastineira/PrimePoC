@@ -15,6 +15,12 @@
       ],
       "@rollon/*": [
         "app/rollon/*"
+      ],
+      "@rolloff/*": [
+        "app/rolloff/*"
+      ],
+      "@wbsmanagement/*": [
+        "app/wbs-management/*"
       ]
     },
     "outDir": "./dist/out-tsc",

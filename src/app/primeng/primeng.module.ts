@@ -22,6 +22,9 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { DragDropModule } from 'primeng/dragdrop';
 import { FileUploadModule } from 'primeng/fileupload';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { CardModule } from 'primeng/card';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { SidebarModule } from 'primeng/sidebar';
 
 @NgModule({
   declarations: [],
@@ -47,7 +50,10 @@ import { ProgressBarModule } from 'primeng/progressbar';
     RadioButtonModule,
     DragDropModule,
     FileUploadModule,
-    ProgressBarModule
+    ProgressBarModule,
+    CardModule,
+    InputTextareaModule,
+    SidebarModule
   ],
   exports:[
     TableModule,
@@ -67,7 +73,10 @@ import { ProgressBarModule } from 'primeng/progressbar';
     RadioButtonModule,
     DragDropModule,
     FileUploadModule,
-    ProgressBarModule
+    ProgressBarModule,
+    CardModule,
+    InputTextareaModule,
+    SidebarModule
   ]
 })
 export class PrimengModule { }

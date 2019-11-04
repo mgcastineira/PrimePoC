@@ -1,0 +1,312 @@
+<div class="container">
+  
+  <h3 class="d-inline">WBS Management</h3>
+  <br>
+  <br>
+  <button pButton type="button" (click)="displaySideBar = true" icon="pi pi-arrow-right"></button>
+  <div>
+    <p-sidebar [(visible)]="displaySideBar" [baseZIndex]="10000" [showCloseIcon]="false">
+      Content
+    </p-sidebar>
+  <p-table #wbsTable [value]="wbsTableRecords" [resizableColumns]="true" [paginator]="true" 
+  [rows]="7"
+    [paginatorPosition]="'bottom'" sortMode="single" dataKey="ID" editMode="row" [responsive]="true"
+    [globalFilterFields]="['UserEnterpriseId','ProjectName','WBS','Work_Location']">
+
+    <ng-template pTemplate="caption">
+      <div class="">
+        <div class="search-bar">
+          <i class="fa fa-search"></i>
+          <div class="recordSearch_field ">
+            <span class="ui-float-label">
+              <input type="search" id="recordSearch" pInputText size="100" placeholder=""
+                (input)="globalFilter($event.target.value)" [(ngModel)]="filterValue" autocomplete="off"
+                class="floating-label-field floating-label-field--s3">
+              <label for="recordSearch">Search in wbs</label>
+              <div class="blue_line"></div>
+            </span>
+          </div>
+        </div>
+        <div class="right_side">
+          <div class="show-deleted">
+            <p>Show deleted items</p>
+            <p-inputSwitch offLabel="" [(ngModel)]="showDeleted" (onChange)="filterActive()"></p-inputSwitch>
+          </div>
+          <button pButton type="button" label="LAUNCH RULE"
+            class="button b-main"></button>
+          <button pButton [disabled]="sortedPeopleList.length==0" type="button" (click)="addNewWBS()"
+            label="ADD NEW WBS" class="button b-main"></button>
+        </div>
+
+      </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th pResizableColumn [pSortableColumn]="'EnterpriseId'" *ngIf="!hiddenColumns.includes('EnterpriseId')"
+          [ngStyle]="{'width':'15%'}" class="">
+          TeamId
+          <p-sortIcon [field]="'EnterpriseId'"></p-sortIcon>
+        </th>
+        <th pResizableColumn [pSortableColumn]="'ProjectName'" *ngIf="!hiddenColumns.includes('ProjectName')"
+          [ngStyle]="{'width':'15%'}" class="">
+          TeamId
+          <p-sortIcon [field]="'ProjectName'"></p-sortIcon>
+        </th>
+        <th pResizableColumn [pSortableColumn]="'WBS'" *ngIf="!hiddenColumns.includes('WBS')"
+          [ngStyle]="{'width':'10%'}" class="">
+          WBS
+          <p-sortIcon [field]="'WBS'"></p-sortIcon>
+        </th>
+        <th pResizableColumn [pSortableColumn]="'Work_Location'" *ngIf="!hiddenColumns.includes('Work_Location')"
+          [ngStyle]="{'width':'15%'}" class="">
+          Work Location
+          <p-sortIcon [field]="'Work_Location'"></p-sortIcon>
+        </th>
+        <!-- <th pResizableColumn [pSortableColumn]="'WBS_Comments'" *ngIf="!hiddenColumns.includes('WBS_Comments')"
+          [ngStyle]="{'width':'15%'}" class="">
+          WBS Comments
+          <p-sortIcon [field]="'WBS_Comments'"></p-sortIcon>
+        </th>        -->
+        <!-- <th pResizableColumn [pSortableColumn]="'ID'"
+          *ngIf="!hiddenColumns.includes('IF')" [ngStyle]="{'width':'15%'}" class="">
+          ID
+          <p-sortIcon [field]="'ID'"></p-sortIcon>
+        </th>   -->
+        <th [ngStyle]="{'width':'5%'}"></th>
+        <!-- <th [ngStyle]="{'width':'100px'}" class="arrows">
+          <button *ngIf="showArrowLeft" pButton type="button" tooltipPosition="bottom" showDelay="1000" hideDelay="500"
+            pTooltip="Previous columns" icon="pi pi-arrow-left" (click)="leftColumns()"></button>
+          <button *ngIf="showArrowRight" pButton type="button" tooltipPosition="bottom" showDelay="1000" hideDelay="500"
+            pTooltip="Next columns" icon="pi pi-arrow-right" (click)="rightColumns()"></button>
+        </th> -->
+
+      </tr>
+      <tr>
+        <th *ngIf="!hiddenColumns.includes('EnterpriseId')">
+          <span class="filter">
+            <i class="pi pi-filter" style="font-size: 1.5em"></i>
+            <input pInputText type="search" class="filter " [(ngModel)]="filterEnterpriseId" placeholder="Filter by Enterprise Id"
+              (input)="wbsTable.filter($event.target.value, 'EnterpriseId', 'contains')">
+          </span>
+
+        </th>
+        <th *ngIf="!hiddenColumns.includes('ProjectName')">
+          <span class="filter">
+            <i class="pi pi-filter" style="font-size: 1.5em"></i>
+            <input pInputText type="search" class="filter " [(ngModel)]="filterProjectName"
+              placeholder="Filter by Project" (input)="wbsTable.filter($event.target.value, 'ProjectName', 'contains')">
+          </span>
+        
+        </th>
+        <th *ngIf="!hiddenColumns.includes('WBS')">
+          <span class="filter">
+            <i class="pi pi-filter" style="font-size: 1.5em"></i>
+            <input pInputText type="search" class="filter " [(ngModel)]="filterWBS"
+              placeholder="Filter by WBS"
+              (input)="wbsTable.filter($event.target.value, 'WBS', 'contains')">
+          </span>
+        </th>
+        <th *ngIf="!hiddenColumns.includes('Work_Location')">
+          <span class="filter">
+            <i class="pi pi-filter" style="font-size: 1.5em"></i>
+            <input pInputText type="search" class="filter " [(ngModel)]="filterWorkLocation" placeholder="Filter by WorkLocation"
+              (input)="wbsTable.filter($event.target.value, 'Work_Location', 'contains')">
+          </span>
+        </th>
+        <!-- <th *ngIf="!hiddenColumns.includes('WBS_Comments')">
+          <span class="filter">
+            <i class="pi pi-filter" style="font-size: 1.5em"></i>
+            <input pInputText type="search" class="filter " [(ngModel)]="filterWBS_Comments"
+              placeholder="Filter by WBS Comments"
+              (input)="wbsTable.filter($event.target.value, 'WBS_Comments', 'contains')">
+          </span>
+        </th> -->
+        <!-- <th *ngIf="!hiddenColumns.includes('ID')">
+          <span class="filter">
+            <i class="pi pi-filter" style="font-size: 1.5em"></i>
+            <input pInputText type="search" class="filter " [(ngModel)]="filterID"
+              placeholder="Filter by ID"
+              (input)="wbsTable.filter($event.target.value, 'ID', 'contains')">
+          </span>
+        </th> -->
+        <th></th>
+        <!-- <th></th> -->
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
+      <tr [pEditableRow]="rowData" [class.deleted-item]="!rowData.Active">
+        <td class="ui-resizable-column textColumn " pTooltip="{{rowData.UserEnterpriseId}}" 
+        tooltipPosition="bottom" showDelay="2000"
+          hideDelay="500" *ngIf="!hiddenColumns.includes('UserEnterpriseId')">
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <p-autoComplete appendTo="body" [(ngModel)]="rowData.UserEnterpriseId" 
+              [suggestions]="autocompleteEnterpriseIdList"
+                (onSelect)="selectPeople($event,rowData)" [forceSelection]="true" 
+                (onFocus)="$event.target.select()"
+                (completeMethod)="filterEnterpriseIdSingle($event)">
+              </p-autoComplete>
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{rowData.UserEnterpriseId}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td class="ui-resizable-column textColumn " pTooltip="{{rowData.ProjectName}}" tooltipPosition="bottom"
+          showDelay="2000" hideDelay="500" *ngIf="!hiddenColumns.includes('ProjectName')">
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <p-autoComplete appendTo="body" [(ngModel)]="rowData.ProjectName"
+                [suggestions]="autocompleteProjectNameList" (onSelect)="selectProject($event,rowData)" [forceSelection]="true"
+                (onFocus)="$event.target.select()" (completeMethod)="filterProjectNameSingle($event)">
+              </p-autoComplete>
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{rowData.ProjectName}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td class="ui-resizable-column textColumn " pTooltip="{{rowData.WBS}}" tooltipPosition="bottom"
+          showDelay="2000" hideDelay="500" *ngIf="!hiddenColumns.includes('WBS')">
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="rowData.WBS" required>
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{rowData.WBS}}
+              <button *ngIf="!editing" pButton type="button" icon="pi pi-comment" 
+                class="button b-third" (click)="showComment(rowData.ID)"></button>
+                <app-wbs-comment appendTo="body" [id]="rowData.ID" [WBS_Comments]="rowData.WBS_Comments"></app-wbs-comment>
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td class="ui-resizable-column textColumn " pTooltip="{{rowData.Work_Location}}" tooltipPosition="bottom" showDelay="2000"
+          hideDelay="500" *ngIf="!hiddenColumns.includes('Work_Location')">
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="rowData.Work_Location" required>
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{rowData.Work_Location}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <!-- <td class="ui-resizable-column textColumn " pTooltip="{{rowData.WBS_Comments}}" tooltipPosition="bottom"
+          showDelay="2000" hideDelay="500" *ngIf="!hiddenColumns.includes('WBS_Comments')">
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="rowData.WBS_Comments" required>
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{rowData.WBS_Comments}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td class="ui-resizable-column textColumn " pTooltip="{{rowData.md_name}}" tooltipPosition="bottom"
+          showDelay="2000" hideDelay="500" *ngIf="!hiddenColumns.includes('md_name')">
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <p-autoComplete appendTo="body" [(ngModel)]="rowData.md_name" [suggestions]="autocompleteList"
+                (onSelect)="select($event,rowData,'md_name')" [forceSelection]="true" (onFocus)="$event.target.select()"
+                (completeMethod)="filterContractSingle($event)">
+              </p-autoComplete>
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{rowData.md_name}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td class="ui-resizable-column textColumn " pTooltip="{{rowData.responsible_name}}" tooltipPosition="bottom"
+          showDelay="2000" hideDelay="500" *ngIf="!hiddenColumns.includes('responsible_name')">
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <p-autoComplete appendTo="body" [(ngModel)]="rowData.responsible_name" [suggestions]="autocompleteList"
+                (onSelect)="select($event,rowData,'responsible_name')" [forceSelection]="true"
+                (onFocus)="$event.target.select()" (completeMethod)="filterContractSingle($event)">
+              </p-autoComplete>
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{rowData.responsible_name}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td class="ui-resizable-column textColumn " pTooltip="{{rowData.spoc_name}}" tooltipPosition="bottom"
+          showDelay="2000" hideDelay="500" *ngIf="!hiddenColumns.includes('spoc_name')">
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <p-autoComplete appendTo="body" [(ngModel)]="rowData.spoc_name" [suggestions]="autocompleteList"
+                (onSelect)="select($event,rowData,'spoc_name')" [forceSelection]="true"
+                (onFocus)="$event.target.select()" (completeMethod)="filterContractSingle($event)">
+              </p-autoComplete>
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{rowData.spoc_name}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td class="ui-resizable-column textColumn " pTooltip="{{rowData.airbus_directResponsible}}"
+          tooltipPosition="bottom" showDelay="2000" hideDelay="500"
+          *ngIf="!hiddenColumns.includes('airbus_directResponsible')">
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="rowData.airbus_directResponsible">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{rowData.airbus_directResponsible}}
+            </ng-template>
+          </p-cellEditor>
+        </td>
+        <td class="ui-resizable-column textColumn " pTooltip="{{rowData.airbus_responsible}}" tooltipPosition="bottom"
+          showDelay="2000" hideDelay="500" *ngIf="!hiddenColumns.includes('airbus_responsible')">
+          <p-cellEditor>
+            <ng-template pTemplate="input">
+              <input pInputText type="text" [(ngModel)]="rowData.airbus_responsible">
+            </ng-template>
+            <ng-template pTemplate="output">
+              {{rowData.airbus_responsible}}
+            </ng-template>
+          </p-cellEditor>
+        </td> -->
+        <td class="status_info">
+          <i class=" pi-spin fa fa-spinner edition_loading" *ngIf="rowData.saving" aria-hidden="true"
+            style="font-size: 1.7rem;"></i>
+          <div class="error_msg" *ngIf="rowData.error">
+            <i *ngIf="rowData.error" class="fa fa-exclamation-circle edition_error"></i>
+            <p>Something went wrong. Try again</p>
+          </div>
+        </td>
+        <td class="actions">
+          <button *ngIf="!editing && rowData.Active" pButton type="button" pInitEditableRow icon="pi pi-pencil"
+            pTooltip="Edit" tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third  edit"
+            (click)="onRowEditInit(rowData)"></button>
+          <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" pTooltip="Save"
+            tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="edition ui-button-success"
+            style="margin-right: .5em" (click)="onRowEditSave(rowData)"></button>
+          <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times" pTooltip="Cancel"
+            tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="edition ui-button-danger"
+            (click)="onRowEditCancel(rowData)"></button>
+          <button *ngIf="!editing && rowData.Active" pButton type="button" (click)="removeRow(rowData,rowIndex)"
+            icon="pi pi-trash" pTooltip="Delete" class=" delete" tooltipPosition="bottom" showDelay="1000"
+            hideDelay="500">
+          </button>
+          <button *ngIf="!editing && !rowData.Active" pButton type="button" (click)="restoreRow(rowData,rowIndex)"
+            icon="fa fa-undo" pTooltip="Restore" class=" delete" tooltipPosition="bottom" showDelay="1000"
+            hideDelay="500">
+          </button>
+
+        </td>
+
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+
+    </ng-template>
+    <ng-template pTemplate="paginatorright">
+      There are {{wbsTableRecords?.length}} items
+    </ng-template>
+
+  </p-table>
+  </div>
+  <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+</div>
