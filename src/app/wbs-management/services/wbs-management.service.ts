@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, forkJoin, Subject, of } from 'rxjs';
 
 import { WBSManagementOperations } from '@wbsmanagement/models/wbs-management-operations.model';
-import { peopleListData, projectListData, myTeamListData, wbsListData } from '../models/mock-data';
+import { peopleListData, projectListData, myTeamListData, wbsListData, rulesListData } from '../models/mock-data';
 import { IWBSManagement } from '../models/iwbs-management.model';
 
 
@@ -42,16 +42,25 @@ export class WBSManagementService {
     });
   }
 
+  private getAllRules(): Observable<any> {
+    return new Observable(observer => {
+      observer.next(rulesListData);
+      observer.complete();
+    });
+  }
+
   public getInitialData() {
     console.log("loadInitialCredentialsNew");
     let call_1 = this.getAllPeople();
     let call_2 = this.getAllProjects();
     let call_3 = this.getAllTeams();
     let call_4 = this.getAllWBS();
+    let call_5 = this.getAllRules();
     return forkJoin([call_1,
       call_2,
       call_3,
-      call_4
+      call_4,
+      call_5
     ]).subscribe(
       results => {
         this.getDatasource(results[3],
@@ -73,7 +82,8 @@ export class WBSManagementService {
               results[2],
               results[1],
               results[0]
-            )
+            ),
+            allRules:results[4]
           },
           error: null,
           record: null

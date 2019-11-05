@@ -31,8 +31,8 @@
           </div>
           <button pButton type="button" label="IMPORT WBS" class="button b-third third-icon"
           (click)="showImport()"><img src="../assets/img/import.png" alt=""> </button>
-          <button pButton type="button" label="LAUNCH RULE"
-            class="button b-second mr-16"></button>
+          <button pButton type="button" label="LAUNCH RULE" (click)="showRules()"
+            class="button b-second mr-16"></button>                    
           <button pButton [disabled]="sortedPeopleList.length==0" type="button" (click)="addNewWBS()"
             label="ADD  WBS" class="button b-main"></button>
         </div>

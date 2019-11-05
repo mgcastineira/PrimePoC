@@ -15,9 +15,10 @@ import { RollonComponent } from '@rollon/components/rollon.component';
 import { FileUploaderComponent } from '@rollon/controls/file-uploader/file-uploader.component';
 import { RolloffComponent } from '@rolloff/components/rolloff.component';
 import { WbsManagementComponent } from '@wbsmanagement/components/wbs-management.component';
-import { AddWbsComponent } from '@wbsmanagement/add-wbs/components/add-wbs.component';
-import { WbsCommentComponent } from '@wbsmanagement/wbs-comment/components/wbs-comment.component';
-import { ImportComponent } from '@wbsmanagement/import/components/import.component';
+import { AddWbsComponent } from '@wbsmanagement/features/add-wbs/components/add-wbs.component';
+import { WbsCommentComponent } from '@wbsmanagement/features/wbs-comment/components/wbs-comment.component';
+import { ImportComponent } from '@wbsmanagement/features/import/components/import.component';
+import { RulesComponent } from '@wbsmanagement/features/rules/components/rules.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ImportComponent } from '@wbsmanagement/import/components/import.compone
     WbsManagementComponent,
     AddWbsComponent,
     WbsCommentComponent,
-    ImportComponent
+    ImportComponent,
+    RulesComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,8 @@ import { ImportComponent } from '@wbsmanagement/import/components/import.compone
   ],
   entryComponents: [
     AddWbsComponent,
-    ImportComponent
+    ImportComponent,
+    RulesComponent
   ]
 })
 export class AppModule { }

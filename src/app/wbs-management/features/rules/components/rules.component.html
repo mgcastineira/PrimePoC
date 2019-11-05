@@ -1,0 +1,11 @@
+<h4>Launch rule</h4>
+<ul *ngFor="let rule of ruleList">
+  <li *ngIf="rule.Active"><p-checkbox [(ngModel)]="rule.Execute" inputId="'rule'+rule.ID">
+    {{rule.Name}}
+  </p-checkbox>
+  {{rule.Quantity}} - {{rule.Description}}
+</li>
+</ul>
+
+<button pButton type="button" label="CANCEL" class="button b-main" (click)="closeRules(null)"></button>
+<button pButton type="button" label="CONFIRM" class="button b-main"></button>
