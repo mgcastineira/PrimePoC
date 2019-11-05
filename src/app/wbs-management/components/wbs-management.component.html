@@ -3,11 +3,6 @@
   <h3 class="d-inline">WBS Management</h3>
   <br>
   <br>
-  <button pButton type="button" (click)="displaySideBar = true" icon="pi pi-arrow-right"></button>
-  <div>
-    <p-sidebar [(visible)]="displaySideBar" [baseZIndex]="10000" [showCloseIcon]="false">
-      Content
-    </p-sidebar>
   <p-table #wbsTable [value]="wbsTableRecords" [resizableColumns]="true" [paginator]="true" 
   [rows]="7"
     [paginatorPosition]="'bottom'" sortMode="single" dataKey="ID" editMode="row" [responsive]="true"
@@ -32,6 +27,8 @@
             <p>Show deleted items</p>
             <p-inputSwitch offLabel="" [(ngModel)]="showDeleted" (onChange)="filterActive()"></p-inputSwitch>
           </div>
+          <button pButton type="button" label="IMPORT WBS" class="button b-main"
+          (click)="showImport()"></button>
           <button pButton type="button" label="LAUNCH RULE"
             class="button b-main"></button>
           <button pButton [disabled]="sortedPeopleList.length==0" type="button" (click)="addNewWBS()"
@@ -307,6 +304,5 @@
     </ng-template>
 
   </p-table>
-  </div>
   <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
 </div>

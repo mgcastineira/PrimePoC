@@ -1,3 +1,40 @@
-<p>
-  add-wbs works!
-</p>
+<h4 class="title_dialog">Add WBS</h4>
+<form [formGroup]="newForm" class="">
+  <span class="ui-float-label">
+    <p-autoComplete formControlName="enterpriseId" [suggestions]="autocompletePeopleList" 
+    field="EnterpriseId"
+      (completeMethod)="filterPeopleSingle($event)" id="enterpriseId" [forceSelection]="true"
+      (onSelect)="selectPeople($event)" autocomplete="off">
+    </p-autoComplete>
+    <label for="md_name">Enterprise ID </label>
+    <i class="pi pi-exclamation-triangle " pTooltip="Invalid value" style="font-size: 1.5em"></i>
+  </span>
+  <span class="ui-float-label">
+    <p-autoComplete formControlName="projectName" [suggestions]="autocompleteProjectList" 
+    field="ProjectName"
+      (completeMethod)="filterProjectSingle($event)" id="ProjectName" [forceSelection]="true"
+      (onSelect)="selectProject($event)" autocomplete="off">
+    </p-autoComplete>
+    <label for="md_name">Project </label>
+    <i class="pi pi-exclamation-triangle " pTooltip="Invalid value" style="font-size: 1.5em"></i>
+  </span>
+  <span class="ui-float-label">
+    <input id="wbs" formControlName="wbs" pInputText autocomplete="off">
+    <label for="wbs">WBS <em>- Optional</em></label>
+  </span>
+  <span class="ui-float-label">
+    <input id="wbsComment" formControlName="wbsComment" pInputText autocomplete="off">
+    <label for="wbsComment">WBS Comment <em>- Optional</em></label>
+  </span>
+  <span class="ui-float-label">
+    <input id="workLocation" formControlName="workLocation" pInputText autocomplete="off">
+    <label for="workLocation">Work Location <em>- Optional</em></label>
+  </span>
+<div class="row_buttons">
+  <button (click)="closeAddWBS(null)" class="button b-third ">
+    CANCEL
+  </button>
+  <button class="button b-main" >SAVE
+    CHANGES</button>
+</div>
+</form>

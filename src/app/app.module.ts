@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from "@angular/common/http"; 
@@ -17,6 +17,7 @@ import { RolloffComponent } from '@rolloff/components/rolloff.component';
 import { WbsManagementComponent } from '@wbsmanagement/components/wbs-management.component';
 import { AddWbsComponent } from '@wbsmanagement/add-wbs/components/add-wbs.component';
 import { WbsCommentComponent } from '@wbsmanagement/wbs-comment/components/wbs-comment.component';
+import { ImportComponent } from '@wbsmanagement/import/components/import.component';
 
 @NgModule({
   declarations: [
@@ -27,11 +28,13 @@ import { WbsCommentComponent } from '@wbsmanagement/wbs-comment/components/wbs-c
     RolloffComponent,
     WbsManagementComponent,
     AddWbsComponent,
-    WbsCommentComponent
+    WbsCommentComponent,
+    ImportComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
@@ -43,7 +46,8 @@ import { WbsCommentComponent } from '@wbsmanagement/wbs-comment/components/wbs-c
     
   ],
   entryComponents: [
-    AddWbsComponent
+    AddWbsComponent,
+    ImportComponent
   ]
 })
 export class AppModule { }

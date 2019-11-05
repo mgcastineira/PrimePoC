@@ -1,6 +1,7 @@
 import {
   Component, OnDestroy, OnInit, ViewEncapsulation, ViewChild, QueryList,
-  ViewChildren, } from '@angular/core';
+  ViewChildren,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Table } from 'primeng/table';
 import { DialogService, DynamicDialogConfig } from 'primeng/api';
@@ -12,6 +13,7 @@ import { IWBSManagement } from '@wbsmanagement/models/iwbs-management.model';
 
 import { AddWbsComponent } from '@wbsmanagement/add-wbs/components/add-wbs.component';
 import { WbsCommentComponent } from '@wbsmanagement/wbs-comment/components/wbs-comment.component';
+import { ImportComponent } from '../import/components/import.component';
 
 @Component({
   selector: 'app-wbs-management',
@@ -46,7 +48,6 @@ export class WbsManagementComponent implements OnInit {
   filterProjectName: string = "";
   filterWBS: string = "";
   filterWorkLocation: string = "";
-  displaySideBar:boolean = false;
 
   constructor(
     private wbsManagementService: WBSManagementService,
@@ -66,10 +67,10 @@ export class WbsManagementComponent implements OnInit {
             this.filterActive();
             break;
           case WBSManagementOperations.SaveComment:
-            if(serviceResponse.ok){
+            if (serviceResponse.ok) {
               let commentToUpdate = this.wbsTableRecords.find(wbs => wbs.ID == serviceResponse.payload.wbsId);
-              if(commentToUpdate!=undefined){
-                commentToUpdate.WBS_Comments= serviceResponse.payload.comment;
+              if (commentToUpdate != undefined) {
+                commentToUpdate.WBS_Comments = serviceResponse.payload.comment;
               }
             }
             break;
@@ -112,9 +113,9 @@ export class WbsManagementComponent implements OnInit {
     });
   }
 
-  showComment(componentId:number){
-    let comment = this.query.find(component=>component.id==componentId);
-    comment.show=!comment.show;
+  showComment(componentId: number) {
+    let comment = this.query.find(component => component.id == componentId);
+    comment.show = !comment.show;
   }
 
   /* #region  table edition */
@@ -225,7 +226,7 @@ export class WbsManagementComponent implements OnInit {
   /* #endregion */
 
   /* #region  add new wbs with dialog */
-  private show() {
+  private showAddComponent() {
     let config = new DynamicDialogConfig();
     config.data = {
       sortedPeopleList: this.sortedPeopleList,
@@ -248,7 +249,7 @@ export class WbsManagementComponent implements OnInit {
   }
 
   public addNewWBS(): void {
-    this.show();
+    this.showAddComponent();
   }
   /* #endregion */
 
@@ -304,4 +305,31 @@ export class WbsManagementComponent implements OnInit {
   }
   /* #endregion */
 
+  /* #region  show import */
+  public showImport(): void {
+    this.showImportComponent();
+  }
+
+  private showImportComponent() {
+    let config = new DynamicDialogConfig();
+    config.data = {
+      sortedPeopleList: this.sortedPeopleList,
+      wbsTableRecords: this.wbsTableRecords,
+      allTeamsList: this.allTeamsList,
+      allProjectsList: this.sortedProjectsList
+    };
+    config.width = "300px";
+    config.height = "500px";
+    config.showHeader = false;
+    config.dismissableMask = true;
+    config.closeOnEscape = true;
+    config.transitionOptions = "400ms cubic-bezier(0.25, 0.8, 0.25, 1)";
+
+    const ref = this.dialogService.open(ImportComponent, config);
+
+    ref.onClose.subscribe((response: any) => {
+
+    });
+  }
+  /* #endregion */
 }
