@@ -111,3 +111,41 @@ export const wbsListData = [
         Active: false
     }
 ];
+export const rulesListData = [
+    {
+        ID: 1,
+        Name: "Rule 1",
+        Description:"Rule 1 Description",
+        Quantity: 14,
+        Active: true,
+        Execute:false,
+        LastExecutionDate: new Date(2019,10,1)
+    },
+    {
+        ID: 2,
+        Name: "Rule 2",
+        Description: "Rule 2 Description",
+        Quantity: 11,
+        Active: true,
+        Execute: false,
+        LastExecutionDate: new Date(2019, 11, 1)
+    },
+    {
+        ID: 3,
+        Name: "Rule 3",
+        Description: "Rule 3 Description",
+        Quantity: 2,
+        Active: false,
+        Execute: false,
+        LastExecutionDate: new Date(2019, 1, 1)
+    },
+    {
+        ID: 4,
+        Name: "Rule 4",
+        Description: "Rule 4 Description",
+        Quantity: 0,
+        Active: true,
+        Execute: false,
+        LastExecutionDate: new Date(2019, 10, 28)
+    }
+];

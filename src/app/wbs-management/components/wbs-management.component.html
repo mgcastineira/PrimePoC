@@ -29,7 +29,7 @@
           </div>
           <button pButton type="button" label="IMPORT WBS" class="button b-main"
           (click)="showImport()"></button>
-          <button pButton type="button" label="LAUNCH RULE"
+          <button pButton type="button" label="LAUNCH RULE" (click)="showRules()"
             class="button b-main"></button>
           <button pButton [disabled]="sortedPeopleList.length==0" type="button" (click)="addNewWBS()"
             label="ADD NEW WBS" class="button b-main"></button>

@@ -11,9 +11,10 @@ import { WBSManagementService } from '@wbsmanagement/services/wbs-management.ser
 import { WBSManagementOperations } from '@wbsmanagement/models/wbs-management-operations.model';
 import { IWBSManagement } from '@wbsmanagement/models/iwbs-management.model';
 
-import { AddWbsComponent } from '@wbsmanagement/add-wbs/components/add-wbs.component';
-import { WbsCommentComponent } from '@wbsmanagement/wbs-comment/components/wbs-comment.component';
-import { ImportComponent } from '../import/components/import.component';
+import { AddWbsComponent } from '@wbsmanagement/features/add-wbs/components/add-wbs.component';
+import { WbsCommentComponent } from '@wbsmanagement/features/wbs-comment/components/wbs-comment.component';
+import { ImportComponent } from '@wbsmanagement/features/import/components/import.component';
+import { RulesComponent } from '../features/rules/components/rules.component';
 
 @Component({
   selector: 'app-wbs-management',
@@ -39,6 +40,7 @@ export class WbsManagementComponent implements OnInit {
   sortedPeopleList: any[] = [];
   allTeamsList: any[];
   sortedProjectsList: any[];
+  ruleList:any[]=[];
   autocompleteEnterpriseIdList: string[];
   autocompleteProjectNameList: string[];
 
@@ -63,6 +65,7 @@ export class WbsManagementComponent implements OnInit {
               serviceResponse.payload.allProjects);
 
             this.allTeamsList = serviceResponse.payload.allTeamsList;
+            this.ruleList = serviceResponse.payload.allRules;
             this.table.reset();
             this.filterActive();
             break;
@@ -326,6 +329,35 @@ export class WbsManagementComponent implements OnInit {
     config.transitionOptions = "400ms cubic-bezier(0.25, 0.8, 0.25, 1)";
 
     const ref = this.dialogService.open(ImportComponent, config);
+
+    ref.onClose.subscribe((response: any) => {
+
+    });
+  }
+  /* #endregion */
+
+  /* #region  show rules */
+  public showRules(): void {
+    this.showRulesComponent();
+  }
+
+  private showRulesComponent() {
+    let config = new DynamicDialogConfig();
+    config.data = {
+      sortedPeopleList: this.sortedPeopleList,
+      wbsTableRecords: this.wbsTableRecords,
+      allTeamsList: this.allTeamsList,
+      allProjectsList: this.sortedProjectsList,
+      ruleList:this.ruleList
+    };
+    config.width = "300px";
+    config.height = "500px";
+    config.showHeader = false;
+    config.dismissableMask = true;
+    config.closeOnEscape = true;
+    config.transitionOptions = "400ms cubic-bezier(0.25, 0.8, 0.25, 1)";
+
+    const ref = this.dialogService.open(RulesComponent, config);
 
     ref.onClose.subscribe((response: any) => {
 
