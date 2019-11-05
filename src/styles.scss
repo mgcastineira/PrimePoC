@@ -45,3 +45,33 @@ body {
 @import 'style_parts/dialog';
 @import 'style_parts/rollon';
 
+// nuevos //
+
+.third-icon.ui-button {
+    img {
+        margin-right: 8px
+    }
+  .ui-button-text {
+    display: inline-block;
+  }
+}
+
+.mr-16 {
+    margin-right: 16px !important;
+}
+
+.deleted-wbs {
+    display: inline-block;
+
+    p {
+        display: inline-block;
+        font-weight: 400;
+        font-size: 12px;
+    }
+}
+
+.right_side {
+    text-align: right;
+    padding-bottom: 0 !important;
+        margin-top: 20px;
+}
