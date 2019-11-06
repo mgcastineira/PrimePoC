@@ -21,6 +21,9 @@
       ],
       "@wbsmanagement/*": [
         "app/wbs-management/*"
+      ],
+      "@news/*": [
+        "app/news/*"
       ]
     },
     "outDir": "./dist/out-tsc",

@@ -25,6 +25,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { CardModule } from 'primeng/card';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SidebarModule } from 'primeng/sidebar';
+import { TabViewModule } from 'primeng/tabview';
 
 @NgModule({
   declarations: [],
@@ -53,7 +54,8 @@ import { SidebarModule } from 'primeng/sidebar';
     ProgressBarModule,
     CardModule,
     InputTextareaModule,
-    SidebarModule
+    SidebarModule,
+    TabViewModule
   ],
   exports:[
     TableModule,
@@ -76,7 +78,8 @@ import { SidebarModule } from 'primeng/sidebar';
     ProgressBarModule,
     CardModule,
     InputTextareaModule,
-    SidebarModule
+    SidebarModule,
+    TabViewModule
   ]
 })
 export class PrimengModule { }
