@@ -27,6 +27,7 @@
 
 .actions button:enabled:hover {
     background-color: #008FFF;
+    color: white;
 }
 .actions .edition {
     font-size: 1rem;
@@ -328,3 +329,5 @@ body .ui-inputtext.ng-dirty.ng-invalid~.pi-exclamation-triangle {
 body .ui-inputtext.ng-dirty.ng-invalid:focus~label {
     color: #ff0000;
 }
+
+

@@ -9,30 +9,32 @@
     [globalFilterFields]="['UserEnterpriseId','ProjectName','WBS','Work_Location']">
 
     <ng-template pTemplate="caption">
-      <div class="">
-        <div class="search-bar">
-          <i class="fa fa-search"></i>
-          <div class="recordSearch_field ">
-            <span class="ui-float-label">
-              <input type="search" id="recordSearch" pInputText size="100" placeholder=""
-                (input)="globalFilter($event.target.value)" [(ngModel)]="filterValue" autocomplete="off"
-                class="floating-label-field floating-label-field--s3">
-              <label for="recordSearch">Search in wbs</label>
-              <div class="blue_line"></div>
-            </span>
+      <div class="p-grid">
+        <div class="p-col-4">
+          <div class="search-bar">
+            <i class="fa fa-search"></i>
+            <div class="recordSearch_field ">
+              <span class="ui-float-label">
+                <input type="search" id="recordSearch" pInputText size="100" placeholder=""
+                  (input)="globalFilter($event.target.value)" [(ngModel)]="filterValue" autocomplete="off"
+                  class="floating-label-field floating-label-field--s3">
+                <label for="recordSearch">Search in wbs</label>
+                <div class="blue_line"></div>
+              </span>
+            </div>
           </div>
         </div>
-        <div class="right_side">
-          <div class="show-deleted">
+        <div class="right_side p-col-8">
+          <div class="show-deleted deleted-wbs">
             <p>Show deleted items</p>
             <p-inputSwitch offLabel="" [(ngModel)]="showDeleted" (onChange)="filterActive()"></p-inputSwitch>
           </div>
-          <button pButton type="button" label="IMPORT WBS" class="button b-main"
-          (click)="showImport()"></button>
+          <button pButton type="button" label="IMPORT WBS" class="button b-third third-icon"
+          (click)="showImport()"><img src="../assets/img/import.png" alt=""> </button>
           <button pButton type="button" label="LAUNCH RULE" (click)="showRules()"
-            class="button b-main"></button>
+            class="button b-second mr-16"></button>                    
           <button pButton [disabled]="sortedPeopleList.length==0" type="button" (click)="addNewWBS()"
-            label="ADD NEW WBS" class="button b-main"></button>
+            label="ADD  WBS" class="button b-main"></button>
         </div>
 
       </div>
@@ -41,17 +43,17 @@
     <ng-template pTemplate="header">
       <tr>
         <th pResizableColumn [pSortableColumn]="'EnterpriseId'" *ngIf="!hiddenColumns.includes('EnterpriseId')"
-          [ngStyle]="{'width':'15%'}" class="">
+          [ngStyle]="{'width':'30%'}" class="">
           TeamId
           <p-sortIcon [field]="'EnterpriseId'"></p-sortIcon>
         </th>
         <th pResizableColumn [pSortableColumn]="'ProjectName'" *ngIf="!hiddenColumns.includes('ProjectName')"
-          [ngStyle]="{'width':'15%'}" class="">
+          [ngStyle]="{'width':'20%'}" class="">
           TeamId
           <p-sortIcon [field]="'ProjectName'"></p-sortIcon>
         </th>
         <th pResizableColumn [pSortableColumn]="'WBS'" *ngIf="!hiddenColumns.includes('WBS')"
-          [ngStyle]="{'width':'10%'}" class="">
+          [ngStyle]="{'width':'20%'}" class="">
           WBS
           <p-sortIcon [field]="'WBS'"></p-sortIcon>
         </th>
@@ -79,57 +81,7 @@
         </th> -->
 
       </tr>
-      <tr>
-        <th *ngIf="!hiddenColumns.includes('EnterpriseId')">
-          <span class="filter">
-            <i class="pi pi-filter" style="font-size: 1.5em"></i>
-            <input pInputText type="search" class="filter " [(ngModel)]="filterEnterpriseId" placeholder="Filter by Enterprise Id"
-              (input)="wbsTable.filter($event.target.value, 'EnterpriseId', 'contains')">
-          </span>
 
-        </th>
-        <th *ngIf="!hiddenColumns.includes('ProjectName')">
-          <span class="filter">
-            <i class="pi pi-filter" style="font-size: 1.5em"></i>
-            <input pInputText type="search" class="filter " [(ngModel)]="filterProjectName"
-              placeholder="Filter by Project" (input)="wbsTable.filter($event.target.value, 'ProjectName', 'contains')">
-          </span>
-        
-        </th>
-        <th *ngIf="!hiddenColumns.includes('WBS')">
-          <span class="filter">
-            <i class="pi pi-filter" style="font-size: 1.5em"></i>
-            <input pInputText type="search" class="filter " [(ngModel)]="filterWBS"
-              placeholder="Filter by WBS"
-              (input)="wbsTable.filter($event.target.value, 'WBS', 'contains')">
-          </span>
-        </th>
-        <th *ngIf="!hiddenColumns.includes('Work_Location')">
-          <span class="filter">
-            <i class="pi pi-filter" style="font-size: 1.5em"></i>
-            <input pInputText type="search" class="filter " [(ngModel)]="filterWorkLocation" placeholder="Filter by WorkLocation"
-              (input)="wbsTable.filter($event.target.value, 'Work_Location', 'contains')">
-          </span>
-        </th>
-        <!-- <th *ngIf="!hiddenColumns.includes('WBS_Comments')">
-          <span class="filter">
-            <i class="pi pi-filter" style="font-size: 1.5em"></i>
-            <input pInputText type="search" class="filter " [(ngModel)]="filterWBS_Comments"
-              placeholder="Filter by WBS Comments"
-              (input)="wbsTable.filter($event.target.value, 'WBS_Comments', 'contains')">
-          </span>
-        </th> -->
-        <!-- <th *ngIf="!hiddenColumns.includes('ID')">
-          <span class="filter">
-            <i class="pi pi-filter" style="font-size: 1.5em"></i>
-            <input pInputText type="search" class="filter " [(ngModel)]="filterID"
-              placeholder="Filter by ID"
-              (input)="wbsTable.filter($event.target.value, 'ID', 'contains')">
-          </span>
-        </th> -->
-        <th></th>
-        <!-- <th></th> -->
-      </tr>
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
       <tr [pEditableRow]="rowData" [class.deleted-item]="!rowData.Active">
@@ -275,7 +227,7 @@
         </td>
         <td class="actions">
           <button *ngIf="!editing && rowData.Active" pButton type="button" pInitEditableRow icon="pi pi-pencil"
-            pTooltip="Edit" tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third  edit"
+            pTooltip="Edit" tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="  edit"
             (click)="onRowEditInit(rowData)"></button>
           <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" pTooltip="Save"
             tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="edition ui-button-success"
@@ -296,9 +248,7 @@
 
       </tr>
     </ng-template>
-    <ng-template pTemplate="summary">
 
-    </ng-template>
     <ng-template pTemplate="paginatorright">
       There are {{wbsTableRecords?.length}} items
     </ng-template>
