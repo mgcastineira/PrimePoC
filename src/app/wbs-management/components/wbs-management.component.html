@@ -139,12 +139,12 @@
             <ng-template pTemplate="input">
               <input pInputText type="text" [(ngModel)]="rowData.WBS" required>
             </ng-template>
-            <ng-template pTemplate="output">
+            <ng-template pTemplate="output" >
               {{rowData.WBS}}
               <button *ngIf="!editing" pButton type="button" icon="pi pi-comment" class="button b-third"
                 (click)="showComment($event,rowData.ID)"></button>
-              <p-overlayPanel #op id="{{rowData.ID}}" dismissable="true" showTransitionOptions="225ms ease-out"
-                appendTo="body" autoZIndex="true">
+              <p-overlayPanel #op id="{{rowData.ID}}" [dismissable]="false" showTransitionOptions="225ms ease-out"
+                appendTo="body" autoZIndex="true" >
                 <app-wbs-comment class="comentario" [id]="rowData.ID" [WBS_Comments]="rowData.WBS_Comments">
                 </app-wbs-comment>
               </p-overlayPanel>
