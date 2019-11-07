@@ -11,12 +11,27 @@
 <button pButton type="button" icon="pi pi-arrow-right" (click)="nextItem()" class="button b-main"></button>
 
 <p-carousel [value]="allNewsList" easing="easeOutStrong" (onPage)="actualItem($event)"
-responsive="true" headerText="News   {{allNewsList.length}}  Actual page: {{actualPage+1}}" firstVisible="0" [pageLinks]="1"
-circular="circular" autoplayInterval="3000" numVisible="1">
-  <ng-template let-item pTemplate="item">
-    <h3>{{item.Title1}}</h3>
-    <h4>{{item.Title2}}</h4>
-    <img [src]="'./assets/img/'+item.ImageSourceUrl">
-    <div [innerHTML]="item.HTMLText"></div>
+responsive="true" headerText="News {{actualPage+1}} of {{allNewsList.length}}  " firstVisible="0"
+[pageLinks]="1"
+circular="circular" numVisible="1" >
+  <ng-template let-item pTemplate="item" >
+
+    <div class="news_item p-grid">
+      <div class="news_imagen p-col-5">
+        <img [src]="'./assets/img/'+item.ImageSourceUrl">
+      </div>
+
+      <div class="news_contenido p-col-7">
+        <h4>{{item.Title2}}</h4>
+        <h3>{{item.Title1}}</h3>
+        
+        <p [innerHTML]="item.HTMLText"></p>
+      </div>
+    </div>
+    
+
+   
+
+  
   </ng-template>
 </p-carousel>

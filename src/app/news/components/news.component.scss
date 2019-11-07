@@ -1,3 +1,93 @@
 body .ui-tabview.ui-tabview-top .ui-tabview-nav li a, body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li a, body .ui-tabview.ui-tabview-left .ui-tabview-nav li a, body .ui-tabview.ui-tabview-right .ui-tabview-nav li a {
   display: none;
 }
+.ui-carousel .ui-carousel-dropdown {
+  display: none !important;
+}
+body .ui-carousel .ui-carousel-viewport {
+  background-color: #cccccc;
+  height: 100vh;
+}
+
+
+
+.news_item {
+  margin: 10vh;
+  height: 80vh;
+}
+
+.news_item .news_imagen {
+      height: 100%;
+      overflow: hidden;
+          padding: 0;
+          margin-top: -30px;
+          margin-right: -30px;
+}
+
+.news_item .news_imagen img {
+  max-width: 100%;
+}
+.news_item .news_contenido {
+  height: 100%;
+  overflow-y: scroll;
+  padding: 30px;
+  background: white;
+}
+.news_item .news_contenido h4 {
+  background: #008fff;
+  color: white;
+  display: inline-block;
+  margin: 0;
+  font-size: 11px;
+  padding: 2px 5px;
+  font-weight: 400;
+}
+.news_item .news_contenido h3 {
+    font-size: 32px;
+    margin: 30px 0 16px;
+}
+.news_item .news_contenido::-webkit-scrollbar {
+  background: #e9f5ff;
+}
+.news_item .news_contenido::-webkit-scrollbar-track {
+  background: #e9f5ff;
+  border-radius: 20px;
+}
+.news_item .news_contenido::-webkit-scrollbar-thumb {
+  background: #99d2ff;
+  border-radius: 20px;
+}
+
+
+
+
+body .ui-carousel .ui-carousel-button {
+      position: absolute;
+      height: 100%;
+      mix-blend-mode: hard-light;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+      font-size: 3rem !important;
+      opacity: .5;     
+      color: #004c88;
+      transition: all .1s linear;
+}
+body .ui-carousel .ui-carousel-button:not(.ui-state-disabled):hover {
+    color: #004c88;
+    opacity: 1;
+}
+.ui-carousel-button.ui-carousel-next-button {
+      right: 0;
+}
+.ui-carousel-button.ui-carousel-prev-button {
+      left: 0;
+}
+
+.ui-carousel-header .ui-carousel-header-title {
+      position: absolute;
+      top: 8vh;
+      z-index: 9999;
+      right: 8vw;
+}
