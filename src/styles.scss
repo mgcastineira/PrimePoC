@@ -238,7 +238,10 @@ body .ui-buttonset.ui-button-danger>.ui-button.ui-state-default {
 .import.ui-dialog .ui-dialog-content {
     background-color: #f3f3f3;
 }
-
+.import-list li {
+    margin-bottom: 8px;
+}
 .import-list .button{
     padding-left: 0;
 }
+

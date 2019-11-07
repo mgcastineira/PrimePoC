@@ -262,7 +262,7 @@ body p-togglebutton.ng-dirty.ng-invalid .ui-button {
   top: 0;
 }
 
-.ng-dirty~.pi-exclamation-triangle {
+.ng-dirty.ng-invalid~.pi-exclamation-triangle {
   opacity: 1;
   display: block;
 }

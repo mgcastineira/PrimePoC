@@ -241,6 +241,7 @@ body .ui-table .ui-table-tbody>tr>td p-celleditor input {
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   border-radius: 0;
   font-size: 12px;
+  background: transparent;
 }
 
 body .ui-table .ui-table-tbody>tr>td p-celleditor input:focus {
@@ -273,4 +274,12 @@ body .ui-table table .ui-table-tbody>tr:nth-child(odd) {
 
 .status_info .edition_error {
   font-size: 14px;
+}
+
+.actions {
+  opacity: 0 ;
+}
+
+body .ui-table tr:hover .actions {
+  opacity: 1;
 }
