@@ -1,16 +1,17 @@
-<h4>Import WBS</h4>
+<h4 class="title_dialog">Import WBS</h4>
 <p>Use one of the following template files to complete it with the WBS to update</p>
-<ul>
+<ul class="import-list">
   <li >
-    <a  target="_blank">
-      DOWNLOAD EXCEL TEMPLATE
+    <a class="button b-third"  target="_blank">
+      <img src="../assets/img/import.png" alt="">  DOWNLOAD EXCEL TEMPLATE
     </a>
   </li><li>
-    <a  target="_blank">
-      DOWNLOAD LAST EXCEL UPLOADED
+    <a target="_blank" class="button b-third">
+      <img src="../assets/img/import.png" alt=""> DOWNLOAD LAST EXCEL UPLOADED
     </a>
   </li>
 </ul>
-<button pButton type="button" label="CANCEL" class="button b-main" (click)="closeImport(null)"></button>
-<button pButton type="button" label="IMPORT DATA"
-  class="button b-main"></button>
+<div class="row_buttons">
+<button pButton type="button" label="CANCEL" class="button b-third" (click)="closeImport(null)"></button>
+<button pButton type="button" label="IMPORT DATA" class="button b-main"></button>
+</div>

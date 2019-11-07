@@ -1,5 +1,5 @@
 <h4 class="title_dialog">Add WBS</h4>
-<form [formGroup]="newForm" class="">
+<form [formGroup]="newForm" class="add-wbs">
   <span class="ui-float-label">
     <p-autoComplete formControlName="enterpriseId" [suggestions]="autocompletePeopleList" 
     field="EnterpriseId"
@@ -7,7 +7,7 @@
       (onSelect)="selectPeople($event)" autocomplete="off">
     </p-autoComplete>
     <label for="md_name">Enterprise ID </label>
-    <i class="pi pi-exclamation-triangle " pTooltip="Invalid value" style="font-size: 1.5em"></i>
+    <i class="pi pi-exclamation-triangle " pTooltip="Please, enter an existing Enterprise ID" style="font-size: 1.5em"></i>
   </span>
   <span class="ui-float-label">
     <p-autoComplete formControlName="projectName" [suggestions]="autocompleteProjectList" 
@@ -16,7 +16,7 @@
       (onSelect)="selectProject($event)" autocomplete="off">
     </p-autoComplete>
     <label for="md_name">Project </label>
-    <i class="pi pi-exclamation-triangle " pTooltip="Invalid value" style="font-size: 1.5em"></i>
+    <i class="pi pi-exclamation-triangle " pTooltip="Please, enter an existing project name" style="font-size: 1.5em"></i>
   </span>
   <span class="ui-float-label">
     <input id="wbs" formControlName="wbs" pInputText autocomplete="off">

@@ -126,7 +126,7 @@
               {{rowData.WBS}}
               <button *ngIf="!editing" pButton type="button" icon="pi pi-comment" 
                 class="button b-third" (click)="showComment(rowData.ID)"></button>
-                <app-wbs-comment appendTo="body" [id]="rowData.ID" [WBS_Comments]="rowData.WBS_Comments"></app-wbs-comment>
+                <app-wbs-comment appendTo="body" class="comentario" [id]="rowData.ID" [WBS_Comments]="rowData.WBS_Comments"></app-wbs-comment>
             </ng-template>
           </p-cellEditor>
         </td>

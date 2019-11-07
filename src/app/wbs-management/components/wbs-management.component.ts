@@ -321,12 +321,12 @@ export class WbsManagementComponent implements OnInit {
       allTeamsList: this.allTeamsList,
       allProjectsList: this.sortedProjectsList
     };
-    config.width = "300px";
-    config.height = "500px";
+    config.width = "600px";
     config.showHeader = false;
     config.dismissableMask = true;
     config.closeOnEscape = true;
     config.transitionOptions = "400ms cubic-bezier(0.25, 0.8, 0.25, 1)";
+    config.styleClass = "import";
 
     const ref = this.dialogService.open(ImportComponent, config);
 
@@ -350,8 +350,8 @@ export class WbsManagementComponent implements OnInit {
       allProjectsList: this.sortedProjectsList,
       ruleList:this.ruleList
     };
-    config.width = "300px";
-    config.height = "500px";
+    config.width = "520px";
+
     config.showHeader = false;
     config.dismissableMask = true;
     config.closeOnEscape = true;

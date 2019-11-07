@@ -75,3 +75,170 @@ body {
     padding-bottom: 0 !important;
         margin-top: 20px;
 }
+
+.ui-table .ui-table-wrapper {
+  overflow: visible;
+}
+
+.ui-table-wrapper table .ui-table-tbody td {
+  overflow: visible;
+
+}
+
+.comentario .ui-card {
+    position: absolute;
+    left: 0;
+    z-index: 0999;
+    top: 50px;
+    width: 300px;
+}
+
+.comentario .ui-card .ui-card-content {
+    position: relative;
+}
+
+.comentario .ui-card:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -17px;
+    background-image: url(assets/img/triangle.png);
+    width: 20px;
+    height: 18px;
+    left: 120px;
+}
+
+
+.comentario .ui-card .ui-card-body .ui-card-content textarea {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid #212529;
+    border-radius: 0;
+}
+
+.comentario .ui-card .ui-card-body .ui-card-content textarea:disabled {
+    color: #212529;
+    border: 0;
+    opacity: 1;
+    font-weight: 600;
+}
+
+.comentario .ui-card .ui-card-body .ui-card-footer .button {
+    width: 100%;
+    text-align: left;
+    padding: 0;
+}
+.comentario .ui-card .ui-card-body .ui-card-footer .pi-pencil {
+        position: static;
+        font-size: 25px;
+        margin-top: -6px;
+}
+.comentario .ui-card .ui-card-body .ui-card-footer .ui-button-text {
+    display: inline-block;
+}
+
+body .ui-button.ui-state-default.ui-button-success,
+body .ui-buttonset.ui-button-success>.ui-button.ui-state-default {
+    border: 0; 
+    background: transparent;
+    color: #33D689; 
+}
+
+body .ui-button.ui-state-default.ui-button-success:hover,
+body .ui-buttonset.ui-button-success>.ui-button.ui-state-default:hover {
+    background: transparent !important;
+    color: #33D689 !important;
+}
+body .ui-button.ui-state-default.ui-button-danger:hover,
+body .ui-buttonset.ui-button-danger>.ui-button.ui-state-default:hover {
+    background: transparent !important;
+    color: #ff0000 !important;
+}
+
+body .ui-table table .ui-table-tbody tr td p-celleditor .pi,
+body .ui-table table .ui-table-tbody tr td a .pi {
+    font-size: 32px;
+}
+
+body .ui-button.ui-state-default.ui-button-danger,
+body .ui-buttonset.ui-button-danger>.ui-button.ui-state-default {
+        border: 0;
+        background: transparent;
+        color: #ff0000;
+}
+
+.ui-dialog.ui-dynamicdialog.ui-widget .ui-dialog-content {
+    padding: 30px;
+}
+
+.ui-dialog.ui-dynamicdialog.ui-widget .ui-dialog-content .title_dialog {
+    margin: 0;
+    margin-bottom: 30px;
+    font-size: 22px;
+}
+
+.ui-autocomplete {
+    width: 100%;
+}
+
+.add-wbs {
+    width: 400px;
+}
+
+.add-wbs .ui-float-label {
+    margin-bottom: 30px;
+}
+
+.add-wbs .ui-float-label label {
+    font-weight: 600;
+    color: #949494;
+}
+
+.row_buttons {
+    text-align: right;
+    margin-top: 40px;
+}
+
+.rule-list, .import-list {
+    list-style: none;
+    padding: 0;
+}
+
+.rule-list label {
+    font-weight: 600;
+    padding-left: 8px;
+    font-size: 14px;
+    margin-left: 0;
+    margin-bottom: 5px;
+}
+.rule-list .rule-details {
+    margin-left: 22px;
+    margin-top: 8px;
+    width: 92%;
+    background: #F8F8F8;
+}
+.rule-list .rule-details .rule-quantity,
+.rule-list .rule-details .rule-description {
+    display: inline-block;
+    padding: 5px 8px;
+    font-size: 13px;
+}
+
+.rule-list .rule-details .rule-quantity {
+    background: #5A5A5A;
+    color: white; 
+    font-weight: bold;
+}
+
+.rule-list .rule-details .rule-description {
+    font-weight: 600;
+    color: #5A5A5A;
+}
+
+.import.ui-dialog .ui-dialog-content {
+    background-color: #f3f3f3;
+}
+
+.import-list .button{
+    padding-left: 0;
+}
