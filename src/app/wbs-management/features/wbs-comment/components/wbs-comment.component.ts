@@ -24,6 +24,7 @@ export class WbsCommentComponent implements OnInit {
   }
 
   saveComment(){
+    console.log("saveComment");
     this.wbsManagementService.SaveCommentRequest(this.id,this.WBS_Comments);
     this.editing=false;
   }
