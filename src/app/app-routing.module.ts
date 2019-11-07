@@ -5,6 +5,7 @@ import { UserManagementComponent } from '@um/components/user-management.componen
 import { RollonComponent } from '@rollon/components/rollon.component';
 import { RolloffComponent } from '@rolloff/components/rolloff.component';
 import { WbsManagementComponent } from '@wbsmanagement/components/wbs-management.component';
+import { NewsComponent } from '@news/components/news.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   },
   {
     path: 'wbsmanagement', component: WbsManagementComponent
+  }
+  ,
+  {
+    path: 'news', component: NewsComponent
   }
 ];
 

@@ -19,6 +19,7 @@ import { AddWbsComponent } from '@wbsmanagement/features/add-wbs/components/add-
 import { WbsCommentComponent } from '@wbsmanagement/features/wbs-comment/components/wbs-comment.component';
 import { ImportComponent } from '@wbsmanagement/features/import/components/import.component';
 import { RulesComponent } from '@wbsmanagement/features/rules/components/rules.component';
+import { NewsComponent } from '@news/components/news.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { RulesComponent } from '@wbsmanagement/features/rules/components/rules.c
     AddWbsComponent,
     WbsCommentComponent,
     ImportComponent,
-    RulesComponent
+    RulesComponent,
+    NewsComponent
   ],
   imports: [
     BrowserModule,
