@@ -13,7 +13,6 @@ export class WbsCommentComponent implements OnInit {
 
 
   editing:boolean = false;
-  show:boolean = false;
 
   constructor(
     private wbsManagementService: WBSManagementService

@@ -19,6 +19,7 @@ export class NewsComponent implements OnInit {
   selectedTab: number = 0;
 
   secondsCounter = interval(8000);
+  actualPage:number = 0;
 
   constructor(private newsService: NewsService, ) {
     this.secondsCounter.subscribe(n =>
@@ -65,7 +66,9 @@ export class NewsComponent implements OnInit {
 
   }
 
-
+  actualItem(event:any){
+    this.actualPage = event.page;
+  }
   
 
   

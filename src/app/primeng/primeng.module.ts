@@ -26,6 +26,8 @@ import { CardModule } from 'primeng/card';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { SidebarModule } from 'primeng/sidebar';
 import { TabViewModule } from 'primeng/tabview';
+import { CarouselModule } from 'primeng/carousel';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 @NgModule({
   declarations: [],
@@ -55,7 +57,9 @@ import { TabViewModule } from 'primeng/tabview';
     CardModule,
     InputTextareaModule,
     SidebarModule,
-    TabViewModule
+    TabViewModule,
+    CarouselModule,
+    OverlayPanelModule
   ],
   exports:[
     TableModule,
@@ -79,7 +83,9 @@ import { TabViewModule } from 'primeng/tabview';
     CardModule,
     InputTextareaModule,
     SidebarModule,
-    TabViewModule
+    TabViewModule,
+    CarouselModule,
+    OverlayPanelModule
   ]
 })
 export class PrimengModule { }

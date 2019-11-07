@@ -1,4 +1,3 @@
-<p-card *ngIf="show">
   <textarea pInputTextarea [(ngModel)]="WBS_Comments" [disabled]="!editing"></textarea>
   <p-footer>
     <button *ngIf="!editing" pButton type="button" icon="pi pi-pencil"class="button b-third edit"
@@ -10,5 +9,4 @@
       tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="edition ui-button-danger"
       (click)="editing=false"></button>
   </p-footer>
-</p-card>
 

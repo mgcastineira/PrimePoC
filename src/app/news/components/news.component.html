@@ -9,3 +9,14 @@
 </p-tabView>
 <button pButton type="button" icon="pi pi-arrow-left" (click)="previousItem()" class="button b-main"></button>
 <button pButton type="button" icon="pi pi-arrow-right" (click)="nextItem()" class="button b-main"></button>
+
+<p-carousel [value]="allNewsList" easing="easeOutStrong" (onPage)="actualItem($event)"
+responsive="true" headerText="News   {{allNewsList.length}}  Actual page: {{actualPage+1}}" firstVisible="0" [pageLinks]="1"
+circular="circular" autoplayInterval="3000" numVisible="1">
+  <ng-template let-item pTemplate="item">
+    <h3>{{item.Title1}}</h3>
+    <h4>{{item.Title2}}</h4>
+    <img [src]="'./assets/img/'+item.ImageSourceUrl">
+    <div [innerHTML]="item.HTMLText"></div>
+  </ng-template>
+</p-carousel>

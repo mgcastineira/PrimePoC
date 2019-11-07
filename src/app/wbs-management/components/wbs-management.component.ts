@@ -1,6 +1,7 @@
 import {
   Component, OnDestroy, OnInit, ViewEncapsulation, ViewChild, QueryList,
   ViewChildren,
+  ElementRef,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Table } from 'primeng/table';
@@ -15,6 +16,7 @@ import { AddWbsComponent } from '@wbsmanagement/features/add-wbs/components/add-
 import { WbsCommentComponent } from '@wbsmanagement/features/wbs-comment/components/wbs-comment.component';
 import { ImportComponent } from '@wbsmanagement/features/import/components/import.component';
 import { RulesComponent } from '../features/rules/components/rules.component';
+import { OverlayPanel } from 'primeng/overlaypanel';
 
 @Component({
   selector: 'app-wbs-management',
@@ -27,12 +29,15 @@ import { RulesComponent } from '../features/rules/components/rules.component';
 })
 export class WbsManagementComponent implements OnInit {
   @ViewChild('wbsTable') table: Table;
-  @ViewChildren(WbsCommentComponent) query: QueryList<WbsCommentComponent>
+  @ViewChildren(WbsCommentComponent) query: QueryList<WbsCommentComponent>;
+  @ViewChildren("op") ops: QueryList<ElementRef>;
+
   protected serviceSubscription: Subscription;
 
   hiddenColumns: string[] = [
     "ID"
   ];
+  showColumnFilter:boolean = false;
 
   wbsTableRecords: IWBSManagement[] = [];
   wbsTableRecordsBackup: IWBSManagement[] = [];
@@ -116,9 +121,16 @@ export class WbsManagementComponent implements OnInit {
     });
   }
 
-  showComment(componentId: number) {
-    let comment = this.query.find(component => component.id == componentId);
-    comment.show = !comment.show;
+  showComment(event:any,componentId: number) {
+    let opsArray = this.ops.toArray() as any[];
+    //.filter(op => op.el.nativeElement.id==0)
+    let aux = opsArray.find(e => e.el.nativeElement.id == componentId);
+    if(aux!=undefined){
+      let op = aux as OverlayPanel;
+      op.toggle(event);
+    }
+    
+    // comment.show = !comment.show;
   }
 
   /* #region  table edition */
