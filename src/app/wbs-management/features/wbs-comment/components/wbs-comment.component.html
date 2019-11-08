@@ -1,7 +1,7 @@
   <textarea pInputTextarea [(ngModel)]="WBS_Comments" [disabled]="!editing"></textarea>
   <p-footer>
     <button *ngIf="!editing" pButton type="button" icon="pi pi-pencil"class="button b-third edit"
-      (click)="editing=true" iconPos="right" label="EDIT COMMENT"></button>
+      (click)="editing=true" iconPos="left" label="EDIT COMMENT"></button>
     <button *ngIf="editing" pButton type="button" icon="pi pi-check" pTooltip="Save"
       tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="edition ui-button-success" style="margin-right: .5em"
       (click)="saveComment()"></button>
