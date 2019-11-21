@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-
+@import '~bootstrap/dist/css/bootstrap.min.css';
 @import 'style_parts/fonts';
 @import 'style_parts/variables';
 
@@ -21,7 +21,15 @@ body {
         font-family: 'Graphik',
         sans-serif;
     }
+
+    h3 {
+      font-family: 'Graphik';
+      font-weight: 800;
+      font-size: 1.125rem;
+    }
 }
+
+
 
 .d-flex {
     display: flex;
@@ -267,4 +275,61 @@ body .ui-overlaypanel-content p-footer {
 }
 .import-list .button{
     padding-left: 0;
+}
+
+
+body .ui-tabview.ui-tabview-top .ui-tabview-nav li,
+body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li,
+body .ui-tabview.ui-tabview-left .ui-tabview-nav li,
+body .ui-tabview.ui-tabview-right .ui-tabview-nav li {
+  background-color: transparent !important;
+  border: 0;
+  border-bottom: 2px solid transparent;
+}
+
+.ui-tabview .ui-tabview-title {
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active,
+body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li.ui-state-active,
+body .ui-tabview.ui-tabview-left .ui-tabview-nav li.ui-state-active,
+body .ui-tabview.ui-tabview-right .ui-tabview-nav li.ui-state-active {
+    border: 0;
+    border-bottom: 2px solid #008FFF;
+}
+
+body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active a,
+body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active a:hover{
+    color: #212529;
+    
+}
+
+body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active:hover {
+    background-color: #f3f3f3 !important;
+    border: 0 !important;
+    border-bottom: 2px solid #008FFF !important;
+}
+
+body .ui-tabview.ui-tabview-top .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover,
+body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover,
+body .ui-tabview.ui-tabview-left .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover,
+body .ui-tabview.ui-tabview-right .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover {
+    border: 0; 
+    background-color: #f3f3f3 !important;
+}
+
+body .ui-tabview.ui-tabview-top .ui-tabview-nav li:focus,
+body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li:focus,
+body .ui-tabview.ui-tabview-left .ui-tabview-nav li:focus,
+body .ui-tabview.ui-tabview-right .ui-tabview-nav li:focus {
+  outline: 0;
+}
+
+body .ui-tabview .ui-tabview-panels {
+    background-color: #f3f3f3;
+    border: 0; 
+    border-top: 2px solid #ECECEC;
+    padding: 30px;
 }

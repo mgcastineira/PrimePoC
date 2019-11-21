@@ -20,6 +20,7 @@ import { WbsCommentComponent } from '@wbsmanagement/features/wbs-comment/compone
 import { ImportComponent } from '@wbsmanagement/features/import/components/import.component';
 import { RulesComponent } from '@wbsmanagement/features/rules/components/rules.component';
 import { NewsComponent } from '@news/components/news.component';
+import { MydataComponent } from './mydata/mydata.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { NewsComponent } from '@news/components/news.component';
     WbsCommentComponent,
     ImportComponent,
     RulesComponent,
-    NewsComponent
+    NewsComponent,
+    MydataComponent
   ],
   imports: [
     BrowserModule,

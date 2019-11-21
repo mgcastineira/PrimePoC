@@ -6,6 +6,7 @@ import { RollonComponent } from '@rollon/components/rollon.component';
 import { RolloffComponent } from '@rolloff/components/rolloff.component';
 import { WbsManagementComponent } from '@wbsmanagement/components/wbs-management.component';
 import { NewsComponent } from '@news/components/news.component';
+import { MydataComponent } from './mydata/mydata.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   ,
   {
     path: 'news', component: NewsComponent
+  }
+  ,
+  {
+    path: 'mydata', component: MydataComponent
   }
 ];
 
