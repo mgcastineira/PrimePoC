@@ -1,0 +1,30 @@
+<div ngfDrop selectable="true" (fileOver)="hasBaseDropZoneOver=$event" [(validDrag)]="validComboDrag"
+  (filesChange)="uploadFile()" [(files)]="tempFiles">
+  <p *ngIf="multipleFiles">Drag and Drop your files in here<br>
+    or</p>
+  <p *ngIf="!multipleFiles">Drag and Drop your only file in here<br>
+    or</p>
+  <button type="file" *ngIf="multipleFiles"> BROWSE FILES </button>
+  <button type="file" *ngIf="!multipleFiles"> BROWSE FILE </button>
+</div>
+
+<div *ngIf="resultFiles.length==0">
+  <br>
+</div>
+
+<div *ngIf="resultFiles.length>0">
+  <ul>
+    <li *ngFor="let item of resultFiles;let i=index">
+      <div>
+        <p>{{ item.name }}</p>
+        <button mat-button (click)="resultFiles.splice(i,1);">
+          <i (click)="removeFile()">
+            close
+          </i>
+        </button>
+      </div>
+
+    </li>
+  </ul>
+  <button mat-button (click)="resetFiles()">Reset</button>
+</div>

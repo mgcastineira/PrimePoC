@@ -1,0 +1,4 @@
+<app-file-upload (filesOut)="sendFilesToComponent($event)"
+[multipleFiles]="false" [filter]="allowedFileTypes"
+[fileName]="'WBSToUpdate.xlsx'"></app-file-upload>
+Total files: {{uploadedFiles.length}}
