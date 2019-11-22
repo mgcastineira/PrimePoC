@@ -6,7 +6,6 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { PrimengModule } from '@prime/primeng.module';
 
-import { ngfModule, ngf } from "angular-file"
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +20,10 @@ import { ImportComponent } from '@wbsmanagement/features/import/components/impor
 import { RulesComponent } from '@wbsmanagement/features/rules/components/rules.component';
 import { NewsComponent } from '@news/components/news.component';
 import { MydataComponent } from './mydata/mydata.component';
+import { FileUploadComponent } from './file-upload/controls/file-upload.component';
+import { UploadComponent } from './file-upload/components/upload.component';
+import { ngfModule } from 'angular-file';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +38,9 @@ import { MydataComponent } from './mydata/mydata.component';
     ImportComponent,
     RulesComponent,
     NewsComponent,
-    MydataComponent
+    MydataComponent,
+    FileUploadComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +49,8 @@ import { MydataComponent } from './mydata/mydata.component';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    PrimengModule
+    PrimengModule,
+    ngfModule
   ],
   providers: [],
   bootstrap: [

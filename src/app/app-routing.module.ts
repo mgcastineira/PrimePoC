@@ -7,6 +7,7 @@ import { RolloffComponent } from '@rolloff/components/rolloff.component';
 import { WbsManagementComponent } from '@wbsmanagement/components/wbs-management.component';
 import { NewsComponent } from '@news/components/news.component';
 import { MydataComponent } from './mydata/mydata.component';
+import { UploadComponent } from './file-upload/components/upload.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,9 @@ const routes: Routes = [
   ,
   {
     path: 'news', component: NewsComponent
+  },
+  {
+    path: 'upload', component: UploadComponent
   }
   ,
   {
