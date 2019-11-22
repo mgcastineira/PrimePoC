@@ -59,3 +59,23 @@
     padding: 3px 8px;
     margin-top: 16px;
 }
+
+.info_cell {
+    padding: 0 !important;
+}
+
+.user_info_button {
+    color: #949494; 
+    background-color: transparent;
+    border: 0;
+    
+    &:hover {
+        background-color: transparent !important;
+        color: #949494 !important;
+    }
+
+    &:focus {
+        box-shadow: none !important;
+        color: #5A5A5A;
+    }
+}

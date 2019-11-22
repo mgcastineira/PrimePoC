@@ -9,6 +9,7 @@
             <table>
               <thead class="ui-table-thead">
                 <tr>
+                  <th style="width: 30px;"></th>
                   <th class="ui-sortable-column ui-resizable-column" style="width: 25%;">NAME</th>
                   <th class="ui-sortable-column ui-resizable-column">PROJECT</th>
                   <th class="ui-sortable-column ui-resizable-column" style="width: 35%;">ENVIRONMENT ACCESS</th>
@@ -20,13 +21,79 @@
               </thead>
               <tbody class="ui-table-tbody">
                 <tr>
-                  <td class="ui-resizable-column textColumn">
-                    <p>María Carolina García de la Serrana</p>
-                    <p-overlayPanel #op>
-                      Content
-                    </p-overlayPanel>
+                  <td class="info_cell">
+                      <p-overlayPanel #op>
+                        <div class="row">
+                          <div class="col-md-6">
+                              <span class="ui-float-label">
+                                <input id="float-input" type="text" size="30" pInputText value="460012" disabled>
+                                <label for="float-input">EMPLOYEE Nº </label>
+                              </span>
+                          </div>
+                          <div class="col-md-6">
+                            <span class="ui-float-label">
+                              <input id="float-input" type="text" size="30" pInputText value="maria.carolina.garcia"
+                                disabled>
+                              <label for="float-input">ENTERPRISE ID </label>
+                            </span>
+                          </div>    
+                          <div class="col-md-6">
+                              <span class="ui-float-label">
+                                <input id="float-input" type="text" size="30" pInputText value="Accenture" disabled>
+                                <label for="float-input">COMPANY </label>
+                              </span>
+                          </div>
+                          <div class="col-md-6">
+                            <span class="ui-float-label">
+                              <input id="float-input" type="text" size="30" pInputText value="Barajas"
+                                disabled>
+                              <label for="float-input">LOCATION </label>
+                            </span>
+                          </div>    
+                          <div class="col-md-6">
+                              <span class="ui-float-label">
+                                <input id="float-input" type="text" size="30" pInputText value="María Carolina García"
+                                  disabled>
+                                <label for="float-input">DELIVERY LEAD </label>
+                              </span>
+                          </div>
+                          <div class="col-md-6">
+                            <span class="ui-float-label">
+                              <input id="float-input" type="text" size="30" pInputText value="María Carolina García"
+                                disabled>
+                              <label for="float-input">SPOC </label>
+                            </span>
+                          </div>    
+                          <div class="col-md-12">
+                              <span class="ui-float-label">
+                                <input id="float-input" type="text" size="30" pInputText  value="maria.carolina.garcia@airbus.com"  disabled>
+                                <label for="float-input">AIRBUS EMAIL </label>
+                              </span>
+                          </div>
+                          <div class="col-md-12">
+                            <span class="ui-float-label">
+                              <input id="float-input" type="text" size="30" pInputText value="Project1, Project2"
+                                disabled>
+                              <label for="float-input">ACTIVE PROJECTS </label>
+                            </span>
+                          </div>  
+                          <div class="col-md-6">
+                            <button class="button b-third">VIEW MORE </button>
+                          </div>  
+                          <div class="col-md-6">
+                            <div class="warning_date">
+                              COMPANY EXIT DATE<br>
+                              12/12/2019
+                            </div>
+                          </div>  
+                        </div>
+                      </p-overlayPanel>
 
-                    <button type="text" pButton label="Basic" (click)="op.toggle($event)"></button>
+                      <button type="text" pButton icon="pi pi-info-circle" (click)="op.toggle($event)" class="user_info_button"></button>
+                  </td>
+                  <td class="ui-resizable-column textColumn ">
+                    <p>María Carolina García de la Serrana</p>
+
                   </td>
                   <td class="ui-resizable-column textColumn">
                     <p>Project 1 </p>
