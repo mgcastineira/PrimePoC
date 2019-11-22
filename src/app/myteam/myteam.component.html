@@ -1,0 +1,106 @@
+<div class="container-fluid">
+  <h3>Users in My Team</h3>
+
+  <div class="myteam_main">
+    <p-tabView>
+      <p-tabPanel header="All">
+        <div class="ui-table">
+          <div class="ui-table-wrapper">
+            <table>
+              <thead class="ui-table-thead">
+                <tr>
+                  <th class="ui-sortable-column ui-resizable-column" style="width: 25%;">NAME</th>
+                  <th class="ui-sortable-column ui-resizable-column">PROJECT</th>
+                  <th class="ui-sortable-column ui-resizable-column" style="width: 35%;">ENVIRONMENT ACCESS</th>
+                  <th class="ui-sortable-column ui-resizable-column">DATA ACCESS REQUESTED</th>
+                  <th class="ui-sortable-column ui-resizable-column">TEAM EXIT DATE</th>
+                  <th class="ui-sortable-column ui-resizable-column"></th>
+
+                </tr>
+              </thead>
+              <tbody class="ui-table-tbody">
+                <tr>
+                  <td class="ui-resizable-column textColumn">
+                    <p>María Carolina García de la Serrana</p>
+                    <p-overlayPanel #op>
+                      Content
+                    </p-overlayPanel>
+
+                    <button type="text" pButton label="Basic" (click)="op.toggle($event)"></button>
+                  </td>
+                  <td class="ui-resizable-column textColumn">
+                    <p>Project 1 </p>
+                  </td>
+                  <td class="ui-resizable-column textColumn">
+                    <div class="environment production ">
+                      <p><i class="fa fa-ban" aria-hidden="true"></i> Production</p>
+
+                      <div class="environment_setting">
+                        <p-checkbox name="groupname" value="val1" label="Read"></p-checkbox><br>
+                        <p-checkbox name="groupname" value="val1" label="Write"></p-checkbox>
+
+                      </div>
+                    </div>
+                    <div class="environment non-production">
+                       <p><i class="fa fa-minus-circle" aria-hidden="true"></i> Non-production</p>
+                        <div class="environment_setting">
+                          <p-checkbox name="groupname" value="val1" label="Read"></p-checkbox><br>
+                          <p-checkbox name="groupname" value="val1" label="Write"></p-checkbox>
+
+                        </div>
+                    </div>
+                    <div class="environment others">
+                       <p><i class="fa fa-check-circle" aria-hidden="true"></i> Others</p>
+                        <div class="environment_setting">
+                          <p-checkbox name="groupname" value="val1" label="Read"></p-checkbox><br>
+                          <p-checkbox name="groupname" value="val1" label="Write"></p-checkbox>
+
+                        </div>
+                    </div>
+                    <div class="environment both">
+                       <p><i class="fa fa-ban" aria-hidden="true"></i> Both</p>
+                        <div class="environment_setting">
+                          <p-checkbox name="groupname" value="val1" label="Read"></p-checkbox><br>
+                          <p-checkbox name="groupname" value="val1" label="Write"></p-checkbox>
+
+                        </div>
+                    </div>
+                  </td>
+                  <td class="ui-resizable-column textColumn">
+                    <p>18/11/2019</p>
+                  </td>
+                  <td class="ui-resizable-column textColumn">
+                    <p>19/11/2019</p>
+                  </td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+       
+      </p-tabPanel>
+      <p-tabPanel header="Project 1">
+        <p class="supervisor">
+          Supervisor: Barquero García, Arturo
+        </p>
+      </p-tabPanel>
+      <p-tabPanel header="Project 2">
+         <p class="supervisor">
+           Supervisor: Marcos Escribano, Selene
+         </p>
+      </p-tabPanel>
+
+
+    </p-tabView>
+    <div class="buttons">
+       <button class="button b-second mr-16">DOWNLOAD MY TEAM COMPLIANT </button>
+       <button class="button b-main">ADD USER </button>
+    </div>
+      
+  </div>
+
+
+
+</div>

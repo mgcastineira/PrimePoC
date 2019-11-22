@@ -23,6 +23,7 @@ import { MydataComponent } from './mydata/mydata.component';
 import { FileUploadComponent } from './file-upload/controls/file-upload.component';
 import { UploadComponent } from './file-upload/components/upload.component';
 import { ngfModule } from 'angular-file';
+import { MyteamComponent } from './myteam/myteam.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { ngfModule } from 'angular-file';
     NewsComponent,
     MydataComponent,
     FileUploadComponent,
-    UploadComponent
+    UploadComponent,
+    MyteamComponent
   ],
   imports: [
     BrowserModule,

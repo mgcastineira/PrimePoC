@@ -1,0 +1,61 @@
+.myteam_main {
+    position: relative;
+
+    .buttons {
+        position: absolute;
+        top: 0; 
+        right: 0;
+    }
+
+     .ui-table .ui-table-wrapper {
+       padding: 0;
+     }
+}
+
+.mr-16 {
+    margin-right: 16px;
+}
+
+/* a eliminar luego*/
+.ui-table tbody>tr>td p {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 100%;
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        font-family: 'Graphik', sans-serif;
+        color: #212529;
+}
+.ui-table tbody>tr>td {
+    vertical-align: top;
+}
+/* a eliminar luego*/
+
+.environment {
+    display: inline-block;
+    margin-right: 16px;
+
+    .fa-ban {
+        color: #949494;
+    }
+    .fa-minus-circle {
+        color: #FFCC00;
+    }
+    .fa-check-circle {
+        color: #33D689;
+    }
+
+    .environment_setting {
+        margin-top: 10px;
+    }
+}
+
+.supervisor {
+    background-color: #5A5A5A;
+    color: #ffffff;
+    display: inline-block;
+    padding: 3px 8px;
+    margin-top: 16px;
+}

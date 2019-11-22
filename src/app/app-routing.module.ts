@@ -8,6 +8,7 @@ import { WbsManagementComponent } from '@wbsmanagement/components/wbs-management
 import { NewsComponent } from '@news/components/news.component';
 import { MydataComponent } from './mydata/mydata.component';
 import { UploadComponent } from './file-upload/components/upload.component';
+import { MyteamComponent } from './myteam/myteam.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
   ,
   {
     path: 'mydata', component: MydataComponent
+  }
+  ,
+  {
+    path: 'myteam', component: MyteamComponent
   }
 ];
 
