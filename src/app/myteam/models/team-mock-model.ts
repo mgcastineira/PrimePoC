@@ -25,7 +25,7 @@ export const TeamMock = [
     NonProductionEnvs: "0",
     OtherEnvs: "0",
     ProductionEnv: "1",
-    SameAppEnvs: false
+    SameAppEnvs: true
   },
   {
     ActivationDate: "2019-11-21T12:45:32Z",

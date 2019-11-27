@@ -24,7 +24,6 @@ import { FileUploadComponent } from './file-upload/controls/file-upload.componen
 import { UploadComponent } from './file-upload/components/upload.component';
 import { ngfModule } from 'angular-file';
 import { MyteamComponent } from './myteam/components/myteam.component';
-import { TeamEnvironmentComponent } from './myteam/features/team-environment/component/team-environment/team-environment.component';
 
 
 @NgModule({
@@ -43,8 +42,7 @@ import { TeamEnvironmentComponent } from './myteam/features/team-environment/com
     MydataComponent,
     FileUploadComponent,
     UploadComponent,
-    MyteamComponent,
-    TeamEnvironmentComponent
+    MyteamComponent
   ],
   imports: [
     BrowserModule,
