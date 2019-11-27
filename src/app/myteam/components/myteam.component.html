@@ -95,8 +95,10 @@
                           <i class="fa fa-minus-circle" *ngIf="rowData.environment.ProductionEnv=='1'" aria-hidden="true"></i>
                           <i class="fa fa-check-circle" *ngIf="rowData.environment.ProductionEnv=='2'" aria-hidden="true"></i> Production</p>
                           <div class="environment_setting">
-                            <p-checkbox name="production" [(ngModel)]="rowData.environment.ProductionEnvRead" binary="true" label="Read"></p-checkbox><br>
-                            <p-checkbox name="production" [(ngModel)]="rowData.environment.ProductionEnvWrite" binary="true" label="Write"></p-checkbox>
+                            <p-checkbox name="production" (onChange)="environmentChangeEvent(rowData,'ProductionEnvRead')"
+                            [(ngModel)]="rowData.environment.ProductionEnvRead" binary="true" label="Read"></p-checkbox><br>
+                            <p-checkbox name="production" (onChange)="environmentChangeEvent(rowData,'ProductionEnvWrite')"
+                            [(ngModel)]="rowData.environment.ProductionEnvWrite" binary="true" label="Write"></p-checkbox>
                           </div>
                         </ng-template>
                         <ng-template pTemplate="output">
@@ -116,8 +118,10 @@
                           <i class="fa fa-minus-circle" *ngIf="rowData.environment.NonProductionEnvs=='1'" aria-hidden="true"></i>
                           <i class="fa fa-check-circle" *ngIf="rowData.environment.NonProductionEnvs=='2'" aria-hidden="true"></i> Non-production</p>
                           <div class="environment_setting">
-                            <p-checkbox name="non-production" [(ngModel)]="rowData.environment.ProductionEnvRead" binary="true" label="Read"></p-checkbox><br>
-                            <p-checkbox name="non-production" [(ngModel)]="rowData.environment.ProductionEnvWrite" binary="true" label="Write"></p-checkbox>
+                            <p-checkbox name="non-production" (onChange)="environmentChangeEvent(rowData,'NonProductionEnvsRead')"
+                            [(ngModel)]="rowData.environment.NonProductionEnvsRead" binary="true" label="Read"></p-checkbox><br>
+                            <p-checkbox name="non-production" (onChange)="environmentChangeEvent(rowData,'NonProductionEnvsWrite')"
+                            [(ngModel)]="rowData.environment.NonProductionEnvsWrite" binary="true" label="Write"></p-checkbox>
                           
                           </div>
                         </ng-template>
@@ -138,9 +142,11 @@
                           <i class="fa fa-minus-circle" *ngIf="rowData.environment.OtherEnvs=='1'" aria-hidden="true"></i>
                           <i class="fa fa-check-circle" *ngIf="rowData.environment.OtherEnvs=='2'" aria-hidden="true"></i> Others</p>
                           <div class="environment_setting">
-                          <p-checkbox name="OtherEnvs" [(ngModel)]="rowData.environment.OtherEnvsRead"
+                          <p-checkbox name="OtherEnvs" (onChange)="environmentChangeEvent(rowData,'OtherEnvsRead')"
+                          [(ngModel)]="rowData.environment.OtherEnvsRead"
                           label="Read" binary="true" ></p-checkbox><br>
-                          <p-checkbox name="OtherEnvs" [(ngModel)]="rowData.environment.OtherEnvsWrite" 
+                          <p-checkbox name="OtherEnvs" (onChange)="environmentChangeEvent(rowData,'OtherEnvsWrite')"
+                          [(ngModel)]="rowData.environment.OtherEnvsWrite" 
                           label="Write" binary="true"></p-checkbox>
                           </div>
                         </ng-template>
@@ -159,14 +165,16 @@
                     <p-cellEditor>
                       <div class="environment both">
                         <ng-template pTemplate="input">
-                          <p><i class="fa fa-ban" aria-hidden="true"></i> Both</p>
+                          <p><i class="fa fa-ban" aria-hidden="true" *ngIf="rowData.environment.SameAppEnvs==false"></i>
+                          <i class="fa fa-check-circle" *ngIf="rowData.environment.SameAppEnvs==true" aria-hidden="true"></i> Both</p>
                           <div class="environment_setting">
                             <p-checkbox name="both" [(ngModel)]="rowData.environment.SameAppEnvs" binary="true" label="Write"></p-checkbox><br>
         
                           </div>
                         </ng-template>
                         <ng-template pTemplate="output">
-                          <p><i class="fa fa-ban" aria-hidden="true"></i> Both</p>
+                          <p><i class="fa fa-ban" aria-hidden="true" *ngIf="rowData.environment.SameAppEnvs==false"></i>
+                          <i class="fa fa-check-circle" *ngIf="rowData.environment.SameAppEnvs==true" aria-hidden="true"></i> Both</p>
                         </ng-template>
                   
                       </div>

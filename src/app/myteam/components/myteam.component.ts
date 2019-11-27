@@ -19,15 +19,15 @@ export class MyteamComponent implements OnInit {
   protected serviceSubscription: Subscription;
   @ViewChild('teamsTable') table: Table;
   dataSource: any[] = [];
-  summaryList1:any[]=[];
+  summaryList1: any[] = [];
   summaryList2: any[] = [];
 
   clonedSummaryList: { [s: string]: any; } = {};
 
   filterValue: string = "";
 
-  constructor(private teamServiceService: TeamService) { 
-    this.serviceSubscription = this.teamServiceService.message.subscribe(
+  constructor(private teamService: TeamService) {
+    this.serviceSubscription = this.teamService.message.subscribe(
       serviceResponse => {
         switch (serviceResponse.operation) {
           case TeamsOperations.GetInitialData:
@@ -43,7 +43,7 @@ export class MyteamComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.teamServiceService.getInitialData(1);
+    this.teamService.getInitialData(1);
   }
 
   /* #region  PrimeNg table row editing */
@@ -104,6 +104,88 @@ export class MyteamComponent implements OnInit {
     // this.filterActive();
   }
 
+  environmentChangeEvent(row: any, property: string) {
+    row = this.getEnvironmentValues(row, property);
+  }
+
+  private getEnvironmentValues(item: any, property: string): any {
+    switch (property) {
+      /* #region  Production */
+      case "ProductionEnvWrite":
+        if (item.environment.ProductionEnvWrite) {
+          item.environment.ProductionEnvRead = true;
+          item.environment.ProductionEnv = "2";
+        } else {
+          if (item.environment.ProductionEnvRead) {
+            item.environment.ProductionEnv = "1";
+          } else {
+            item.environment.ProductionEnv = "0";
+          }
+        }
+        break;
+      case "ProductionEnvRead":
+        if (item.environment.ProductionEnvRead) {
+          item.environment.ProductionEnvWrite = false;
+          item.environment.ProductionEnv = "1";
+        } else {
+          item.environment.ProductionEnv = "0";
+          item.environment.ProductionEnvWrite = false;
+        }
+        break;
+      /* #endregion */
+      /* #region  Non-Production */
+      case "NonProductionEnvsWrite":
+        if (item.environment.NonProductionEnvsWrite) {
+          item.environment.NonProductionEnvsRead = true;
+          item.environment.NonProductionEnvs = "2";
+        } else {
+          if (item.environment.NonProductionEnvsRead) {
+            item.environment.NonProductionEnvs = "1";
+          } else {
+            item.environment.NonProductionEnvs = "0";
+          }
+        }
+        break;
+      case "NonProductionEnvsRead":
+        if (item.environment.NonProductionEnvsRead) {
+          item.environment.NonProductionEnvsWrite = false;
+          item.environment.NonProductionEnvs = "1";
+        } else {
+          item.environment.NonProductionEnvs = "0";
+          item.environment.NonProductionEnvsWrite = false;
+        }
+        break;
+      /* #endregion */
+      /* #region  Other environments */
+      case "OtherEnvsWrite":
+        if (item.environment.OtherEnvsWrite) {
+          item.environment.OtherEnvsRead = true;
+          item.environment.OtherEnvs = "2";
+        } else {
+          if (item.environment.OtherEnvsRead) {
+            item.environment.OtherEnvs = "1";
+          } else {
+            item.environment.OtherEnvs = "0";
+          }
+        }
+        break;
+      case "OtherEnvsRead":
+        if (item.environment.OtherEnvsRead) {
+          item.environment.OtherEnvsWrite = false;
+          item.environment.OtherEnvs = "1";
+        } else {
+          item.environment.OtherEnvs = "0";
+          item.environment.OtherEnvsWrite = false;
+        }
+        break;
+      /* #endregion */
+    }
+
+
+
+    return item;
+  }
+
   private validateData(project: any): boolean {
     let result = true;
     // let md = undefined;
@@ -161,7 +243,7 @@ export class MyteamComponent implements OnInit {
     // });
   }
 
-/* #endregion */
+  /* #endregion */
 
   /* #region  PrimeNg table filter */
 

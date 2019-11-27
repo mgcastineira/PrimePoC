@@ -41,13 +41,49 @@ export class TeamService {
     });
   }
 
+  private setEnvironmentValues(item: any): any {
+    // Informamos environments
+    switch (item.environment.ProductionEnv) {
+      case "1":
+        item.environment.ProductionEnvRead = true;
+        break;
+      case "2":
+        item.environment.ProductionEnvRead = true;
+        item.environment.ProductionEnvWrite = true;
+        break;
+    }
+
+    switch (item.environment.NonProductionEnvs) {
+      case "1":
+        item.environment.NonProductionEnvRead = true;
+        break;
+      case "2":
+        item.environment.NonProductionEnvRead = true;
+        item.environment.NonProductionEnvWrite = true;
+        break;
+    }
+
+    switch (item.environment.OtherEnvs) {
+      case "1":
+        item.environment.OtherEnvsRead = true;
+        break;
+      case "2":
+        item.environment.OtherEnvsRead = true;
+        item.environment.OtherEnvsWrite = true;
+        break;
+    }
+    return item;
+  }
+
+  
+
   private getDatasource(projectList: any[],
     peopleList: any[],
     teamList: any[],
     peopleId: number): any {
 
-    let result:any = null;
-    let summaryList:any[]=[];
+    let result: any = null;
+    let summaryList: any[] = [];
     let resultDatasource: any[] = [];
 
     let proj = projectList.filter(p => p.SPOC == peopleId || p.Responsible == peopleId)
@@ -77,18 +113,18 @@ export class TeamService {
             activationDate: myTeamRecord.ActivationDate,
             deactivationDate: myTeamRecord.DeactivationDate,
             dateAccessReq: myTeamRecord.DateAccessReq,
-            environment:{
+            environment: {
               ProductionEnv: myTeamRecord.ProductionEnv,
               ProductionEnvRead: false,
               ProductionEnvWrite: false,
               NonProductionEnvs: myTeamRecord.NonProductionEnvs,
-              NonProductionEnvRead: false,
-              NonProductionEnvWrite: false,
+              NonProductionEnvsRead: false,
+              NonProductionEnvsWrite: false,
               OtherEnvs: myTeamRecord.OtherEnvs,
               OtherEnvsRead: false,
               OtherEnvsWrite: false,
               SameAppEnvs: myTeamRecord.SameAppEnvs,
-            },            
+            },
             wbsList: [],
             activeprojects: [],
             userData: null,
@@ -98,8 +134,9 @@ export class TeamService {
             error: false
           };
 
+          this.setEnvironmentValues(item);
           // Informamos environments
-          switch(item.environment.ProductionEnv){
+          switch (item.environment.ProductionEnv) {
             case "1":
               item.environment.ProductionEnvRead = true;
               break;
@@ -111,11 +148,11 @@ export class TeamService {
 
           switch (item.environment.NonProductionEnvs) {
             case "1":
-              item.environment.NonProductionEnvRead = true;
+              item.environment.NonProductionEnvsRead = true;
               break;
             case "2":
-              item.environment.NonProductionEnvRead = true;
-              item.environment.NonProductionEnvWrite = true;
+              item.environment.NonProductionEnvsRead = true;
+              item.environment.NonProductionEnvsWrite = true;
               break;
           }
 
@@ -186,11 +223,11 @@ export class TeamService {
         resultDatasource.push(group);
       }
     }
-    result = {dataSource:resultDatasource,summaryList:summaryList};
+    result = { dataSource: resultDatasource, summaryList: summaryList };
     return result;
   }
 
-  public getInitialData(peopleId:number) {
+  public getInitialData(peopleId: number) {
     console.log('gettin initial data');
     let call_1 = this.getWBSMock();
     let call_2 = this.getTeamMock();

@@ -11,7 +11,7 @@ export const TeamMock = [
     NonProductionEnvs: "2",
     OtherEnvs: "1",
     ProductionEnv: "2",
-    SameAppEnvs: false
+    SameAppEnvs: true
   },
   {
     ID: 5,
