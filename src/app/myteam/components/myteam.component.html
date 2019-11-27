@@ -1,0 +1,256 @@
+<div class="container-fluid">
+  <h3>Users in My Team</h3>
+
+  <div class="myteam_main">
+    <p-tabView>
+      <p-tabPanel header="All">
+        <div class="ui-table">
+          <div class="ui-table-wrapper">
+            <p-table #teamsTable [value]="summaryList1" [resizableColumns]="true" [paginator]="true" [rows]="7"
+              [paginatorPosition]="'bottom'" sortMode="single" dataKey="ID" editMode="row" [responsive]="true"
+              [globalFilterFields]="['name','project']">
+
+              <ng-template pTemplate="caption">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="search-bar">
+                      <i class="fa fa-search"></i>
+                      <div class="teamSearch_field ">
+                        <span class="ui-float-label">
+                          <input type="search" id="projectSearch" pInputText size="100" placeholder=""
+                            (input)="globalFilter($event.target.value)" [(ngModel)]="filterValue" autocomplete="off"
+                            class="floating-label-field floating-label-field--s3">
+                          <label for="projectSearch">Search in teams</label>
+                          <div class="blue_line"></div>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="right_side col-md-8">
+                    <button pButton label="EXPORT THESE PROJECTS" [disabled]="summaryList1.length==0"
+                      class="button b-second export2excel" (click)="exportToExcel()">
+                    </button>
+                    <button pButton type="button" (click)="addNewUser()" label="ADD USER"
+                      class="button b-main"></button>
+                  </div>
+                </div>
+              </ng-template>
+
+              <ng-template pTemplate="header">
+                <tr>
+                  <th pResizableColumn [pSortableColumn]="'name'" 
+                  [ngStyle]="{'width':'15%'}" class="">
+                    NAME
+                    <p-sortIcon [field]="'name'"></p-sortIcon>
+                  </th>
+                  <th pResizableColumn [pSortableColumn]="'project'" 
+                  [ngStyle]="{'width':'15%'}" class="">
+                    PROJECT
+                    <p-sortIcon [field]="'project'"></p-sortIcon>
+                  </th>
+                  <th pResizableColumn [ngStyle]="{'width':'35%'}" class="" colspan="4">
+                    ENVIRONMENT ACCESS
+
+                  </th>
+                  <th pResizableColumn [pSortableColumn]="'dateAccessReq'" [ngStyle]="{'width':'10%'}" class="">
+                    DATE ACCESS REQUESTED
+                    <p-sortIcon [field]="'dateAccessReq'"></p-sortIcon>
+                  </th>
+                  <th pResizableColumn [pSortableColumn]="'DeactivationDate'" [ngStyle]="{'width':'10%'}" class="">
+                    TEAM EXIT DATE
+                    <p-sortIcon [field]="'DeactivationDate'"></p-sortIcon>
+                  </th>
+                  <th [ngStyle]="{'width':'5%'}"></th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-rowData let-editing="editing" let-ri="rowIndex">
+                <tr [pEditableRow]="rowData">
+                  <td class="ui-resizable-column textColumn" pTooltip="{{rowData.name}}" tooltipPosition="bottom"
+                    showDelay="2000" hideDelay="500">
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <input pInputText type="text" [(ngModel)]="rowData.name" required>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.name}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td class="ui-resizable-column textColumn " pTooltip="{{rowData.project}}" tooltipPosition="bottom"
+                    showDelay="2000" hideDelay="500">
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                        <input pInputText type="text" [(ngModel)]="rowData.project" required>
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.project}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td pTooltip="Production environments" tooltipPosition="bottom" showDelay="1000" hideDelay="500">
+                    <p-cellEditor>
+                      <div class="environment production ">
+                        <ng-template pTemplate="input">
+                          <p><i class="fa fa-ban" aria-hidden="true" *ngIf="rowData.environment.ProductionEnv=='0'"></i>
+                          <i class="fa fa-minus-circle" *ngIf="rowData.environment.ProductionEnv=='1'" aria-hidden="true"></i>
+                          <i class="fa fa-check-circle" *ngIf="rowData.environment.ProductionEnv=='2'" aria-hidden="true"></i> Production</p>
+                          <div class="environment_setting">
+                            <p-checkbox name="production" [(ngModel)]="rowData.environment.ProductionEnvRead" binary="true" label="Read"></p-checkbox><br>
+                            <p-checkbox name="production" [(ngModel)]="rowData.environment.ProductionEnvWrite" binary="true" label="Write"></p-checkbox>
+                          </div>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                          <p><i class="fa fa-ban" aria-hidden="true" *ngIf="rowData.environment.ProductionEnv=='0'"></i>
+                          <i class="fa fa-minus-circle" *ngIf="rowData.environment.ProductionEnv=='1'" aria-hidden="true"></i>
+                          <i class="fa fa-check-circle" *ngIf="rowData.environment.ProductionEnv=='2'" aria-hidden="true"></i> Production</p>
+                        </ng-template>
+
+                      </div>
+                    </p-cellEditor>                                        
+                  </td>
+                  <td pTooltip="(Development, test, etc.)" tooltipPosition="bottom" showDelay="1000" hideDelay="500">
+                    <p-cellEditor>
+                      <div class="environment non-production">
+                        <ng-template pTemplate="input">
+                          <p><i class="fa fa-ban" aria-hidden="true" *ngIf="rowData.environment.NonProductionEnvs=='0'"></i>
+                          <i class="fa fa-minus-circle" *ngIf="rowData.environment.NonProductionEnvs=='1'" aria-hidden="true"></i>
+                          <i class="fa fa-check-circle" *ngIf="rowData.environment.NonProductionEnvs=='2'" aria-hidden="true"></i> Non-production</p>
+                          <div class="environment_setting">
+                            <p-checkbox name="non-production" [(ngModel)]="rowData.environment.ProductionEnvRead" binary="true" label="Read"></p-checkbox><br>
+                            <p-checkbox name="non-production" [(ngModel)]="rowData.environment.ProductionEnvWrite" binary="true" label="Write"></p-checkbox>
+                          
+                          </div>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                          <p><i class="fa fa-ban" aria-hidden="true" *ngIf="rowData.environment.NonProductionEnvs=='0'"></i>
+                          <i class="fa fa-minus-circle" *ngIf="rowData.environment.NonProductionEnvs=='1'" aria-hidden="true"></i>
+                          <i class="fa fa-check-circle" *ngIf="rowData.environment.NonProductionEnvs=='2'" aria-hidden="true"></i> Non-production</p>
+                        </ng-template>
+                  
+                      </div>
+                    </p-cellEditor>
+                  </td>
+                  <td pTooltip="(Environments with Client data, Sharepoint, email, etc.)" tooltipPosition="bottom" showDelay="1000" hideDelay="500">
+                    <p-cellEditor>
+                      <div class="environment others">
+                        <ng-template pTemplate="input">
+                          <p><i class="fa fa-ban" aria-hidden="true" *ngIf="rowData.environment.OtherEnvs=='0'"></i>
+                          <i class="fa fa-minus-circle" *ngIf="rowData.environment.OtherEnvs=='1'" aria-hidden="true"></i>
+                          <i class="fa fa-check-circle" *ngIf="rowData.environment.OtherEnvs=='2'" aria-hidden="true"></i> Others</p>
+                          <div class="environment_setting">
+                          <p-checkbox name="OtherEnvs" [(ngModel)]="rowData.environment.OtherEnvsRead"
+                          label="Read" binary="true" ></p-checkbox><br>
+                          <p-checkbox name="OtherEnvs" [(ngModel)]="rowData.environment.OtherEnvsWrite" 
+                          label="Write" binary="true"></p-checkbox>
+                          </div>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                          <p>
+                            <i class="fa fa-ban" aria-hidden="true" *ngIf="rowData.environment.OtherEnvs=='0'"></i>
+                            <i class="fa fa-minus-circle" *ngIf="rowData.environment.OtherEnvs=='1'" aria-hidden="true"></i>
+                            <i class="fa fa-check-circle" *ngIf="rowData.environment.OtherEnvs=='2'" aria-hidden="true"></i>
+                             Others</p>
+                        </ng-template>
+                  
+                      </div>
+                    </p-cellEditor>
+                  </td>
+                  <td pTooltip="Production and Non-production involving the same application" tooltipPosition="bottom" showDelay="1000" hideDelay="500">
+                    <p-cellEditor>
+                      <div class="environment both">
+                        <ng-template pTemplate="input">
+                          <p><i class="fa fa-ban" aria-hidden="true"></i> Both</p>
+                          <div class="environment_setting">
+                            <p-checkbox name="both" [(ngModel)]="rowData.environment.SameAppEnvs" binary="true" label="Write"></p-checkbox><br>
+        
+                          </div>
+                        </ng-template>
+                        <ng-template pTemplate="output">
+                          <p><i class="fa fa-ban" aria-hidden="true"></i> Both</p>
+                        </ng-template>
+                  
+                      </div>
+                    </p-cellEditor>
+                  </td>
+                  <td class="ui-resizable-column textColumn " pTooltip="{{rowData.dateAccessReq}}"
+                    tooltipPosition="bottom" showDelay="2000" hideDelay="500">
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.dateAccessReq|date:'yyyy-MM-dd' }}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td class="ui-resizable-column textColumn " pTooltip="{{rowData.deactivationDate}}"
+                    tooltipPosition="bottom" showDelay="2000" hideDelay="500">
+                    <p-cellEditor>
+                      <ng-template pTemplate="input">
+                      </ng-template>
+                      <ng-template pTemplate="output">
+                        {{rowData.deactivationDate|date:'yyyy-MM-dd'}}
+                      </ng-template>
+                    </p-cellEditor>
+                  </td>
+                  <td class="status_info">
+                    <i class=" pi-spin fa fa-spinner edition_loading" *ngIf="rowData.saving" aria-hidden="true"
+                      style="font-size: 1.7rem;"></i>
+                    <div class="error_msg" *ngIf="rowData.error">
+                      <i *ngIf="rowData.error" class="fa fa-exclamation-circle edition_error"></i>
+                      <p>Something went wrong. Try again</p>
+                    </div>
+                  </td>
+                  <td class="actions">
+                    <button *ngIf="!editing" pButton type="button" pInitEditableRow icon="pi pi-pencil" pTooltip="Edit"
+                      tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third  edit"
+                      (click)="onRowEditInit(rowData)"></button>
+                    <button *ngIf="editing" pButton type="button" pSaveEditableRow icon="pi pi-check" pTooltip="Save"
+                      tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="edition ui-button-success"
+                      style="margin-right: .5em" (click)="onRowEditSave(rowData)"></button>
+                    <button *ngIf="editing" pButton type="button" pCancelEditableRow icon="pi pi-times"
+                      pTooltip="Cancel" tooltipPosition="bottom" showDelay="1000" hideDelay="500"
+                      class="edition ui-button-danger" (click)="onRowEditCancel(rowData)"></button>
+                    <button *ngIf="!editing" pButton type="button" (click)="removeRow(rowData,rowIndex)"
+                      icon="pi pi-trash" pTooltip="Delete" class=" delete" tooltipPosition="bottom" showDelay="1000"
+                      hideDelay="500">
+                    </button>
+
+                  </td>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="summary">
+
+              </ng-template>
+              <ng-template pTemplate="paginatorright">
+                There are {{summaryList1?.length}} items
+              </ng-template>
+            </p-table>
+          </div>
+        </div>
+
+
+      </p-tabPanel>
+      <p-tabPanel header="Project 1">
+        <p class="supervisor">
+          Supervisor: Barquero García, Arturo
+        </p>
+      </p-tabPanel>
+      <p-tabPanel header="Project 2">
+        <p class="supervisor">
+          Supervisor: Marcos Escribano, Selene
+        </p>
+      </p-tabPanel>
+
+
+    </p-tabView>
+    <div class="buttons">
+      <button class="button b-second mr-16">DOWNLOAD MY TEAM COMPLIANT </button>
+      <button class="button b-main">ADD USER </button>
+    </div>
+
+  </div>
+
+
+
+</div>
