@@ -37,20 +37,24 @@
     display: inline-block;
     margin-right: 16px;
 
-    .fa-ban {
-        color: #949494;
-    }
-    .fa-minus-circle {
-        color: #FFCC00;
-    }
-    .fa-check-circle {
-        color: #33D689;
-    }
 
     .environment_setting {
         margin-top: 10px;
     }
 }
+
+    .fa-ban {
+      color: #949494;
+    }
+
+    .fa-minus-circle {
+      color: #FFCC00;
+    }
+
+    .fa-check-circle {
+      color: #33D689;
+    }
+
 
 .supervisor {
     background-color: #5A5A5A;
