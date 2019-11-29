@@ -254,7 +254,9 @@ export class TeamService {
           method: "getInitialData",
           payload: {
             response: results,
-            result: result
+            result: result,
+            peopleList:peopleList,
+            projectList:projectList
           },
           error: null,
           record: null

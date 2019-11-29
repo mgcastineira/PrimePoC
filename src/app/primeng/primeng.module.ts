@@ -28,6 +28,9 @@ import { SidebarModule } from 'primeng/sidebar';
 import { TabViewModule } from 'primeng/tabview';
 import { CarouselModule } from 'primeng/carousel';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { FieldsetModule } from 'primeng/fieldset';
+import { AccordionModule } from 'primeng/accordion';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 @NgModule({
   declarations: [],
@@ -35,7 +38,7 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     TableModule,
     MultiSelectModule,
     ButtonModule,
@@ -59,9 +62,12 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     SidebarModule,
     TabViewModule,
     CarouselModule,
-    OverlayPanelModule
+    OverlayPanelModule,
+    FieldsetModule,
+    AccordionModule,
+    ScrollPanelModule
   ],
-  exports:[
+  exports: [
     TableModule,
     MultiSelectModule,
     ButtonModule,
@@ -85,7 +91,10 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
     SidebarModule,
     TabViewModule,
     CarouselModule,
-    OverlayPanelModule
+    OverlayPanelModule,
+    FieldsetModule,
+    AccordionModule,
+    ScrollPanelModule
   ]
 })
 export class PrimengModule { }
