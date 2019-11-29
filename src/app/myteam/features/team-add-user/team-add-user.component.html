@@ -1,0 +1,11 @@
+<p-dropdown [options]="sortedProjectList" 
+[(ngModel)]="selectedProject" placeholder="Select a Project>" optionLabel="Project_Name"
+  [showClear]="true"></p-dropdown>
+<div class="row_buttons">
+  <button (click)="closeAddUserToTeam(null)" class="button b-third ">
+    CANCEL
+  </button>
+  <button class="button b-main" >SAVE
+    CHANGES</button>
+</div>
+{{selectedProject?selectedProject.ID:''}}

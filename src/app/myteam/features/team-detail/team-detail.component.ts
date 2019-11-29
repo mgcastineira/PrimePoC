@@ -1,81 +1,31 @@
-import { Component, OnInit, ViewChild, ViewChildren, QueryList, ElementRef } from '@angular/core';
-import { TabViewModule } from 'primeng/tabview';
-import { CheckboxModule } from 'primeng/checkbox';
-import { OverlayPanelModule } from 'primeng/overlaypanel';
-import { TeamsOperations } from '../models/teams-operations.model';
-import { TeamService } from '../services/team-service'
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Table } from 'primeng/table';
-import { TeamAddUserComponent } from '../features/team-add-user/team-add-user.component';
-import { DialogService, DynamicDialogConfig } from 'primeng/api';
-import { ConfirmationService } from 'primeng/api';
-
-
 
 @Component({
-  selector: 'app-myteam',
-  templateUrl: './myteam.component.html',
-  styleUrls: ['./myteam.component.scss'],
-  providers: [
-    DialogService,
-    ConfirmationService
-  ]
+  selector: 'app-team-detail',
+  templateUrl: './team-detail.component.html',
+  styleUrls: ['./team-detail.component.scss']
 })
-export class MyteamComponent implements OnInit {
+export class TeamDetailComponent implements OnInit {
   protected serviceSubscription: Subscription;
-  @ViewChild('teamsTable') table: Table;
-  dataSource: any[] = [];
-  summaryList1: any[] = [];
-  summaryList2: any[] = [];
-  clonedSummaryList: { [s: string]: any; } = {};
+  @ViewChild('table') table: Table;
+  @Input() datasource: any[] = [];
+  teamUsersList1: any[] = [];
+  teamUsersList2: any[] = [];
 
-  sortedPeopleList: any[] = [];
-  sortedProjectList: any[] = [];
+  clonedUsersList: { [s: string]: any; } = {};
 
   filterValue: string = "";
-
-  constructor(private teamService: TeamService,
-    private dialogService: DialogService,
-    private confirmationService: ConfirmationService) {
-    this.serviceSubscription = this.teamService.message.subscribe(
-      serviceResponse => {
-        switch (serviceResponse.operation) {
-          case TeamsOperations.GetInitialData:
-            if (serviceResponse.ok) {
-              this.dataSource = serviceResponse.payload.result.dataSource;
-              this.summaryList1 = serviceResponse.payload.result.summaryList;
-              this.summaryList2 = JSON.parse(JSON.stringify(this.summaryList1));
-
-              this.sortedPeopleList = serviceResponse.payload.peopleList.sort((s1, s2) => {
-                if (s1.Title.toLowerCase() > s2.Title.toLowerCase()) { return 1; }
-                if (s1.Title.toLowerCase() < s2.Title.toLowerCase()) { return -1; }
-                return 0;
-              });
-
-              this.sortedProjectList = serviceResponse.payload.projectList.sort((s1, s2) => {
-                if (s1.Project_Name != undefined
-                  && s1.Project_Name != undefined
-                  && (s1.Project_Name.toLowerCase() > s2.Project_Name.toLowerCase())) { return 1; }
-                if (s1.Project_Name != undefined
-                  && s1.Project_Name != undefined
-                  && (s1.Project_Name.toLowerCase() < s2.Project_Name.toLowerCase())) { return -1; }
-                return 0;
-              });
-              this.table.reset();
-            }
-            break;
-        }
-      }
-    );
-  }
+  constructor() { }
 
   ngOnInit() {
-    this.teamService.getInitialData(1);
+    this.teamUsersList1 = this.datasource;
+    this.teamUsersList2 = JSON.parse(JSON.stringify(this.teamUsersList1));
   }
-
   /* #region  PrimeNg table row editing */
   onRowEditInit(row: any) {
-    this.clonedSummaryList[row.ID] = { ...row };
+    this.clonedUsersList[row.ID] = { ...row };
   }
 
   onRowEditSave(row: any) {
@@ -120,15 +70,14 @@ export class MyteamComponent implements OnInit {
   }
 
   onRowEditCancel(row: any) {
-    let clonedProject = this.clonedSummaryList[row.ID];
-    let pToCancel = this.summaryList2.find(t => t.ID == row.ID);
+    let clonedProject = this.clonedUsersList[row.ID];
+    let pToCancel = this.teamUsersList2.find(t => t.ID == row.ID);
     pToCancel.saving = false;
-    let recordToCancel = this.summaryList1.find(t => t.ID == row.ID);
-    let indexAux = this.summaryList1.indexOf(recordToCancel);
-    this.summaryList1[indexAux] = JSON.parse(JSON.stringify(pToCancel));//Object.assign({}, pToCancel);
-    delete this.clonedSummaryList[row.ID];
+    let recordToCancel = this.teamUsersList1.find(t => t.ID == row.ID);
+    let indexAux = this.teamUsersList1.indexOf(recordToCancel);
+    this.teamUsersList1[indexAux] = JSON.parse(JSON.stringify(pToCancel));
+    delete this.clonedUsersList[row.ID];
     this.table.reset();
-    // this.filterActive();
   }
 
   environmentChangeEvent(row: any, property: string) {
@@ -272,7 +221,7 @@ export class MyteamComponent implements OnInit {
 
   /* #endregion */
 
-  /* #region  PrimeNg table filter */
+  //* #region  PrimeNg table filter */
 
   globalFilter(value: any) {
     this.table.reset();
@@ -285,24 +234,4 @@ export class MyteamComponent implements OnInit {
   }
 
   /* #endregion */
-
-  addUserToTeam() {
-    let config = new DynamicDialogConfig();
-    config.data = {
-      sortedPeopleList: this.sortedPeopleList,
-      sortedProjectList: this.sortedProjectList
-    };
-    config.showHeader = false;
-    config.dismissableMask = true;
-    config.closeOnEscape = true;
-    config.transitionOptions = "400ms cubic-bezier(0.25, 0.8, 0.25, 1)";
-
-    const ref = this.dialogService.open(TeamAddUserComponent, config);
-
-    ref.onClose.subscribe((result: any) => {
-      if (result) {
-        this.ngOnInit();
-      }
-    });
-  }
 }

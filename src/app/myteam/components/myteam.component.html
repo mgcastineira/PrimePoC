@@ -52,7 +52,7 @@
                     ENVIRONMENT ACCESS
 
                   </th>
-                  <th pResizableColumn [pSortableColumn]="'dateAccessReq'" [ngStyle]="{'width':'10%'}" class="">
+                  <th pResizableColumn [pSortableColumn]="'dateAccessReq'" [ngStyle]="{'width':'15%'}" class="">
                     DATE ACCESS REQUESTED
                     <p-sortIcon [field]="'dateAccessReq'"></p-sortIcon>
                   </th>
@@ -239,22 +239,18 @@
 
 
       </p-tabPanel>
-      <p-tabPanel header="Project 1">
-        <p class="supervisor">
-          Supervisor: Barquero García, Arturo
+      <p-tabPanel header="{{team.project}}" *ngFor="let team of dataSource">
+        <p class="supervisor" *ngIf="team.asResponsible">
+          Supervisor: {{team.spocName}}
         </p>
-      </p-tabPanel>
-      <p-tabPanel header="Project 2">
-        <p class="supervisor">
-          Supervisor: Marcos Escribano, Selene
-        </p>
+        <app-team-detail [datasource]="team.items"></app-team-detail>
       </p-tabPanel>
 
 
     </p-tabView>
     <div class="buttons">
       <button class="button b-second mr-16">DOWNLOAD MY TEAM COMPLIANT </button>
-      <button class="button b-main">ADD USER </button>
+      <button class="button b-main" (click)="addUserToTeam()">ADD USER </button>
     </div>
 
   </div>

@@ -92,7 +92,7 @@ export const ProjectMock = [
     Responsible: 3,
     MD: 3,
     Project_Name: "EPAM ASG Prueba",
-    SPOC: 3
+    SPOC: 1
   }
 ]
 

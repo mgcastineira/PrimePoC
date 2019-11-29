@@ -24,6 +24,8 @@ import { FileUploadComponent } from './file-upload/controls/file-upload.componen
 import { UploadComponent } from './file-upload/components/upload.component';
 import { ngfModule } from 'angular-file';
 import { MyteamComponent } from './myteam/components/myteam.component';
+import { TeamDetailComponent } from './myteam/features/team-detail/team-detail.component';
+import { TeamAddUserComponent } from './myteam/features/team-add-user/team-add-user.component';
 
 
 @NgModule({
@@ -42,7 +44,9 @@ import { MyteamComponent } from './myteam/components/myteam.component';
     MydataComponent,
     FileUploadComponent,
     UploadComponent,
-    MyteamComponent
+    MyteamComponent,
+    TeamDetailComponent,
+    TeamAddUserComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +66,8 @@ import { MyteamComponent } from './myteam/components/myteam.component';
   entryComponents: [
     AddWbsComponent,
     ImportComponent,
-    RulesComponent
+    RulesComponent,
+    TeamAddUserComponent
   ]
 })
 export class AppModule { }
