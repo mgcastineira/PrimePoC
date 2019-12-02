@@ -20,7 +20,7 @@
   .rollon_box {
     width: 1050px;
     height: 450px;
-    background: #f8f8f8;
+    background: $_grey_light;
     display: flex;
     justify-content: flex-start;
   }
@@ -52,7 +52,7 @@
     p {
       margin: 0;
       font-size: 13px;
-      font-weight: 600;
+      font-weight: $_font_regular;
     }
   }
 
@@ -83,7 +83,7 @@
           color: $_grey_regular;
           text-decoration: none;
           font-size: 14px;
-          transition: all .5s ease;
+          @extend %main-transition;
           cursor: pointer;
 
           .step_indicator {
@@ -91,7 +91,7 @@
             width: 20px;
             height: 20px;
             vertical-align: middle;
-            border: 2px solid transparent;
+            border: 2px solid $_transparent;
             margin-top: -8px;
             margin-right: 10px;
 
@@ -121,9 +121,9 @@
 
         &.active {
           a {
-            color: #212529;
+            color: $_font_color;
             font-size: 22px;
-            font-weight: 600;
+            font-weight: $_font_regular;
 
             .step_indicator:after {
               width: 20px;
@@ -152,7 +152,7 @@
 
           a {
             color: $_blue;
-            font-weight: 600;
+            font-weight: $_font_regular;
 
             .step_indicator:after {
 
@@ -229,19 +229,19 @@
 .step_title {
   h4 {
     font-size: 22px;
-    font-weight: 600;
+    font-weight: $_font_regular;
     margin-top: 5px;
   }
 
   h2 {
     font-size: 32px;
-    font-weight: 600;
+    font-weight: $_font_regular;
     margin-top: 5px;
   }
 
   p {
     font-size: 18px;
-    font-weight: 400;
+    font-weight: $_font_light;
     margin-top: 30px
   }
 }
@@ -298,7 +298,7 @@
 .button.download-all {
   padding-left: 0;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: $_font_regular;
 }
 
 .more_info {
@@ -341,7 +341,7 @@
   margin-bottom: 8px;
   display: flex;
   align-items: center;
-  transition: all .5s ease;
+  @extend %main-transition;
 }
 
 .training_item {
@@ -371,10 +371,10 @@
     top: 0;
     left: 0;
     font-size: 30px;
-    font-weight: 600;
+    font-weight: $_font_regular;
     text-align: center;
     line-height: 55px;
-    transition: all .5s ease;
+    @extend %main-transition;
   }
 
   &:nth-child(1) {
@@ -413,14 +413,14 @@
   .training_category {
     font-size: 12px;
     color: $_grey_dark;
-    transition: all .5s ease;
+    @extend %main-transition;
   }
 
   .training_title {
     font-size: 16px;
     color: $_blue;
-    font-weight: 600;
-    transition: all .5s ease;
+    font-weight: $_font_regular;
+    @extend %main-transition;
   }
 
 }
@@ -486,7 +486,7 @@
       &.loaded {
         a {
           color: $_blue;
-          font-weight: 600;
+          font-weight: $_font_regular;
         }
       }
 

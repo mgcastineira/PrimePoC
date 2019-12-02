@@ -1,0 +1,61 @@
+body .ui-tabview.ui-tabview-top .ui-tabview-nav li,
+body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li,
+body .ui-tabview.ui-tabview-left .ui-tabview-nav li,
+body .ui-tabview.ui-tabview-right .ui-tabview-nav li {
+  @extend %border-zero;
+  background-color: $_transparent !important;
+  border-bottom: 2px solid $_transparent;
+}
+
+.ui-tabview .ui-tabview-title {
+  font-weight: $_font_light;
+  font-size: 1rem;
+}
+
+body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active,
+body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li.ui-state-active,
+body .ui-tabview.ui-tabview-left .ui-tabview-nav li.ui-state-active,
+body .ui-tabview.ui-tabview-right .ui-tabview-nav li.ui-state-active {
+  @extend %border-zero;
+  border-bottom: 2px solid $_blue;
+}
+
+body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active a,
+body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active a:hover {
+  color: $_font_color;
+
+}
+
+body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active:hover {
+  background-color: $_grey_light_2 !important;
+  border: 0 !important;
+  border-bottom: 2px solid $_blue !important;
+}
+
+body .ui-tabview.ui-tabview-top .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover,
+body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover,
+body .ui-tabview.ui-tabview-left .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover,
+body .ui-tabview.ui-tabview-right .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover {
+  @extend %border-zero;
+  background-color: $_grey_light_2 !important;
+}
+
+body .ui-tabview.ui-tabview-top .ui-tabview-nav li:focus,
+body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li:focus,
+body .ui-tabview.ui-tabview-left .ui-tabview-nav li:focus,
+body .ui-tabview.ui-tabview-right .ui-tabview-nav li:focus {
+  outline: 0;
+}
+
+body .ui-tabview .ui-tabview-panels {
+  @extend %border-zero;
+  background-color: $_grey_light_2;
+  border-top: 2px solid $_border_color;
+  padding: 30px;
+}
+
+body .myteam_main .ui-tabview .ui-tabview-panels {
+  @extend %border-zero;
+  background-color: $_transparent;
+  padding: 10px 0;
+}

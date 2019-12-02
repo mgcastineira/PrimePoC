@@ -4,13 +4,24 @@ $_blue: #008FFF;
 $_red: #ff0000;
 $_green: #1FD27C;
 $_grey_dark: #707070;
+$_grey_dark_2: #5A5A5A;
 $_grey_regular: #949494;
+$_grey_regular_2: #484849;
 $_grey_light: #f8f8f8;
+$_grey_light_2: #f3f3f3;
 $_font_color: #212529;
 $_blue_transparent: #cfe7f970;
+$_border_color: #ECECEC;
+$_transparent: transparent;
 
 $_main_blue1: #199aff;
 $_main_blue2: #6eb9f7;
+
+$_font_family: 'Graphik', sans-serif;
+$_font_light: 400;
+$_font_regular: 600;
+$_font_bold: 800;
+$_font_black: 900;
 
 
 /*animations*/
@@ -92,4 +103,37 @@ $_main_blue2: #6eb9f7;
   100% {
     opacity: 1;
   }
+}
+
+
+
+
+/*mixins*/
+
+@mixin breakpoint($point) {
+  @if $point==tablet {
+    @media (min-width: 768px) and (max-width: 1024px) {
+      @content;
+    }
+  }
+
+  @else if $point==phone {
+    @media (max-width: 767px) {
+      @content;
+    }
+  }
+
+  @else if $point==desktop {
+    @media (min-width: 1025px) {
+      @content;
+    }
+  }
+}
+
+%border-zero {
+  border: 0;
+}
+
+%main-transition {
+  transition: all .5s ease;
 }

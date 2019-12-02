@@ -14,17 +14,15 @@ body {
     height: 100%; 
     margin: 0 auto;
     margin: 0 auto;
-            font-family: 'Graphik',
-            sans-serif;
+    font-family: $_font_family;
 
     .ui-widget {
-        font-family: 'Graphik',
-        sans-serif;
+      font-family: $_font_family;
     }
 
     h3 {
-      font-family: 'Graphik';
-      font-weight: 800;
+      font-family: $_font_family;
+      font-weight: $_font_bold;
       font-size: 1.125rem;
     }
 }
@@ -46,34 +44,27 @@ body {
   display: none;
 }
 
+.mr-16 {
+  margin-right: 16px !important;
+}
+
 
 @import 'style_parts/buttons';
 @import 'style_parts/inputs';
 @import 'style_parts/table';
 @import 'style_parts/dialog';
+@import 'style_parts/tabs';
 @import 'style_parts/rollon';
 
-// nuevos //
 
-.third-icon.ui-button {
-    img {
-        margin-right: 8px
-    }
-  .ui-button-text {
-    display: inline-block;
-  }
-}
 
-.mr-16 {
-    margin-right: 16px !important;
-}
 
 .deleted-wbs {
     display: inline-block;
 
     p {
         display: inline-block;
-        font-weight: 400;
+        font-weight: $_font_light;
         font-size: 12px;
     }
 }
@@ -84,14 +75,7 @@ body {
         margin-top: 20px;
 }
 
-.ui-table .ui-table-wrapper {
-  overflow: visible;
-}
 
-.ui-table-wrapper table .ui-table-tbody td {
-  overflow: visible;
-
-}
 
 .comentario .ui-card {
     position: absolute;
@@ -118,31 +102,21 @@ body {
 
 
  .ui-overlaypanel-content  textarea {
+    @extend %border-zero;
     width: 100%;
-    border: 0;
-    border-bottom: 1px solid #212529;
-    border-radius: 0;
+    border-bottom: 1px solid $_font_color;
+    
 }
 
 .ui-overlaypanel-content textarea:disabled,
 .comentario .ui-card .ui-card-body .ui-card-content textarea:disabled {
-    color: #212529;
-    border: 0;
+    color: $_font_color;
+    @extend %border-zero;
     opacity: 1;
-    font-weight: 600;
+    font-weight: $_font_regular;
 }
 
-body .ui-button.ui-button-text-icon-left .ui-button-text {
-    padding-left: 16px;
-}
 
-body .ui-button-text-icon-left .ui-button-icon-left,
-body .ui-button.ui-state-default.ui-button-success, 
-body .ui-button.ui-state-default.ui-button-danger {
-    font-size: 1.5rem;
-    transition: all .5s ease;
-    
-}
 
 .comentario .ui-card .ui-card-body .ui-card-footer .button {
     width: 100%;
@@ -156,47 +130,6 @@ body .ui-button.ui-state-default.ui-button-danger {
 }
 .comentario .ui-card .ui-card-body .ui-card-footer .ui-button-text {
     display: inline-block;
-}
-
-body .ui-button.ui-state-default.ui-button-success,
-body .ui-buttonset.ui-button-success>.ui-button.ui-state-default {
-    border: 0; 
-    background: transparent;
-    color: #33D689; 
-    margin: 0 !important;
-    
-}
-
-body .ui-button.ui-state-default.ui-button-success:hover,
-body .ui-buttonset.ui-button-success>.ui-button.ui-state-default:hover {
-    background: transparent !important;
-    color: #33D689 !important;
-    transform: scale(1.3)
-}
-
-body .ui-table table .ui-table-tbody tr td p-celleditor .ui-chkbox-icon.pi {
-  font-size: 12px;
-}
-
-body .ui-table table .ui-table-tbody tr td p-celleditor .pi,
-body .ui-table table .ui-table-tbody tr td a .pi {
-    font-size: 32px;
-}
-
-
-
-body .ui-button.ui-state-default.ui-button-danger,
-body .ui-buttonset.ui-button-danger>.ui-button.ui-state-default {
-        border: 0;
-        background: transparent;
-        color: #ff0000;
-        margin: 0 !important;
-}
-body .ui-button.ui-state-default.ui-button-danger:hover,
-body .ui-buttonset.ui-button-danger>.ui-button.ui-state-default:hover {
-  background: transparent !important;
-  color: #ff0000 !important;
-  transform: scale(1.1)
 }
 
 body .ui-overlaypanel-content p-footer {
@@ -228,14 +161,11 @@ body .ui-overlaypanel-content p-footer {
 }
 
 .add-wbs .ui-float-label label {
-    font-weight: 600;
-    color: #949494;
+    font-weight: $_font_regular;
+    color: $_grey_regular;
 }
 
-.row_buttons {
-    text-align: right;
-    margin-top: 40px;
-}
+
 
 .rule-list, .import-list {
     list-style: none;
@@ -243,7 +173,7 @@ body .ui-overlaypanel-content p-footer {
 }
 
 .rule-list label {
-    font-weight: 600;
+    font-weight: $_font_regular;
     padding-left: 8px;
     font-size: 14px;
     margin-left: 0;
@@ -253,7 +183,7 @@ body .ui-overlaypanel-content p-footer {
     margin-left: 22px;
     margin-top: 8px;
     width: 92%;
-    background: #F8F8F8;
+    background: $_grey_light;
 }
 .rule-list .rule-details .rule-quantity,
 .rule-list .rule-details .rule-description {
@@ -263,18 +193,18 @@ body .ui-overlaypanel-content p-footer {
 }
 
 .rule-list .rule-details .rule-quantity {
-    background: #5A5A5A;
+    background: $_grey_dark_2;
     color: white; 
-    font-weight: bold;
+    font-weight: $_font_bold;
 }
 
 .rule-list .rule-details .rule-description {
-    font-weight: 600;
-    color: #5A5A5A;
+    font-weight: $_font_regular;
+    color: $_grey_dark_2;
 }
 
 .import.ui-dialog .ui-dialog-content {
-    background-color: #f3f3f3;
+    background-color: $_grey_light_2;
 }
 .import-list li {
     margin-bottom: 8px;
@@ -284,64 +214,3 @@ body .ui-overlaypanel-content p-footer {
 }
 
 
-body .ui-tabview.ui-tabview-top .ui-tabview-nav li,
-body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li,
-body .ui-tabview.ui-tabview-left .ui-tabview-nav li,
-body .ui-tabview.ui-tabview-right .ui-tabview-nav li {
-  background-color: transparent !important;
-  border: 0;
-  border-bottom: 2px solid transparent;
-}
-
-.ui-tabview .ui-tabview-title {
-    font-weight: 400;
-    font-size: 1rem;
-}
-
-body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active,
-body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li.ui-state-active,
-body .ui-tabview.ui-tabview-left .ui-tabview-nav li.ui-state-active,
-body .ui-tabview.ui-tabview-right .ui-tabview-nav li.ui-state-active {
-    border: 0;
-    border-bottom: 2px solid #008FFF;
-}
-
-body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active a,
-body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active a:hover{
-    color: #212529;
-    
-}
-
-body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active:hover {
-    background-color: #f3f3f3 !important;
-    border: 0 !important;
-    border-bottom: 2px solid #008FFF !important;
-}
-
-body .ui-tabview.ui-tabview-top .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover,
-body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover,
-body .ui-tabview.ui-tabview-left .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover,
-body .ui-tabview.ui-tabview-right .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover {
-    border: 0; 
-    background-color: #f3f3f3 !important;
-}
-
-body .ui-tabview.ui-tabview-top .ui-tabview-nav li:focus,
-body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li:focus,
-body .ui-tabview.ui-tabview-left .ui-tabview-nav li:focus,
-body .ui-tabview.ui-tabview-right .ui-tabview-nav li:focus {
-  outline: 0;
-}
-
-body .ui-tabview .ui-tabview-panels {
-    background-color: #f3f3f3;
-    border: 0; 
-    border-top: 2px solid #ECECEC;
-    padding: 30px;
-}
-
-body .myteam_main .ui-tabview .ui-tabview-panels {
-  border: 0;
-  background-color: transparent;
-  padding: 10px 0;
-}

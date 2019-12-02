@@ -7,16 +7,16 @@ body {
     flex: auto;
     min-width: 0;
     margin-top: 20px;
-    font-family: 'Graphik', sans-serif;
+    font-family: $_font_family;
 
 
     input {
       &.ui-inputtext {
         font: inherit;
         background: 0 0;
-        background-color: transparent;
+        background-color: $_transparent;
         color: currentColor;
-        border: none;
+        @extend %border-zero;
         outline: 0;
         padding: 0;
         padding-bottom: 8px;
@@ -29,7 +29,7 @@ body {
         border-bottom: 1px solid black;
         transition: border .3s cubic-bezier(0.075, 0.82, 0.165, 1);
         border-radius: 0;
-        font-weight: 400;
+        font-weight: $_font_light;
 
         &:focus {
           &~div {
@@ -90,7 +90,7 @@ body {
   .ui-float-label>.ui-inputwrapper-focus~label,
   .ui-float-label>.ui-inputwrapper-filled~label {
     
-    font-family: 'Graphik', sans-serif;
+    font-family: $_font_family;
     font-size: 12px;
     top: -.3em;
   }
@@ -100,7 +100,7 @@ body {
   }
 
   .ui-dropdown {
-    border: 0;
+    @extend %border-zero;
     border-bottom: 1px solid black;
     transition: border .5s cubic-bezier(0.075, 0.82, 0.165, 1);
 
@@ -202,7 +202,7 @@ body {
           color: $_font_color;
           font-size: 12px;
           top: 20px;
-          font-weight: 600;
+          font-weight: $_font_regular;
       }
       .ui-inputwrapper-filled{
         &~label {
@@ -223,9 +223,9 @@ body {
           right: 0;
 
           &.ui-button {
-              background-color: transparent;
+              background-color: $_transparent;
               color: $_font_color;
-              border: 0;
+              @extend %border-zero;
 
               &:focus {
                   box-shadow: none;
@@ -248,12 +248,12 @@ body p-multiselect.ng-dirty.ng-invalid>.ui-multiselect,
 body p-spinner.ng-dirty.ng-invalid>.ui-inputtext,
 body p-selectbutton.ng-dirty.ng-invalid .ui-button,
 body p-togglebutton.ng-dirty.ng-invalid .ui-button {
-  border: 0; 
-  border-bottom: 1px solid #ff0000;
+  @extend %border-zero;
+  border-bottom: 1px solid $_red;
 }
 
 .pi-exclamation-triangle {
-  color: #ff0000;
+  color: $_red;
   position: absolute;
   right: 0;
   opacity: 0;

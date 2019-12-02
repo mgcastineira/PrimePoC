@@ -1,13 +1,13 @@
 body {
   .ui-table {
     .ui-paginator-bottom {
+      @extend %border-zero;
       background-color: white !important;
       display: flex;
       justify-content: flex-end;
       align-items: center;
       padding: 8px 15px;
       box-shadow: 0 8px 6px 6px rgba(0, 0, 0, 0.15);
-      border: 0;
 
       .ui-paginator-pages {
         margin-bottom: 14px;
@@ -16,13 +16,13 @@ body {
       .ui-paginator-right-content {
         color: $_grey_regular;
         margin-left: 20px;
-        font-weight: 600;
+        font-weight: $_font_regular;
       }
     }
 
     .ui-table-caption {
+      @extend %border-zero;
       background-color: white !important;
-      border: 0;
     }
 
     .ui-table-wrapper {
@@ -38,15 +38,15 @@ body {
         tr {
 
           th {
-            background-color: transparent;
-            border: 0;
+            @extend %border-zero;
+            background-color: $_transparent;
             text-align: left;
             color: $_grey_regular;
             font-size: 10px;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
-            font-weight: 600;
+            font-weight: $_font_regular;
             padding: 8px;
           }
         }
@@ -61,12 +61,12 @@ body {
 
         &:focus {
           outline: none;
-          border: none;
+          @extend %border-zero;
         }
 
         &.ui-state-highlight {
           color: $_grey_dark;
-          background-color: transparent;
+          background-color: $_transparent;
 
           .pi-sort-up,
           .pi-sort-down {
@@ -75,7 +75,7 @@ body {
         }
 
         .pi {
-          transition: all .5s ease;
+          @extend %main-transition;
         }
 
         .pi-sort {
@@ -109,7 +109,7 @@ body {
           }
 
           td {
-            font-weight: 400 !important;
+            font-weight: $_font_light !important;
             border: 0 !important;
             padding-top: 1.2em;
             padding-bottom: 1.2em;
@@ -134,7 +134,7 @@ body {
               width: 100%;
               display: block;
               font-size: 14px;
-              font-weight: 600;
+              font-weight: $_font_regular;
 
               .pi {
                 font-size: 1em;
@@ -179,9 +179,9 @@ body {
 
 
 body .ui-paginator .ui-paginator-pages .ui-paginator-page.ui-paginator-element.ui-state-default.ui-corner-all.ui-state-active {
-  background: transparent;
+  background: $_transparent;
   color: black;
-  font-weight: bold;
+  font-weight: $_font_bold;
 }
 
 
@@ -196,38 +196,38 @@ body p-inputswitch {
 }
 
 .filter input {
+  @extend %border-zero;
   padding-left: 20px;
-  border: 0;
-  border-bottom: 1px solid #8d8d8d;
+  border-bottom: 1px solid $_grey_dark;
   padding-bottom: 8px;
   font-size: .65rem;
-  color: #8d8d8d;
+  color: $_grey_dark;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
 .filter input:focus {
   outline: none;
-  border-bottom: 1px solid #008FFF;
+  border-bottom: 1px solid $_blue;
 }
 
 .filter .pi-filter {
   position: absolute;
   left: 0;
   z-index: 1;
-  color: #8d8d8d;
+  color: $_grey_dark;
 }
 
 body p-inputswitch .ui-inputswitch.ui-inputswitch-checked .ui-inputswitch-slider,
 body p-inputswitch .ui-inputswitch.ui-inputswitch-checked:not(.ui-state-disabled):hover .ui-inputswitch-slider {
-  background-color: #008FFF;
+  background-color: $_blue;
 }
 
 
 
 
 body .ui-table table .ui-table-thead>tr.row_filters {
-  border-bottom: 2px solid #acacac;
+  border-bottom: 2px solid $_border_color;
 }
 
 body .ui-table table .ui-table-thead>tr.row_filters>th {
@@ -239,36 +239,36 @@ body .ui-table table .ui-table-thead>tr.row_filters>th {
 
 
 body .ui-table .ui-table-tbody>tr>td p-celleditor input {
+  @extend %border-zero;
   padding: 10px;
-  border: 0;
   border-bottom: 1px solid black;
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   border-radius: 0;
   font-size: 12px;
-  background: transparent;
+  background: $_transparent;
 }
 
 body .ui-table .ui-table-tbody>tr>td p-celleditor input:focus {
-  border-bottom: 2px solid #008FFF;
+  border-bottom: 2px solid $_blue;
   outline: 0;
 }
 
 body .ui-table table .ui-table-tbody>tr:nth-child(even),
 body .ui-table table .ui-table-tbody>tr:nth-child(odd) {
-  background-color: transparent;
-  border-bottom: 1px solid #f5f5f5;
+  background-color: $_transparent;
+  border-bottom: 1px solid $_grey_light;
 }
 
 
 
 .status_info .edition_loading {
-  color: #484849;
+  color: $_grey_regular_2;
 }
 
 .status_info .error_msg {
-  color: #ff0000;
+  color: $_red;
   font-size: 8px;
-  font-weight: 600;
+  font-weight: $_font_regular;
   line-height: 1;
 }
 
@@ -299,23 +299,23 @@ body .ui-table tr:hover .actions {
 }
 
 .actions button:enabled:hover {
-  background-color: #008FFF !important;
+  background-color: $_blue !important;
   color: #fff !important;
 }
 
 .actions .edit {
-  background-color: transparent;
+  @extend %border-zero;
+  background-color: $_transparent;
   right: 50px;
-  color: #008FFF;
-  border: 0;
+  color: $_blue;
   border-radius: 0;
 }
 
 .actions .delete {
+  @extend %border-zero;
   right: 0;
-  background-color: #f5f5f5;
-  color: #484849;
-  border: 0;
+  background-color: $_grey_light;
+  color: $_grey_regular_2;
   border-radius: 0;
 }
 
@@ -323,7 +323,25 @@ body .ui-table tr:hover .actions {
 .actions .edition {
   font-size: 1rem;
   position: relative;
-  background-color: transparent !important;
+  background-color: $_transparent !important;
   border: 0 !important;
-  transition: all .3s ease;
+  @extend %main-transition
+}
+
+.ui-table .ui-table-wrapper {
+  overflow: visible;
+}
+
+.ui-table-wrapper table .ui-table-tbody td {
+  overflow: visible;
+
+}
+
+body .ui-table table .ui-table-tbody tr td p-celleditor .ui-chkbox-icon.pi {
+  font-size: 12px;
+}
+
+body .ui-table table .ui-table-tbody tr td p-celleditor .pi,
+body .ui-table table .ui-table-tbody tr td a .pi {
+  font-size: 32px;
 }
