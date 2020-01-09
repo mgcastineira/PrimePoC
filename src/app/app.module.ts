@@ -19,7 +19,7 @@ import { WbsCommentComponent } from '@wbsmanagement/features/wbs-comment/compone
 import { ImportComponent } from '@wbsmanagement/features/import/components/import.component';
 import { RulesComponent } from '@wbsmanagement/features/rules/components/rules.component';
 import { NewsComponent } from '@news/components/news.component';
-import { MydataComponent } from './mydata/mydata.component';
+import { MyDataComponent } from './mydata/components/mydata.component';
 import { FileUploadComponent } from './file-upload/controls/file-upload.component';
 import { UploadComponent } from './file-upload/components/upload.component';
 import { ngfModule } from 'angular-file';
@@ -41,7 +41,7 @@ import { TeamAddUserComponent } from './myteam/features/team-add-user/team-add-u
     ImportComponent,
     RulesComponent,
     NewsComponent,
-    MydataComponent,
+    MyDataComponent,
     FileUploadComponent,
     UploadComponent,
     MyteamComponent,

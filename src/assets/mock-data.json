@@ -1,0 +1,180 @@
+{
+    "__metadata": {
+        "id": "5d8847fb-919f-4c60-a01a-057ffbcd8602",
+        "uri": "https: //ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'ebe447ed-1837-4746-b27b-c3c776bf2d42')/Items(226)",
+        "etag": "\"1\"",
+        "type": "SP.Data.PeopleListItem"
+    },
+    "FirstUniqueAncestorSecurableObject": {
+        "__deferred": {
+            "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'ebe447ed-1837-4746-b27b-c3c776bf2d42')/Items(226)/FirstUniqueAncestorSecurableObject"
+        }
+    },
+    "RoleAssignments": {
+        "__deferred": {
+            "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'ebe447ed-1837-4746-b27b-c3c776bf2d42')/Items(226)/RoleAssignments"
+        }
+    },
+    "AttachmentFiles": {
+        "__deferred": {
+            "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'ebe447ed-1837-4746-b27b-c3c776bf2d42')/Items(226)/AttachmentFiles"
+        }
+    },
+    "ContentType": {
+        "__deferred": {
+            "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'ebe447ed-1837-4746-b27b-c3c776bf2d42')/Items(226)/ContentType"
+        }
+    },
+    "GetDlpPolicyTip": {
+        "__deferred": {
+            "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'ebe447ed-1837-4746-b27b-c3c776bf2d42')/Items(226)/GetDlpPolicyTip"
+        }
+    },
+    "FieldValuesAsHtml": {
+        "__deferred": {
+            "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'ebe447ed-1837-4746-b27b-c3c776bf2d42')/Items(226)/FieldValuesAsHtml"
+        }
+    },
+    "FieldValuesAsText": {
+        "__deferred": {
+            "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'ebe447ed-1837-4746-b27b-c3c776bf2d42')/Items(226)/FieldValuesAsText"
+        }
+    },
+    "FieldValuesForEdit": {
+        "__deferred": {
+            "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'ebe447ed-1837-4746-b27b-c3c776bf2d42')/Items(226)/FieldValuesForEdit"
+        }
+    },
+    "File": {
+        "__deferred": {
+            "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'ebe447ed-1837-4746-b27b-c3c776bf2d42')/Items(226)/File"
+        }
+    },
+    "Folder": {
+        "__deferred": {
+            "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'ebe447ed-1837-4746-b27b-c3c776bf2d42')/Items(226)/Folder"
+        }
+    },
+    "LikedByInformation": {
+        "__deferred": {
+            "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'ebe447ed-1837-4746-b27b-c3c776bf2d42')/Items(226)/LikedByInformation"
+        }
+    },
+    "ParentList": {
+        "__deferred": {
+            "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'ebe447ed-1837-4746-b27b-c3c776bf2d42')/Items(226)/ParentList"
+        }
+    },
+    "Properties": {
+        "__deferred": {
+            "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'ebe447ed-1837-4746-b27b-c3c776bf2d42')/Items(226)/Properties"
+        }
+    },
+    "Versions": {
+        "__deferred": {
+            "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'ebe447ed-1837-4746-b27b-c3c776bf2d42')/Items(226)/Versions"
+        }
+    },
+    "FileSystemObjectType": 0,
+    "Id": 226,
+    "ServerRedirectedEmbedUri": null,
+    "ServerRedirectedEmbedUrl": "",
+    "Observaciones": null,
+    "Requerimiento_x0020_Baja": null,
+    "LTS": null,
+    "NEmployee": "10820680",
+    "NUserNG": null,
+    "NUserCASA": "AE0075",
+    "Title": "VAZQUEZ HEVIA, ESTHER",
+    "DNI": "05302009A",
+    "NSS": "281367264446",
+    "BC": null,
+    "Load": null,
+    "EntryDate": "2012-10-16T05:00:00Z",
+    "ExitDate": "2019-12-31T06:00:00Z",
+    "Contract": "FWSAR",
+    "GESUB": null,
+    "Project": "FWSAR",
+    "Module": null,
+    "Lider": null,
+    "RespAccenture": "Igor Puente",
+    "RespAirbus": "Jesus Garcia Mesuro",
+    "Location": "Barajas",
+    "SpecificLocation": null,
+    "GetafeBuilding": null,
+    "ServiceGESUB": null,
+    "Company": "ACN",
+    "CompanyCode": "6000",
+    "CompanyDescr": null,
+    "Workforce": null,
+    "OrgUnitLevel1": null,
+    "OrgUnitLevel2": null,
+    "OrgUnitLevel3": null,
+    "TalentSegmentGrouping": null,
+    "CECO": null,
+    "CostCenterDescription": null,
+    "Geography": null,
+    "TalentSegment": null,
+    "CareerLevel": null,
+    "Category": null,
+    "EnterpriseID": "e.vazquez.hevia",
+    "MailAccenture": "e.vazquez.hevia@accenture.com;",
+    "MailAirbus": "Esther.Vazquez.External@airbus.com;",
+    "Latent": "No",
+    "AirbusSAPUser": null,
+    "RollOnOff": "1046",
+    "NATOInstructionPerformed": true,
+    "MSDInABoxCourse": false,
+    "CDCertification": false,
+    "ExitReason": null,
+    "ContentTypeId": "0x0100CBBE7F99B65F324688FD9A8BD425B021",
+    "ComplianceAssetId": null,
+    "Nationality": "Española",
+    "MD": "Jose Luis Costales",
+    "SPOC": "Igor Puente",
+    "WBS": null,
+    "DischargeDate": null,
+    "Center": null,
+    "Service": null,
+    "RiskPlan": null,
+    "BirthDate": null,
+    "PlaceBirth": null,
+    "DoubleNationality": null,
+    "AirbusDirectResp": "Jesus Garcia Mesuro",
+    "Workstation": null,
+    "DeplGeoUnit": null,
+    "CostCenterName": null,
+    "CareerTrack": null,
+    "RoleFamily": null,
+    "ReqIndustryCategory": null,
+    "CostCenterCode": null,
+    "ReqFuncTechCapability": null,
+    "ReqIndustrySpeciality": null,
+    "EconomicProfile": null,
+    "ContractType": "Subcontractor",
+    "Status": "Active",
+    "PrimaryContact": "Igor Puente",
+    "Location2": "Getafe",
+    "Location3": null,
+    "Location4": null,
+    "Location5": null,
+    "Location6": null,
+    "Location7": null,
+    "DeliveryLead": null,
+    "CareerLevelAbbreviation": null,
+    "OrgUnit": null,
+    "RollOn": null,
+    "RollOff": null,
+    "CommentsExit": null,
+    "RollOffStep": null,
+    "Disclaimer": null,
+    "OperationRollOn": null,
+    "ID": 226,
+    "Modified": "2019-04-05T06:59:24Z",
+    "Created": "2019-04-05T06:59:24Z",
+    "AuthorId": 291,
+    "EditorId": 291,
+    "OData__UIVersionString": "1.0",
+    "Attachments": false,
+    "GUID": "24f947aa-145c-4aca-9bab-0fc5441eba55"
+}
