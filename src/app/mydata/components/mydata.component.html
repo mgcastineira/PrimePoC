@@ -3,7 +3,11 @@
     <div class="col-md-8">
       <div class="main-data">
         <h3>{{userData.Title}}</h3>
-        <div class="nacionalidad"><img src="assets/img/spain.png" alt=""></div>
+        <div class="nacionalidad">
+          <img src="assets/img/ES-Flag.png" alt="" style="margin-right:5px" *ngIf="checkGeography('ES')">
+          <img src="assets/img/FR-Flag.png" alt="" style="margin-right:5px" *ngIf="checkGeography('FR')">
+          <img src="assets/img/DE-Flag.png" alt="" *ngIf="checkGeography('DE')">
+        </div>
         <button pButton type="button" label="EDIT USER MAIN DATA"
           class="button b-third mr-16"></button>
         <div class="start" style="padding-left: 15px;">
@@ -41,7 +45,8 @@
   <section class="mydata_personal">
     <div class="section_title">
       <h3><i class="fa fa-user" aria-hidden="true"></i> Personal
-        <button pButton type="button" style="float: right;padding-right: 0px;" label="REQUEST DATA CHANGE"
+        <button pButton type="button" style="float: right;padding-right: 0px;" *ngIf="myOwnData"
+        label="REQUEST DATA CHANGE"
           class="button b-third mr-16"></button></h3>
     </div>
     <div class="row mt-4 row-eq-height">
@@ -177,8 +182,8 @@
             </div>
             <div class="col-md-6">
               <span class="ui-float-label" *ngIf="userData">
-                <input id="float-input" type="text" size="30" pInputText value="---" disabled>
-                <label for="float-input">Workplace </label>
+                <input id="float-input-Workplace" type="text" size="30" pInputText value="---" disabled>
+                <label for="float-input-Workplace">Workplace </label>
               </span>
             </div>
             <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Location" tooltipPosition="bottom"
@@ -229,65 +234,17 @@
   <section class="mydata_projects">
     <div class="section_title mb-4">
       <h3><i class="fa fa-suitcase" aria-hidden="true"></i> Projects
-        <button pButton type="button" style="float: right;padding-right: 0px;" label="REQUEST PROJECT ADITTION"
+        <button pButton type="button" style="float: right;padding-right: 0px;"  *ngIf="myOwnData"
+        label="REQUEST PROJECT ADITTION"
           class="button b-third mr-16"></button>
+        <button pButton type="button" style="float: right;padding-right: 0px;" *ngIf="!myOwnData"
+          label="ADD PROJECT" class="button b-third mr-16"></button>
       </h3>
     </div>
 
-    <p-tabView>
-      <p-tabPanel header="ITBonds SP Service Performance and Other">
-        <p><strong>ITBonds SP Service Performance and Other</strong> </p>
-        <div class="row mt-3">
-          <div class="col-md-4">
-            <span class="ui-float-label">
-              <input id="float-input" type="text" size="30" pInputText value="Rodriguez Lopez, Francisco Javier"
-                disabled>
-              <label for="float-input">MD </label>
-            </span>
-          </div>
-          <div class="col-md-4">
-            <span class="ui-float-label">
-              <input id="float-input" type="text" size="30" pInputText value="Rodriguez Lopez, Francisco Javier"
-                disabled>
-              <label for="float-input">Delivery Lead </label>
-            </span>
-          </div>
-          <div class="col-md-4">
-            <span class="ui-float-label">
-              <input id="float-input" type="text" size="30" pInputText value="Rodriguez Lopez, Francisco Javier"
-                disabled>
-              <label for="float-input">Supervisor </label>
-            </span>
-          </div>
-        </div>
-        <div class="row mt-3">
-          <div class="col-md-4">
-            <span class="ui-float-label">
-              <input id="float-input" type="text" size="30" pInputText value="Rodriguez Lopez, Francisco Javier"
-                disabled>
-              <label for="float-input">Airbus Responsible </label>
-            </span>
-          </div>
-          <div class="col-md-4">
-            <span class="ui-float-label">
-              <input id="float-input" type="text" size="30" pInputText value="Rodriguez Lopez, Francisco Javier"
-                disabled>
-              <label for="float-input">Airbus Direct Responsible </label>
-            </span>
-          </div>
-          <div class="col-md-4">
-            <span class="ui-float-label">
-              <input id="float-input" type="text" size="30" pInputText value="EPAD" disabled>
-              <label for="float-input">Contract </label>
-            </span>
-          </div>
-        </div>
-      </p-tabPanel>
-      <p-tabPanel header="Header 2">
-        Content 2
-      </p-tabPanel>
-      <p-tabPanel header="Header 3">
-        Content 3
+    <p-tabView #tabView (onChange)="handleTabChange($event)">
+      <p-tabPanel header="{{project.ProjectName}}" *ngFor="let project of teamsData;let i = index">
+        <app-project-detail #projectDetail [(projectData)]="project" [tabId]="i"></app-project-detail>
       </p-tabPanel>
     </p-tabView>
   </section>
@@ -449,9 +406,9 @@
           <div class="row">
             <div class="col-md-6">
               <span class="ui-float-label" *ngIf="userData">
-                <input id="float-input-Location" type="text" size="30" pInputText [(ngModel)]="userData.Location"
+                <input id="float-input-Locations" type="text" size="30" pInputText [(ngModel)]="userData.Location"
                   disabled>
-                <label for="float-input-Location">Other Locations </label>
+                <label for="float-input-Locations">Other Locations </label>
               </span>
             </div>
             <div class="col-md-6">
