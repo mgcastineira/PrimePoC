@@ -228,7 +228,6 @@ export class TeamService {
   }
 
   public getInitialData(peopleId: number) {
-    console.log('gettin initial data');
     let call_1 = this.getWBSMock();
     let call_2 = this.getTeamMock();
     let call_3 = this.getProjectMock();

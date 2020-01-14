@@ -19,13 +19,14 @@ import { WbsCommentComponent } from '@wbsmanagement/features/wbs-comment/compone
 import { ImportComponent } from '@wbsmanagement/features/import/components/import.component';
 import { RulesComponent } from '@wbsmanagement/features/rules/components/rules.component';
 import { NewsComponent } from '@news/components/news.component';
-import { MydataComponent } from './mydata/mydata.component';
+import { MyDataComponent } from './mydata/components/mydata.component';
 import { FileUploadComponent } from './file-upload/controls/file-upload.component';
 import { UploadComponent } from './file-upload/components/upload.component';
 import { ngfModule } from 'angular-file';
 import { MyteamComponent } from './myteam/components/myteam.component';
 import { TeamDetailComponent } from './myteam/features/team-detail/team-detail.component';
 import { TeamAddUserComponent } from './myteam/features/team-add-user/team-add-user.component';
+import { ProjectDetailComponent } from './mydata/features/project-detail/project-detail.component';
 
 
 @NgModule({
@@ -41,12 +42,13 @@ import { TeamAddUserComponent } from './myteam/features/team-add-user/team-add-u
     ImportComponent,
     RulesComponent,
     NewsComponent,
-    MydataComponent,
+    MyDataComponent,
     FileUploadComponent,
     UploadComponent,
     MyteamComponent,
     TeamDetailComponent,
-    TeamAddUserComponent
+    TeamAddUserComponent,
+    ProjectDetailComponent
   ],
   imports: [
     BrowserModule,

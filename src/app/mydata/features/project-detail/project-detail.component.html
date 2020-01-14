@@ -1,0 +1,51 @@
+<!-- <div class="project_title"> -->
+<p><strong>{{projectData.ProjectName}}</strong> </p>
+<div [ngStyle]="{'float':'right','margin-top':'-23px','display':'flex','margin-right': '-60px'}">
+<p *ngIf="projectData.Active" >Active
+</p>
+<p *ngIf="!projectData.Active" >
+  Inactive</p>
+<p-inputSwitch [(ngModel)]="projectData.Active" ></p-inputSwitch>
+</div>
+
+<!-- </div> -->
+<div class="row mt-3">
+  <div class="col-md-4">
+    <span class="ui-float-label">
+      <input id="float-input-MD{{projectData.ID}}" type="text" size="30" pInputText [(ngModel)]="projectData.MDName" disabled>
+      <label for="float-input-MD{{projectData.ID}}">MD </label>
+    </span>
+  </div>
+  <div class="col-md-4">
+    <span class="ui-float-label">
+      <input id="float-input-DeliveryLeadName{{projectData.ID}}" type="text" size="30" pInputText [(ngModel)]="projectData.DeliveryLeadName" disabled>
+      <label for="float-input-DeliveryLeadName{{projectData.ID}}">Delivery Lead </label>
+    </span>
+  </div>
+  <div class="col-md-4">
+    <span class="ui-float-label">
+      <input id="float-input-SupervisorName{{projectData.ID}}" type="text" size="30" pInputText [(ngModel)]="projectData.SupervisorName" disabled>
+      <label for="float-input-SupervisorName{{projectData.ID}}">Supervisor </label>
+    </span>
+  </div>
+</div>
+<div class="row mt-3">
+  <div class="col-md-4">
+    <span class="ui-float-label">
+      <input id="float-input-AirbusResponsible{{projectData.ID}}" type="text" size="30" pInputText [(ngModel)]="projectData.AirbusResponsible" disabled>
+      <label for="float-input-AirbusResponsible{{projectData.ID}}">Airbus Responsible </label>
+    </span>
+  </div>
+  <div class="col-md-4">
+    <span class="ui-float-label">
+      <input id="float-input-AirbusDirectResponsible{{projectData.ID}}" type="text" size="30" pInputText [(ngModel)]="projectData.AirbusDirectResponsible" disabled>
+      <label for="float-input-AirbusDirectResponsible{{projectData.ID}}">Airbus Direct Responsible </label>
+    </span>
+  </div>
+  <div class="col-md-4">
+    <span class="ui-float-label">
+      <input id="float-input-Contract{{projectData.ID}}" type="text" size="30" pInputText [(ngModel)]="projectData.Contract" disabled>
+      <label for="float-input-Contract{{projectData.ID}}">Contract </label>
+    </span>
+  </div>
+</div>

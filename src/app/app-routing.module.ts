@@ -6,7 +6,7 @@ import { RollonComponent } from '@rollon/components/rollon.component';
 import { RolloffComponent } from '@rolloff/components/rolloff.component';
 import { WbsManagementComponent } from '@wbsmanagement/components/wbs-management.component';
 import { NewsComponent } from '@news/components/news.component';
-import { MydataComponent } from './mydata/mydata.component';
+import { MyDataComponent } from './mydata/components/mydata.component';
 import { UploadComponent } from './file-upload/components/upload.component';
 import { MyteamComponent } from './myteam/components/myteam.component';
 
@@ -32,7 +32,7 @@ const routes: Routes = [
   }
   ,
   {
-    path: 'mydata', component: MydataComponent
+    path: 'mydata', component: MyDataComponent
   }
   ,
   {
