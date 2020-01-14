@@ -83,7 +83,7 @@ export class MyDataComponent implements OnInit,OnDestroy {
     }
     this.contractAndCompany = serviceResponse.payload.userData.ContractType + " in " +
       serviceResponse.payload.userData.Company;
-    this.primaryContact = "Primary contract: " + serviceResponse.payload.userData.PrimaryContact;
+    this.primaryContact = "Primary contact: " + serviceResponse.payload.userData.PrimaryContact;
   }
 
   private initialize() {

@@ -27,6 +27,7 @@ import { MyteamComponent } from './myteam/components/myteam.component';
 import { TeamDetailComponent } from './myteam/features/team-detail/team-detail.component';
 import { TeamAddUserComponent } from './myteam/features/team-add-user/team-add-user.component';
 import { ProjectDetailComponent } from './mydata/features/project-detail/project-detail.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { ProjectDetailComponent } from './mydata/features/project-detail/project
     HttpClientModule,
     AppRoutingModule,
     PrimengModule,
+    FontAwesomeModule,
     ngfModule
   ],
   providers: [],

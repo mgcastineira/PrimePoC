@@ -1,8 +1,11 @@
 section {
     margin-bottom: 48px;
 }
+
+
+
 .mydata-header {
-     margin-bottom: 40px;
+     margin-bottom: 24px;
     h3 {
         display: inline-block;
         margin: 0;
@@ -22,7 +25,16 @@ section {
     .start {
         font-size: 1rem;
         line-height: 1;
-        width:1200px;
+
+        ul {
+          position: relative;
+          margin-right: 5px;
+
+          li {
+            position: absolute;
+            top: 4px;
+          }
+        }
     }
 
     .main-action {
@@ -93,7 +105,7 @@ section {
           }
         }
         .green {
-  background-color: lightgreen;
+  background-color: #1FD27C;
 }
 
 .red {
@@ -106,8 +118,8 @@ ul {
 }
 
 li {
-  width: 10px;
-  height: 10px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   border: 0px solid black;
 }
@@ -120,4 +132,21 @@ li {
   text-overflow: ellipsis;
   text-align: center;
   opacity: 1 !important;
+}
+
+.summary {
+  font-size: 14px;
+
+  span {
+    margin: 0 8px;
+  }
+}
+
+.summary .sum-status {
+  margin-left: 16px;
+  font-weight: bold;
+}
+.summary .sum-end {
+  font-weight: bold;
+  color: #ff0000
 }
