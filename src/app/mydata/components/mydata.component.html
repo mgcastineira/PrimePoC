@@ -1,6 +1,11 @@
 <div class="container">
-  <div class="row mydata-header" *ngIf="userData">
+  <br>
+
+  <div class="mydata-header">
+  <div class="row " *ngIf="userData">
     <div class="col-md-8">
+
+
       <div class="main-data">
         <h3>{{userData.Title}}</h3>
         <div class="nacionalidad">
@@ -8,29 +13,8 @@
           <img src="assets/img/FR-Flag.png" alt="" style="margin-right:5px" *ngIf="checkGeography('FR')">
           <img src="assets/img/DE-Flag.png" alt="" *ngIf="checkGeography('DE')">
         </div>
-        <button pButton type="button" label="EDIT USER MAIN DATA"
-          class="button b-third mr-16"></button>
-        <div class="start" style="padding-left: 15px;">
-          <ul style="position: absolute;left: 15px;padding-top: 10px;">
-            <li *ngIf="userData.Status === 'Active'" class="green"></li>
-            <li *ngIf="userData.Status === 'Inactive'" class="red"></li>
-          
-        </ul>
-        <div>
-          <b><input id="float-input-Status" type="text" size="7" class="top_bar_input"
-             pInputText [(ngModel)]="userData.Status" disabled style="font-weight: bold;text-align:left;"></b>|
-             <input id="float-input-EntryDate" type="text" size="20" class="top_bar_input" 
-             pInputText [(ngModel)]="startDate"
-              disabled>| 
-            <input id="float-input-contractAndCompany" type="text" size="20" class="top_bar_input" pInputText 
-            [(ngModel)]="contractAndCompany"
-              disabled>|
-              <input id="float-input-PrimaryContact" type="text" size="25" class="top_bar_input" pInputText [(ngModel)]="primaryContact"
-                disabled>
-          <!-- <b>{{userData.Status}}</b>&nbsp;&nbsp;|&nbsp;&nbsp;Start date {{userData.EntryDate | date: 'dd/MM/yyyy'}}
-          &nbsp;&nbsp;|&nbsp;&nbsp;{{userData.ContractType}} in {{userData.Company}}&nbsp;&nbsp;|&nbsp;&nbsp;Primary contact: {{userData.PrimaryContact}} -->
-        </div>
-        </div>
+        <!-- <button pButton type="button" label="EDIT USER MAIN DATA" class="button b-third mr-16"></button> -->
+
       </div>
     </div>
     <div class="col-md-4">
@@ -41,13 +25,45 @@
     </div>
   </div>
 
-  <!--PERSONAL-->
+  <div class="row">
+    <div class="col-md-12">
+      <div class="start">
+        <ul style="">
+          <li *ngIf="userData.Status === 'Active'" class="green"></li>
+          <li *ngIf="userData.Status === 'Inactive'" class="red"></li>
+        </ul>
+        <div>
+
+          <p class="summary">
+            <span class="sum-status" id="float-input-Status">{{userData.Status}}</span>  |
+            <span id="float-input-EntryDate">{{startDate}}</span> |
+            <span id="float-input-contractAndCompany">{{contractAndCompany}}</span> |
+            <span id="float-input-PrimaryContact">{{primaryContact}}</span> 
+          </p>
+
+          <!-- <b><input id="float-input-Status" type="text" size="7" class="top_bar_input" pInputText
+                [(ngModel)]="userData.Status" disabled style="font-weight: bold;text-align:left;"></b>|
+            <input id="float-input-EntryDate" type="text" size="20" class="top_bar_input" pInputText
+              [(ngModel)]="startDate" disabled>|
+            <input id="float-input-contractAndCompany" type="text" size="20" class="top_bar_input" pInputText
+              [(ngModel)]="contractAndCompany" disabled>|
+            <input id="float-input-PrimaryContact" type="text" size="25" class="top_bar_input" pInputText
+              [(ngModel)]="primaryContact" disabled> -->
+          <!-- <b>{{userData.Status}}</b>&nbsp;&nbsp;|&nbsp;&nbsp;Start date {{userData.EntryDate | date: 'dd/MM/yyyy'}}
+          &nbsp;&nbsp;|&nbsp;&nbsp;{{userData.ContractType}} in {{userData.Company}}&nbsp;&nbsp;|&nbsp;&nbsp;Primary contact: {{userData.PrimaryContact}} -->
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+    <!--PERSONAL-->
   <section class="mydata_personal">
     <div class="section_title">
-      <h3><i class="fa fa-user" aria-hidden="true"></i> Personal
+      <h3><i class="far fa-user" aria-hidden="true"></i> Personal
         <button pButton type="button" style="float: right;padding-right: 0px;" *ngIf="myOwnData"
-        label="REQUEST DATA CHANGE"
-          class="button b-third mr-16"></button></h3>
+          label="REQUEST DATA CHANGE" class="button b-third mr-16"></button></h3>
     </div>
     <div class="row mt-4 row-eq-height">
       <!--PERSONAL 1-->
@@ -56,7 +72,7 @@
         <div class="id info_card">
 
           <div class="icon">
-            <i class="fa fa-id-card" aria-hidden="true"></i>
+            <i class="fas fa-id-card" aria-hidden="true"></i>
           </div>
           <div class="row">
             <div class="col-md-6">
@@ -109,8 +125,9 @@
                 <label for="float-input-NSS">Social Security Number </label>
               </span>
             </div>
-            <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Personal" tooltipPosition="bottom" showDelay="1000"
-              hideDelay="500" class="button b-third edit" style="position: absolute;right: 0px;top:0px"></button>
+            <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Personal" tooltipPosition="bottom"
+              showDelay="1000" hideDelay="500" class="button b-third edit"
+              style="position: absolute;right: 0px;top:0px"></button>
           </div>
         </div>
         <div class="info_card_separator"></div>
@@ -121,8 +138,7 @@
           <div class="row">
             <div class="col-md-6">
               <span class="ui-float-label" *ngIf="userData">
-                <input id="float-input-BirthDate" type="text" size="30" pInputText [(ngModel)]="birthDate"
-                  disabled>
+                <input id="float-input-BirthDate" type="text" size="30" pInputText [(ngModel)]="birthDate" disabled>
                 <label for="float-input-BirthDate">Birth date (dd/MM/yyyy) </label>
               </span>
             </div>
@@ -133,8 +149,9 @@
                 <label for="float-input-PlaceBirth">Place by Birth </label>
               </span>
             </div>
-            <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Birth data" tooltipPosition="bottom" showDelay="1000"
-              hideDelay="500" class="button b-third edit" style="position: absolute;right: 0px;top:0px"></button>
+            <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Birth data" tooltipPosition="bottom"
+              showDelay="1000" hideDelay="500" class="button b-third edit"
+              style="position: absolute;right: 0px;top:0px"></button>
           </div>
         </div>
       </div>
@@ -162,7 +179,8 @@
               </span>
             </div>
             <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Email" tooltipPosition="bottom"
-              showDelay="1000" hideDelay="500" class="button b-third edit" style="position: absolute;right: 0px;top:0px"></button>
+              showDelay="1000" hideDelay="500" class="button b-third edit"
+              style="position: absolute;right: 0px;top:0px"></button>
           </div>
 
         </div>
@@ -170,7 +188,7 @@
         <!--PERSONAL 3-->
         <div class="location info_card">
           <div class="icon">
-            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
           </div>
           <div class="row">
             <div class="col-md-6">
@@ -187,14 +205,15 @@
               </span>
             </div>
             <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Location" tooltipPosition="bottom"
-              showDelay="1000" hideDelay="500" class="button b-third edit" style="position: absolute;right: 0px;top:0px"></button>
+              showDelay="1000" hideDelay="500" class="button b-third edit"
+              style="position: absolute;right: 0px;top:0px"></button>
           </div>
         </div>
         <div class="info_card_separator"></div>
         <!--PERSONAL 3-->
         <div class="rollon info_card">
           <div class="icon">
-            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <i class="fas fa-door-open"></i>
           </div>
           <div class="row">
             <div class="col-md-6">
@@ -203,6 +222,10 @@
                   disabled>
                 <label for="float-input-RollOnOff">Roll On/ Roll Off Number </label>
               </span>
+                <span class="ui-float-label" *ngIf="userData">
+                  <input id="float-input-StartDate" type="text" size="30" pInputText [(ngModel)]="startDate" disabled>
+                  <label for="float-input-StartDate">Start Date </label>
+                </span>
               <span class="ui-float-label" *ngIf="userData">
                 <input id="float-input-ExitReason" type="text" size="30" pInputText [(ngModel)]="userData.ExitReason"
                   disabled>
@@ -218,13 +241,17 @@
                 <label for="float-input-GESUB">GESUB Leave requirement No. </label>
               </span>
               <span class="ui-float-label" *ngIf="userData">
-                <input id="float-input-ExitDate" type="text" size="30" pInputText [(ngModel)]="endDate"
-                  disabled>
+                <input id="float-input-ExitDate" type="text" size="30" pInputText [(ngModel)]="endDate" disabled>
                 <label for="float-input-ExitDate">End Date </label>
               </span>
+              <span class="ui-float-label" *ngIf="userData">
+                <input id="float-input-PrimaryContact" type="text" size="30" pInputText [(ngModel)]="primaryContact" disabled>
+                <label for="float-input-PrimaryContact">Primary Contact </label>
+              </span>
             </div>
-            <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Roll On/Roll Off" tooltipPosition="bottom" showDelay="1000"
-              hideDelay="500" class="button b-third edit" style="position: absolute;right: 0px;top:0px"></button>
+            <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Roll On/Roll Off" tooltipPosition="bottom"
+              showDelay="1000" hideDelay="500" class="button b-third edit"
+              style="position: absolute;right: 0px;top:0px"></button>
           </div>
         </div>
       </div>
@@ -233,10 +260,9 @@
   <!--PROJECTS-->
   <section class="mydata_projects">
     <div class="section_title mb-4">
-      <h3><i class="fa fa-suitcase" aria-hidden="true"></i> Projects
-        <button pButton type="button" style="float: right;padding-right: 0px;"  *ngIf="myOwnData"
-        label="REQUEST PROJECT ADITTION"
-          class="button b-third mr-16"></button>
+      <h3><i class="fas fa-suitcase" aria-hidden="true"></i> Projects
+        <button pButton type="button" style="float: right;padding-right: 0px;" *ngIf="myOwnData"
+          label="REQUEST PROJECT ADITTION" class="button b-third mr-16"></button>
         <button pButton type="button" style="float: right;padding-right: 0px;" *ngIf="!myOwnData"
           label="ADD PROJECT" (click)="addUserToTeam()" class="button b-third mr-16"></button>
       </h3>
@@ -251,7 +277,7 @@
   <!--ORGANIZATION-->
   <section class="mydata_personal">
     <div class="section_title">
-      <h3><i class="fa fa-building" aria-hidden="true"></i> Organization
+      <h3><i class="far fa-building" aria-hidden="true"></i> Organization
       </h3>
     </div>
     <div class="row mt-4 row-eq-height">
@@ -305,7 +331,7 @@
         <div class="info_card_separator"></div>
         <div class="location info_card">
           <div class="icon">
-            <i class="fa fa-coins" aria-hidden="true"></i>
+            <i class="fas fa-coins" aria-hidden="true"></i>
           </div>
           <div class="row">
             <div class="col-md-6">
@@ -401,7 +427,7 @@
         <div class="info_card_separator"></div>
         <div class="location info_card">
           <div class="icon">
-            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
           </div>
           <div class="row">
             <div class="col-md-6">
@@ -420,4 +446,4 @@
       </div>
     </div>
   </section>
-</div>
+<div>
