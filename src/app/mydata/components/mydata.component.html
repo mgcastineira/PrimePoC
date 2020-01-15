@@ -25,10 +25,10 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" *ngIf="userData">
     <div class="col-md-12">
       <div class="start">
-        <ul style="">
+        <ul>
           <li *ngIf="userData.Status === 'Active'" class="green"></li>
           <li *ngIf="userData.Status === 'Inactive'" class="red"></li>
         </ul>
