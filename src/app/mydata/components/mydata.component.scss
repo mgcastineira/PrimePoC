@@ -67,6 +67,7 @@ section {
         padding: 20px;
         padding-left: 60px;
         position: relative;
+        border: 1px solid transparent;
         
 
         .icon {
@@ -149,4 +150,20 @@ li {
 .summary .sum-end {
   font-weight: bold;
   color: #ff0000
+}
+
+.editcard {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 22px;
+  min-width: fit-content !important;
+  padding: 0;
+  opacity: 0;
+}
+.mydata_personal .info_card:hover {
+  border: 1px solid #ddd;
+}
+.info_card:hover .editcard {
+  opacity: 1;
 }
