@@ -27,6 +27,7 @@ import { MyteamComponent } from './myteam/components/myteam.component';
 import { TeamDetailComponent } from './myteam/features/team-detail/team-detail.component';
 import { TeamAddUserComponent } from './myteam/features/team-add-user/team-add-user.component';
 import { ProjectDetailComponent } from './mydata/features/project-detail/project-detail.component';
+import { NewProjectComponent } from './mydata/features/new-project/new-project.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ProjectDetailComponent } from './mydata/features/project-detail/project
     MyteamComponent,
     TeamDetailComponent,
     TeamAddUserComponent,
-    ProjectDetailComponent
+    ProjectDetailComponent,
+    NewProjectComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +71,8 @@ import { ProjectDetailComponent } from './mydata/features/project-detail/project
     AddWbsComponent,
     ImportComponent,
     RulesComponent,
-    TeamAddUserComponent
+    TeamAddUserComponent, 
+    NewProjectComponent,
   ]
 })
 export class AppModule { }

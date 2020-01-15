@@ -1,0 +1,56 @@
+<h4 class="title_dialog">Add Project</h4>
+Choose a Project by Delivery Lead or just writing 
+<form [formGroup]="newForm" class="add-wbs">
+  <span class="ui-float-label">
+    <p-autoComplete formControlName="projectName" [suggestions]="autocompletePeopleProjectsList" field="Description"
+      (onFocus)="$event.target.select()" (completeMethod)="filterProjectSingle($event)" id="projectName"
+      [forceSelection]="true" (onSelect)="selectProject($event,'projectId')" autocomplete="off">
+    </p-autoComplete>
+    <label for="projectName">Project or Delivery Lead </label>
+    <i class="pi pi-exclamation-triangle " pTooltip="Please, enter an existing Project or Delivery Lead"
+      style="font-size: 1.5em"></i>
+  </span>
+  <span class="ui-float-label" *ngIf="showSupervisorInput">
+    <p-autoComplete formControlName="supervisorName" [suggestions]="autocompletePeopleList" field="Title"
+      (onFocus)="$event.target.select()" (completeMethod)="filterPeopleSingle($event)" id="supervisorName"
+      [forceSelection]="true" (onSelect)="selectPeople($event,'supervisorId')" autocomplete="off">
+    </p-autoComplete>
+    <label for="supervisorName">Supervisor </label>
+    <i class="pi pi-exclamation-triangle " pTooltip="Please, enter an existing project name"
+      style="font-size: 1.5em"></i>
+  </span>
+  
+  <p-dropdown [options]="optionsProjectsList" *ngIf="showProjectsList" 
+  placeholder="Select a Project" optionLabel="Project_Name" formControlName="selectedProject"
+    [showClear]="false" dataKey="ID" (onChange)="selectProjectOption($event)"></p-dropdown>
+
+  <div class="" *ngIf="selectedProject!=undefined">
+    <div class="row">
+      <div class="col-md-6">
+        <span class="ui-float-label">
+          <input formControlName="projectName" type="text" size="30" id="projectName" pInputText value="Project Name"
+            [value]="selectedProject.Project_Name" disabled>
+          <label for="projectName">Project </label>
+        </span>
+      </div>
+      
+    </div>
+  </div>
+  <div class="">
+    Start date:&nbsp;
+    <p-calendar appendTo="body" formControlName="teamStartDate" #teamStartDate dateFormat="dd/mm/yy"
+      placeholder="dd/MM/yyyy" (onBlur)="setNullDate($event)" [showIcon]="true">
+    </p-calendar>
+    Team exit date:&nbsp;
+    <p-calendar appendTo="body" formControlName="teamExitDate" #teamExitDate dateFormat="dd/mm/yy"
+      placeholder="dd/MM/yyyy" (onBlur)="setNullDate($event)" [showIcon]="true">
+    </p-calendar>
+  </div>
+  <div class="row_buttons">
+    <button (click)="closeAddWBS(null)" class="button b-third ">
+      CANCEL
+    </button>
+    <button class="button b-main" (click)="saveNewWBS()" disabled="projectFound">SAVE
+      CHANGES</button>
+  </div>
+</form>

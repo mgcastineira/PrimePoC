@@ -238,7 +238,7 @@
         label="REQUEST PROJECT ADITTION"
           class="button b-third mr-16"></button>
         <button pButton type="button" style="float: right;padding-right: 0px;" *ngIf="!myOwnData"
-          label="ADD PROJECT" class="button b-third mr-16"></button>
+          label="ADD PROJECT" (click)="addUserToTeam()" class="button b-third mr-16"></button>
       </h3>
     </div>
 

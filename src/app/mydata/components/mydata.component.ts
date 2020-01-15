@@ -1,11 +1,12 @@
 import { Component, OnInit,OnDestroy, ViewChildren, QueryList } from '@angular/core';
 import { TabViewModule } from 'primeng/tabview';
-import { DialogService, ConfirmationService } from 'primeng/api';
+import { DialogService, ConfirmationService, DynamicDialogConfig } from 'primeng/api';
 import { UserDataService } from '../services/mydata.service';
 import { Subscription } from 'rxjs';
 import { UserDataOperations } from '../models/user-data-operations';
 import { DatePipe } from '@angular/common';
 import { ProjectDetailComponent } from '../features/project-detail/project-detail.component';
+import { NewProjectComponent } from '../features/new-project/new-project.component';
 
 @Component({
   selector: 'app-mydata',
@@ -44,14 +45,15 @@ export class MyDataComponent implements OnInit,OnDestroy {
 
   currentTabIndex:number = -1;
 
-  constructor(private userDataService: UserDataService, private datePipe: DatePipe) {
+  constructor(private userDataService: UserDataService, 
+    private dialogService: DialogService,
+    private datePipe: DatePipe) {
     this.serviceSubscription = this.userDataService.message.subscribe(
       serviceResponse => {
         switch (serviceResponse.operation) {
           case UserDataOperations.GetInitialData:
             if(serviceResponse.ok){
-              this.allPeople = serviceResponse.payload.allPeople;
-              this.allProjects = serviceResponse.payload.allProjects;
+              this.sortPeopleAndProjects(serviceResponse);
               this.allUserRoles = serviceResponse.payload.allUserRoles;
 
               this.personId = serviceResponse.payload.userData.ID;
@@ -71,6 +73,31 @@ export class MyDataComponent implements OnInit,OnDestroy {
       }
     );
    }
+
+  private sortPeopleAndProjects(serviceResponse: any) {
+    this.allPeople = serviceResponse.payload.allPeople.sort((s1, s2) => {
+      if (s1.Title.toLowerCase() > s2.Title.toLowerCase()) {
+        return 1;
+      }
+      if (s1.Title.toLowerCase() < s2.Title.toLowerCase()) {
+        return -1;
+      }
+      return 0;
+    });
+    this.allProjects = serviceResponse.payload.allProjects.sort((s1, s2) => {
+      if (s1.Project_Name != undefined
+        && s1.Project_Name != undefined
+        && (s1.Project_Name.toLowerCase() > s2.Project_Name.toLowerCase())) {
+        return 1;
+      }
+      if (s1.Project_Name != undefined
+        && s1.Project_Name != undefined
+        && (s1.Project_Name.toLowerCase() < s2.Project_Name.toLowerCase())) {
+        return -1;
+      }
+      return 0;
+    });
+  }
 
   private setupTopBarData(serviceResponse: any) {
     this.teamsData = this.processTeamDatasource(serviceResponse.payload.teamsData);
@@ -192,5 +219,43 @@ export class MyDataComponent implements OnInit,OnDestroy {
 
   private temp_add(){
     let currentProjectData = this.projectDetailList.find(projectDetail => projectDetail.tabId == this.currentTabIndex);
+  }
+
+  addUserToTeam() {
+    let config = new DynamicDialogConfig();
+    config.data = {
+      sortedPeopleList: this.allPeople,
+      sortedProjectList: this.allProjects
+    };
+    // Filtrar proyectos por geografía
+    switch(this.adminRole.RoleId){
+      case 4:
+        config.data.sortedProjectList = this.allProjects.filter(project=>project.Geography=="Iberia"||
+        project.Geography==null);
+        break;
+      case 8:
+        config.data.sortedProjectList = this.allProjects.filter(project => project.Geography == "Gallia" ||
+          project.Geography == null);
+        break;
+      case 12:
+        config.data.sortedProjectList = this.allProjects.filter(project => project.Geography == "ASG" ||
+          project.Geography == null);
+        break;
+    }
+
+    config.showHeader = false;
+    config.dismissableMask = true;
+    config.closeOnEscape = true;
+    config.transitionOptions = "400ms cubic-bezier(0.25, 0.8, 0.25, 1)";
+    
+
+    const ref = this.dialogService.open(NewProjectComponent, config);
+
+    ref.onClose.subscribe((result: any) => {
+      if (result != undefined && result != null && result.length > 0) {
+        // Llamar servicio actualización
+        
+      }
+    });
   }
 }
