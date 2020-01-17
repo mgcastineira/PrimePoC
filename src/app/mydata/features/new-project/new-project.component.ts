@@ -21,6 +21,7 @@ export class NewProjectComponent implements OnInit {
 
   autocompletePeopleProjectsList: string[] = [];
   autocompletePeopleList: string[] = [];
+  filteredSupervisorsByDeliveryLeads: any[] = [];
   selectedProject:any;
   showProjectsList:boolean = false;
   showSupervisorInput:boolean = false;
@@ -66,7 +67,7 @@ export class NewProjectComponent implements OnInit {
       projectId: new FormControl({ value: null, disabled: false }, Validators.required),
       projectName: new FormControl({ value: null, disabled: false }, Validators.required),
       supervisorId: new FormControl({ value: null, disabled: false }, Validators.required),
-      supervisorName: new FormControl({ value: null, disabled: false }, Validators.required),
+      supervisorName: new FormControl({ value: [], disabled: false }, Validators.required),
       selectedProject: new FormControl({ value: null, disabled: false }),
       teamStartDate: new FormControl({ value: false, disabled: false }),
       teamExitDate: new FormControl({ value: false, disabled: false }),
@@ -100,12 +101,12 @@ export class NewProjectComponent implements OnInit {
   }
 
   selectPeople(event: any,controlId:string) {
-    this.newForm.controls[controlId].setValue(event.ID);
+    this.newForm.controls[controlId].setValue(event.value.ID);
     if (this.newForm.valid){
       if (this.newForm.controls["projectId"].value != null) {
         this.optionsProjectsList = this.allProjects.filter(project => project.Responsible == this.newForm.controls["projectName"].value.ID
           && project.SPOC == this.newForm.controls["supervisorId"].value);
-        if (this.optionsProjectsList.length > 0) {
+        if (this.optionsProjectsList.length > 1) {
           this.showProjectsList = true;
         } else {
           this.showProjectsList = false;
@@ -146,6 +147,7 @@ export class NewProjectComponent implements OnInit {
 
   selectProject(event: any, controlId: string) {
     this.newForm.controls[controlId].setValue(event.ID);
+    this.filteredSupervisorsByDeliveryLeads=[];
     if (event.isProject) {
       this.showProjectsList = false;
       this.selectedProject = this.allProjects.find(project => project.ID == event.ID);
@@ -160,6 +162,22 @@ export class NewProjectComponent implements OnInit {
           this.showProjectsList = false;
           this.selectedProject = this.optionsProjectsList[0];
           this.projectFound=true;
+        }
+      }else{
+        // filtrar todos los proyectos cuyo delivery lead sea el indicado
+        let projectListAux = this.allProjects.filter(project => project.Responsible == this.newForm.controls["projectId"].value);
+        // de esos proyectos ir obteniendo la lista de people
+        this.filteredSupervisorsByDeliveryLeads=[];
+        if(projectListAux.length>0){
+          projectListAux.forEach(project => {
+            let supervisor = this.allPeople.find(person=>person.ID==project.SPOC);
+            if(supervisor!=undefined){
+              this.filteredSupervisorsByDeliveryLeads.push({
+                ID:supervisor.ID,
+                Name:this.titleCasePipe.transform(supervisor.Title)
+              });
+            }
+          });
         }
       }
     }

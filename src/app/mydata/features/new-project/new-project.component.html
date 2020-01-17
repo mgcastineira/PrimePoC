@@ -11,11 +11,13 @@ Choose a Project by Delivery Lead or just writing
       style="font-size: 1.5em"></i>
   </span>
   <span class="ui-float-label" *ngIf="showSupervisorInput">
-    <p-autoComplete formControlName="supervisorName" [suggestions]="autocompletePeopleList" field="Title"
+    <!-- <p-autoComplete formControlName="supervisorName" [suggestions]="autocompletePeopleList" field="Title"
       (onFocus)="$event.target.select()" (completeMethod)="filterPeopleSingle($event)" id="supervisorName"
       [forceSelection]="true" (onSelect)="selectPeople($event,'supervisorId')" autocomplete="off">
     </p-autoComplete>
-    <label for="supervisorName">Supervisor </label>
+    <label for="supervisorName">Supervisor </label> -->
+    <p-dropdown [options]="filteredSupervisorsByDeliveryLeads" formControlName="supervisorName" placeholder="Select a supervisor"
+      optionLabel="Name" [showClear]="true" id="supervisorName" (onChange)="selectPeople($event,'supervisorId')"></p-dropdown>
     <i class="pi pi-exclamation-triangle " pTooltip="Please, enter an existing project name"
       style="font-size: 1.5em"></i>
   </span>
@@ -25,6 +27,7 @@ Choose a Project by Delivery Lead or just writing
   <p-dropdown [options]="optionsProjectsList" *ngIf="showProjectsList" 
   placeholder="Select a Project" optionLabel="Project_Name" formControlName="selectedProject"
     [showClear]="false" dataKey="ID" (onChange)="selectProjectOption($event)"></p-dropdown>
+  
 
   <div class="" *ngIf="selectedProject!=undefined">
     <div class="row">

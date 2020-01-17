@@ -1,30 +1,33 @@
 <!-- <div class="project_title"> -->
 <p><strong>{{projectData.ProjectName}}</strong> </p>
-<!-- <div [ngStyle]="{'float':'right','margin-top':'-23px','display':'flex','margin-right': '-60px'}">
-<p *ngIf="projectData.Active" >Active
-</p>
-<p *ngIf="!projectData.Active" >
-  Inactive</p>
-<p-inputSwitch [(ngModel)]="projectData.Active" ></p-inputSwitch>
-</div> -->
+<div [ngStyle]="{'float':'right','margin-top':'-23px','display':'flex','margin-right': '-60px'}">
+  <p *ngIf="projectData.Active">Active
+  </p>
+  <p *ngIf="!projectData.Active">
+    Inactive</p>
+  <p-inputSwitch [(ngModel)]="projectData.Active" [disabled]="true"></p-inputSwitch>
+</div>
 
 <!-- </div> -->
 <div class="row mt-3">
   <div class="col-md-4">
     <span class="ui-float-label project_item">
-      <input id="float-input-MD{{projectData.ID}}" type="text" size="30" pInputText [(ngModel)]="projectData.MDName" disabled>
+      <input id="float-input-MD{{projectData.ID}}" type="text" size="30" pInputText [(ngModel)]="projectData.MDName"
+        disabled>
       <label for="float-input-MD{{projectData.ID}}">MD </label>
     </span>
   </div>
   <div class="col-md-4">
     <span class="ui-float-label project_item">
-      <input id="float-input-DeliveryLeadName{{projectData.ID}}" type="text" size="30" pInputText [(ngModel)]="projectData.DeliveryLeadName" disabled>
+      <input id="float-input-DeliveryLeadName{{projectData.ID}}" type="text" size="30" pInputText
+        [(ngModel)]="projectData.DeliveryLeadName" disabled>
       <label for="float-input-DeliveryLeadName{{projectData.ID}}">Delivery Lead </label>
     </span>
   </div>
   <div class="col-md-4">
     <span class="ui-float-label project_item">
-      <input id="float-input-SupervisorName{{projectData.ID}}" type="text" size="30" pInputText [(ngModel)]="projectData.SupervisorName" disabled>
+      <input id="float-input-SupervisorName{{projectData.ID}}" type="text" size="30" pInputText
+        [(ngModel)]="projectData.SupervisorName" disabled>
       <label for="float-input-SupervisorName{{projectData.ID}}">Supervisor </label>
     </span>
   </div>
@@ -32,35 +35,42 @@
 <div class="row mt-3">
   <div class="col-md-4">
     <span class="ui-float-label project_item">
-      <input id="float-input-AirbusResponsible{{projectData.ID}}" type="text" size="30" pInputText [(ngModel)]="projectData.AirbusResponsible" disabled>
+      <input id="float-input-AirbusResponsible{{projectData.ID}}" type="text" size="30" pInputText
+        [(ngModel)]="projectData.AirbusResponsible" disabled>
       <label for="float-input-AirbusResponsible{{projectData.ID}}">Airbus Responsible </label>
     </span>
   </div>
   <div class="col-md-4">
     <span class="ui-float-label project_item">
-      <input id="float-input-AirbusDirectResponsible{{projectData.ID}}" type="text" size="30" pInputText [(ngModel)]="projectData.AirbusDirectResponsible" disabled>
+      <input id="float-input-AirbusDirectResponsible{{projectData.ID}}" type="text" size="30" pInputText
+        [(ngModel)]="projectData.AirbusDirectResponsible" disabled>
       <label for="float-input-AirbusDirectResponsible{{projectData.ID}}">Airbus Direct Responsible </label>
     </span>
   </div>
   <div class="col-md-4">
     <span class="ui-float-label project_item">
-      <input id="float-input-Contract{{projectData.ID}}" type="text" size="30" pInputText [(ngModel)]="projectData.Contract" disabled>
+      <input id="float-input-Contract{{projectData.ID}}" type="text" size="30" pInputText
+        [(ngModel)]="projectData.Contract" disabled>
       <label for="float-input-Contract{{projectData.ID}}">Contract </label>
     </span>
   </div>
-</div>
-<div class="row mt-3">
-  <div class="col-md-4">
-    <span class="ui-float-label project_item">
-      <input id="float-input-AirbusResponsible{{projectData.ID}}" type="text" size="30" pInputText [(ngModel)]="projectData.AirbusResponsible" disabled>
-      <label for="float-input-AirbusResponsible{{projectData.ID}}">Start Date </label>
-    </span>
-  </div>
-  <div class="col-md-4">
-    <span class="ui-float-label project_item">
-      <input id="float-input-AirbusDirectResponsible{{projectData.ID}}" type="text" size="30" pInputText [(ngModel)]="projectData.AirbusDirectResponsible" disabled>
-      <label for="float-input-AirbusDirectResponsible{{projectData.ID}}">End Date </label>
-    </span>
-  </div>
+  <div class="row mt-4">
+    <span class="">
+            <label for="float-input-ActivationDate{{projectData.ID}}">Team start date </label>
 
+      <p-calendar appendTo="body" [(ngModel)]="projectData.ActivationDate" #teamStartDate dateFormat="dd/mm/yy"
+        [disabled]="!editMode" placeholder="dd/MM/yyyy" (onBlur)="setNullDate($event,'teamStartDate')"
+        [showIcon]="true" id="float-input-ActivationDate{{projectData.ID}}">
+      </p-calendar>
+    </span>
+    <span class="">
+      <label for="float-input-DeactivationDate{{projectData.ID}}">Team end date </label>
+      <p-calendar appendTo="body" [(ngModel)]="projectData.DeactivationDate" #teamEndDate dateFormat="dd/mm/yy"
+        [disabled]="!editMode" placeholder="dd/MM/yyyy" (onBlur)="setNullDate($event,'teamEndDate')" 
+        [showIcon]="true" id="float-input-DeactivationDate{{projectData.ID}}">
+      </p-calendar>
+      
+    </span>
+
+  </div>
 </div>
