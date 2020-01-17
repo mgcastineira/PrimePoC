@@ -21,6 +21,8 @@ Choose a Project by Delivery Lead or just writing
     <i class="pi pi-exclamation-triangle " pTooltip="Please, enter an existing project name"
       style="font-size: 1.5em"></i>
   </span>
+
+
   
   <p-dropdown [options]="optionsProjectsList" *ngIf="showProjectsList" 
   placeholder="Select a Project" optionLabel="Project_Name" formControlName="selectedProject"
@@ -29,25 +31,39 @@ Choose a Project by Delivery Lead or just writing
 
   <div class="" *ngIf="selectedProject!=undefined">
     <div class="row">
-      <div class="col-md-6">
-        <span class="ui-float-label">
-          <input formControlName="projectName" type="text" size="30" id="projectName" pInputText value="Project Name"
-            [value]="selectedProject.Project_Name" disabled>
-          <label for="projectName">Project </label>
-        </span>
+      <div class="col-md-12">
+        <div class="selected_project">
+          <span class="ui-float-label">
+            <input formControlName="projectName" type="text" size="30" id="projectName" pInputText value="Project Name"
+              [value]="selectedProject.Project_Name" disabled>
+            <label for="projectName">Selected Project </label>
+          </span>
+        </div>
+       
       </div>
       
     </div>
   </div>
-  <div class="">
-    Start date:&nbsp;
-    <p-calendar appendTo="body" formControlName="teamStartDate" #teamStartDate dateFormat="dd/mm/yy"
-      placeholder="dd/MM/yyyy" (onBlur)="setNullDate($event)" [showIcon]="true">
-    </p-calendar>
-    Team exit date:&nbsp;
-    <p-calendar appendTo="body" formControlName="teamExitDate" #teamExitDate dateFormat="dd/mm/yy"
-      placeholder="dd/MM/yyyy" (onBlur)="setNullDate($event)" [showIcon]="true">
-    </p-calendar>
+  <div class="row mt-2">
+    <div class="col-md-6">
+       <span class="ui-float-label ">
+          <p-calendar appendTo="body" formControlName="teamStartDate" #teamStartDate dateFormat="dd/mm/yy"
+             (onBlur)="setNullDate($event)" [showIcon]="true">
+          </p-calendar>
+           <label class="label_longdate">Start date (dd/MM/yyyy) </label>
+        </span>
+    </div>
+    <div class="col-md-6">
+      <span class="ui-float-label">
+          
+          <p-calendar appendTo="body" formControlName="teamExitDate" #teamExitDate dateFormat="dd/mm/yy"
+             (onBlur)="setNullDate($event)" [showIcon]="true">
+          </p-calendar>
+          <label class="label_longdate">Team exit date (dd/MM/yyyy) </label>
+        </span>
+    </div>
+  
+
   </div>
   <div class="row_buttons">
     <button (click)="closeAddWBS(null)" class="button b-third ">
