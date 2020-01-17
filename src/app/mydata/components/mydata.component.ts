@@ -30,7 +30,7 @@ export class MyDataComponent implements OnInit,OnDestroy {
   userData:any;
   teamsData:any[];
   allPeople:any[];
-  allProjects:any[];
+  allActiveProjects:any[];
   allUserRoles:any[];
   myUserRoles:any[];
   personRoles:any[];
@@ -84,7 +84,8 @@ export class MyDataComponent implements OnInit,OnDestroy {
       }
       return 0;
     });
-    this.allProjects = serviceResponse.payload.allProjects.sort((s1, s2) => {
+    this.allActiveProjects = serviceResponse.payload.allProjects.filter(project=>project.Active==true)
+    .sort((s1, s2) => {
       if (s1.Project_Name != undefined
         && s1.Project_Name != undefined
         && (s1.Project_Name.toLowerCase() > s2.Project_Name.toLowerCase())) {
@@ -133,6 +134,11 @@ export class MyDataComponent implements OnInit,OnDestroy {
     }
   }
 
+  isAdminMode():boolean{
+    let allowedRolesForEdit=[4,8,12,13];
+    return allowedRolesForEdit.find(a => this.adminRole!=undefined && a==this.adminRole.RoleId)!=undefined;
+  }
+
   ngOnInit() {
     this.userDataService.getInitialData();
   }
@@ -172,7 +178,7 @@ export class MyDataComponent implements OnInit,OnDestroy {
   }
 
   private getProjectInformation(record: any) {
-    let project = this.allProjects.find(project => project.ID == record.ProjectId);
+    let project = this.allActiveProjects.find(project => project.ID == record.ProjectId);
     if (project != undefined && project != null) {
       record.ProjectName = project.Project_Name;
       record.Contract = project.Contract;
@@ -225,21 +231,18 @@ export class MyDataComponent implements OnInit,OnDestroy {
     let config = new DynamicDialogConfig();
     config.data = {
       sortedPeopleList: this.allPeople,
-      sortedProjectList: this.allProjects
+      sortedProjectList: this.allActiveProjects
     };
     // Filtrar proyectos por geografía
     switch(this.adminRole.RoleId){
       case 4:
-        config.data.sortedProjectList = this.allProjects.filter(project=>project.Geography=="Iberia"||
-        project.Geography==null);
+        config.data.sortedProjectList = this.allActiveProjects;
         break;
       case 8:
-        config.data.sortedProjectList = this.allProjects.filter(project => project.Geography == "Gallia" ||
-          project.Geography == null);
+        config.data.sortedProjectList = this.allActiveProjects;
         break;
       case 12:
-        config.data.sortedProjectList = this.allProjects.filter(project => project.Geography == "ASG" ||
-          project.Geography == null);
+        config.data.sortedProjectList = this.allActiveProjects;
         break;
     }
 

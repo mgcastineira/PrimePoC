@@ -127,7 +127,7 @@
             </div>
             <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Personal" tooltipPosition="bottom"
               showDelay="1000" hideDelay="500" class="button b-third edit"
-              style="position: absolute;right: 0px;top:0px"></button>
+              style="position: absolute;right: 0px;top:0px" *ngIf="isAdminMode()"></button>
           </div>
         </div>
         <div class="info_card_separator"></div>
@@ -151,7 +151,7 @@
             </div>
             <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Birth data" tooltipPosition="bottom"
               showDelay="1000" hideDelay="500" class="button b-third edit"
-              style="position: absolute;right: 0px;top:0px"></button>
+              style="position: absolute;right: 0px;top:0px" *ngIf="isAdminMode()"></button>
           </div>
         </div>
       </div>
@@ -180,7 +180,7 @@
             </div>
             <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Email" tooltipPosition="bottom"
               showDelay="1000" hideDelay="500" class="button b-third edit"
-              style="position: absolute;right: 0px;top:0px"></button>
+              style="position: absolute;right: 0px;top:0px" *ngIf="isAdminMode()"></button>
           </div>
 
         </div>
@@ -206,7 +206,7 @@
             </div>
             <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Location" tooltipPosition="bottom"
               showDelay="1000" hideDelay="500" class="button b-third edit"
-              style="position: absolute;right: 0px;top:0px"></button>
+              style="position: absolute;right: 0px;top:0px" *ngIf="isAdminMode()"></button>
           </div>
         </div>
         <div class="info_card_separator"></div>
@@ -251,7 +251,7 @@
             </div>
             <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Roll On/Roll Off" tooltipPosition="bottom"
               showDelay="1000" hideDelay="500" class="button b-third edit"
-              style="position: absolute;right: 0px;top:0px"></button>
+              style="position: absolute;right: 0px;top:0px" *ngIf="isAdminMode()"></button>
           </div>
         </div>
       </div>
@@ -326,6 +326,9 @@
                   value="---" disabled>
                 <label for="float-input-OrgUnit"> Org. Unit </label> </span>
             </div>
+            <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom" showDelay="1000"
+              hideDelay="500" class="button b-third edit" style="position: absolute;right: 0px;top:0px"
+              *ngIf="isAdminMode()"></button>
           </div>
         </div>
         <div class="info_card_separator"></div>
@@ -359,6 +362,9 @@
                 <label for="float-input-CostCenterCode">Cost Code </label>
               </span>
             </div>
+            <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom" showDelay="1000"
+              hideDelay="500" class="button b-third edit" style="position: absolute;right: 0px;top:0px"
+              *ngIf="isAdminMode()"></button>
           </div>
         </div>
       </div>
@@ -421,6 +427,9 @@
                 <label for="float-input-ReqFuncTechCapability">Req. Func./Tech. Capability </label>
               </span>
             </div>
+            <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom" showDelay="1000"
+              hideDelay="500" class="button b-third edit" style="position: absolute;right: 0px;top:0px"
+              *ngIf="isAdminMode()"></button>
           </div>
 
         </div>
@@ -437,12 +446,36 @@
                 <label for="float-input-Locations">Other Locations </label>
               </span>
             </div>
+            <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom" showDelay="1000"
+              hideDelay="500" class="button b-third edit" style="position: absolute;right: 0px;top:0px"
+              *ngIf="isAdminMode()"></button>
             <div class="col-md-6">
 
             </div>
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+  <!--COMMENTS-->
+  <section class="mydata_personal">
+    <div class="section_title">
+      <h3><i class="far fa-comment-alt" aria-hidden="true"></i> Observations
+      </h3>
+    </div>
+    <div class="row mt-4 row-eq-height">
+      <div class="id info_card">
+        <div class="row">
+          <span class="ui-float-label" *ngIf="userData">
+            <input id="float-input-Observations" type="text" size="400" pInputText *ngIf="userData.Observations!=null"
+              [(ngModel)]="userData.Observations" disabled>
+            <input id="float-input-Observations" type="text" size="400" pInputText *ngIf="userData.Observations==null" value="---" disabled>
+          </span>
+        </div>
+        <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom" showDelay="1000"
+          hideDelay="500" class="button b-third edit" style="position: absolute;right: 0px;top:0px"
+          *ngIf="isAdminMode()"></button>
       </div>
     </div>
   </section>
