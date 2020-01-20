@@ -58,9 +58,8 @@
     <div class="row mt-4 row-eq-height">
       <!--PERSONAL 1-->
       <div class="col-md-5 data_column">
-
+        <!--PERSONAL 1 INFO CARD-->
         <div class="id info_card">
-
           <div class="icon">
             <i class="fas fa-id-card" aria-hidden="true"></i>
           </div>
@@ -116,10 +115,13 @@
               </span>
             </div>
             <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Personal" tooltipPosition="bottom"
+              (click)="editData($event,userDataOperations.EditCardInfo)"
               showDelay="1000" hideDelay="500" class="button b-third edit editcard" *ngIf="isAdminMode()"></button>
           </div>
         </div>
+        <!--PERSONAL 1 SEPARATOR-->
         <div class="info_card_separator"></div>
+        <!--PERSONAL 1 INFO BIRTH-->
         <div class="location info_card birth">
           <div class="icon">
             <i class="fas fa-anchor" aria-hidden="true"></i>
@@ -130,6 +132,7 @@
                 <input id="float-input-BirthDate" type="text" size="30" pInputText [(ngModel)]="birthDate" disabled>
                 <label for="float-input-BirthDate">Birth date (dd/MM/yyyy) </label>
               </span>
+              
             </div>
             <div class="col-md-6 ">
               <span class="ui-float-label" *ngIf="userData">
@@ -146,12 +149,14 @@
               </span>
             </div>
             <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Birth data" tooltipPosition="bottom"
-              showDelay="1000" hideDelay="500" class="button b-third edit editcard" *ngIf="isAdminMode()"></button>
+            (click)="editData($event,userDataOperations.EditBirthInfo)"  
+            showDelay="1000" hideDelay="500" class="button b-third edit editcard" *ngIf="isAdminMode()"></button>
           </div>
         </div>
       </div>
+      <!--PERSONAL 2-->
       <div class="col-md-7 data_column">
-        <!--PERSONAL 2-->
+        <!--PERSONAL 1 INFO EMAIL-->
         <div class="email info_card">
           <div class="icon">
             <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -173,13 +178,15 @@
                 <label for="float-input-MailAirbus">AIRBUS Mail </label>
               </span>
             </div>
-            <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Email" tooltipPosition="bottom"
-              showDelay="1000" hideDelay="500" class="button b-third edit editcard"></button>
+            <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Email" tooltipPosition="bottom"              
+            (click)="editData($event,userDataOperations.EditEmailInfo)"
+            showDelay="1000" hideDelay="500" class="button b-third edit editcard"></button>
           </div>
 
         </div>
+        <!--PERSONAL 1 SEPARATOR-->
         <div class="info_card_separator"></div>
-        <!--PERSONAL 3-->
+        <!--PERSONAL 1 INFO LOCATION-->
         <div class="location info_card">
           <div class="icon">
             <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
@@ -199,11 +206,12 @@
               </span>
             </div>
             <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Location" tooltipPosition="bottom"
+              (click)="editData($event,userDataOperations.EditLocationInfo)"
               showDelay="1000" hideDelay="500" class="button b-third edit editcard" *ngIf="isAdminMode()"></button>
           </div>
         </div>
         <div class="info_card_separator"></div>
-        <!--PERSONAL 3-->
+        <!--PERSONAL 1 INFO ROLLON-->
         <div class="rollon info_card">
           <div class="icon">
             <i class="fas fa-door-open"></i>
@@ -244,6 +252,7 @@
               </span>
             </div>
             <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Roll On/Roll Off" tooltipPosition="bottom"
+              (click)="editData($event,userDataOperations.EditRollOnInfo)"
               showDelay="1000" hideDelay="500" class="button b-third edit editcard" *ngIf="isAdminMode()"></button>
           </div>
         </div>
@@ -277,7 +286,8 @@
       <ng-container *ngFor="let project of teamsData;let i = index">
        
         <!-- <span *ngIf="showInactiveProjects?showInactiveProjects==!project.Active":true></span>-- -->
-        <p-tabPanel header="{{project.ProjectName}}" *ngIf="showThisProject(project)" [class.inactive_project]="!project.Active">
+        <p-tabPanel header="{{project.ProjectName}}" *ngIf="showThisProject(project)" 
+        headerStyleClass="{{project.Active?'':'inactive_project'}}"[class.inactive_project]="!project.Active">
           <app-project-detail #projectDetail [(projectData)]="project" [tabId]="i"></app-project-detail>
         </p-tabPanel>
       </ng-container>
@@ -290,8 +300,9 @@
       </h3>
     </div>
     <div class="row mt-4 row-eq-height">
-      <!--PERSONAL 1-->
+      <!--ORGANIZATION 1-->
       <div class="col-md-5 data_column">
+        <!--ORGANIZATION INFO COMPANY-->
         <div class="id info_card">
           <div class="icon">
             <i class="fas fa-university" aria-hidden="true"></i>
@@ -336,10 +347,13 @@
                 <label for="float-input-OrgUnit"> Org. Unit </label> </span>
             </div>
             <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom"
+              (click)="editData($event,userDataOperations.EditOrganizationInfo)"
               showDelay="1000" hideDelay="500" class="button b-third edit editcard" *ngIf="isAdminMode()"></button>
           </div>
         </div>
+        <!--ORGANIZATION SEPARATOR-->
         <div class="info_card_separator"></div>
+        <!--ORGANIZATION INFO COSTCENTER-->
         <div class="location info_card">
           <div class="icon">
             <i class="fas fa-coins" aria-hidden="true"></i>
@@ -371,11 +385,14 @@
               </span>
             </div>
             <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom"
+              (click)="editData($event,userDataOperations.EditCostCenterInfo)"
               showDelay="1000" hideDelay="500" class="button b-third edit editcard" *ngIf="isAdminMode()"></button>
           </div>
         </div>
       </div>
+      <!--ORGANIZATION 2-->
       <div class="col-md-7 data_column">
+        <!--ORGANIZATION 2 INFO CAREER-->
         <div class="email info_card">
           <div class="icon">
             <i class="fas fa-graduation-cap" aria-hidden="true"></i>
@@ -435,11 +452,14 @@
               </span>
             </div>
             <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom"
+              (click)="editData($event,userDataOperations.EditCareerInfo)"
               showDelay="1000" hideDelay="500" class="button b-third edit editcard" *ngIf="isAdminMode()"></button>
           </div>
 
         </div>
+        <!--ORGANIZATION 2 SEPARATOR-->
         <div class="info_card_separator"></div>
+        <!--ORGANIZATION 2 INFO OTHER LOCATIONS-->
         <div class="location info_card">
           <div class="icon">
             <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
@@ -453,13 +473,13 @@
               </span>
             </div>
             <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom"
+              (click)="editData($event,userDataOperations.EditOtherLocations)"
               showDelay="1000" hideDelay="500" class="button b-third edit editcard" *ngIf="isAdminMode()"></button>
             <div class="col-md-6">
 
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -469,6 +489,7 @@
       <h3><i class="far fa-comment-alt" aria-hidden="true"></i> Observations
       </h3>
     </div>
+    <!--COMMENTS INFO-->
     <div class="row mt-4 row-eq-height">
       <div class="col-md-12">
         <div class="id info_card">
@@ -481,6 +502,7 @@
             </span>
           </div>
           <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom"
+            (click)="editData($event,userDataOperations.EditComments)"
             showDelay="1000" hideDelay="500" class="button b-third edit editcard" *ngIf="isAdminMode()"></button>
         </div>
       </div>
