@@ -14,3 +14,17 @@
 .selected_project input {
     border-bottom: none;
 }
+
+.project_supervisor {
+    margin-top: -24px;
+    margin-bottom: 24px;
+}
+
+.project_supervisor .pi-exclamation-triangle {
+    right: 24px;
+    top: 10px;
+}
+
+.ui-dropdown-label {
+    border-radius: 0;
+}

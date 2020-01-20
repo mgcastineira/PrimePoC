@@ -277,7 +277,7 @@
       <ng-container *ngFor="let project of teamsData;let i = index">
        
         <!-- <span *ngIf="showInactiveProjects?showInactiveProjects==!project.Active":true></span>-- -->
-        <p-tabPanel header="{{project.ProjectName}}" *ngIf="showThisProject(project)" [class.inactive_project]="project.Active">
+        <p-tabPanel header="{{project.ProjectName}}" *ngIf="showThisProject(project)" [class.inactive_project]="!project.Active">
           <app-project-detail #projectDetail [(projectData)]="project" [tabId]="i"></app-project-detail>
         </p-tabPanel>
       </ng-container>

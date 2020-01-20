@@ -58,21 +58,22 @@
   <div class="row mt-4">
     <div class="col-md-4">
       <span class="ui-float-label project_item">
-        <label for="float-input-ActivationDate{{projectData.ID}}">Team start date (dd/MM/yyyy)</label>
+        
         <p-calendar appendTo="body" [(ngModel)]="projectData.ActivationDate" #teamStartDate dateFormat="dd/mm/yy"
           [disabled]="!editMode" placeholder="" (onBlur)="setNullDate($event,'teamStartDate')" [showIcon]="true"
           id="float-input-ActivationDate{{projectData.ID}}">
         </p-calendar>
+        <label for="float-input-ActivationDate{{projectData.ID}}">Team start date (dd/MM/yyyy)</label>
       </span>
     </div>
     <div class="col-md-4">
       <span class="ui-float-label project_item">
-        <label for="float-input-DeactivationDate{{projectData.ID}}">Team end date (dd/MM/yyyy) </label>
+        
         <p-calendar appendTo="body" [(ngModel)]="projectData.DeactivationDate" #teamEndDate dateFormat="dd/mm/yy"
           [disabled]="!editMode" placeholder="" (onBlur)="setNullDate($event,'teamEndDate')" [showIcon]="true"
           id="float-input-DeactivationDate{{projectData.ID}}">
         </p-calendar>
-
+        <label for="float-input-DeactivationDate{{projectData.ID}}">Team end date (dd/MM/yyyy) </label>
 
       </span>
         <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom"

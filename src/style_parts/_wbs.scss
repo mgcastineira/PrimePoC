@@ -87,6 +87,15 @@ body .ui-overlaypanel-content p-footer {
   margin: 0;
   margin-bottom: 30px;
   font-size: 22px;
+  font-weight: bold;
+}
+
+.ui-dialog.ui-dynamicdialog.ui-widget .ui-dialog-content .title_dialog.with-subtitle {
+  margin-bottom: 5px;
+}
+.ui-dialog.ui-dynamicdialog.ui-widget .ui-dialog-content p.subtitle {
+  margin-bottom: 30px;
+  font-family: 'Graphik', sans-serif;
 }
 
 .ui-autocomplete {

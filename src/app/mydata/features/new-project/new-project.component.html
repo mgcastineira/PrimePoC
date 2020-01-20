@@ -1,5 +1,8 @@
-<h4 class="title_dialog">Add Project</h4>
-Choose a Project by Delivery Lead or just writing 
+<h4 class="title_dialog with-subtitle">Add Project</h4>
+<p class="subtitle">
+Choose a Project by Delivery Lead or just writing
+</p>
+
 <form [formGroup]="newForm" class="add-wbs">
   <span class="ui-float-label">
     <p-autoComplete formControlName="projectName" [suggestions]="autocompletePeopleProjectsList" field="Description"
@@ -10,7 +13,7 @@ Choose a Project by Delivery Lead or just writing
     <i class="pi pi-exclamation-triangle " pTooltip="Please, enter an existing Project or Delivery Lead"
       style="font-size: 1.5em"></i>
   </span>
-  <span class="ui-float-label" *ngIf="showSupervisorInput">
+  <span class="ui-float-label project_supervisor" *ngIf="showSupervisorInput">
     <!-- <p-autoComplete formControlName="supervisorName" [suggestions]="autocompletePeopleList" field="Title"
       (onFocus)="$event.target.select()" (completeMethod)="filterPeopleSingle($event)" id="supervisorName"
       [forceSelection]="true" (onSelect)="selectPeople($event,'supervisorId')" autocomplete="off">
