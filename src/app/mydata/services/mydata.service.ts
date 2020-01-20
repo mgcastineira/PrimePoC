@@ -53,7 +53,7 @@ export class UserDataService {
     ]).subscribe(
       results => {
         let userData = results[0];
-        let teamsData = results[1];
+        let teamsData = this.processTeamsData(results[1]);
         let allProjects = results[2];
         let allPeople = results[3];
         let allUserRoles = results[4];
@@ -84,5 +84,15 @@ export class UserDataService {
         });
       }
     );
+  }
+
+  private processTeamsData(teams:any[]):any[]{
+    let result:any[]=[];
+    let activeRecords= teams.filter(team=>team.Active==true);
+    result.push(...activeRecords);
+
+    let inactiveRecords = teams.filter(team => team.Active == false);
+    result.push(...inactiveRecords);
+    return result;
   }
 }

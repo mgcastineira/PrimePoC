@@ -13,6 +13,7 @@ export class ProjectDetailComponent implements OnInit {
   @ViewChild('teamEndDate') endDateCalendar: Calendar;
   @ViewChild('teamStartDate') startDateCalendar: Calendar;
 
+
   editMode:boolean=false;
 
   constructor() { }

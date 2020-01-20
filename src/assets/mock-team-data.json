@@ -87,7 +87,7 @@
         "ProjectId": 2,
         "Active": true,
         "ActivationDate": "2019-11-20T23:00:00Z",
-        "DeactivationDate": null,
+        "DeactivationDate": "2021-12-20T23:00:00Z",
         "ProductionEnv": "0",
         "NonProductionEnvs": "0",
         "OtherEnvs": "0",
@@ -107,6 +107,115 @@
         "OData__UIVersionString": "1.0",
         "Attachments": false,
         "GUID": "9e8f191f-7cc8-432d-a485-d6f73952a4e4"
+    },
+    {
+        "__metadata": {
+            "id": "fafb35a7-6d54-4d17-8692-c1c8890bb02c",
+            "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'862be2dd-99f0-4533-a3f4-914b1cb266ae')/Items(1379)",
+            "etag": "\"6\"",
+            "type": "SP.Data.MyTeam2ListItem"
+        },
+        "FirstUniqueAncestorSecurableObject": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'862be2dd-99f0-4533-a3f4-914b1cb266ae')/Items(1379)/FirstUniqueAncestorSecurableObject"
+            }
+        },
+        "RoleAssignments": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'862be2dd-99f0-4533-a3f4-914b1cb266ae')/Items(1379)/RoleAssignments"
+            }
+        },
+        "AttachmentFiles": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'862be2dd-99f0-4533-a3f4-914b1cb266ae')/Items(1379)/AttachmentFiles"
+            }
+        },
+        "ContentType": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'862be2dd-99f0-4533-a3f4-914b1cb266ae')/Items(1379)/ContentType"
+            }
+        },
+        "GetDlpPolicyTip": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'862be2dd-99f0-4533-a3f4-914b1cb266ae')/Items(1379)/GetDlpPolicyTip"
+            }
+        },
+        "FieldValuesAsHtml": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'862be2dd-99f0-4533-a3f4-914b1cb266ae')/Items(1379)/FieldValuesAsHtml"
+            }
+        },
+        "FieldValuesAsText": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'862be2dd-99f0-4533-a3f4-914b1cb266ae')/Items(1379)/FieldValuesAsText"
+            }
+        },
+        "FieldValuesForEdit": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'862be2dd-99f0-4533-a3f4-914b1cb266ae')/Items(1379)/FieldValuesForEdit"
+            }
+        },
+        "File": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'862be2dd-99f0-4533-a3f4-914b1cb266ae')/Items(1379)/File"
+            }
+        },
+        "Folder": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'862be2dd-99f0-4533-a3f4-914b1cb266ae')/Items(1379)/Folder"
+            }
+        },
+        "LikedByInformation": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'862be2dd-99f0-4533-a3f4-914b1cb266ae')/Items(1379)/LikedByInformation"
+            }
+        },
+        "ParentList": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'862be2dd-99f0-4533-a3f4-914b1cb266ae')/Items(1379)/ParentList"
+            }
+        },
+        "Properties": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'862be2dd-99f0-4533-a3f4-914b1cb266ae')/Items(1379)/Properties"
+            }
+        },
+        "Versions": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'862be2dd-99f0-4533-a3f4-914b1cb266ae')/Items(1379)/Versions"
+            }
+        },
+        "FileSystemObjectType": 0,
+        "Id": 1,
+        "ServerRedirectedEmbedUri": null,
+        "ServerRedirectedEmbedUrl": "",
+        "ContentTypeId": "0x010052B5A74DE09D5441A267FF6D4BC23965",
+        "Title": null,
+        "ComplianceAssetId": null,
+        "PeopleId": 918,
+        "ProjectId": 1,
+        "Active": false,
+        "ActivationDate": "2019-12-20T12:51:45Z",
+        "DeactivationDate": "2019-12-21T12:51:45Z",
+        "ProductionEnv": "0",
+        "NonProductionEnvs": "2",
+        "OtherEnvs": "1",
+        "SameAppEnvs": false,
+        "DateAccessReq": null,
+        "WBS": null,
+        "WBS_Comment": null,
+        "Work_Location": null,
+        "Processed": false,
+        "ProcessedDate": null,
+        "Log": null,
+        "ID": 1379,
+        "Modified": "2020-01-09T14:01:19Z",
+        "Created": "2019-12-20T12:51:46Z",
+        "AuthorId": 2475,
+        "EditorId": 1303,
+        "OData__UIVersionString": "1.0",
+        "Attachments": false,
+        "GUID": "b99bf850-119f-4d78-adde-c412ed02be47"
     },
     {
         "__metadata": {
@@ -217,4 +326,5 @@
         "Attachments": false,
         "GUID": "b99bf850-119f-4d78-adde-c412ed02be47"
     }
+    
 ]

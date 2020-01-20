@@ -40,10 +40,8 @@ export class MyDataComponent implements OnInit,OnDestroy {
   birthDate:string="";
   contractAndCompany: string = "";
   primaryContact: string = "";
-  checked1: string = "show";
-  checked2: string = "hide";
 
-
+  showInactiveProjects:boolean = false;
   currentTabIndex:number = -1;
 
   constructor(private userDataService: UserDataService, 
@@ -167,8 +165,14 @@ export class MyDataComponent implements OnInit,OnDestroy {
         SupervisorName:"",
         AirbusResponsible:"",
         AirbusDirectResponsible:"",
-        Geography:""
+        Geography:"",
+        ActivationDate:null,
+        DeactivationDate:null
       };
+      if(team.ActivationDate!=null)
+        record.ActivationDate=new Date(team.ActivationDate);
+      if (team.DeactivationDate != null)
+        record.DeactivationDate = new Date(team.DeactivationDate);
       // Obtener project
       this.getProjectInformation(record);
 
@@ -261,5 +265,14 @@ export class MyDataComponent implements OnInit,OnDestroy {
         
       }
     });
+  }
+
+  showThisProject(project:any):boolean{
+    if(this.showInactiveProjects){
+      return true;
+    }
+    else{
+      return project.Active;
+    }
   }
 }
