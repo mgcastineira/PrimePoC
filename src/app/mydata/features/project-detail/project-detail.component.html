@@ -1,4 +1,3 @@
-<!-- <div class="project_title"> -->
 <p><strong>{{projectData.ProjectName}}</strong> </p>
 <!-- <div [ngStyle]="{'float':'right','margin-top':'-23px','display':'flex','margin-right': '-60px'}">
   <p *ngIf="projectData.Active">Active
@@ -54,41 +53,44 @@
       <label for="float-input-Contract{{projectData.ID}}">Contract </label>
     </span>
   </div>
+</div>
+<div class="row mt-4">
+  <div class="col-md-4">
+    <span class="ui-float-label project_item">
+      <p-calendar appendTo="body" [(ngModel)]="projectData.ActivationDate" #teamStartDate dateFormat="dd/mm/yy"
+        [disabled]="!editMode" placeholder="" (onBlur)="setNullDate($event,'teamStartDate')" [showIcon]="true"
+        id="float-input-ActivationDate{{projectData.ID}}">
+      </p-calendar>
+      <label for="float-input-ActivationDate{{projectData.ID}}">Team start date (dd/MM/yyyy)</label>
+    </span>
   </div>
-  <div class="row mt-4">
-    <div class="col-md-4">
-      <span class="ui-float-label project_item">
-        <label for="float-input-ActivationDate{{projectData.ID}}">Team start date (dd/MM/yyyy)</label>
-        <p-calendar appendTo="body" [(ngModel)]="projectData.ActivationDate" #teamStartDate dateFormat="dd/mm/yy"
-          [disabled]="!editMode" placeholder="" (onBlur)="setNullDate($event,'teamStartDate')" [showIcon]="true"
-          id="float-input-ActivationDate{{projectData.ID}}">
-        </p-calendar>
-      </span>
-    </div>
-    <div class="col-md-4">
-      <span class="ui-float-label project_item">
-        <label for="float-input-DeactivationDate{{projectData.ID}}">Team end date (dd/MM/yyyy) </label>
-        <p-calendar appendTo="body" [(ngModel)]="projectData.DeactivationDate" #teamEndDate dateFormat="dd/mm/yy"
-          [disabled]="!editMode" placeholder="" (onBlur)="setNullDate($event,'teamEndDate')" [showIcon]="true"
-          id="float-input-DeactivationDate{{projectData.ID}}">
-        </p-calendar>
-
-
-      </span>
-        <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom"
-                 showDelay="1000" hideDelay="500" class="button b-third edit "
-                 *ngIf=""></button>
-    </div>
-
-
-
+  <div class="col-md-4">
+    <span class="ui-float-label project_item">
+      <p-calendar appendTo="body" [(ngModel)]="projectData.DeactivationDate" #teamEndDate dateFormat="dd/mm/yy"
+        [disabled]="!editMode" placeholder="" (onBlur)="setNullDate($event,'teamEndDate')" [showIcon]="true"
+        id="float-input-DeactivationDate{{projectData.ID}}">
+      </p-calendar>
+      <label for="float-input-DeactivationDate{{projectData.ID}}">Team end date (dd/MM/yyyy) </label>
+    </span>
+    <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom"
+      showDelay="1000" hideDelay="500" class="button b-third edit " *ngIf=""></button>
   </div>
 
-  <div class="row">
-    <div class="col-md-12 text-right">
-      <button class="button b-remove">
-        REMOVE FROM THIS PROJECT
-      </button>
-    </div>
-  </div>
 
+
+</div>
+
+<div class="row">
+  <div class="col-md-12 text-right">
+    <button class="button b-remove" (click)="removeUserFromTeam()" *ngIf="projectData.Active">
+      REMOVE FROM THIS PROJECT
+    </button>
+  </div>
+</div>
+<p-confirmDialog key="cdd" #cdd header="Confirmation">
+  <p-footer>
+    <button type="button" class="button b-third" label="CANCEL" (click)="cdd.reject()">CANCEL</button>
+    <button type="button" class="button b-main" label="DELETE" (click)="cdd.accept()">REMOVE</button>
+  </p-footer>
+
+</p-confirmDialog>

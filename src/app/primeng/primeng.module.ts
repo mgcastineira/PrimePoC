@@ -31,6 +31,7 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { FieldsetModule } from 'primeng/fieldset';
 import { AccordionModule } from 'primeng/accordion';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { InputMaskModule } from 'primeng/inputmask';
 
 @NgModule({
   declarations: [],
@@ -65,7 +66,8 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
     OverlayPanelModule,
     FieldsetModule,
     AccordionModule,
-    ScrollPanelModule
+    ScrollPanelModule,
+    InputMaskModule
   ],
   exports: [
     TableModule,
@@ -94,7 +96,8 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
     OverlayPanelModule,
     FieldsetModule,
     AccordionModule,
-    ScrollPanelModule
+    ScrollPanelModule,
+    InputMaskModule
   ]
 })
 export class PrimengModule { }
