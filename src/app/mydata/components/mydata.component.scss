@@ -167,3 +167,10 @@ li {
 .info_card:hover .editcard {
   opacity: 1;
 }
+
+.mydata_projects .show-deleted.deleted-wbs p {
+  margin-bottom: 0;
+}
+.mydata_projects .show-deleted.deleted-wbs {
+  margin-top: 7px;
+}

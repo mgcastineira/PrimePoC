@@ -126,8 +126,7 @@
               </span>
             </div>
             <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Personal" tooltipPosition="bottom"
-              showDelay="1000" hideDelay="500" class="button b-third edit editcard"
-               *ngIf="isAdminMode()"></button>
+              showDelay="1000" hideDelay="500" class="button b-third edit editcard" *ngIf="isAdminMode()"></button>
           </div>
         </div>
         <div class="info_card_separator"></div>
@@ -157,8 +156,7 @@
               </span>
             </div>
             <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Birth data" tooltipPosition="bottom"
-              showDelay="1000" hideDelay="500" class="button b-third edit editcard"
-               *ngIf="isAdminMode()"></button>
+              showDelay="1000" hideDelay="500" class="button b-third edit editcard" *ngIf="isAdminMode()"></button>
           </div>
         </div>
       </div>
@@ -185,8 +183,7 @@
                 <label for="float-input-MailAirbus">AIRBUS Mail </label>
               </span>
             </div>
-            <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Email" tooltipPosition="bottom"
-              showDelay="1000" hideDelay="500" class="button b-third edit editcard"></button>
+            <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Email" tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third edit editcard"></button>
           </div>
 
         </div>
@@ -210,8 +207,7 @@
                 <label for="float-input-Workplace">Workplace </label>
               </span>
             </div>
-            <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Location" tooltipPosition="bottom"
-              showDelay="1000" hideDelay="500" class="button b-third edit editcard"
+            <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Location" tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third edit editcard"
              *ngIf="isAdminMode()"></button>
           </div>
         </div>
@@ -265,13 +261,31 @@
   </section>
   <!--PROJECTS-->
   <section class="mydata_projects">
-    <div class="section_title mb-4">
-      <h3><i class="fas fa-suitcase" aria-hidden="true"></i> Projects
-        <button pButton type="button" style="float: right;padding-right: 0px;" *ngIf="myOwnData"
-          label="REQUEST PROJECT ADITTION" class="button b-third mr-16"></button>
-        <button pButton type="button" style="float: right;padding-right: 0px;" *ngIf="!myOwnData"
-          label="ADD PROJECT" (click)="addUserToTeam()" class="button b-third mr-16"></button>
-      </h3>
+    <div class="section_title">
+      <div class="row">
+        <div class="col-md-3">
+          <h3><i class="fas fa-suitcase" aria-hidden="true"></i> Projects</h3>
+        </div>
+        <div class="col-md-9">
+        <div class="text-right">
+          <div class="show-deleted deleted-wbs">
+            
+            <p>Show inactive projects </p> 
+            <p-inputSwitch [(ngModel)]="checked1" formControlName="active"
+             onLabel="On" offLabel="Off"></p-inputSwitch>
+          </div>
+          <button pButton type="button" style="float: right;padding-right: 0px;" *ngIf="myOwnData"
+            label="REQUEST PROJECT ADITTION" class="button b-third mr-16"></button>
+          <button pButton type="button" style="float: right;padding-right: 0px;" *ngIf="!myOwnData" label="ADD PROJECT"
+            (click)="addUserToTeam()" class="button b-third mr-16"></button>
+        </div>
+        </div>
+      </div>
+      
+
+
+
+      
     </div>
 
     <p-tabView #tabView (onChange)="handleTabChange($event)">
@@ -333,7 +347,7 @@
                 <label for="float-input-OrgUnit"> Org. Unit </label> </span>
             </div>
             <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom" showDelay="1000"
-              hideDelay="500" class="button b-third edit" style="position: absolute;right: 0px;top:0px"
+              hideDelay="500" class="button b-third edit editcard" 
               *ngIf="isAdminMode()"></button>
           </div>
         </div>
@@ -369,8 +383,7 @@
               </span>
             </div>
             <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom" showDelay="1000"
-              hideDelay="500" class="button b-third edit" style="position: absolute;right: 0px;top:0px"
-              *ngIf="isAdminMode()"></button>
+              hideDelay="500" class="button b-third edit editcard" *ngIf="isAdminMode()"></button>
           </div>
         </div>
       </div>
@@ -434,7 +447,7 @@
               </span>
             </div>
             <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom" showDelay="1000"
-              hideDelay="500" class="button b-third edit" style="position: absolute;right: 0px;top:0px"
+              hideDelay="500" class="button b-third edit editcard" 
               *ngIf="isAdminMode()"></button>
           </div>
 
@@ -453,7 +466,7 @@
               </span>
             </div>
             <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom" showDelay="1000"
-              hideDelay="500" class="button b-third edit" style="position: absolute;right: 0px;top:0px"
+              hideDelay="500" class="button b-third edit editcard" 
               *ngIf="isAdminMode()"></button>
             <div class="col-md-6">
 
@@ -471,17 +484,19 @@
       </h3>
     </div>
     <div class="row mt-4 row-eq-height">
-      <div class="id info_card">
-        <div class="row">
-          <span class="ui-float-label" *ngIf="userData">
-            <input id="float-input-Observations" type="text" size="400" pInputText *ngIf="userData.Observations!=null"
-              [(ngModel)]="userData.Observations" disabled>
-            <input id="float-input-Observations" type="text" size="400" pInputText *ngIf="userData.Observations==null" value="---" disabled>
-          </span>
-        </div>
-        <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom" showDelay="1000"
-          hideDelay="500" class="button b-third edit" style="position: absolute;right: 0px;top:0px"
-          *ngIf="isAdminMode()"></button>
+      <div class="col-md-12">
+              <div class="id info_card">
+                <div class="row">
+                  <span class="ui-float-label" *ngIf="userData">
+                    <input id="float-input-Observations" type="text" size="400" pInputText
+                      *ngIf="userData.Observations!=null" [(ngModel)]="userData.Observations" disabled>
+                    <input id="float-input-Observations" type="text" size="400" pInputText
+                      *ngIf="userData.Observations==null" value="---" disabled>
+                  </span>
+                </div>
+                <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom"
+                  showDelay="1000" hideDelay="500" class="button b-third edit editcard" *ngIf="isAdminMode()"></button>
+              </div>
       </div>
     </div>
   </section>

@@ -3,3 +3,15 @@
     opacity: 1;
     border-color: transparent;
 }
+
+
+.button.b-remove {
+    padding: 0;
+    font-size: 12px;   
+    background-color: transparent; 
+    color: #5A5A5A;
+}
+
+.button.b-remove:hover {
+    text-decoration: underline;
+}

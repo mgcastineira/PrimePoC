@@ -40,7 +40,8 @@ export class MyDataComponent implements OnInit,OnDestroy {
   birthDate:string="";
   contractAndCompany: string = "";
   primaryContact: string = "";
-
+  checked1: string = "show";
+  checked2: string = "hide";
 
 
   currentTabIndex:number = -1;
