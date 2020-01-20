@@ -35,6 +35,7 @@ body .ui-tabview.ui-tabview-top .ui-tabview-nav li.ui-state-active:hover {
 body .ui-tabview.ui-tabview-top .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover,
 body .ui-tabview.ui-tabview-bottom .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover,
 body .ui-tabview.ui-tabview-left .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover,
+body .ui-tabview.ui-tabview-top .ui-tabview-nav li.inactive_project,
 body .ui-tabview.ui-tabview-right .ui-tabview-nav li:not(.ui-state-active):not(.ui-state-disabled):hover {
   @extend %border-zero;
   background-color: $_grey_light_2 !important;
@@ -61,6 +62,10 @@ body .ui-tabview .inactive_project .ui-tabview-panel {
   opacity: 0.7;
 }
 
+body .ui-tabview li.inactive_project {
+      background-color: #f3f3f3 !important;
+      opacity: 0.7;
+}
 
 body .myteam_main .ui-tabview .ui-tabview-panels {
   @extend %border-zero;
