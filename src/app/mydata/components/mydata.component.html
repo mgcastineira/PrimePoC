@@ -19,8 +19,10 @@
       </div>
       <div class="col-md-4">
         <div class="main-action">
-          <p class="action_question">Are you leaving Airbus?</p>
-          <button class="button b-main">START ROLL OFF </button>
+          <p class="action_question" *ngIf="!isAdminMode()">Are you leaving Airbus?</p>
+          <button class="button b-main"*ngIf="!isAdminMode()" (click)="openRollOff()">START ROLL OFF </button>
+          <p class="action_question" *ngIf="isAdminMode()">Does this user have an end date?</p>
+          <button class="button b-main" *ngIf="isAdminMode()" (click)="openStatus()">CHANGE STATUS </button>
         </div>
       </div>
     </div>
@@ -325,8 +327,6 @@
       </div>
     </div>
   </section>
-
-
   <!--PROJECTS-->
   <section class="mydata_projects">
     <div class="section_title">
@@ -339,7 +339,8 @@
             <div class="show-deleted deleted-wbs">
 
               <p>Show inactive projects </p>
-              <p-inputSwitch [(ngModel)]="showInactiveProjects" onLabel="On" offLabel="Off"></p-inputSwitch>
+              <p-inputSwitch (click)="changeProjectFilter($event)" [(ngModel)]="showInactiveProjects" onLabel="On"
+                offLabel="Off"></p-inputSwitch>
             </div>
             <button pButton type="button" style="float: right;padding-right: 0px;" *ngIf="myOwnData"
               label="REQUEST PROJECT ADITTION" class="button b-third mr-16"></button>
@@ -350,13 +351,13 @@
       </div>
     </div>
 
-    <p-tabView #tabView (onChange)="handleTabChange($event)">
+    <p-tabView #tabView [activeIndex]="currentTabIndex" (onChange)="currentTabIndex = $event.index">
       <ng-container *ngFor="let project of teamsData;let i = index">
 
-        <!-- <span *ngIf="showInactiveProjects?showInactiveProjects==!project.Active":true></span>-- -->
         <p-tabPanel header="{{project.ProjectName}}" *ngIf="showThisProject(project)"
           headerStyleClass="{{project.Active?'':'inactive_project'}}" [class.inactive_project]="!project.Active">
-          <app-project-detail #projectDetail [(projectData)]="project" [tabId]="i"></app-project-detail>
+          <app-project-detail #projectDetail [(projectData)]="project" [tabId]="i" [componentId]="project.ID">
+          </app-project-detail>
         </p-tabPanel>
       </ng-container>
     </p-tabView>
@@ -371,183 +372,182 @@
       <!--ORGANIZATION 1-->
       <div class="col-md-5 data_column">
         <!--ORGANIZATION INFO COMPANY-->
-        <div class="id info_card">
-          <div class="icon">
-            <i class="fas fa-university" aria-hidden="true"></i>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <span class="ui-float-label" *ngIf="userData">
-                <input id="float-input-Company" type="text" size="30" pInputText *ngIf="userData.Company!=null"
-                  [(ngModel)]="userData.Company" disabled>
-                <input id="float-input-Company" type="text" size="30" pInputText *ngIf="userData.Company==null"
-                  value="---" disabled>
-                <label for="float-input-Company">Company </label>
-              </span>
-              <span class="ui-float-label" *ngIf="userData">
-                <input id="float-input-Contract" type="text" size="30" pInputText *ngIf="userData.Contract!=null"
-                  [(ngModel)]="userData.Contract" disabled>
-                <input id="float-input-Contract" type="text" size="30" pInputText *ngIf="userData.Contract==null"
-                  value="---" disabled>
-                <label for="float-input-Contract">Contract </label>
-              </span>
-              <span class="ui-float-label" *ngIf="userData">
-                <input id="float-input-DeplGeoUnit" type="text" size="30" pInputText *ngIf="userData.DeplGeoUnit!=null"
-                  [(ngModel)]="userData.DeplGeoUnit" disabled>
-                <input id="float-input-DeplGeoUnit" type="text" size="30" pInputText *ngIf="userData.DeplGeoUnit==null"
-                  value="---" disabled>
-                <label for="float-input-DeplGeoUnit">Depl. Geo Unit </label>
-              </span>
+        <form [formGroup]="organizationInfoForm">
+          <div class="id info_card">
+            <div class="icon">
+              <i class="fas fa-university" aria-hidden="true"></i>
             </div>
-            <div class="col-md-6 ">
-              <span class="ui-float-label" *ngIf="userData">
-                <input id="float-input-CompanyCode" type="text" size="30" pInputText *ngIf="userData.CompanyCode!=null"
-                  [(ngModel)]="userData.CompanyCode" disabled>
-                <input id="float-input-CompanyCode" type="text" size="30" pInputText *ngIf="userData.CompanyCode==null"
-                  value="---" disabled>
-                <label for="float-input-CompanyCode">Company Code </label>
-              </span>
-              <span class="ui-float-label" *ngIf="userData">
-                <input id="float-input-OrgUnit" type="text" size="30" pInputText *ngIf="userData.OrgUnit!=null"
-                  [(ngModel)]="userData.OrgUnit" disabled>
-                <input id="float-input-OrgUnit" type="text" size="30" pInputText *ngIf="userData.OrgUnit==null"
-                  value="---" disabled>
-                <label for="float-input-OrgUnit"> Org. Unit </label> </span>
+            <div class="row">
+              <div class="col-md-6">
+                <span class="ui-float-label" *ngIf="userData">
+                  <input id="float-input-Company" formControlName="company" type="text" size="30" pInputText
+                    [(ngModel)]="userData.Company">
+                  <label for="float-input-Company">Company </label>
+                </span>
+                <span class="ui-float-label" *ngIf="userData">
+                  <input id="float-input-ContractType" formControlName="contractType" type="text" size="30" pInputText
+                    [(ngModel)]="userData.ContractType">
+                  <label for="float-input-ContractType">Contract Type </label>
+                </span>
+                <span class="ui-float-label" *ngIf="userData">
+                  <input id="float-input-DeplGeoUnit" formControlName="deplGeoUnit" type="text" size="30" pInputText
+                    [(ngModel)]="userData.DeplGeoUnit">
+                  <label for="float-input-DeplGeoUnit">Depl. Geo Unit </label>
+                </span>
+              </div>
+              <div class="col-md-6 ">
+                <span class="ui-float-label" *ngIf="userData">
+                  <input id="float-input-CompanyCode" formControlName="companyCode" type="text" size="30" pInputText
+                    [(ngModel)]="userData.CompanyCode">
+                  <label for="float-input-CompanyCode">Company Code </label>
+                </span>
+                <span class="ui-float-label" *ngIf="userData">
+                  <input id="float-input-OrgUnit" formControlName="orgUnit" type="text" size="30" pInputText
+                    [(ngModel)]="userData.OrgUnit">
+                  <label for="float-input-OrgUnit"> Org. Unit </label> </span>
+              </div>
+              <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Birth data" tooltipPosition="bottom"
+                (click)="editData(userDataOperations.EditOrganizationInfo)" showDelay="1000" hideDelay="500"
+                class="button b-third edit editcard" *ngIf="!organizationInfoFormModeEdition && isAdminMode()"></button>
+              <button *ngIf="organizationInfoFormModeEdition" pButton type="button" icon="pi pi-check" pTooltip="Save"
+                tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third edit editcard"
+                style="margin-right: .5em"></button>
+              <button *ngIf="organizationInfoFormModeEdition" pButton type="button" icon="pi pi-times" pTooltip="Cancel"
+                tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third edit editcard"
+                (click)="editData(userDataOperations.EditOrganizationInfo)"></button>
             </div>
-            <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom"
-              (click)="editData(userDataOperations.EditOrganizationInfo)" showDelay="1000" hideDelay="500"
-              class="button b-third edit editcard" *ngIf="isAdminMode()"></button>
           </div>
-        </div>
+        </form>
         <!--ORGANIZATION SEPARATOR-->
         <div class="info_card_separator"></div>
         <!--ORGANIZATION INFO COSTCENTER-->
-        <div class="location info_card">
-          <div class="icon">
-            <i class="fas fa-coins" aria-hidden="true"></i>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <span class="ui-float-label" *ngIf="userData">
-                <input id="float-input-CostCenterName" type="text" size="30" pInputText
-                  [(ngModel)]="userData.CostCenterName" *ngIf="userData.CostCenterName!=null" disabled>
-                <input id="float-input-CostCenterName" type="text" size="30" pInputText value="---" disabled
-                  *ngIf="userData.CostCenterName==null">
-                <label for="float-input-CostCenterName">Cost Center </label>
-              </span>
-              <span class="ui-float-label" *ngIf="userData">
-                <input id="float-input-EconomicProfile" type="text" size="30" pInputText
-                  [(ngModel)]="userData.EconomicProfile" disabled *ngIf="userData.EconomicProfile!=null">
-                <input id="float-input-EconomicProfile" type="text" size="30" pInputText value="---" disabled
-                  *ngIf="userData.EconomicProfile==null">
-                <label for="float-input-EconomicProfile">Economic Profile </label>
-              </span>
+        <form [formGroup]="costCenterInfoForm">
+          <div class="location info_card">
+            <div class="icon">
+              <i class="fas fa-coins" aria-hidden="true"></i>
             </div>
-            <div class="col-md-6 ">
-              <span class="ui-float-label" *ngIf="userData">
-                <input id="float-input-CostCenterCode" type="text" size="30" pInputText
-                  [(ngModel)]="userData.CostCenterCode" disabled *ngIf="userData.CostCenterCode!=null">
-                <input id="float-input-CostCenterCode" type="text" size="30" pInputText value="---" disabled
-                  *ngIf="userData.CostCenterCode==null">
-                <label for="float-input-CostCenterCode">Cost Code </label>
-              </span>
+            <div class="row">
+              <div class="col-md-6">
+                <span class="ui-float-label" *ngIf="userData">
+                  <input id="float-input-CostCenterName" formControlName="costCenterName" type="text" size="30"
+                    pInputText [(ngModel)]="userData.CostCenterName">
+                  <label for="float-input-CostCenterName">Cost Center </label>
+                </span>
+                <span class="ui-float-label" *ngIf="userData">
+                  <input id="float-input-EconomicProfile" formControlName="economicProfile" type="text" size="30"
+                    pInputText [(ngModel)]="userData.EconomicProfile">
+                  <label for="float-input-EconomicProfile">Economic Profile </label>
+                </span>
+              </div>
+              <div class="col-md-6 ">
+                <span class="ui-float-label" *ngIf="userData">
+                  <input id="float-input-CostCenterCode" formControlName="costCenterCode" type="text" size="30"
+                    pInputText [(ngModel)]="userData.CostCenterCode">
+                  <label for="float-input-CostCenterCode">Cost Code </label>
+                </span>
+              </div>
+              <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Birth data" tooltipPosition="bottom"
+                (click)="editData(userDataOperations.EditCostCenterInfo)" showDelay="1000" hideDelay="500"
+                class="button b-third edit editcard" *ngIf="!costCenterInfoFormModeEdition && isAdminMode()"></button>
+              <button *ngIf="costCenterInfoFormModeEdition" pButton type="button" icon="pi pi-check" pTooltip="Save"
+                tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third edit editcard"
+                style="margin-right: .5em"></button>
+              <button *ngIf="costCenterInfoFormModeEdition" pButton type="button" icon="pi pi-times" pTooltip="Cancel"
+                tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third edit editcard"
+                (click)="editData(userDataOperations.EditCostCenterInfo)"></button>
             </div>
-            <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom"
-              (click)="editData(userDataOperations.EditCostCenterInfo)" showDelay="1000" hideDelay="500"
-              class="button b-third edit editcard" *ngIf="isAdminMode()"></button>
           </div>
-        </div>
+        </form>
       </div>
       <!--ORGANIZATION 2-->
       <div class="col-md-7 data_column">
         <!--ORGANIZATION 2 INFO CAREER-->
-        <div class="email info_card">
-          <div class="icon">
-            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <span class="ui-float-label" *ngIf="userData">
-                <input id="float-input-CareerTrack" type="text" size="30" pInputText *ngIf="userData.CareerTrack!=null"
-                  [(ngModel)]="userData.CareerTrack" disabled>
-                <input id="float-input-CareerTrack" type="text" size="30" pInputText value="---" disabled
-                  *ngIf="userData.CareerTrack==null">
-                <label for="float-input-CareerTrack">Career Track </label>
-              </span>
-              <span class="ui-float-label" *ngIf="userData">
-                <input id="float-input-RoleFamily" type="text" size="30" pInputText *ngIf="userData.RoleFamily!=null"
-                  [(ngModel)]="userData.RoleFamily" disabled>
-                <input id="float-input-RoleFamily" type="text" size="30" pInputText value="---" disabled
-                  *ngIf="userData.RoleFamily==null">
-                <label for="float-input-RoleFamily">Role Family </label>
-              </span>
-              <span class="ui-float-label" *ngIf="userData">
-                <input id="float-input-ReqIndustryCategory" type="text" size="30" pInputText
-                  *ngIf="userData.ReqIndustryCategory!=null" [(ngModel)]="userData.ReqIndustryCategory" disabled>
-                <input id="float-input-ReqIndustryCategory" type="text" size="30" pInputText value="---" disabled
-                  *ngIf="userData.ReqIndustryCategory==null">
-                <label for="float-input-ReqIndustryCategory">Req. Industry Category </label>
-              </span>
-              <span class="ui-float-label" *ngIf="userData">
-                <input id="float-input-ReqIndustrySpeciality" type="text" size="30" pInputText
-                  *ngIf="userData.ReqIndustrySpeciality!=null" [(ngModel)]="userData.ReqIndustrySpeciality" disabled>
-                <input id="float-input-ReqIndustrySpeciality" type="text" size="30" pInputText value="---" disabled
-                  *ngIf="userData.ReqIndustrySpeciality==null">
-                <label for="float-input-ReqIndustrySpeciality">Req. Industry Speciality </label>
-              </span>
+        <form [formGroup]="careerInfoForm">
+          <div class="email info_card">
+            <div class="icon">
+              <i class="fas fa-graduation-cap" aria-hidden="true"></i>
             </div>
-            <div class="col-md-6">
-              <span class="ui-float-label" *ngIf="userData">
-                <input id="float-input-CareerLevel" type="text" size="30" pInputText [(ngModel)]="userData.CareerLevel"
-                  disabled *ngIf="userData.CareerLevel!=null">
-                <input id="float-input-CareerLevel" type="text" size="30" pInputText value="---" disabled
-                  *ngIf="userData.CareerLevel==null">
-                <label for="float-input-CareerLevel">Career Level </label>
-              </span>
-              <span class="ui-float-label" *ngIf="userData">
-                <input id="float-input-TalentSegment" type="text" size="30" pInputText
-                  [(ngModel)]="userData.TalentSegment" disabled *ngIf="userData.TalentSegment!=null">
-                <input id="float-input-TalentSegment" type="text" size="30" pInputText value="---" disabled
-                  *ngIf="userData.TalentSegment==null">
-                <label for="float-input-TalentSegment">Talent Segment </label>
-              </span>
-              <span class="ui-float-label" *ngIf="userData">
-                <input id="float-input-ReqFuncTechCapability" type="text" size="30" pInputText
-                  [(ngModel)]="userData.ReqFuncTechCapability" disabled *ngIf="userData.ReqFuncTechCapability!=null">
-                <input id="float-input-ReqFuncTechCapability" type="text" size="30" pInputText value="---" disabled
-                  *ngIf="userData.ReqFuncTechCapability==null">
-                <label for="float-input-ReqFuncTechCapability">Req. Func./Tech. Capability </label>
-              </span>
+            <div class="row">
+              <div class="col-md-6">
+                <span class="ui-float-label" *ngIf="userData">
+                  <input id="float-input-CareerTrack" formControlName="careerTrack" type="text" size="30" pInputText
+                    [(ngModel)]="userData.CareerTrack">
+                  <label for="float-input-CareerTrack">Career Track </label>
+                </span>
+                <span class="ui-float-label" *ngIf="userData">
+                  <input id="float-input-RoleFamily" formControlName="roleFamily" type="text" size="30" pInputText
+                    [(ngModel)]="userData.RoleFamily">
+                  <label for="float-input-RoleFamily">Role Family </label>
+                </span>
+                <span class="ui-float-label" *ngIf="userData">
+                  <input id="float-input-ReqIndustryCategory" formControlName="reqIndustryCategory" type="text"
+                    size="30" pInputText [(ngModel)]="userData.ReqIndustryCategory">
+                  <label for="float-input-ReqIndustryCategory">Req. Industry Category </label>
+                </span>
+                <span class="ui-float-label" *ngIf="userData">
+                  <input id="float-input-ReqIndustrySpeciality" formControlName="reqIndustrySpeciality" type="text"
+                    size="30" pInputText [(ngModel)]="userData.ReqIndustrySpeciality">
+                  <label for="float-input-ReqIndustrySpeciality">Req. Industry Speciality </label>
+                </span>
+              </div>
+              <div class="col-md-6">
+                <span class="ui-float-label" *ngIf="userData">
+                  <input id="float-input-CareerLevel" formControlName="careerLevel" type="text" size="30" pInputText
+                    [(ngModel)]="userData.CareerLevel">
+                  <label for="float-input-CareerLevel">Career Level </label>
+                </span>
+                <span class="ui-float-label" *ngIf="userData">
+                  <input id="float-input-TalentSegment" formControlName="talentSegment" type="text" size="30" pInputText
+                    [(ngModel)]="userData.TalentSegment">
+                  <label for="float-input-TalentSegment">Talent Segment </label>
+                </span>
+                <span class="ui-float-label" *ngIf="userData">
+                  <input id="float-input-ReqFuncTechCapability" formControlName="reqFuncTechCapability" type="text"
+                    size="30" pInputText [(ngModel)]="userData.ReqFuncTechCapability">
+                  <label for="float-input-ReqFuncTechCapability">Req. Func./Tech. Capability </label>
+                </span>
+              </div>
+              <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Birth data" tooltipPosition="bottom"
+                (click)="editData(userDataOperations.EditCareerInfo)" showDelay="1000" hideDelay="500"
+                class="button b-third edit editcard" *ngIf="!careerInfoFormModeEdition && isAdminMode()"></button>
+              <button *ngIf="careerInfoFormModeEdition" pButton type="button" icon="pi pi-check" pTooltip="Save"
+                tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third edit editcard"
+                style="margin-right: .5em"></button>
+              <button *ngIf="careerInfoFormModeEdition" pButton type="button" icon="pi pi-times" pTooltip="Cancel"
+                tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third edit editcard"
+                (click)="editData(userDataOperations.EditCareerInfo)"></button>
             </div>
-            <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom"
-              (click)="editData(userDataOperations.EditCareerInfo)" showDelay="1000" hideDelay="500"
-              class="button b-third edit editcard" *ngIf="isAdminMode()"></button>
           </div>
-
-        </div>
+        </form>
         <!--ORGANIZATION 2 SEPARATOR-->
         <div class="info_card_separator"></div>
         <!--ORGANIZATION 2 INFO OTHER LOCATIONS-->
-        <div class="location info_card">
-          <div class="icon">
-            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-          </div>
-          <div class="row">
-            <div class="col-md-6">
-              <span class="ui-float-label" *ngIf="userData">
-                <input id="float-input-Locations" type="text" size="30" pInputText [(ngModel)]="userData.Location"
-                  disabled>
-                <label for="float-input-Locations">Other Locations </label>
-              </span>
+        <form [formGroup]="otherLocationsInfoForm">
+          <div class="location info_card">
+            <div class="icon">
+              <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
             </div>
-            <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom"
-              (click)="editData(userDataOperations.EditOtherLocations)" showDelay="1000" hideDelay="500"
-              class="button b-third edit editcard" *ngIf="isAdminMode()"></button>
-            <div class="col-md-6">
-
+            <div class="row">
+              <div class="col-md-6">
+                <span class="ui-float-label" *ngIf="userData">
+                  <input id="float-input-OtherLocations" formControlName="otherLocations" type="text" size="30"
+                    pInputText [(ngModel)]="userData.Location2">
+                  <label for="float-input-OtherLocations">Other Locations </label>
+                </span>
+              </div>
+              <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Birth data" tooltipPosition="bottom"
+                (click)="editData(userDataOperations.EditOtherLocations)" showDelay="1000" hideDelay="500"
+                class="button b-third edit editcard"
+                *ngIf="!otherLocationsInfoFormModeEdition && isAdminMode()"></button>
+              <button *ngIf="otherLocationsInfoFormModeEdition" pButton type="button" icon="pi pi-check" pTooltip="Save"
+                tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third edit editcard"
+                style="margin-right: .5em"></button>
+              <button *ngIf="otherLocationsInfoFormModeEdition" pButton type="button" icon="pi pi-times"
+                pTooltip="Cancel" tooltipPosition="bottom" showDelay="1000" hideDelay="500"
+                class="button b-third edit editcard" (click)="editData(userDataOperations.EditOtherLocations)"></button>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   </section>
@@ -560,19 +560,25 @@
     <!--COMMENTS INFO-->
     <div class="row mt-4 row-eq-height">
       <div class="col-md-12">
-        <div class="id info_card">
-          <div class="row">
-            <span class="ui-float-label" *ngIf="userData">
-              <input id="float-input-Observations" type="text" size="400" pInputText *ngIf="userData.Observations!=null"
-                [(ngModel)]="userData.Observations" disabled>
-              <input id="float-input-Observations" type="text" size="400" pInputText *ngIf="userData.Observations==null"
-                value="---" disabled>
-            </span>
+        <form [formGroup]="commentsInfoForm">
+          <div class="id info_card">
+            <div class="row">
+              <span class="ui-float-label" *ngIf="userData">
+                <input id="float-input-Observations" formControlName="observations" type="text" size="30" pInputText
+                  [(ngModel)]="userData.Observations">
+              </span>
+            </div>
+            <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Birth data" tooltipPosition="bottom"
+              (click)="editData(userDataOperations.EditComments)" showDelay="1000" hideDelay="500"
+              class="button b-third edit editcard" *ngIf="!commentsInfoFormModeEdition && isAdminMode()"></button>
+            <button *ngIf="commentsInfoFormModeEdition" pButton type="button" icon="pi pi-check" pTooltip="Save"
+              tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third edit editcard"
+              style="margin-right: .5em"></button>
+            <button *ngIf="commentsInfoFormModeEdition" pButton type="button" icon="pi pi-times" pTooltip="Cancel"
+              tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third edit editcard"
+              (click)="editData(userDataOperations.EditComments)"></button>
           </div>
-          <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Observations" tooltipPosition="bottom"
-            (click)="editData(userDataOperations.EditComments)" showDelay="1000" hideDelay="500"
-            class="button b-third edit editcard" *ngIf="isAdminMode()"></button>
-        </div>
+        </form>
       </div>
     </div>
   </section>

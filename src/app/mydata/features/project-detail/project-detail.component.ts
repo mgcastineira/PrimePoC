@@ -17,6 +17,7 @@ import { DialogService, ConfirmationService } from 'primeng/api';
 export class ProjectDetailComponent implements OnInit {
   @Input() projectData: any;
   @Input() tabId: number;
+  @Input() componentId: number;
 
   @ViewChild('teamEndDate') endDateCalendar: Calendar;
   @ViewChild('teamStartDate') startDateCalendar: Calendar;
