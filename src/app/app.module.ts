@@ -29,7 +29,6 @@ import { TeamAddUserComponent } from './myteam/features/team-add-user/team-add-u
 import { ProjectDetailComponent } from './mydata/features/project-detail/project-detail.component';
 import { NewProjectComponent } from './mydata/features/new-project/new-project.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { EditDataComponent } from './mydata/features/edit-data/edit-data.component';
 
 
 @NgModule({
@@ -53,7 +52,6 @@ import { EditDataComponent } from './mydata/features/edit-data/edit-data.compone
     TeamAddUserComponent,
     ProjectDetailComponent,
     NewProjectComponent,
-    EditDataComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +75,6 @@ import { EditDataComponent } from './mydata/features/edit-data/edit-data.compone
     RulesComponent,
     TeamAddUserComponent, 
     NewProjectComponent,
-    EditDataComponent
   ]
 })
 export class AppModule { }

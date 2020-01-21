@@ -12,3 +12,4 @@ export enum UserDataOperations {
     EditOtherLocations=9,
     EditComments=10
 }
+
