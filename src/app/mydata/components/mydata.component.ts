@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy, ViewChildren, QueryList, ViewChild } from '@angular/core';
-import { TabViewModule } from 'primeng/tabview';
+import { TabViewModule, TabView } from 'primeng/tabview';
 import { DialogService, ConfirmationService, DynamicDialogConfig } from 'primeng/api';
 import { UserDataService } from '../services/mydata.service';
 import { Subscription } from 'rxjs';
-import { UserDataOperations} from '../models/user-data-operations';
+import { UserDataOperations } from '../models/user-data-operations';
 import { DatePipe } from '@angular/common';
 import { ProjectDetailComponent } from '../features/project-detail/project-detail.component';
 import { NewProjectComponent } from '../features/new-project/new-project.component';
@@ -21,25 +21,45 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
   ]
 })
 export class MyDataComponent implements OnInit, OnDestroy {
+  @ViewChildren('projectDetail') projectDetailList: QueryList<ProjectDetailComponent>;
+
+  /* #region  ViewChild */
+  @ViewChild('tabView') tabView: TabView;
+  @ViewChild('startDateCalendar') startDateCalendar: Calendar;
+  @ViewChild('endDateCalendar') endDateCalendar: Calendar;
+  @ViewChild('birthDateCalendar') birthDateCalendar: Calendar;
+  /* #endregion */
+
+  /* #region  forms groups */
   cardInfoForm: FormGroup;
   birthInfoForm: FormGroup;
   emailInfoForm: FormGroup;
-  locationInfoForm:FormGroup;
-  rollOnInfoForm:FormGroup;
+  locationInfoForm: FormGroup;
+  rollOnInfoForm: FormGroup;
+  organizationInfoForm: FormGroup;
+  costCenterInfoForm: FormGroup;
+  careerInfoForm: FormGroup;
+  otherLocationsInfoForm: FormGroup;
+  commentsInfoForm: FormGroup;
+  /* #endregion */
 
-  cardInfoFormModeEdition: boolean=false;
+  /* #region  forms edit flags */
+  cardInfoFormModeEdition: boolean = false;
   birthInfoFormModeEdition: boolean = false;
   emailInfoFormModeEdition: boolean = false;
   locationInfoFormModeEdition: boolean = false;
   rollOnInfoFormModeEdition: boolean = false;
+  organizationInfoFormModeEdition: boolean = false;
+  costCenterInfoFormModeEdition: boolean = false;
+  careerInfoFormModeEdition: boolean = false;
+  otherLocationsInfoFormModeEdition: boolean = false;
+  commentsInfoFormModeEdition: boolean = false;
+  /* #endregion */
 
-  userDataOperations=UserDataOperations;
+  userDataOperations = UserDataOperations;
   protected serviceSubscription: Subscription;
-  @ViewChildren('projectDetail') projectDetailList: QueryList<ProjectDetailComponent>;
-  @ViewChild('startDateCalendar') startDateCalendar: Calendar;
-  @ViewChild('endDateCalendar') endDateCalendar: Calendar;
-  @ViewChild('birthDateCalendar') birthDateCalendar: Calendar;
-  
+
+
   userId: number = 918; // ID del usuario que utiliza la aplicación
   personId: number = 0; // ID de la persona visualizada
   myOwnData: boolean = false; // Si la persona accede a sus propios datos
@@ -59,11 +79,11 @@ export class MyDataComponent implements OnInit, OnDestroy {
 
   showInactiveProjects: boolean = false;
   currentTabIndex: number = -1;
-  
 
-  entryDate:Date;
-  exitDate:Date;
-  birthDate:Date;
+
+  entryDate: Date;
+  exitDate: Date;
+  birthDate: Date;
 
   constructor(private userDataService: UserDataService,
     private fBuilder: FormBuilder,
@@ -84,9 +104,9 @@ export class MyDataComponent implements OnInit, OnDestroy {
 
               this.userData = serviceResponse.payload.userData;
 
-              if (serviceResponse.payload.userData.EntryDate!=null){
+              if (serviceResponse.payload.userData.EntryDate != null) {
                 this.entryDate = new Date(serviceResponse.payload.userData.EntryDate);
-              }else{
+              } else {
                 this.entryDate = null;
               }
               if (serviceResponse.payload.userData.ExitDate != null) {
@@ -111,6 +131,7 @@ export class MyDataComponent implements OnInit, OnDestroy {
   }
 
   private initilizeControls() {
+    /* #region  cardInfoForm */
     this.cardInfoForm = this.fBuilder.group({
       dni: new FormControl({ value: null, disabled: true }, Validators.required),
       airbusSAPUser: new FormControl({ value: null, disabled: true }),
@@ -120,19 +141,27 @@ export class MyDataComponent implements OnInit, OnDestroy {
       nUserNG: new FormControl({ value: null, disabled: true }),
       nSS: new FormControl({ value: null, disabled: true }),
     });
+    /* #endregion */
+    /* #region  birthInfoForm */
     this.birthInfoForm = this.fBuilder.group({
       birthDate: new FormControl({ value: null, disabled: true }),
       placeBirth: new FormControl({ value: null, disabled: true }),
       nationality: new FormControl({ value: null, disabled: true }),
     });
+    /* #endregion */
+    /* #region  emailInfoForm */
     this.emailInfoForm = this.fBuilder.group({
       mailAccenture: new FormControl({ value: null, disabled: true }, Validators.required),
       mailAirbus: new FormControl({ value: null, disabled: true }),
     });
+    /* #endregion */
+    /* #region  locationInfoForm */
     this.locationInfoForm = this.fBuilder.group({
       location: new FormControl({ value: null, disabled: true }),
       workplace: new FormControl({ value: null, disabled: true }),
     });
+    /* #endregion */
+    /* #region  rollOnInfoForm */
     this.rollOnInfoForm = this.fBuilder.group({
       rollOnOff: new FormControl({ value: null, disabled: true }),
       exitReason: new FormControl({ value: null, disabled: true }),
@@ -141,7 +170,46 @@ export class MyDataComponent implements OnInit, OnDestroy {
       startDate: new FormControl({ value: null, disabled: true }),
       endDate: new FormControl({ value: null, disabled: true }),
     });
-  }
+    /* #endregion */
+    /* #region  organizationInfoForm */
+    this.organizationInfoForm = this.fBuilder.group({
+      company: new FormControl({ value: null, disabled: true }),
+      contractType: new FormControl({ value: null, disabled: true }),
+      deplGeoUnit: new FormControl({ value: null, disabled: true }),
+      companyCode: new FormControl({ value: null, disabled: true }),
+      orgUnit: new FormControl({ value: null, disabled: true }),
+    });
+    /* #endregion */
+    /* #region  costCenterInfoForm */
+    this.costCenterInfoForm = this.fBuilder.group({
+      costCenterName: new FormControl({ value: null, disabled: true }),
+      economicProfile: new FormControl({ value: null, disabled: true }),
+      costCenterCode: new FormControl({ value: null, disabled: true }),
+    });
+    /* #endregion */
+    /* #region  careerInfoForm */
+    this.careerInfoForm = this.fBuilder.group({
+      careerTrack: new FormControl({ value: null, disabled: true }),
+      roleFamily: new FormControl({ value: null, disabled: true }),
+      reqIndustryCategory: new FormControl({ value: null, disabled: true }),
+      careerLevel: new FormControl({ value: null, disabled: true }),
+      talentSegment: new FormControl({ value: null, disabled: true }),
+      reqIndustrySpeciality: new FormControl({ value: null, disabled: true }),
+      reqFuncTechCapability: new FormControl({ value: null, disabled: true }),
+
+    });
+    /* #endregion */
+    /* #region  otherLocationsInfoForm */
+    this.otherLocationsInfoForm = this.fBuilder.group({
+      otherLocations: new FormControl({ value: null, disabled: true }),
+    });
+    /* #endregion */
+    /* #region  commentsInfoForm */
+    this.commentsInfoForm = this.fBuilder.group({
+      observations: new FormControl({ value: null, disabled: true }),
+    });
+    /* #endregion */
+    }
 
 
   private sortPeopleAndProjects(serviceResponse: any) {
@@ -175,7 +243,7 @@ export class MyDataComponent implements OnInit, OnDestroy {
     if (this.teamsData.length > 0)
       this.currentTabIndex = 0;
     this.startDate = "Start Date " + this.datePipe.transform(new Date(serviceResponse.payload.userData.EntryDate), 'dd/MM/yyyy');
-    
+
     this.contractAndCompany = serviceResponse.payload.userData.ContractType + " in " +
       serviceResponse.payload.userData.Company;
     this.primaryContact = "Primary contact: " + serviceResponse.payload.userData.PrimaryContact;
@@ -338,102 +406,174 @@ export class MyDataComponent implements OnInit, OnDestroy {
       return true;
     }
     else {
+
+
       return project.Active;
     }
   }
 
-  // editData(event:any,type:UserDataOperations) {
-  //   let config = new DynamicDialogConfig();
-  //   config.data = {
-  //     type: type,
-  //     userData:this.userData
-  //   };
+  changeProjectFilter(evento: any) {
+    if (!this.showInactiveProjects && this.currentTabIndex >= this.tabView.tabs.length) {
+      this.currentTabIndex = this.tabView.tabs.length - 1;
 
-  //   config.showHeader = false;
-  //   config.dismissableMask = true;
-  //   config.closeOnEscape = true;
-  //   config.transitionOptions = "400ms cubic-bezier(0.25, 0.8, 0.25, 1)";
+    }
+  }
 
-
-  //   const ref = this.dialogService.open(EditDataComponent, config);
-
-  //   ref.onClose.subscribe((result: any) => {
-  //     if (result != undefined && result != null && result.length > 0) {
-  //       // Llamar servicio actualización
-
-  //     }
-  //   });
-  // }
   editData(type: UserDataOperations) {
-    switch(type){
+    switch (type) {
+      /* #region  EditCardInfo */
       case UserDataOperations.EditCardInfo:
         this.cardInfoFormModeEdition = !this.cardInfoFormModeEdition;
-        if (this.cardInfoFormModeEdition){
+        if (this.cardInfoFormModeEdition) {
           Object.keys(this.cardInfoForm.controls).forEach(key => {
             this.cardInfoForm.get(key).enable();
           });
-        }else{
+        } else {
           Object.keys(this.cardInfoForm.controls).forEach(key => {
             this.cardInfoForm.get(key).disable();
           });
         }
-        
+
         break;
+      /* #endregion */
+      /* #region  EditBirthInfo */
       case UserDataOperations.EditBirthInfo:
         this.birthInfoFormModeEdition = !this.birthInfoFormModeEdition;
-        if (this.birthInfoFormModeEdition){
+        if (this.birthInfoFormModeEdition) {
           Object.keys(this.birthInfoForm.controls).forEach(key => {
             this.birthInfoForm.get(key).enable();
           });
-        }else{
+        } else {
           Object.keys(this.birthInfoForm.controls).forEach(key => {
             this.birthInfoForm.get(key).disable();
           });
         }
-        
+
         break;
+      /* #endregion */
+      /* #region  EditEmailInfo */
       case UserDataOperations.EditEmailInfo:
         this.emailInfoFormModeEdition = !this.emailInfoFormModeEdition;
-        if (this.emailInfoFormModeEdition){
+        if (this.emailInfoFormModeEdition) {
           Object.keys(this.emailInfoForm.controls).forEach(key => {
             this.emailInfoForm.get(key).enable();
           });
-        }else{
+        } else {
           Object.keys(this.emailInfoForm.controls).forEach(key => {
             this.emailInfoForm.get(key).disable();
           });
         }
-        
+
         break;
+      /* #endregion */
+      /* #region  EditLocationInfo */
       case UserDataOperations.EditLocationInfo:
         this.locationInfoFormModeEdition = !this.locationInfoFormModeEdition;
-        if (this.locationInfoFormModeEdition){
+        if (this.locationInfoFormModeEdition) {
           Object.keys(this.locationInfoForm.controls).forEach(key => {
             this.locationInfoForm.get(key).enable();
           });
-        }else{
+        } else {
           Object.keys(this.locationInfoForm.controls).forEach(key => {
-            this.locationInfoForm.get(key).enable();
+            this.locationInfoForm.get(key).disable();
           });
         }
-        
+
         break;
+      /* #endregion */
+      /* #region  EditRollOnInfo */
       case UserDataOperations.EditRollOnInfo:
         this.rollOnInfoFormModeEdition = !this.rollOnInfoFormModeEdition;
-        if (this.rollOnInfoFormModeEdition){
+        if (this.rollOnInfoFormModeEdition) {
           Object.keys(this.rollOnInfoForm.controls).forEach(key => {
             this.rollOnInfoForm.get(key).enable();
           });
-        }else{
+        } else {
           Object.keys(this.rollOnInfoForm.controls).forEach(key => {
             this.rollOnInfoForm.get(key).disable();
           });
         }
-        
+
         break;
+      /* #endregion */
+      /* #region  EditOrganizationInfo */
+      case UserDataOperations.EditOrganizationInfo:
+        this.organizationInfoFormModeEdition = !this.organizationInfoFormModeEdition;
+        if (this.organizationInfoFormModeEdition) {
+          Object.keys(this.organizationInfoForm.controls).forEach(key => {
+            this.organizationInfoForm.get(key).enable();
+          });
+        } else {
+          Object.keys(this.organizationInfoForm.controls).forEach(key => {
+            this.organizationInfoForm.get(key).disable();
+          });
+        }
+
+        break;
+      /* #endregion */
+      /* #region  EditCostCenterInfo */
+      case UserDataOperations.EditCostCenterInfo:
+        this.costCenterInfoFormModeEdition = !this.costCenterInfoFormModeEdition;
+        if (this.costCenterInfoFormModeEdition) {
+          Object.keys(this.costCenterInfoForm.controls).forEach(key => {
+            this.costCenterInfoForm.get(key).enable();
+          });
+        } else {
+          Object.keys(this.costCenterInfoForm.controls).forEach(key => {
+            this.costCenterInfoForm.get(key).disable();
+          });
+        }
+
+        break;
+      /* #endregion */
+      /* #region  EditCareerInfo */
+      case UserDataOperations.EditCareerInfo:
+        this.careerInfoFormModeEdition = !this.careerInfoFormModeEdition;
+        if (this.careerInfoFormModeEdition) {
+          Object.keys(this.careerInfoForm.controls).forEach(key => {
+            this.careerInfoForm.get(key).enable();
+          });
+        } else {
+          Object.keys(this.careerInfoForm.controls).forEach(key => {
+            this.careerInfoForm.get(key).disable();
+          });
+        }
+
+        break;
+      /* #endregion */
+      /* #region  EditOtherLocations */
+      case UserDataOperations.EditOtherLocations:
+        this.otherLocationsInfoFormModeEdition = !this.otherLocationsInfoFormModeEdition;
+        if (this.otherLocationsInfoFormModeEdition) {
+          Object.keys(this.otherLocationsInfoForm.controls).forEach(key => {
+            this.otherLocationsInfoForm.get(key).enable();
+          });
+        } else {
+          Object.keys(this.otherLocationsInfoForm.controls).forEach(key => {
+            this.otherLocationsInfoForm.get(key).disable();
+          });
+        }
+
+        break;
+      /* #endregion */
+      /* #region  EditComments */
+      case UserDataOperations.EditComments:
+        this.commentsInfoFormModeEdition = !this.commentsInfoFormModeEdition;
+        if (this.commentsInfoFormModeEdition) {
+          Object.keys(this.commentsInfoForm.controls).forEach(key => {
+            this.commentsInfoForm.get(key).enable();
+          });
+        } else {
+          Object.keys(this.commentsInfoForm.controls).forEach(key => {
+            this.commentsInfoForm.get(key).disable();
+          });
+        }
+
+        break;
+      /* #endregion */
     }
-    
-    
+
+
   }
 
   setNullDate(evento: any, calendarId: string) {
@@ -459,5 +599,5 @@ export class MyDataComponent implements OnInit, OnDestroy {
     }
 
   }
-  
+
 }
