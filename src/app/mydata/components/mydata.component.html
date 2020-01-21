@@ -60,7 +60,7 @@
       <div class="col-md-5 data_column">
         <!--PERSONAL 1 INFO CARD-->
         <form [formGroup]="cardInfoForm">
-          <div class="id info_card">
+          <div class="id info_card" [class.card-editing]="cardInfoFormModeEdition">
             <div class="icon">
               <i class="fas fa-id-card" aria-hidden="true"></i>
             </div>
@@ -69,7 +69,6 @@
                 <span class="ui-float-label" *ngIf="userData">
                   <input id="float-input-DNI" formControlName="dni" type="text" size="30" pInputText
                     [(ngModel)]="userData.DNI">
-
                   <label for="float-input-DNI">DNI / Personalauswis / CNI </label>
                 </span>
                 <span class="ui-float-label" *ngIf="userData">
@@ -82,15 +81,13 @@
                     [(ngModel)]="userData.NEmployee">
                   <label for="float-input-NEmployee">Employee Number </label>
                 </span>
-                <span class="ui-float-label" *ngIf="userData">
-
+                <span class="ui-float-label mt-0" *ngIf="userData">
                   <p-checkbox formControlName="NATO" id="float-input-NATOInstructionPerformed"
-                    [(ngModel)]="userData.NATO"></p-checkbox>
-                  <label for="float-input-NATOInstructionPerformed">NATO Certificate: </label>
+                    [(ngModel)]="userData.NATO" label="NATO Certificate"></p-checkbox>
                   <!-- <input id="float-input-NATOInstructionPerformed"  formControlName="nEmployee"
                 type="text" size="30"
                  pInputText value="Yes" disabled>
-                
+
                 <label for="float-input-NATOInstructionPerformed">NATO Certificate </label> -->
                 </span>
 
@@ -112,15 +109,17 @@
                   <label for="float-input-NSS">Social Security Number </label>
                 </span>
               </div>
-              <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Personal" tooltipPosition="bottom"
-                (click)="editData(userDataOperations.EditCardInfo)" showDelay="1000" hideDelay="500"
-                class="button b-third edit editcard" *ngIf="!cardInfoFormModeEdition && isAdminMode()"></button>
-              <button *ngIf="cardInfoFormModeEdition" pButton type="button" icon="pi pi-check" pTooltip="Save"
-                tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third edit editcard"
-                style="margin-right: .5em"></button>
-              <button *ngIf="cardInfoFormModeEdition" pButton type="button" icon="pi pi-times" pTooltip="Cancel"
-                tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third edit editcard"
-                (click)="editData(userDataOperations.EditCardInfo)"></button>
+              <div class="edicion editcard" [ngClass]="{ 'editing': cardInfoFormModeEdition }">
+                <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Personal" tooltipPosition="bottom"
+                  (click)="editData(userDataOperations.EditCardInfo)" showDelay="1000" hideDelay="500"
+                  class="button b-third edit " *ngIf="!cardInfoFormModeEdition && isAdminMode()"></button>
+                <button *ngIf="cardInfoFormModeEdition" pButton type="button" icon="pi pi-check" pTooltip="Save"
+                  tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third save "></button>
+                <button *ngIf="cardInfoFormModeEdition" pButton type="button" icon="pi pi-times" pTooltip="Cancel"
+                  tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third cancel "
+                  (click)="editData(userDataOperations.EditCardInfo)"></button>
+              </div>
+
             </div>
           </div>
         </form>
@@ -128,14 +127,14 @@
         <div class="info_card_separator"></div>
         <!--PERSONAL 1 INFO BIRTH-->
         <form [formGroup]="birthInfoForm">
-          <div class="location info_card birth">
+          <div class="location info_card birth" [class.card-editing]="birthInfoFormModeEdition">
             <div class="icon">
               <i class="fas fa-anchor" aria-hidden="true"></i>
             </div>
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <span class="ui-float-label" *ngIf="userData">
-                  <label for="float-input-BirthDate">Birth date (dd/MM/yyyy) </label>
+
                   <!-- <p-calendar appendTo="body" formControlName="birthDate" [(ngModel)]="userData.BirthDate" #birthDateCalendar
                   dateFormat="dd/mm/yy" placeholder="" (onBlur)="setNullDate($event,'birthCalendar')" [showIcon]="true" id="float-input-BirthDate">
                 </p-calendar> -->
@@ -143,6 +142,7 @@
                     dateFormat="dd/mm/yy" placeholder="" (onBlur)="setNullDate($event,'birthDate')" [showIcon]="true"
                     id="float-input-BirthDate">
                   </p-calendar>
+                  <label for="float-input-BirthDate">Birth date (dd/MM/yyyy) </label>
                 </span>
 
               </div>
@@ -160,15 +160,17 @@
                   <label for="float-input-Nationality">Nationality </label>
                 </span>
               </div>
-              <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Birth data" tooltipPosition="bottom"
-                (click)="editData(userDataOperations.EditBirthInfo)" showDelay="1000" hideDelay="500"
-                class="button b-third edit editcard" *ngIf="!birthInfoFormModeEdition && isAdminMode()"></button>
-              <button *ngIf="birthInfoFormModeEdition" pButton type="button" icon="pi pi-check" pTooltip="Save"
-                tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third edit editcard"
-                style="margin-right: .5em"></button>
-              <button *ngIf="birthInfoFormModeEdition" pButton type="button" icon="pi pi-times" pTooltip="Cancel"
-                tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third edit editcard"
-                (click)="editData(userDataOperations.EditBirthInfo)"></button>
+              <div class="edicion editcard" [ngClass]="{ 'editing': birthInfoFormModeEdition }">
+                  <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Birth data" tooltipPosition="bottom"
+                    (click)="editData(userDataOperations.EditBirthInfo)" showDelay="1000" hideDelay="500"
+                    class="button b-third edit " *ngIf="!birthInfoFormModeEdition && isAdminMode()"></button>
+                  <button *ngIf="birthInfoFormModeEdition" pButton type="button" icon="pi pi-check" pTooltip="Save"
+                    tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third save"></button>
+                  <button *ngIf="birthInfoFormModeEdition" pButton type="button" icon="pi pi-times" pTooltip="Cancel"
+                    tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third cancel"
+                    (click)="editData(userDataOperations.EditBirthInfo)"></button>
+              </div>
+
             </div>
           </div>
         </form>
@@ -177,7 +179,7 @@
       <div class="col-md-7 data_column">
         <!--PERSONAL 1 INFO EMAIL-->
         <form [formGroup]="emailInfoForm">
-          <div class="email info_card">
+          <div class="email info_card" [class.card-editing]="emailInfoFormModeEdition">
             <div class="icon">
               <i class="fa fa-envelope" aria-hidden="true"></i>
             </div>
@@ -196,15 +198,17 @@
                   <label for="float-input-MailAirbus">AIRBUS Mail </label>
                 </span>
               </div>
-              <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Birth data" tooltipPosition="bottom"
-                (click)="editData(userDataOperations.EditEmailInfo)" showDelay="1000" hideDelay="500"
-                class="button b-third edit editcard" *ngIf="!emailInfoFormModeEdition && isAdminMode()"></button>
-              <button *ngIf="emailInfoFormModeEdition" pButton type="button" icon="pi pi-check" pTooltip="Save"
-                tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third edit editcard"
-                style="margin-right: .5em"></button>
-              <button *ngIf="emailInfoFormModeEdition" pButton type="button" icon="pi pi-times" pTooltip="Cancel"
-                tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third edit editcard"
-                (click)="editData(userDataOperations.EditEmailInfo)"></button>
+              <div class="edicion editcard" [ngClass]="{ 'editing': emailInfoFormModeEdition }">
+                <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Birth data" tooltipPosition="bottom"
+                  (click)="editData(userDataOperations.EditEmailInfo)" showDelay="1000" hideDelay="500"
+                  class="button b-third edit " *ngIf="!emailInfoFormModeEdition && isAdminMode()"></button>
+                <button *ngIf="emailInfoFormModeEdition" pButton type="button" icon="pi pi-check" pTooltip="Save"
+                  tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third save"  ></button>
+                <button *ngIf="emailInfoFormModeEdition" pButton type="button" icon="pi pi-times" pTooltip="Cancel"
+                  tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third cancel" (click)="editData(userDataOperations.EditEmailInfo)"></button>
+              </div>
+
+
             </div>
 
           </div>
@@ -213,7 +217,7 @@
         <div class="info_card_separator"></div>
         <!--PERSONAL 1 INFO LOCATION-->
         <form [formGroup]="locationInfoForm">
-          <div class="location info_card">
+          <div class="location info_card" [class.card-editing]="locationInfoFormModeEdition">
             <div class="icon">
               <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
             </div>
@@ -232,23 +236,26 @@
                   <label for="float-input-Workplace">Workplace </label>
                 </span>
               </div>
+              <div class="edicion editcard" [ngClass]="{ 'editing': locationInfoFormModeEdition }">
+                <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Birth data" tooltipPosition="bottom"
+                  (click)="editData(userDataOperations.EditLocationInfo)" showDelay="1000" hideDelay="500"
+                  class="button b-third edit " *ngIf="!locationInfoFormModeEdition && isAdminMode()"></button>
+                <button *ngIf="locationInfoFormModeEdition" pButton type="button" icon="pi pi-check" pTooltip="Save"
+                  tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third save"
+                  style="margin-right: .5em"></button>
+                <button *ngIf="locationInfoFormModeEdition" pButton type="button" icon="pi pi-times" pTooltip="Cancel"
+                  tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third cancel"
+                  (click)="editData(userDataOperations.EditLocationInfo)"></button>
+              </div>
 
-              <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Birth data" tooltipPosition="bottom"
-                (click)="editData(userDataOperations.EditLocationInfo)" showDelay="1000" hideDelay="500"
-                class="button b-third edit editcard" *ngIf="!locationInfoFormModeEdition && isAdminMode()"></button>
-              <button *ngIf="locationInfoFormModeEdition" pButton type="button" icon="pi pi-check" pTooltip="Save"
-                tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third edit editcard"
-                style="margin-right: .5em"></button>
-              <button *ngIf="locationInfoFormModeEdition" pButton type="button" icon="pi pi-times" pTooltip="Cancel"
-                tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third edit editcard"
-                (click)="editData(userDataOperations.EditLocationInfo)"></button>
+
             </div>
           </div>
         </form>
         <div class="info_card_separator"></div>
         <!--PERSONAL 1 INFO ROLLON-->
         <form [formGroup]="rollOnInfoForm">
-          <div class="rollon info_card">
+          <div class="rollon info_card" [class.card-editing]="rollOnInfoFormModeEdition">
             <div class="icon">
               <i class="fas fa-door-open"></i>
             </div>
@@ -260,11 +267,12 @@
                   <label for="float-input-RollOnOff">Roll On/ Roll Off Number </label>
                 </span>
                 <span class="ui-float-label" *ngIf="userData">
-                  <label for="float-input-StartDate">Start date (dd/MM/yyyy) </label>
+
                   <p-calendar appendTo="body" formControlName="startDate" [(ngModel)]="entryDate" #startDateCalendar
                     dateFormat="dd/mm/yy" placeholder="" (onBlur)="setNullDate($event,'startDate')" [showIcon]="true"
                     id="float-input-StartDate">
                   </p-calendar>
+                   <label for="float-input-StartDate">Start date (dd/MM/yyyy) </label>
                   <!-- <input id="float-input-StartDate"
                  type="text" size="30" pInputText [(ngModel)]="startDate" >
                 <label for="float-input-StartDate">Start Date </label> -->
@@ -282,11 +290,12 @@
                   <label for="float-input-GESUB">GESUB Leave requirement No. </label>
                 </span>
                 <span class="ui-float-label" *ngIf="userData">
-                  <label for="float-input-EndDate">End date (dd/MM/yyyy) </label>
+
                   <p-calendar appendTo="body" formControlName="endDate" [(ngModel)]="exitDate" #endDateCalendar
                     dateFormat="dd/mm/yy" placeholder="" (onBlur)="setNullDate($event,'endDate')" [showIcon]="true"
                     id="float-input-EndDate">
                   </p-calendar>
+                  <label for="float-input-EndDate">End date (dd/MM/yyyy) </label>
                   <!-- <input id="float-input-ExitDate" formControlName="exitDate"
                  type="text" size="30" pInputText [(ngModel)]="userData.ExitDate" > -->
                   <!-- <label for="float-input-ExitDate">End Date </label> -->
@@ -297,16 +306,19 @@
                   <label for="float-input-PrimaryContact">Primary Contact </label>
                 </span>
               </div>
+                <div class="edicion editcard" [ngClass]="{ 'editing': locationInfoFormModeEdition }">
+                  <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Birth data" tooltipPosition="bottom"
+                    (click)="editData(userDataOperations.EditRollOnInfo)" showDelay="1000" hideDelay="500"
+                    class="button b-third edit " *ngIf="!rollOnInfoFormModeEdition && isAdminMode()"></button>
+                  <button *ngIf="rollOnInfoFormModeEdition" pButton type="button" icon="pi pi-check" pTooltip="Save"
+                    tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third save"
+                    ></button>
+                  <button *ngIf="rollOnInfoFormModeEdition" pButton type="button" icon="pi pi-times" pTooltip="Cancel"
+                    tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third cancel"
+                    (click)="editData(userDataOperations.EditRollOnInfo)"></button>
+                </div>
 
-              <button pButton type="button" icon="pi pi-pencil" pTooltip="Edit Birth data" tooltipPosition="bottom"
-                (click)="editData(userDataOperations.EditRollOnInfo)" showDelay="1000" hideDelay="500"
-                class="button b-third edit editcard" *ngIf="!rollOnInfoFormModeEdition && isAdminMode()"></button>
-              <button *ngIf="rollOnInfoFormModeEdition" pButton type="button" icon="pi pi-check" pTooltip="Save"
-                tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third edit editcard"
-                style="margin-right: .5em"></button>
-              <button *ngIf="rollOnInfoFormModeEdition" pButton type="button" icon="pi pi-times" pTooltip="Cancel"
-                tooltipPosition="bottom" showDelay="1000" hideDelay="500" class="button b-third edit editcard"
-                (click)="editData(userDataOperations.EditRollOnInfo)"></button>
+
             </div>
           </div>
         </form>

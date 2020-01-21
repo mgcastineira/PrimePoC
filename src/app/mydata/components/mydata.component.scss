@@ -68,7 +68,7 @@ section {
         padding-left: 60px;
         position: relative;
         border: 1px solid transparent;
-        
+
 
         .icon {
             position: absolute;
@@ -89,9 +89,9 @@ section {
         .ui-float-label {
           margin-top: 12px;
 
-          label {
+          /*label {
             top: 0;
-          }
+          }*/
 
           input {
             &:disabled {
@@ -156,14 +156,40 @@ li {
   position: absolute;
   top: 0;
   right: 0;
+  opacity: 0;
+}
+
+.editcard.editing {
+  opacity: 1;
+}
+
+.editcard .button {
   font-size: 22px;
   min-width: fit-content !important;
   padding: 0;
-  opacity: 0;
+  width: auto;
 }
+
+.editcard .button.save {
+  color: #1FD27C;
+}
+.editcard .button.cancel {
+  color: #ff0000;
+}
+
 .mydata_personal .info_card:hover {
   border: 1px solid #ddd;
 }
+
+.mydata_personal .info_card.card-editing {
+  background-color: #f2f9ff;
+
+}
+
+.mydata_personal .info_card.card-editing:hover {
+  border-color: transparent;
+}
+
 .info_card:hover .editcard {
   opacity: 1;
 }
@@ -173,4 +199,8 @@ li {
 }
 .mydata_projects .show-deleted.deleted-wbs {
   margin-top: 7px;
+}
+
+.info_card .ui-button-icon-only .ui-button-icon-left {
+  margin-top: -0.9em;
 }

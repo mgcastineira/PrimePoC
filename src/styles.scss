@@ -5,11 +5,11 @@
 @import 'style_parts/variables';
 
 
-body {   
-    width: 100%; 
-    width: 100%; 
-    height: 100%; 
-    height: 100%; 
+body {
+    width: 100%;
+    width: 100%;
+    height: 100%;
+    height: 100%;
     margin: 0 auto;
     margin: 0 auto;
     font-family: $_font_family;
@@ -63,4 +63,27 @@ body .mydata_projects p-inputswitch {
 
 .project_supervisor .ui-dropdown {
   width: 100%;
+}
+
+body .editcard .button .ui-button-text {
+  padding: 0;
+}
+
+
+body .info_card .ui-float-label input.ui-inputtext {
+  margin-bottom: 16px;
+  padding-bottom: 0;
+  font-size: 14px;
+}
+
+.info_card .ui-float-label .ui-calendar .ui-button-icon-only .ui-button-icon-left {
+  margin-top: -0.9em;
+}
+.info_card .ui-calendar .ui-state-disabled .ui-button-icon-left {
+  opacity: 0;
+}
+
+.info_card .ui-calendar input.ui-inputtext:disabled {
+  opacity: 1;
+  border: 0;
 }
