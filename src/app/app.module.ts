@@ -29,6 +29,7 @@ import { TeamAddUserComponent } from './myteam/features/team-add-user/team-add-u
 import { ProjectDetailComponent } from './mydata/features/project-detail/project-detail.component';
 import { NewProjectComponent } from './mydata/features/new-project/new-project.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { StatusManagementComponent } from './mydata/features/status-management/status-management.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     TeamAddUserComponent,
     ProjectDetailComponent,
     NewProjectComponent,
+    StatusManagementComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +77,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     RulesComponent,
     TeamAddUserComponent, 
     NewProjectComponent,
+    StatusManagementComponent
   ]
 })
 export class AppModule { }

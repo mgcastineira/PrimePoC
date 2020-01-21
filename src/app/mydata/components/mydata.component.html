@@ -19,8 +19,10 @@
       </div>
       <div class="col-md-4">
         <div class="main-action">
-          <p class="action_question">Are you leaving Airbus?</p>
-          <button class="button b-main">START ROLL OFF </button>
+          <p class="action_question" *ngIf="!isAdminMode()">Are you leaving Airbus?</p>
+          <button class="button b-main"*ngIf="!isAdminMode()" (click)="openRollOff()">START ROLL OFF </button>
+          <p class="action_question" *ngIf="isAdminMode()">Does this user have an end date?</p>
+          <button class="button b-main" *ngIf="isAdminMode()" (click)="openStatus()">CHANGE STATUS </button>
         </div>
       </div>
     </div>

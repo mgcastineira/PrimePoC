@@ -9,6 +9,7 @@ import { ProjectDetailComponent } from '../features/project-detail/project-detai
 import { NewProjectComponent } from '../features/new-project/new-project.component';
 import { Calendar } from 'primeng/calendar';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { StatusManagementComponent } from '../features/status-management/status-management.component';
 
 @Component({
   selector: 'app-mydata',
@@ -600,4 +601,31 @@ export class MyDataComponent implements OnInit, OnDestroy {
 
   }
 
+  openRollOff(){
+
+  }
+
+  openStatus(){
+    let config = new DynamicDialogConfig();
+    config.data = {
+      userData: this.userData,
+    };
+    
+
+    config.showHeader = false;
+    config.dismissableMask = true;
+    config.closeOnEscape = true;
+    config.transitionOptions = "400ms cubic-bezier(0.25, 0.8, 0.25, 1)";
+
+
+    const ref = this.dialogService.open(StatusManagementComponent, config);
+
+    ref.onClose.subscribe((result: any) => {
+      if (result != undefined && result != null && result.length > 0) {
+
+      }
+    });
+  }
+
+  
 }
