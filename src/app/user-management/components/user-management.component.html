@@ -1,6 +1,12 @@
-<p-table #projectsTable [value]="userList" [resizableColumns]="true" [paginator]="true" [rows]="10"
+<div *ngIf="selectedRows.length>0">
+  <i class="far fa-times-circle"></i>
+  <p *ngIf="selectedRows.length==1">{{selectedRows.length}} user selected</p>
+  <p *ngIf="selectedRows.length>1">{{selectedRows.length}} users selected</p>
+  <button pButton type="button" label="CHANGE TEAM SETTINGS"></button></div>
+<p-table #usersTable [value]="userList" [resizableColumns]="true" [paginator]="true" [rows]="10"
   [paginatorPosition]="'bottom'" sortMode="single" dataKey="ID" editMode="row" [responsive]="true"
-  [globalFilterFields]="['Title','Status','Company','Location','CareerLevel','EntryDate','ExitDate']">
+  [globalFilterFields]="['Title','Status','Company','Location','CareerLevel','EntryDate','ExitDate']"
+  [(selection)]="selectedRows">
   <ng-template pTemplate="caption">
     <div class="d-flex justify-space-between align-end">
 
@@ -24,10 +30,11 @@
   </ng-template>
   <ng-template pTemplate="header">
     <tr>
-      <th [ngStyle]="{'width':'28px'}">
+      <th><p-tableHeaderCheckbox></p-tableHeaderCheckbox></th>
+      <!-- <th [ngStyle]="{'width':'28px'}">
         <p-checkbox [(ngModel)]="selectAllRows" inputId="technology">
         </p-checkbox>
-      </th>
+      </th> -->
       <th pResizableColumn [pSortableColumn]="'Title'" [ngStyle]="{'width':'16%'}" class="ui-p-4">
         NAME
         <p-sortIcon [field]="'Title'"></p-sortIcon>
@@ -64,10 +71,11 @@
   <ng-template pTemplate="body" let-rowData let-editing="editing" let-expanded="expanded" let-ri="rowIndex">
     <tr [pEditableRow]="rowData">
       <td>
-        <p-checkbox  [binary]="true"
+        <!-- <p-checkbox  [binary]="true"
         [(ngModel)]="rowData.Selected" 
         inputId="'checkbox' + {{rowData.ID}}">
-        </p-checkbox>
+        </p-checkbox> -->
+        <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
       </td>
       <td class="ui-resizable-column textColumn ui-p-4">
         <p-cellEditor>
@@ -219,3 +227,10 @@
       class="button b-main"></button>
   </p-footer>
 </p-dialog>
+{{selectedRows.length}}
+
+<button type="text" pButton label="FILTER" (click)="op1.toggle($event)"></button>
+
+<p-overlayPanel #op1>
+<app-filter></app-filter>
+</p-overlayPanel>

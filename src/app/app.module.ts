@@ -30,7 +30,9 @@ import { ProjectDetailComponent } from './mydata/features/project-detail/project
 import { NewProjectComponent } from './mydata/features/new-project/new-project.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { StatusManagementComponent } from './mydata/features/status-management/status-management.component';
+import { FilterComponent } from './user-management/features/filter/filter.component';
 
+import { BoosterComponent } from './booster/components/booster.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,9 @@ import { StatusManagementComponent } from './mydata/features/status-management/s
     ProjectDetailComponent,
     NewProjectComponent,
     StatusManagementComponent,
+    FilterComponent,
+    BoosterComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -64,7 +69,7 @@ import { StatusManagementComponent } from './mydata/features/status-management/s
     AppRoutingModule,
     PrimengModule,
     AngularFontAwesomeModule,
-    ngfModule
+    ngfModule,
   ],
   providers: [],
   bootstrap: [

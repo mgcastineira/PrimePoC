@@ -9,6 +9,7 @@ import { NewsComponent } from '@news/components/news.component';
 import { MyDataComponent } from './mydata/components/mydata.component';
 import { UploadComponent } from './file-upload/components/upload.component';
 import { MyteamComponent } from './myteam/components/myteam.component';
+import { BoosterComponent } from './booster/components/booster.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
   ,
   {
     path: 'myteam', component: MyteamComponent
+  }
+  ,
+  {
+    path: 'booster', component: BoosterComponent
   }
 ];
 
