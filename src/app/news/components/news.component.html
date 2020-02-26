@@ -1,37 +1,147 @@
+<section class="hero">
 <p-tabView>
   <p-tabPanel *ngFor="let item of allNewsList; let i = index" [selected]="selectedTab == i">
-    <h3>{{item.Title1}}</h3>
+    <!-- <h3>{{item.Title1}}</h3>
     <h4>{{item.Title2}}</h4>
     <img [src]="'./assets/img/'+item.ImageSourceUrl">
-    <div [innerHTML]="item.HTMLText"></div>
-    
+    <div [innerHTML]="item.HTMLText"></div> -->
+
+    <div class="hero-content container">
+    <h1 class="hero_title">
+      WELCOME ABOARD
+    </h1>
+
+    <p class="hero_description">
+      You are one of our Airbus working unployees
+    </p>
+
+    <button class="button b-main hero_btn">GET MY WBS</button>
+    </div>
+
+
+
   </p-tabPanel>
+  <div class="hero_nav hero_prev">
+      <button pButton type="button" icon="pi pi-arrow-left" (click)="previousItem()" class="button  "></button>
+  </div>
+  <div class="hero_nav hero_next">
+      <button pButton type="button" icon="pi pi-arrow-right" (click)="nextItem()" class="button  "></button>
+  </div>
+
+
 </p-tabView>
-<button pButton type="button" icon="pi pi-arrow-left" (click)="previousItem()" class="button b-main"></button>
-<button pButton type="button" icon="pi pi-arrow-right" (click)="nextItem()" class="button b-main"></button>
 
-<p-carousel [value]="allNewsList" easing="easeOutStrong" (onPage)="actualItem($event)"
-responsive="true" headerText="News {{actualPage+1}} of {{allNewsList.length}}  " firstVisible="0"
-[pageLinks]="1"
-circular="circular" numVisible="1" >
-  <ng-template let-item pTemplate="item" >
+</section>
 
-    <div class="news_item p-grid">
-      <div class="news_imagen p-col-5">
-        <img [src]="'./assets/img/'+item.ImageSourceUrl">
+
+<section class="links">
+
+  <div class="container">
+    <div class="home-title">
+      <h1>Links of interest</h1>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="link-item">
+          <div class="link-image">
+            <img src="/assets/img/airbus_news.jpg" alt="airbus news" class="img-fluid">
+          </div>
+          <div class="link-content">
+            <h4 class="link-title">Airbus News</h4>
+            <p class="link-text">Get the lastest news about Airbus Company</p>
+
+            <a href="#" class="link-link">READ MORE <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
       </div>
+      <div class="col-md-4">
+        <div class="link-item">
+          <div class="link-image">
+            <img src="/assets/img/welcome-journey.jpg" alt="airbus news" class="img-fluid">
+          </div>
+          <div class="link-content">
+            <h4 class="link-title">Welcome Journey</h4>
+            <p class="link-text">A digital journey to help you understand the key information about our client and more.</p>
 
-      <div class="news_contenido p-col-7">
-        <h4>{{item.Title2}}</h4>
-        <h3>{{item.Title1}}</h3>
-        
-        <p [innerHTML]="item.HTMLText"></p>
+            <a href="#" class="link-link">READ MORE <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="link-item">
+          <div class="link-image">
+            <img src="/assets/img/audits.jpg" alt="airbus news" class="img-fluid">
+          </div>
+          <div class="link-content">
+            <h4 class="link-title">Audits</h4>
+            <p class="link-text">Meet the audits tool.</p>
+
+            <a href="#" class="link-link">READ MORE <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
       </div>
     </div>
-    
+  </div>
 
-   
+</section>
 
-  
-  </ng-template>
-</p-carousel>
+<section class="carousel">
+
+  <div class="container">
+
+    <p-carousel [value]="allNewsList" easing="easeOutStrong" (onPage)="actualItem($event)" responsive="true"
+      headerText="News {{actualPage+1}} of {{allNewsList.length}}  " firstVisible="0" [pageLinks]="1"
+      circular="circular" numVisible="1">
+      <ng-template let-item pTemplate="item">
+
+        <div class="news_item p-grid">
+          <div class="news_imagen p-col-5">
+            <img [src]="'./assets/img/'+item.ImageSourceUrl">
+            <div class="triangle"></div>
+
+          </div>
+
+
+          <div class="news_contenido p-col-7">
+            <h4>{{item.Title2}}</h4>
+            <h3>{{item.Title1}}</h3>
+
+            <p [innerHTML]="item.HTMLText"></p>
+          </div>
+        </div>
+
+
+
+
+
+      </ng-template>
+    </p-carousel>
+  </div>
+</section>
+
+<section class="coming-soon">
+  <div class="container coming-soon-content">
+    <div class="row">
+      <div class="col-md-2">
+        <div class="home-title">
+          <h1>Coming soon</h1>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-4">
+        <div class="coming-soon-item">
+          <h4 class="coming-soon-title">My holidays</h4>
+          <p class="coming-soon-description">Report your holiday time in a Project easier and faster. </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="coming-soon-item">
+          <h4 class="coming-soon-title">Inventory Management</h4>
+          <p class="coming-soon-description">You will have a perfect tool to manage your team inventory. </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
