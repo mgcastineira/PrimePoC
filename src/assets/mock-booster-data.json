@@ -1,0 +1,293 @@
+[
+    {
+        "__metadata": {
+            "id": "a0876553-f750-49fb-a95e-b97d47365342",
+            "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(1)",
+            "etag": "\"4\"",
+            "type": "SP.Data.BosterWhiteListListItem"
+        },
+        "FirstUniqueAncestorSecurableObject": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(1)/FirstUniqueAncestorSecurableObject"
+            }
+        },
+        "RoleAssignments": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(1)/RoleAssignments"
+            }
+        },
+        "AttachmentFiles": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(1)/AttachmentFiles"
+            }
+        },
+        "ContentType": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(1)/ContentType"
+            }
+        },
+        "GetDlpPolicyTip": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(1)/GetDlpPolicyTip"
+            }
+        },
+        "FieldValuesAsHtml": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(1)/FieldValuesAsHtml"
+            }
+        },
+        "FieldValuesAsText": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(1)/FieldValuesAsText"
+            }
+        },
+        "FieldValuesForEdit": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(1)/FieldValuesForEdit"
+            }
+        },
+        "File": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(1)/File"
+            }
+        },
+        "Folder": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(1)/Folder"
+            }
+        },
+        "LikedByInformation": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(1)/LikedByInformation"
+            }
+        },
+        "ParentList": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(1)/ParentList"
+            }
+        },
+        "Properties": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(1)/Properties"
+            }
+        },
+        "Versions": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(1)/Versions"
+            }
+        },
+        "FileSystemObjectType": 0,
+        "Id": 1,
+        "ServerRedirectedEmbedUri": null,
+        "ServerRedirectedEmbedUrl": "",
+        "ContentTypeId": "0x0100FC213965AA077F4AAAEF3B215A3DDEE5",
+        "Title": null,
+        "ComplianceAssetId": null,
+        "PeopleId": 918,
+        "EnterpriseID": "marcos.gonzalez",
+        "Active": true,
+        "Acknowledged": false,
+        "ID": 1,
+        "Modified": "2020-02-18T08:10:58Z",
+        "Created": "2020-02-18T08:04:46Z",
+        "AuthorId": 1303,
+        "EditorId": 1303,
+        "OData__UIVersionString": "1.0",
+        "Attachments": false,
+        "GUID": "f52ae4b3-e3ee-4d2a-8a3d-bc615ce2e429"
+    },
+    {
+        "__metadata": {
+            "id": "f4f9894d-defb-4bef-8577-266be6dd049a",
+            "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(2)",
+            "etag": "\"4\"",
+            "type": "SP.Data.BosterWhiteListListItem"
+        },
+        "FirstUniqueAncestorSecurableObject": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(2)/FirstUniqueAncestorSecurableObject"
+            }
+        },
+        "RoleAssignments": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(2)/RoleAssignments"
+            }
+        },
+        "AttachmentFiles": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(2)/AttachmentFiles"
+            }
+        },
+        "ContentType": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(2)/ContentType"
+            }
+        },
+        "GetDlpPolicyTip": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(2)/GetDlpPolicyTip"
+            }
+        },
+        "FieldValuesAsHtml": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(2)/FieldValuesAsHtml"
+            }
+        },
+        "FieldValuesAsText": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(2)/FieldValuesAsText"
+            }
+        },
+        "FieldValuesForEdit": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(2)/FieldValuesForEdit"
+            }
+        },
+        "File": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(2)/File"
+            }
+        },
+        "Folder": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(2)/Folder"
+            }
+        },
+        "LikedByInformation": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(2)/LikedByInformation"
+            }
+        },
+        "ParentList": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(2)/ParentList"
+            }
+        },
+        "Properties": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(2)/Properties"
+            }
+        },
+        "Versions": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(2)/Versions"
+            }
+        },
+        "FileSystemObjectType": 0,
+        "Id": 2,
+        "ServerRedirectedEmbedUri": null,
+        "ServerRedirectedEmbedUrl": "",
+        "ContentTypeId": "0x0100FC213965AA077F4AAAEF3B215A3DDEE5",
+        "Title": null,
+        "ComplianceAssetId": null,
+        "PeopleId": 464,
+        "EnterpriseID": "a.jusdado.marquez",
+        "Active": true,
+        "Acknowledged": false,
+        "ID": 2,
+        "Modified": "2020-02-18T08:10:59Z",
+        "Created": "2020-02-18T08:04:56Z",
+        "AuthorId": 1303,
+        "EditorId": 1303,
+        "OData__UIVersionString": "1.0",
+        "Attachments": false,
+        "GUID": "7d8bb1fa-6ab4-4424-996e-5e2804a923f1"
+    },
+    {
+        "__metadata": {
+            "id": "6c137e17-6ed8-4204-b0e8-c76675c153d5",
+            "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(3)",
+            "etag": "\"4\"",
+            "type": "SP.Data.BosterWhiteListListItem"
+        },
+        "FirstUniqueAncestorSecurableObject": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(3)/FirstUniqueAncestorSecurableObject"
+            }
+        },
+        "RoleAssignments": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(3)/RoleAssignments"
+            }
+        },
+        "AttachmentFiles": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(3)/AttachmentFiles"
+            }
+        },
+        "ContentType": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(3)/ContentType"
+            }
+        },
+        "GetDlpPolicyTip": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(3)/GetDlpPolicyTip"
+            }
+        },
+        "FieldValuesAsHtml": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(3)/FieldValuesAsHtml"
+            }
+        },
+        "FieldValuesAsText": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(3)/FieldValuesAsText"
+            }
+        },
+        "FieldValuesForEdit": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(3)/FieldValuesForEdit"
+            }
+        },
+        "File": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(3)/File"
+            }
+        },
+        "Folder": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(3)/Folder"
+            }
+        },
+        "LikedByInformation": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(3)/LikedByInformation"
+            }
+        },
+        "ParentList": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(3)/ParentList"
+            }
+        },
+        "Properties": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(3)/Properties"
+            }
+        },
+        "Versions": {
+            "__deferred": {
+                "uri": "https://ts.accenture.com/sites/EHT-SPAI/MAPADev/_api/Web/Lists(guid'85d1d7fd-2907-4988-9cb7-c49116d3e091')/Items(3)/Versions"
+            }
+        },
+        "FileSystemObjectType": 0,
+        "Id": 3,
+        "ServerRedirectedEmbedUri": null,
+        "ServerRedirectedEmbedUrl": "",
+        "ContentTypeId": "0x0100FC213965AA077F4AAAEF3B215A3DDEE5",
+        "Title": null,
+        "ComplianceAssetId": null,
+        "PeopleId": 1139,
+        "EnterpriseID": "romina.congregado",
+        "Active": true,
+        "Acknowledged": false,
+        "ID": 3,
+        "Modified": "2020-02-18T08:11:02Z",
+        "Created": "2020-02-18T08:05:21Z",
+        "AuthorId": 1303,
+        "EditorId": 1303,
+        "OData__UIVersionString": "1.0",
+        "Attachments": false,
+        "GUID": "cc7e45b7-13f0-4d82-b907-95d55769432d"
+    }
+]

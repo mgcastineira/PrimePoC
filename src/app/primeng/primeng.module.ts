@@ -32,6 +32,7 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { AccordionModule } from 'primeng/accordion';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { InputMaskModule } from 'primeng/inputmask';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 @NgModule({
   declarations: [],
@@ -67,7 +68,8 @@ import { InputMaskModule } from 'primeng/inputmask';
     FieldsetModule,
     AccordionModule,
     ScrollPanelModule,
-    InputMaskModule
+    InputMaskModule,
+    SelectButtonModule
   ],
   exports: [
     TableModule,
@@ -97,7 +99,8 @@ import { InputMaskModule } from 'primeng/inputmask';
     FieldsetModule,
     AccordionModule,
     ScrollPanelModule,
-    InputMaskModule
+    InputMaskModule,
+    SelectButtonModule
   ]
 })
 export class PrimengModule { }

@@ -1,0 +1,19 @@
+<div id="timer">
+  <span id="days"></span>days
+  <span id="hours"></span>hours
+  <span id="minutes"></span>minutes
+  <span id="seconds"></span>seconds
+  <span id="expired"></span>
+</div>
+<p>
+  <!-- <countdown (reached)="countDownFinished($event)" units=" Month | Days | Hours | Minutes | Seconds" end="July 22, 2020"></countdown> -->
+  <!-- <count-down units="Days | Hours | Minutes | Seconds | Milliseconds" end="February 22, 2016"></count-down> -->
+  
+</p>
+<ng-template #actions></ng-template>
+<div *ngFor="let component of components">
+  {{component.name}}
+<ng-template #comp></ng-template>
+</div>
+
+<button (click)="addAction()">Create success alert</button>

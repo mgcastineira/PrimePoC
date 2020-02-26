@@ -1,19 +1,26 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { TitleCasePipe } from '@angular/common';
+import { TitleCasePipe, DatePipe } from '@angular/common';
 
 import { Table } from 'primeng/table';
 
-import { UmServiceService } from '@um/services/um-service.service';
+import { UmService } from '@root/user-management/services/um.service';
+import { Subscription } from 'rxjs';
+import { FormBuilder } from '@angular/forms';
+import { DialogService, ConfirmationService } from 'primeng/api';
+import { UserManagementOperations } from '../models/user-management-operations';
 
 @Component({
   selector: 'app-user-management',
   templateUrl: './user-management.component.html',
   styleUrls: ['./user-management.component.scss'],
-  providers: [TitleCasePipe, UmServiceService]
+  providers: [TitleCasePipe, UmService,DialogService,
+    ConfirmationService,DatePipe]
 })
 export class UserManagementComponent implements OnInit {
-  @ViewChild('projectsTable') table: Table;
+  @ViewChild('usersTable') table: Table;
   userList:any[]=[];
+  protected serviceSubscription: Subscription;
+  
   filterValue: string = "";
   selectAllRows:boolean = false;
   displayStatusManagement: boolean = false;
@@ -23,6 +30,8 @@ export class UserManagementComponent implements OnInit {
   startDate:Date=null;
   endDate: Date = null;
   exitReason:string="";
+
+  selectedRows: any[]=[];
 
   es:any = {
     firstDayOfWeek: 1,
@@ -36,13 +45,23 @@ export class UserManagementComponent implements OnInit {
   }
 
   constructor(
-    private umServiceService: UmServiceService,
-    private titleCasePipe: TitleCasePipe
+    private umService: UmService,
+    private fBuilder: FormBuilder,
+    private dialogService: DialogService,
+    private datePipe: DatePipe
     ) {
+    this.serviceSubscription = this.umService.message.subscribe(
+      serviceResponse => {
+        switch(serviceResponse.operation){
+          case UserManagementOperations.GetInitialData:
+            this.userList = serviceResponse.payload.allPeople;
+            break;
+        }
+      });
    }
 
   ngOnInit() {
-    this.userList = this.umServiceService.getUsers();
+    this.umService.getInitialData();
   }
 
   // Filter

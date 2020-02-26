@@ -1,0 +1,42 @@
+<div  class="filter_form">
+  <p class="m-8 item_title"><strong>Status</strong></p>
+  <div class="row">
+    <div class="col-md-6 pr-5px">
+      <!-- <p-selectButton [options]="statusOptions"  [multiple]="true"
+      formControlName="statusButtons" (onOptionClick)="selectStatus($event)"></p-selectButton> -->
+      <p-selectButton [options]="statusOptions" [(ngModel)]="selectedStatus"
+      multiple="multiple" optionLabel="value" (onOptionClick)="selectStatus($event)">
+        <!-- <ng-template let-item>
+          <div style="padding: .5em 1em">
+            <span>{{item}}</span>
+          </div>
+        </ng-template> -->
+      </p-selectButton>
+    </div>
+  </div>
+  <p class="m-8 item_title"><strong>Company</strong></p>
+  <div class="row" [formGroup]="filterForm">
+    <div class="col-md-12 mt-3">
+    </div>
+  </div>
+  <p class="m-8 item_title"><strong>Primary location</strong></p>
+  <div class="row">
+    <div class="col-md-12">
+    </div>
+  </div>
+  <p class="m-8 item_title mt-4"><strong>Career level</strong></p>
+  <div class="row">
+    <div class="col-md-6 pr-5px">
+    </div>
+    <div class="col-md-6 pl-5px">
+    </div>
+  </div>
+  <div class="row_buttons">
+    <button  class="button b-third ">
+      CANCEL
+    </button>
+    <button class="button b-main" >APPLY
+      FILTERS</button>
+  </div>
+</div>
+{{selectedStatus?selectedStatus.length:null}}
