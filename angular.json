@@ -15,7 +15,7 @@
       },
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:browser",                    
           "options": {
             "outputPath": "dist/PrimePoC",
             "index": "src/index.html",
@@ -63,6 +63,18 @@
                 }
               ]
             }
+          }
+        },
+        "build-worker": {
+          "builder": "@angular-devkit/build-webpack:webpack",
+          "options": {
+            "webpackConfig": "./webpack.config.worker.js"
+          }
+        },
+        "dev-worker": {
+          "builder": "@angular-devkit/build-webpack:webpack",
+          "options": {
+            "webpackConfig": "./src/webpack.config.dev-worker.js"
           }
         },
         "serve": {
