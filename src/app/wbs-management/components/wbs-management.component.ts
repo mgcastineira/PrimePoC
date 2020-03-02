@@ -17,6 +17,8 @@ import { WbsCommentComponent } from '@wbsmanagement/features/wbs-comment/compone
 import { ImportComponent } from '@wbsmanagement/features/import/components/import.component';
 import { RulesComponent } from '../features/rules/components/rules.component';
 import { OverlayPanel } from 'primeng/overlaypanel';
+import { fade } from '@root/animations';
+
 
 @Component({
   selector: 'app-wbs-management',
@@ -25,6 +27,9 @@ import { OverlayPanel } from 'primeng/overlaypanel';
   providers: [
     DialogService,
     ConfirmationService
+  ],
+  animations: [
+    fade
   ]
 })
 export class WbsManagementComponent implements OnInit {
@@ -129,7 +134,7 @@ export class WbsManagementComponent implements OnInit {
       let op = aux as OverlayPanel;
       op.toggle(event);
     }
-    
+
     // comment.show = !comment.show;
   }
 

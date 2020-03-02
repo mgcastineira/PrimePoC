@@ -7,7 +7,7 @@
     <div [innerHTML]="item.HTMLText"></div> -->
 
     <div class="hero-content container">
-    <h1 class="hero_title">
+    <h1 class="hero_title" [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container">
       WELCOME ABOARD
     </h1>
 
@@ -17,8 +17,6 @@
 
     <button class="button b-main hero_btn">GET MY WBS</button>
     </div>
-
-
 
   </p-tabPanel>
   <div class="hero_nav hero_prev">

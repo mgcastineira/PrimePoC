@@ -5,6 +5,7 @@ import { NewsService } from '@news/services/news.service';
 import { Subscription, interval } from 'rxjs';
 import { NewsOperations } from '../models/news-operations.model';
 
+
 @Component({
   selector: 'app-news',
   templateUrl: './news.component.html',
@@ -30,7 +31,7 @@ export class NewsComponent implements OnInit {
           case NewsOperations.GetInitialData:
             if (serviceResponse.ok) {
               this.allNewsList = serviceResponse.payload.allNews;
-              
+
             }
             break;
         }
@@ -69,8 +70,8 @@ export class NewsComponent implements OnInit {
   actualItem(event:any){
     this.actualPage = event.page;
   }
-  
 
-  
-  
+
+
+
 }
