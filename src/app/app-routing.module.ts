@@ -11,6 +11,8 @@ import { UploadComponent } from './file-upload/components/upload.component';
 import { MyteamComponent } from './myteam/components/myteam.component';
 import { BoosterComponent } from './booster/components/booster.component';
 import { MyholidaysComponent } from './myholidays/myholidays.component';
+import { TeamHolidaysComponent } from './myholidays/features/team-holidays/team-holidays.component';
+
 
 const routes: Routes = [
   {
@@ -46,6 +48,9 @@ const routes: Routes = [
   },
   {
     path: 'myholidays', component: MyholidaysComponent
+  },
+  {
+    path: 'myholidays/teamholidays', component: TeamHolidaysComponent
   }
 ];
 
