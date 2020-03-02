@@ -1,3 +1,62 @@
-<p>
-  team-holidays works!
-</p>
+<!-- <p-calendar [(ngModel)]="date12" view="month" dateFormat="mm/yy"  yearRange="2000:2030">
+</p-calendar> -->
+<br>
+<a (click)="yearDown()" style="cursor:pointer">
+  <i class="fas fa-chevron-left"></i></a>
+<p-spinner size="30" [(ngModel)]="sMonth" [readonly]="true">
+</p-spinner>
+{{year}}
+<a (click)="yearUp()" style="cursor:pointer"><i class="fas fa-chevron-right"></i></a>
+
+<p-table #wbsTable [value]="datasource" [paginator]="true" [rows]="7"
+  [paginatorPosition]="'bottom'" sortMode="single" dataKey="ID" [responsive]="true"
+  [globalFilterFields]="['Title']">
+
+  <ng-template pTemplate="caption">
+    <div class="p-grid">
+      <div class="p-col-4">
+        <div class="search-bar">
+          <i class="fa fa-search"></i>
+          <div class="recordSearch_field ">
+            <span class="ui-float-label">
+              <input type="search" id="recordSearch" pInputText size="100" placeholder=""
+                (input)="globalFilter($event.target.value)" [(ngModel)]="filterValue" autocomplete="off"
+                class="floating-label-field floating-label-field--s3">
+              <label for="recordSearch">Search users...</label>
+              <div class="blue_line"></div>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th [pSortableColumn]="'PeopleId'" 
+        [ngStyle]="{'width':'30%'}" class="">
+        
+        <p-sortIcon [field]="'PeopleId'"></p-sortIcon>
+      </th>
+      <th *ngFor="let col of daysOfMonth">
+        {{col}}
+      </th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData let-ri="rowIndex">
+    <tr>
+      <td class="ui-resizable-column textColumn " pTooltip="{{rowData.PeopleId}}" tooltipPosition="bottom"
+        showDelay="2000" hideDelay="500">
+        {{rowData.PeopleId}}
+      </td>
+      <td *ngFor="let col of daysOfMonth">
+        {{rowData.Active}}
+      </td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="paginatorright">
+    There are {{wbsTableRecords?.length}} items
+  </ng-template>
+
+</p-table>
