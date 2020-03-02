@@ -114,4 +114,34 @@ body .ui-datepicker .ui-datepicker-header .ui-datepicker-prev, body .ui-datepick
 
 .holidays-calendar .ui-datepicker-calendar td {
   position: relative;
+  padding: 0;
+}
+
+
+body .holidays-calendar .ui-datepicker {
+  border: 0;
+  padding: 0 1.857em 1.857em;
+}
+
+body .holidays-calendar .ui-datepicker table {
+      font-size: 10px;
+}
+
+.holidays-calendar .ui-datepicker-month {
+  text-transform: uppercase;
+}
+
+
+body .year_box .ui-spinner .ui-spinner-input {
+  width: 90px;
+  font-size: 22px;
+  font-weight: 600;
+  padding: 0 16px;
+  pointer-events: none;
+  border: none;
+
+}
+
+.year_box a {
+  vertical-align: middle;
 }
