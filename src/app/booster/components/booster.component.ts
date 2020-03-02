@@ -48,7 +48,8 @@ export class BoosterComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.componentRef.destroy();
+    if(this.componentRef!=undefined)
+      this.componentRef.destroy();
   }
 
   countDownFinished(evento: any) {
@@ -92,7 +93,7 @@ export class BoosterComponent implements OnInit, OnDestroy {
       document.getElementById('hours').innerHTML = this.hours;
       document.getElementById('minutes').innerHTML = this.minutes;
       document.getElementById('seconds').innerHTML = this.seconds;
-      
+
 
       // If the count down is finished, write some text
       if (distance < 0) {

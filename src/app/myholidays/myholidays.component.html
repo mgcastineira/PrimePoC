@@ -2,14 +2,20 @@
 <a (click)="year = year-1" style="cursor:pointer"><</a>
 <p-spinner size="30" [(ngModel)]="year" [readonly]="true"></p-spinner>
 <a (click)="year = year+1" style="cursor:pointer">></a>
-<table>
+<table class="holidays-calendar">
   <tr>
-    <td>
+    <td >
       <p-calendar [inline]="true" [disabledDates]="invalidDatesJanuary" [disabledDays]="[0,6]"
        [dateFormat]="'dd/mm/yy'" [readonlyInput]="true" [disabled]="true" [(ngModel)]="januaryDate">
-      <ng-template pTemplate="date" let-date>
-        <span [ngStyle]="{backgroundColor: (invalidDatesJanuaryAux.indexOf(date.day) > -1) ? '#81C784' : 'inherit'}"
-          style="border-radius:50%;padding: .25em;width: 1.75em; height:1.75em; display:block;">{{date.day}}</span>
+      <ng-template pTemplate="date" let-date >
+
+
+
+        <div class="date" [class.marked]="(invalidDatesJanuaryAux.indexOf(date.day) > -1)">
+          {{date.day}}
+        </div>
+          <!-- <span [ngStyle]="{backgroundColor: (invalidDatesFebruaryAux.indexOf(date.day) > -1) ? '#81C784' : 'inherit'}"
+            style="border-radius:50%;padding: .25em;width: 1.75em; height:1.75em; display:block;">{{date.day}}</span> -->
       </ng-template>
       </p-calendar>
     </td>
@@ -17,18 +23,24 @@
       <p-calendar [inline]="true" [disabledDates]="invalidDatesFebruary" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'"
         [readonlyInput]="true" [disabled]="true" [(ngModel)]="februaryDate">
         <ng-template pTemplate="date" let-date>
-          <span [ngStyle]="{backgroundColor: (invalidDatesFebruaryAux.indexOf(date.day) > -1) ? '#81C784' : 'inherit'}"
-            style="border-radius:50%;padding: .25em;width: 1.75em; height:1.75em; display:block;">{{date.day}}</span>
+              <div class="date" [class.marked]="(invalidDatesFebruaryAux.indexOf(date.day) > -1)">
+                {{date.day}}
+              </div>
+          <!-- <span [ngStyle]="{backgroundColor: (invalidDatesFebruaryAux.indexOf(date.day) > -1) ? '#81C784' : 'inherit'}"
+            style="border-radius:50%;padding: .25em;width: 1.75em; height:1.75em; display:block;">{{date.day}}</span> -->
         </ng-template>
       </p-calendar>
     </td>
     <td><p-calendar [inline]="true" [disabledDates]="invalidDatesMarch" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'"
       [readonlyInput]="true" [disabled]="true" [(ngModel)]="marchDate">
       <ng-template pTemplate="date" let-date>
-        <span [ngStyle]="{backgroundColor: (invalidDatesMarchAux.indexOf(date.day) > -1) ? '#81C784' : 'inherit'}"
-          style="border-radius:50%;padding: .25em;width: 1.75em; height:1.75em; display:block;">{{date.day}}</span>
+            <div class="date" [class.marked]="(invalidDatesMarchAux.indexOf(date.day) > -1)">
+              {{date.day}}
+            </div>
+        <!-- <span [ngStyle]="{backgroundColor: (invalidDatesMarchAux.indexOf(date.day) > -1) ? '#81C784' : 'inherit'}"
+          style="border-radius:50%;padding: .25em;width: 1.75em; height:1.75em; display:block;">{{date.day}}</span> -->
       </ng-template>
     </p-calendar></td>
   </tr>
-  
+
 </table>
