@@ -3,11 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --aot --open",
-    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "start": "concurrently --kill-others \"npm run dev-worker\" \"ng serve\"",
+    "build": "npm run build-worker && ng build",
+    "build-worker": "ng run PrimePoC:build-worker",
+    "dev-worker": "ng run PrimePoC:dev-worker"
   },
   "private": true,
   "dependencies": {

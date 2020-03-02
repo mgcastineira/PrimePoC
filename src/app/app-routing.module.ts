@@ -10,6 +10,7 @@ import { MyDataComponent } from './mydata/components/mydata.component';
 import { UploadComponent } from './file-upload/components/upload.component';
 import { MyteamComponent } from './myteam/components/myteam.component';
 import { BoosterComponent } from './booster/components/booster.component';
+import { MyholidaysComponent } from './myholidays/myholidays.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,9 @@ const routes: Routes = [
   ,
   {
     path: 'booster', component: BoosterComponent
+  },
+  {
+    path: 'myholidays', component: MyholidaysComponent
   }
 ];
 

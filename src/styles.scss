@@ -87,3 +87,27 @@ body .info_card .ui-float-label input.ui-inputtext {
   opacity: 1;
   border: 0;
 }
+
+body .ui-datepicker table td > a.ui-state-active, body .ui-datepicker table td > span.ui-state-active {
+  color: inherit;
+  background-color: inherit;
+}
+body .ui-datepicker table td.ui-datepicker-today > a, body .ui-datepicker table td.ui-datepicker-today > span {
+    background-color: inherit;
+    color: inherit;
+}
+body .ui-spinner .ui-spinner-button.ui-spinner-up {
+    visibility: hidden;
+}
+body .ui-spinner .ui-spinner-button.ui-spinner-down {
+    visibility: hidden;
+}
+.ui-datepicker span.ui-datepicker-year {
+    visibility: hidden;
+}
+body .ui-datepicker .ui-datepicker-header .ui-datepicker-prev, body .ui-datepicker .ui-datepicker-header .ui-datepicker-next {
+    visibility: hidden;
+}
+.ui-datepicker .ui-datepicker-title {
+    text-align: left;
+}

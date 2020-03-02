@@ -34,6 +34,9 @@ import { FilterComponent } from './user-management/features/filter/filter.compon
 
 import { BoosterComponent } from './booster/components/booster.component';
 
+import { WorkerService } from './worker.service';
+import { MyholidaysComponent } from './myholidays/myholidays.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,6 +61,7 @@ import { BoosterComponent } from './booster/components/booster.component';
     StatusManagementComponent,
     FilterComponent,
     BoosterComponent,
+    MyholidaysComponent,
 
   ],
   imports: [
@@ -71,7 +75,7 @@ import { BoosterComponent } from './booster/components/booster.component';
     AngularFontAwesomeModule,
     ngfModule,
   ],
-  providers: [],
+  providers: [WorkerService],
   bootstrap: [
     AppComponent,
     
