@@ -35,6 +35,7 @@ import { FilterComponent } from './user-management/features/filter/filter.compon
 import { BoosterComponent } from './booster/components/booster.component';
 
 import { WorkerService } from './worker.service';
+import { MyholidaysComponent } from './myholidays/myholidays.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { WorkerService } from './worker.service';
     StatusManagementComponent,
     FilterComponent,
     BoosterComponent,
+    MyholidaysComponent,
 
   ],
   imports: [
