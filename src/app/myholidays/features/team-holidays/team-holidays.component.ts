@@ -94,4 +94,28 @@ export class TeamHolidaysComponent implements OnInit {
     this.getInitialData();
   }
 
+  checkDay(day: number, sMonth: string,peopleId:number): boolean {
+    let holidayObj = this.allHolidays.find(myh=>myh.PeopleId==peopleId);
+    if(holidayObj!=undefined){
+      let daysList = holidayObj[sMonth];
+      return daysList.find(d => d.Day == day) != undefined;
+    }else{
+      return false;
+    }
+    
+  }
+
+  getDescription(day: number, sMonth: string, peopleId: number): string {
+    let holidayObj = this.allHolidays.find(myh => myh.PeopleId == peopleId);
+    if (holidayObj != undefined) {
+      let daysList = holidayObj[sMonth];//.indexOf(date.day) > -1
+    let obj = daysList.find(d => d.Day == day);//daysList.indexOf(day) > -1;
+    if (obj != undefined)
+      return obj.Description;
+    else
+      return "";
+    }else{
+      return "";
+    }
+  }
 }
