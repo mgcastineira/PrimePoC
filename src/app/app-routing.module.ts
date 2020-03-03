@@ -10,7 +10,7 @@ import { MyDataComponent } from './mydata/components/mydata.component';
 import { UploadComponent } from './file-upload/components/upload.component';
 import { MyteamComponent } from './myteam/components/myteam.component';
 import { BoosterComponent } from './booster/components/booster.component';
-import { MyholidaysComponent } from './myholidays/myholidays.component';
+import { MyholidaysComponent } from './myholidays/components/myholidays.component';
 import { TeamHolidaysComponent } from './myholidays/features/team-holidays/team-holidays.component';
 
 

@@ -35,7 +35,7 @@ import { FilterComponent } from './user-management/features/filter/filter.compon
 import { BoosterComponent } from './booster/components/booster.component';
 
 import { WorkerService } from './worker.service';
-import { MyholidaysComponent } from './myholidays/myholidays.component';
+import { MyholidaysComponent } from './myholidays/components/myholidays.component';
 import { TeamHolidaysComponent } from './myholidays/features/team-holidays/team-holidays.component';
 
 @NgModule({

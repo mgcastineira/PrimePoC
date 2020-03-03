@@ -22,7 +22,7 @@
                 <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
                   [disabled]="true" [(ngModel)]="januaryDate">
                   <ng-template pTemplate="date" let-date>
-                    <div class="date" [class.marked]="(invalidDatesJanuaryAux.indexOf(date.day) > -1)">
+                    <div class="date" [class.marked]="(myHolidays.January.indexOf(date.day) > -1)">
                       {{date.day}}
                     </div>
                   </ng-template>
@@ -32,7 +32,7 @@
                 <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
                   [disabled]="true" [(ngModel)]="februaryDate">
                   <ng-template pTemplate="date" let-date>
-                    <div class="date" [class.marked]="(invalidDatesFebruaryAux.indexOf(date.day) > -1)">
+                    <div class="date" [class.marked]="(myHolidays.February.indexOf(date.day) > -1)">
                       {{date.day}}
                     </div>
                   </ng-template>
@@ -42,7 +42,7 @@
                 <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
                   [disabled]="true" [(ngModel)]="marchDate">
                   <ng-template pTemplate="date" let-date>
-                    <div class="date" [class.marked]="(invalidDatesMarchAux.indexOf(date.day) > -1)">
+                    <div class="date" [class.marked]="(myHolidays.March.indexOf(date.day) > -1)">
                       {{date.day}}
                     </div>
                   </ng-template>
@@ -53,7 +53,7 @@
                 <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
                   [disabled]="true" [(ngModel)]="aprilDate">
                   <ng-template pTemplate="date" let-date>
-                    <div class="date" [class.marked]="(invalidDatesAprilAux.indexOf(date.day) > -1)">
+                    <div class="date" [class.marked]="(myHolidays.April.indexOf(date.day) > -1)">
                       {{date.day}}
                     </div>
                   </ng-template>
@@ -63,7 +63,7 @@
                 <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
                   [disabled]="true" [(ngModel)]="mayDate">
                   <ng-template pTemplate="date" let-date>
-                    <div class="date" [class.marked]="(invalidDatesMayAux.indexOf(date.day) > -1)">
+                    <div class="date" [class.marked]="(myHolidays.May.indexOf(date.day) > -1)">
                       {{date.day}}
                     </div>
                   </ng-template>
@@ -73,7 +73,7 @@
                 <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
                   [disabled]="true" [(ngModel)]="juneDate">
                   <ng-template pTemplate="date" let-date>
-                    <div class="date" [class.marked]="(invalidDatesJuneAux.indexOf(date.day) > -1)">
+                    <div class="date" [class.marked]="(myHolidays.June.indexOf(date.day) > -1)">
                       {{date.day}}
                     </div>
                   </ng-template>
@@ -83,7 +83,7 @@
               <div class="col-lg-4 col-md-6">
                 <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true" [disabled]="true" [(ngModel)]="julyDate">
                   <ng-template pTemplate="date" let-date>
-                    <div class="date" [class.marked]="(invalidDatesJulyAux.indexOf(date.day) > -1)">
+                    <div class="date" [class.marked]="(myHolidays.July.indexOf(date.day) > -1)">
                       {{date.day}}
                     </div>
                    </ng-template>
@@ -93,7 +93,7 @@
                 <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
                   [disabled]="true" [(ngModel)]="augustDate">
                   <ng-template pTemplate="date" let-date>
-                    <div class="date" [class.marked]="(invalidDatesAugustAux.indexOf(date.day) > -1)">
+                    <div class="date" [class.marked]="(myHolidays.August.indexOf(date.day) > -1)">
                       {{date.day}}
                     </div>
                   </ng-template>
@@ -103,7 +103,7 @@
                 <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
                   [disabled]="true" [(ngModel)]="septemberDate">
                   <ng-template pTemplate="date" let-date>
-                    <div class="date" [class.marked]="(invalidDatesSeptemberAux.indexOf(date.day) > -1)">
+                    <div class="date" [class.marked]="(myHolidays.September.indexOf(date.day) > -1)">
                       {{date.day}}
                     </div>
                   </ng-template>
@@ -114,7 +114,7 @@
                 <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
                   [disabled]="true" [(ngModel)]="octoberDate">
                   <ng-template pTemplate="date" let-date>
-                    <div class="date" [class.marked]="(invalidDatesOctoberAux.indexOf(date.day) > -1)">
+                    <div class="date" [class.marked]="(myHolidays.October.indexOf(date.day) > -1)">
                       {{date.day}}
                     </div>
                     <!-- <span [ngStyle]="{backgroundColor: (invalidDatesOctoberAux.indexOf(date.day) > -1) ? '#81C784' : 'inherit'}"
@@ -126,7 +126,7 @@
                 <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
                   [disabled]="true" [(ngModel)]="novemberDate">
                   <ng-template pTemplate="date" let-date>
-                    <div class="date" [class.marked]="(invalidDatesNovemberAux.indexOf(date.day) > -1)">
+                    <div class="date" [class.marked]="(myHolidays.November.indexOf(date.day) > -1)">
                       {{date.day}}
                     </div>
                     <!-- <span [ngStyle]="{backgroundColor: (invalidDatesNovemberAux.indexOf(date.day) > -1) ? '#81C784' : 'inherit'}"
@@ -138,7 +138,7 @@
                 <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
                   [disabled]="true" [(ngModel)]="decemberDate">
                   <ng-template pTemplate="date" let-date>
-                    <div class="date" [class.marked]="(invalidDatesDecemberAux.indexOf(date.day) > -1)">
+                    <div class="date" [class.marked]="(myHolidays.December.indexOf(date.day) > -1)">
                       {{date.day}}
                     </div>
                     <!-- <span [ngStyle]="{backgroundColor: (invalidDatesDecemberAux.indexOf(date.day) > -1) ? '#81C784' : 'inherit'}"

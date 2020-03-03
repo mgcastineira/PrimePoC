@@ -49,8 +49,8 @@
         showDelay="2000" hideDelay="500">
         {{rowData.PeopleId}}
       </td>
-      <td *ngFor="let col of daysOfMonth">
-        {{rowData.Active}}
+      <td *ngFor="let day of daysOfMonth" [class.marked]="(rowData.Holidays.indexOf(day) > -1)">
+        
       </td>
     </tr>
   </ng-template>
