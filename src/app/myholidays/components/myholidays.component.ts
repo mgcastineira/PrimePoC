@@ -52,8 +52,6 @@ export class MyholidaysComponent implements OnInit {
     this.myHolidays = this.holidaysService.calculateHolidays(holidaysList, this.peopleId);
   }
 
-  
-
   private initializeDates() {
     this.februaryDate = new Date(this.februaryDate.setMonth(this.januaryDate.getMonth() + 1));
     this.marchDate = new Date(this.marchDate.setMonth(this.februaryDate.getMonth() + 1));
@@ -94,4 +92,17 @@ export class MyholidaysComponent implements OnInit {
     this.decemberDate = new Date(this.decemberDate.setFullYear(this.year));
   }
 
+  checkDay(day:number,sMonth:string):boolean{
+    let daysList = this.myHolidays[sMonth];//.indexOf(date.day) > -1
+    return daysList.find(d=>d.Day==day)!=undefined;//daysList.indexOf(day) > -1;
+  }
+
+  getDescription(day: number, sMonth: string): string {
+    let daysList = this.myHolidays[sMonth];//.indexOf(date.day) > -1
+    let obj= daysList.find(d => d.Day == day);//daysList.indexOf(day) > -1;
+    if(obj!=undefined)
+      return obj.Description;
+    else
+      return "";
+  }
 }

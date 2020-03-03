@@ -8,13 +8,13 @@ export class HolidaysService {
 
   constructor() { }
 
-  public calculateHolidays(holidaysInYear: any[], peopleId: number,year?:number): IHolidays {
-    let holidaysInYearClone:any[]=[];
-    if(year){
+  public calculateHolidays(holidaysInYear: any[], peopleId: number, year?: number): IHolidays {
+    let holidaysInYearClone: any[] = [];
+    if (year) {
       holidaysInYearClone = JSON.parse(JSON.stringify(
         holidaysInYear.filter(f => f.StartDate.getFullYear() == year)
-        ));
-    }else{
+      ));
+    } else {
       holidaysInYearClone = JSON.parse(JSON.stringify(holidaysInYear));
     }
     holidaysInYearClone.forEach(element => {
@@ -48,22 +48,27 @@ export class HolidaysService {
 
       // Si la fechas están dentro del mismo año
       // if (sDate.getFullYear() == eDate.getFullYear()) {
-        if (difference_In_Days > 0) {
-          for (let index = 1; index <= difference_In_Days; index++) {
-            let dateAux = sDate;
-            dateAux = new Date(dateAux.setDate(sDate.getDate() + 1));
-            this.processStartEndDate(dateAux, result);
-          }
-        } else {
-          this.processStartEndDate(sDate, result);
+      if (difference_In_Days > 0) {
+        /* #region  date start */
+        let dateStartAux = sDate;
+        dateStartAux = new Date(dateStartAux.setDate(sDate.getDate()));
+        this.processStartEndDate(dateStartAux, result, record.Description);
+        /* #endregion */
+        for (let index = 1; index <= difference_In_Days; index++) {
+          let dateAux = sDate;
+          dateAux = new Date(dateAux.setDate(sDate.getDate() + 1));
+          this.processStartEndDate(dateAux, result, record.Description);
         }
+      } else {
+        this.processStartEndDate(sDate, result, record.Description);
+      }
     });
 
     return result;
   }
 
-  public prepareHolidaysData(holidaysData: any[]):any[] {
-    let result:any[]=[];
+  public prepareHolidaysData(holidaysData: any[]): any[] {
+    let result: any[] = [];
 
     let holidaysDataClone = JSON.parse(JSON.stringify(holidaysData));
     holidaysDataClone.forEach(element => {
@@ -98,43 +103,43 @@ export class HolidaysService {
     return result;
   }
 
-  private processStartEndDate(dateAux: any, holidays: IHolidays): any {
+  private processStartEndDate(dateAux: any, holidays: IHolidays, description: string): any {
     switch (dateAux.getMonth()) {
       case 0:
-        holidays.January.push(dateAux.getDate());
+        holidays.January.push({ Day: dateAux.getDate(), Description: description });
         break;
       case 1:
-        holidays.February.push(dateAux.getDate());
+        holidays.February.push({ Day: dateAux.getDate(), Description: description });
         break;
       case 2:
-        holidays.March.push(dateAux.getDate());
+        holidays.March.push({ Day: dateAux.getDate(), Description: description });
         break;
       case 3:
-        holidays.April.push(dateAux.getDate());
+        holidays.April.push({ Day: dateAux.getDate(), Description: description });
         break;
       case 4:
-        holidays.May.push(dateAux.getDate());
+        holidays.May.push({ Day: dateAux.getDate(), Description: description });
         break;
       case 5:
-        holidays.June.push(dateAux.getDate());
+        holidays.June.push({ Day: dateAux.getDate(), Description: description });
         break;
       case 6:
-        holidays.July.push(dateAux.getDate());
+        holidays.July.push({ Day: dateAux.getDate(), Description: description });
         break;
       case 7:
-        holidays.August.push(dateAux.getDate());
+        holidays.August.push({ Day: dateAux.getDate(), Description: description });
         break;
       case 8:
-        holidays.September.push(dateAux.getDate());
+        holidays.September.push({ Day: dateAux.getDate(), Description: description });
         break;
       case 9:
-        holidays.October.push(dateAux.getDate());
+        holidays.October.push({ Day: dateAux.getDate(), Description: description });
         break;
       case 10:
-        holidays.November.push(dateAux.getDate());
+        holidays.November.push({ Day: dateAux.getDate(), Description: description });
         break;
       case 11:
-        holidays.December.push(dateAux.getDate());
+        holidays.December.push({ Day: dateAux.getDate(), Description: description });
         break;
     }
 
