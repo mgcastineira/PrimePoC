@@ -1,0 +1,305 @@
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-6">
+    <h3 class="mb-0">My holidays</h3>
+    <p>Nombre de usuario</p>
+  </div>
+  <div class="col-md-6">
+  <div class="year_box">
+    <a (click)="yearDown()" style="cursor:pointer">
+      <i class="fas fa-chevron-left"></i></a>
+    <p-spinner size="30" [(ngModel)]="year" [readonly]="true">
+    </p-spinner>
+    <a (click)="yearUp()" style="cursor:pointer"><i class="fas fa-chevron-right"></i></a>
+
+    <button class="button b-main ml-4">
+      ADD HOLIDAYS
+    </button>
+  </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="holidays-left">
+
+        <div class="total-days">
+
+          <p>
+            Total selected days: 12
+          </p>
+
+        </div>
+
+        <div class="holiday-block">
+          <h4 class="holiday-block-title">Scheduled holidays</h4>
+          <div class="holiday-item">
+            <div class="holiday-date start">
+              <span>3</span> MAR
+            </div>
+            <i class="fas fa-arrow-right"></i>
+            <div class="holiday-date end">
+              <span>30</span> MAR
+            </div>
+            <div class="holiday-info">
+              <h5 class="holiday-title">Holiday title</h5>
+              <p class="holiday-description">holiday description</p>
+            </div>
+          </div>
+          <div class="holiday-item">
+            <div class="holiday-date start">
+              <span>13</span> AUG
+            </div>
+            <i class="fas fa-arrow-right"></i>
+            <div class="holiday-date end">
+              <span>24</span> AUG
+            </div>
+            <div class="holiday-info">
+              <h5 class="holiday-title">Holiday title</h5>
+              <p class="holiday-description">holiday description</p>
+            </div>
+          </div>
+        </div>
+        <div class="holiday-block">
+          <h4 class="holiday-block-title">Past holidays</h4>
+          <div class="holiday-item">
+            <div class="holiday-date start">
+              <span>13</span> AUG
+            </div>
+            <i class="fas fa-arrow-right"></i>
+            <div class="holiday-date end">
+              <span>24</span> AUG
+            </div>
+            <div class="holiday-info">
+              <h5 class="holiday-title">Holiday title</h5>
+              <p class="holiday-description">holiday description</p>
+            </div>
+          </div>
+          <div class="holiday-item">
+            <div class="holiday-date start">
+              <span>13</span> AUG
+            </div>
+
+            <div class="holiday-info">
+              <h5 class="holiday-title">Holiday title</h5>
+              <p class="holiday-description">holiday description</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="holidays-calendar">
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
+              [disabled]="true" [(ngModel)]="januaryDate">
+              <ng-template pTemplate="date" let-date>
+                <div class="date" [class.marked]="(invalidDatesJanuaryAux.indexOf(date.day) > -1)">
+                  {{date.day}}
+                </div>
+              </ng-template>
+            </p-calendar>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
+              [disabled]="true" [(ngModel)]="februaryDate">
+              <ng-template pTemplate="date" let-date>
+                <div class="date" [class.marked]="(invalidDatesFebruaryAux.indexOf(date.day) > -1)">
+                  {{date.day}}
+                </div>
+              </ng-template>
+            </p-calendar>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
+              [disabled]="true" [(ngModel)]="marchDate">
+              <ng-template pTemplate="date" let-date>
+                <div class="date" [class.marked]="(invalidDatesMarchAux.indexOf(date.day) > -1)">
+                  {{date.day}}
+                </div>
+              </ng-template>
+            </p-calendar>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
+              [disabled]="true" [(ngModel)]="aprilDate">
+              <ng-template pTemplate="date" let-date>
+                <div class="date" [class.marked]="(invalidDatesAprilAux.indexOf(date.day) > -1)">
+                  {{date.day}}
+                </div>
+              </ng-template>
+            </p-calendar>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
+              [disabled]="true" [(ngModel)]="mayDate">
+              <ng-template pTemplate="date" let-date>
+                <div class="date" [class.marked]="(invalidDatesMayAux.indexOf(date.day) > -1)">
+                  {{date.day}}
+                </div>
+              </ng-template>
+            </p-calendar>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="holidays-calendar">
+
+            <div class="row">
+              <div class="col-lg-4 col-md-6">
+                <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
+                  [disabled]="true" [(ngModel)]="januaryDate">
+                  <ng-template pTemplate="date" let-date>
+                    <div class="date" pTooltip="{{getDescription(date.day,'January')}}"
+                    [class.marked]="checkDay(date.day,'January')">
+                      {{date.day}}
+                    </div>
+                  </ng-template>
+                </p-calendar>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
+                  [disabled]="true" [(ngModel)]="februaryDate">
+                  <ng-template pTemplate="date" let-date>
+                    <div class="date" pTooltip="{{getDescription(date.day,'February')}}"
+                    [class.marked]="checkDay(date.day,'February')">
+                      {{date.day}}
+                    </div>
+                  </ng-template>
+                </p-calendar>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
+                  [disabled]="true" [(ngModel)]="marchDate">
+                  <ng-template pTemplate="date" let-date>
+                    <div class="date" pTooltip="{{getDescription(date.day,'March')}}"
+                    [class.marked]="checkDay(date.day,'March')">
+                      {{date.day}}
+                    </div>
+                  </ng-template>
+                </p-calendar>
+              </div>
+
+              <div class="col-lg-4 col-md-6">
+                <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
+                  [disabled]="true" [(ngModel)]="aprilDate">
+                  <ng-template pTemplate="date" let-date>
+                    <div class="date" pTooltip="{{getDescription(date.day,'April')}}"
+                     [class.marked]="checkDay(date.day,'April')">
+                      {{date.day}}
+                    </div>
+                  </ng-template>
+                </p-calendar>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
+                  [disabled]="true" [(ngModel)]="mayDate">
+                  <ng-template pTemplate="date" let-date>
+                    <div class="date" pTooltip="{{getDescription(date.day,'May')}}"
+                     [class.marked]="checkDay(date.day,'June')">
+                      {{date.day}}
+                    </div>
+                  </ng-template>
+                </p-calendar>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
+                  [disabled]="true" [(ngModel)]="juneDate">
+                  <ng-template pTemplate="date" let-date>
+                    <div class="date" pTooltip="{{getDescription(date.day,'June')}}"
+                     [class.marked]="checkDay(date.day,'July')">
+                      {{date.day}}
+                    </div>
+                  </ng-template>
+                </p-calendar>
+              </div>
+
+              <div class="col-lg-4 col-md-6">
+                <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true" [disabled]="true" [(ngModel)]="julyDate">
+                  <ng-template pTemplate="date" let-date>
+                    <div class="date" pTooltip="{{getDescription(date.day,'July')}}"
+                     [class.marked]="checkDay(date.day,'August')">
+                      {{date.day}}
+                    </div>
+                   </ng-template>
+                </p-calendar>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
+                  [disabled]="true" [(ngModel)]="augustDate">
+                  <ng-template pTemplate="date" let-date>
+                    <div class="date" pTooltip="{{getDescription(date.day,'August')}}"
+                     [class.marked]="checkDay(date.day,'August')">
+                      {{date.day}}
+                    </div>
+                  </ng-template>
+                </p-calendar>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
+                  [disabled]="true" [(ngModel)]="septemberDate">
+                  <ng-template pTemplate="date" let-date>
+                    <div class="date" pTooltip="{{getDescription(date.day,'September')}}"
+                     [class.marked]="checkDay(date.day,'September')">
+                      {{date.day}}
+                    </div>
+                  </ng-template>
+                </p-calendar>
+              </div>
+
+              <div class="col-lg-4 col-md-6">
+                <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
+                  [disabled]="true" [(ngModel)]="octoberDate">
+                  <ng-template pTemplate="date" let-date>
+                    <div class="date" pTooltip="{{getDescription(date.day,'October')}}"
+                     [class.marked]="checkDay(date.day,'October')">
+                      {{date.day}}
+                    </div>
+                  </ng-template>
+                </p-calendar>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
+                  [disabled]="true" [(ngModel)]="novemberDate">
+                  <ng-template pTemplate="date" let-date>
+                    <div class="date" pTooltip="{{getDescription(date.day,'November')}}"
+                     [class.marked]="checkDay(date.day,'November')">
+                      {{date.day}}
+                    </div>
+                  </ng-template>
+                </p-calendar>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <p-calendar [inline]="true" [disabledDays]="[0,6]" [dateFormat]="'dd/mm/yy'" [readonlyInput]="true"
+                  [disabled]="true" [(ngModel)]="decemberDate">
+                  <ng-template pTemplate="date" let-date>
+                    <div class="date" pTooltip="{{getDescription(date.day,'December')}}"
+                     [class.marked]="checkDay(date.day,'December')">
+                      {{date.day}}
+                    </div>
+                  </ng-template>
+                </p-calendar>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+
+  </div>
+</div>
