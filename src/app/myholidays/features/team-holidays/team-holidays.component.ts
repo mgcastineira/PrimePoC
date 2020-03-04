@@ -8,7 +8,7 @@ import { HolidaysService } from '@root/myholidays/services/holidays.service';
   styleUrls: ['./team-holidays.component.scss']
 })
 export class TeamHolidaysComponent implements OnInit {
-  month: number = 11;//new Date().getMonth();
+  month: number = new Date().getMonth();
   year: number = new Date().getFullYear();
   sMonth: string = new Date(this.year,this.month,1).toLocaleString('default', { month: 'long' });
   daysOfMonth:any[]=[];

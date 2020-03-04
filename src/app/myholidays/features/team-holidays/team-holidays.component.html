@@ -49,7 +49,8 @@
         showDelay="2000" hideDelay="500">
         {{rowData.PeopleId}}
       </td>
-      <td *ngFor="let day of daysOfMonth" [class.marked]="checkDay(day,sMonth,rowData.PeopleId)">
+      <td *ngFor="let day of daysOfMonth" pTooltip="{{getDescription(day,sMonth,rowData.PeopleId)}}"
+      [class.marked]="checkDay(day,sMonth,rowData.PeopleId)">
         
       </td>
     </tr>
