@@ -146,3 +146,25 @@ body .year_box .ui-spinner .ui-spinner-input {
   vertical-align: middle;
 }
 
+
+
+body {
+  .confirm_rolloff {
+    p-checkbox {
+      position: relative;
+
+    }
+
+
+    .ui-chkbox {
+      position: absolute;
+          top: -9px;
+    }
+
+    .ui-chkbox-label {
+          padding-left: 16px;
+          width: 65%;
+    }
+  }
+
+}

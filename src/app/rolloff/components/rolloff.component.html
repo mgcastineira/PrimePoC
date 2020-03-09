@@ -1,61 +1,170 @@
+<div class="container-fluid vh100">
+  <div class="row h-100">
+    <div class="col-md-4 rolloff_left ">
+      <div class="rolloff_menu">
+        <h3>Roll Off</h3>
+        <p>If you start this process it means you are leaving Airbus.</p>
+        <p>We wish you the best in your next stage.</p>
+        <div class="att_box">
+          <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+          Before continuing you must have informed your supervisor, your mentor,
+          and your people advisor.
+        </div>
 
+        <div class="rolloff_steps">
+          <ul>
+            <li class="ro_step" [class.active]="currentStep == 1" [class.done]="currentStep > 1">
+              <a (click)="setStep(1)">
+                <div class="step_indicator"></div>
+                Sign the document
+              </a>
+            </li>
+            <li class="ro_step" [class.active]="currentStep == 2" [class.done]="currentStep > 2">
+              <a (click)="setStep(2)">
+                <div class="step_indicator"></div>
+                Inform reason and date
+              </a>
+            </li>
+            <li class="ro_step" [class.active]="currentStep == 3" [class.done]="currentStep > 3">
+              <a (click)="setStep(3)">
+                <div class="step_indicator"></div>
+                What's next
+              </a>
+            </li>
+            <li class="ro_step" [class.active]="currentStep == 4" [class.done]="currentStep > 4">
+              <a (click)="setStep(4)">
+                <div class="step_indicator"></div>
+                Finish
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8 rolloff_right">
+      <div id="step1" class="step_content" [class.d-none]="currentStep != 1">
+        <div class="step_content_inner">
+          <div class="step-a" [class.inactive]="filedownloaded">
+            <div class="step_title ">
+              <h4>Download the following Roll Off document</h4>
+            </div>
+            <div class="step_docs ">
+              <ul>
+                <li>
+                  <a href="javascript:void(0)" (click)="downloaded()">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                      x="0px" y="0px" viewBox="0 0 12 17" style="enable-background:new 0 0 12 17;" xml:space="preserve">
+                      <path id="file-word-regular" class="word" d="M11.58,3.45L8.96,0.83C8.68,0.55,8.3,0.39,7.9,0.39H1.52c-0.83,0-1.5,0.67-1.5,1.5v13
+                                	c0,0.83,0.67,1.5,1.5,1.5h9c0.83,0,1.5-0.67,1.5-1.5V4.51C12.02,4.11,11.86,3.73,11.58,3.45z M10.4,4.39H8.02V2.01L10.4,4.39z
+                                	 M1.52,14.89v-13h5v3.25c0,0.41,0.33,0.75,0.75,0.75c0,0,0,0,0,0h3.25v9H1.52z M8.4,8.39c-0.18,0-0.33,0.13-0.37,0.3
+                                	c-0.64,3.05-0.64,2.98-0.66,3.23c-0.01-0.04-0.01-0.08-0.02-0.13c-0.03-0.16,0.01,0.01-0.74-3.11C6.58,8.51,6.43,8.39,6.25,8.39
+                                	H5.84c-0.17,0-0.32,0.12-0.37,0.28c-0.76,3.09-0.75,3.01-0.78,3.24c0-0.03-0.01-0.08-0.02-0.13c-0.02-0.16-0.44-2.29-0.6-3.09
+                                	c-0.04-0.18-0.19-0.3-0.37-0.3H3.19c-0.21,0-0.38,0.17-0.38,0.38c0,0.03,0,0.06,0.01,0.09c0.25,1.02,0.83,3.42,1.04,4.25
+                                	c0.04,0.17,0.19,0.29,0.37,0.28h0.79c0.17,0,0.32-0.12,0.36-0.28l0.56-2.23c0.04-0.18,0.08-0.36,0.09-0.54l0.09,0.54
+                                	c0,0.01,0.39,1.58,0.56,2.23c0.04,0.17,0.19,0.28,0.36,0.28h0.77c0.17,0,0.32-0.12,0.36-0.28c0.65-2.56,0.94-3.72,1.08-4.25
+                                	c0.05-0.2-0.07-0.4-0.28-0.45C8.95,8.39,8.92,8.39,8.89,8.39H8.4z" />
+                    </svg>
 
-    <table class="table">
-      <tbody>
-        <tr class="datagrid__row">
-          <td>
-            <span>
-              <div class="datagrid__loader" [style.width.%]="80"> </div>
-            </span>
-          </td>
-          <td>
-            <span>
-              <div class="datagrid__loader" [style.width.%]="30"></div>
+                    Roll Off Airbus
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="step-b" *ngIf="filedownloaded">
+            <div class="step_title more_info">
+              <h4>
+                Now please, print it and sign it.<br />
+                Once signed, upload the document.
+              </h4>
+            </div>
+            <app-file-uploader></app-file-uploader>
+          </div>
 
+          <div class="step_footer">
+            <button class="button b-main rollon_btn inactive" [class.inactive]="currentStep != 1" (click)="nextStep()">
+              CONTINUE
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="step2" class="step_content" [class.d-none]="currentStep != 2">
+        <form class="step_content_inner">
+          <div class="step-a reason">
+            <div class="step_title">
+              <h4>What is the reason for your departure?</h4>
+            </div>
+            <p-radioButton name="reason" value="val1" [(ngModel)]="selectedValue"
+              label="I'm no longer working with Airbus, but I'll remain as Accenture employee"></p-radioButton>
+            <p-radioButton name="reason" value="val2" [(ngModel)]="selectedValue" label="I'm leaving Accenture">
+            </p-radioButton>
+            <p-radioButton name="reason" value="val3" [(ngModel)]="selectedValue" label="Other reason"></p-radioButton>
+          </div>
+          <div class="step-b last-day" *ngIf="selectedValue">
+            <div class="step_title">
+                <h4>When is your last day on Airbus?</h4>
+            </div>
+            <div class="calendar-wrap">
+            <span class="ui-float-label floating-calendar ">
+              <p-calendar [(ngModel)]="lastDate" [locale]="es" dateFormat="dd/mm/yy" [showIcon]="true">
+              </p-calendar>
+              <label for="lastDate">mm/dd/yyyy</label>
             </span>
-          </td>
-          <td>
-            <span>
-              <div class="datagrid__loader" [style.width.%]="60"></div>
-            </span>
-          </td>
-        </tr>
-        <tr class="datagrid__row">
-          <td>
-            <span>
-              <div class="datagrid__loader" [style.width.%]="78"> </div>
-            </span>
-          </td>
-          <td>
-            <span>
-              <div class="datagrid__loader" [style.width.%]="45"> </div>
+            </div>
 
-            </span>
-          </td>
-          <td>
-            <span>
-               <div class="datagrid__loader" [style.width.%]="56"> </div>
-            </span>
-          </td>
-        </tr>
-        <tr class="datagrid__row">
-          <td>
-            <span>
-               <div class="datagrid__loader" [style.width.%]="90"> </div>
-            </span>
-          </td>
-          <td>
-            <span>
-             <div class="datagrid__loader" [style.width.%]="28"> </div>
+          </div>
+          <div class="step_footer">
+            <button class="button b-main rollon_btn inactive" [class.inactive]="currentStep != 2" (click)="nextStep()">
+              CONTINUE
+            </button>
+          </div>
+        </form>
+      </div>
+      <div id="step3" class="step_content" [class.d-none]="currentStep != 3">
+        <div class="step_content_inner">
+          <div class="step_title">
+            <h4>What's next?</h4>
+          </div>
+          <ul class="next_list">
+            <li class="next_list_item">Go to <a href="">Accenture Manage my Departure</a></li>
+            <li class="next_list_item">
+              Make sure to collect and send all the pending receipts of your
+              travel expenses to the PMO
+            </li>
+            <li class="next_list_item">
+              Complete your last Time Report on
+              <a href="">mye.accenture.tcom</a>
+            </li>
+            <li class="next_list_item">
+              Return all work material provided by Accenture (such as laptops,
+              smartphones, etc.)
+            </li>
+            <li class="next_list_item">Return Airbus and Accenture access cards</li>
+          </ul>
 
-            </span>
-          </td>
-          <td>
-            <span>
-               <div class="datagrid__loader" [style.width.%]="70"> </div>
-            </span>
-          </td>
-        </tr>
+          <div class="step_footer">
+            <button class="button b-main rollon_btn inactive" [class.inactive]="currentStep != 3" (click)="nextStep()">
+              CONTINUE
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="step4" class="step_content" [class.d-none]="currentStep != 4">
+        <form class="step_content_inner confirm_rolloff">
+          <div class="step_title">
+            <h4>You are about to finish the Roll Off process</h4>
+          </div>
 
-      </tbody>
-    </table>
+          <p-checkbox name="groupname" value="confirmed" label="All the information provided is true, complete and
+                                 accurate, and I have performed all the tasks required on this Roll Off process. ">
+          </p-checkbox>
+          <div class="step_footer">
+            <button class="button b-main rollon_btn inactive" [class.inactive]="currentStep != 4" (click)="nextStep()">
+              CONTINUE
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

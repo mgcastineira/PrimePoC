@@ -9,8 +9,8 @@ export class RollonComponent implements OnInit {
   appliedRole:number = 2;
   currentStep:number = 1;
   downloadedFiles:any[]=[];
-  filesRepository:any[]=[
-    { 
+  filesRepository:any[]= [
+    {
       ServerRelativeUrl:"google.com",
       Description:"Client data security behavior",
       downloaded:true
@@ -39,5 +39,7 @@ export class RollonComponent implements OnInit {
   setStep(value:number){
     this.currentStep = value;
   }
+
+
 
 }
