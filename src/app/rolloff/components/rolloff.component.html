@@ -34,6 +34,12 @@
             <li class="ro_step" [class.active]="currentStep == 4" [class.done]="currentStep > 4">
               <a (click)="setStep(4)">
                 <div class="step_indicator"></div>
+                Confirm
+              </a>
+            </li>
+            <li class="ro_step" [class.active]="currentStep == 5" [class.done]="currentStep > 5">
+              <a (click)="setStep(5)">
+                <div class="step_indicator"></div>
                 Finish
               </a>
             </li>
@@ -42,7 +48,7 @@
       </div>
     </div>
     <div class="col-md-8 rolloff_right">
-      <div id="step1" class="step_content" [class.d-none]="currentStep != 1">
+      <div id="step1" class="step_content" [ngClass]="(currentStep==1)? 'active':'d-none'">
         <div class="step_content_inner">
           <div class="step-a" [class.inactive]="filedownloaded">
             <div class="step_title ">
@@ -88,7 +94,7 @@
           </div>
         </div>
       </div>
-      <div id="step2" class="step_content" [class.d-none]="currentStep != 2">
+      <div id="step2" class="step_content" [ngClass]="(currentStep==2)? 'active':'d-none'">
         <form class="step_content_inner">
           <div class="step-a reason">
             <div class="step_title">
@@ -120,7 +126,7 @@
           </div>
         </form>
       </div>
-      <div id="step3" class="step_content" [class.d-none]="currentStep != 3">
+      <div id="step3" class="step_content" [ngClass]="(currentStep==3)? 'active':'d-none'">
         <div class="step_content_inner">
           <div class="step_title">
             <h4>What's next?</h4>
@@ -149,7 +155,7 @@
           </div>
         </div>
       </div>
-      <div id="step4" class="step_content" [class.d-none]="currentStep != 4">
+      <div id="step4" class="step_content" [ngClass]="(currentStep==4)? 'active':'d-none'">
         <form class="step_content_inner confirm_rolloff">
           <div class="step_title">
             <h4>You are about to finish the Roll Off process</h4>
@@ -160,9 +166,20 @@
           </p-checkbox>
           <div class="step_footer">
             <button class="button b-main rollon_btn inactive" [class.inactive]="currentStep != 4" (click)="nextStep()">
-              CONTINUE
+              CONFIRM
             </button>
           </div>
+        </form>
+      </div>
+      <div id="step5" class="step_content" [ngClass]="(currentStep==5)? 'active':'d-none'">
+        <form class="step_content_inner confirm_rolloff">
+          <div class="step_title finish">
+            <h4>You have completed the Roll Off process</h4>
+            <p>Thank you! Until next time. </p>
+          </div>
+
+
+
         </form>
       </div>
     </div>

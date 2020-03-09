@@ -1,10 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-
+import { trigger, state, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-rolloff',
   templateUrl: './rolloff.component.html',
-  styleUrls: ['./rolloff.component.scss']
+  styleUrls: ['./rolloff.component.scss'],
+  animations: [
+    trigger('slideup', [
+      state('void', style({ transform: 'translateY(0)' })),
+      transition(':enter', [
+        style({ transform: 'translateY(100%)', opacity: 0 }),
+        animate('0.3s ease-in')
+      ]),
+      transition(':leave', [
+        animate('0.3s ease-out', style({ transform: 'translateY(100%)', opacity: 0 }))
+      ])
+    ])
+  ]
 })
 export class RolloffComponent implements OnInit {
   currentStep: number = 1;

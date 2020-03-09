@@ -6,16 +6,16 @@
   height: 100%;
   display: flex;
   align-items: center;
+}
 
-  h3 {
-    margin-bottom: 30px;
-    font-size: 1.5em;
-  }
+.rolloff_left h3 {
+  margin-bottom: 30px;
+  font-size: 1.5em;
+}
 
-  p {
-    margin-bottom: 0;
-    font-size: .9em;
-  }
+.rolloff_left  p {
+  margin-bottom: 0;
+  font-size: .9em;
 }
 
 .rolloff_right {
@@ -24,15 +24,15 @@
   display: flex;
   align-items: center;
   padding: 0 60px;
+}
 
-  .step_title {
-     margin-bottom: 30px;
-  }
+.rolloff_right .step_title {
+  margin-bottom: 30px;
+}
 
-  .step_footer {
-         position: static !important;
-         margin-top: 80px;
-  }
+.rolloff_right .step_footer {
+  position: static !important;
+  margin-top: 80px;
 }
 
 .att_box {
@@ -43,8 +43,6 @@
   position: relative;
   font-weight: 600;
   margin-top: 16px;
-
-
 }
 
 .att_box .fa {
@@ -59,95 +57,78 @@
 .rolloff_steps {
   margin-top: 32px;
   position: relative;
+}
 
-  ul {
-    list-style: none;
-    padding-left: 0;
+.rolloff_steps ul {
+  list-style: none;
+  padding-left: 0;
+}
 
-    &:after {
-      content: '';
-      display: block;
-      height: 196px;
-      width: 2px;
-      background-color: #f2f2f2;
-      position: absolute;
-      left: 11px;
-      z-index: 0;
-      top: 10px;
-    }
-
-
-
-  }
-
+.rolloff_steps ul:after {
+  content: '';
+  display: block;
+  height: 262px;
+  width: 2px;
+  background-color: #f2f2f2;
+  position: absolute;
+  left: 11px;
+  z-index: 0;
+  top: 10px;
 }
 
 .ro_step {
   margin-bottom: 40px;
+}
+.ro_step a {
+  color: #9F9F9F;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all .5s ease;
+}
 
-  a {
-    color: #9F9F9F;
-    text-decoration: none;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all .5s ease;
-  }
+.ro_step.active a {
+    color: #212529;
+    font-size: 22px;
+    font-weight: 600;
+}
 
-  &.active {
-    a {
-      color: #212529;
-      font-size: 22px;
-      font-weight: 600;
+.ro_step.active a .step_indicator:after {
+  width: 20px;
+  height: 20px;
+  border-color: #008FFF;
+  margin-left: -1px !important;
+  margin-top: 0px !important;
 
-      .step_indicator:after {
-        width: 20px;
-        height: 20px;
-        border-color: #008FFF;
-        margin-left: -1px !important;
-        margin-top: 0px !important;
+}
 
-      }
-    }
-  }
+.ro_step:after {
+  content: '';
+  position: absolute;
+  left: 11px;
+  height: 0;
+  width: 2px;
+  background-color: #008FFF;
+  top: 8px;
+  z-index: 100;
+  transition: height .5s ease;
+}
 
-  &:after {
-    content: '';
-    position: absolute;
-    left: 11px;
-    height: 0;
-    width: 2px;
-    background-color: #008FFF;
-    top: 8px;
-    z-index: 100;
-    transition: height .5s ease;
-  }
+.ro_step.done {
+  position: relative;
+}
 
-  &.done {
-    position: relative;
+.ro_step.done a {
+  color: #008FFF;
+  font-weight: 600;
+}
 
-    a {
-      color: #008FFF;
-      font-weight: 600;
-
-      .step_indicator:after {
-
-        border-color: #008FFF;
-        background-color: #008FFF;
-
-      }
-
-
-    }
-
-    &:after {
-      height: 65px;
-
-    }
-
-
-
-  }
-
+.ro_step.done a .step_indicator:after {
+  border-color: #008FFF;
+  background-color: #008FFF;
+}
+.ro_step.done:after {
+  height: 65px;
 }
 
 .step_indicator {
@@ -158,25 +139,38 @@
   border: 2px solid transparent;
   margin-top: -8px;
   margin-right: 10px;
+}
 
-  &:after {
-    content: '\f00c ';
-    font-family: FontAwesome;
-    color: white;
-    text-align: center;
-    display: block;
-    width: 14px;
-    height: 14px;
-    border: 2px solid #9F9F9F;
-    margin-top: 2px;
-    margin-left: 2px;
-    z-index: 1001;
-    position: absolute;
-    background-color: white;
-    transition: height .5s ease, width .5s ease;
-    line-height: 11px;
-    font-size: 11px;
-    padding: 0;
+.step_indicator:after {
+  content: '\f00c ';
+  font-family: FontAwesome;
+  color: white;
+  text-align: center;
+  display: block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #9F9F9F;
+  margin-top: 2px;
+  margin-left: 2px;
+  z-index: 1001;
+  position: absolute;
+  background-color: white;
+  transition: height .5s ease, width .5s ease;
+  line-height: 11px;
+  font-size: 11px;
+  padding: 0;
+}
+
+.step_content.active {
+  animation: slideUp .3s ease;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0)
   }
 }
 
@@ -228,6 +222,13 @@
 
 .next_list_item a {
   color: #008FFF;
+}
+
+.step_title.finish h4 {
+  font-size: 2.2em;
+}
+.step_title.finish p {
+  font-size: 1.5em;
 }
 
 
